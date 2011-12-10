@@ -1,0 +1,342 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{F72AACF2-7F30-4AF2-B57A-0B88CD5AE6F4}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ShopOrderCustom</RootNamespace>
+    <AssemblyName>ShopOrderCustom</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>
+    </SccProjectName>
+    <SccLocalPath>
+    </SccLocalPath>
+    <SccAuxPath>
+    </SccAuxPath>
+    <SccProvider>
+    </SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>bin\Debug\ShopOrderCustom.XML</DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="DevExpress.BonusSkins.v10.2, Version=10.2.8.0, Culture=neutral, PublicKeyToken=95fc6c5621878f0a" />
+    <Reference Include="DevExpress.Data.v10.2, Version=10.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.ExpressApp.v10.2, Version=10.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.ExpressApp.Win.v10.2, Version=10.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.OfficeSkins.v10.2, Version=10.2.8.0, Culture=neutral, PublicKeyToken=95fc6c5621878f0a" />
+    <Reference Include="DevExpress.Persistent.Base.v10.2, Version=10.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.RichEdit.v10.2.Core, Version=10.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Utils.v10.2, Version=10.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Xpo.v10.2, Version=10.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraBars.v10.2, Version=10.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraEditors.v10.2, Version=10.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraGrid.v10.2, Version=10.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraLayout.v10.2, Version=10.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraNavBar.v10.2, Version=10.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraRichEdit.v10.2, Version=10.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraTreeList.v10.2, Version=10.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraVerticalGrid.v10.2, Version=10.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="Microsoft.Practices.Unity, Version=2.0.414.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Package\Unity\Microsoft.Practices.Unity.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity.Configuration, Version=2.1.505.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Package\Unity\Microsoft.Practices.Unity.Configuration.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="GridLayoutSerializer.cs" />
+    <Compile Include="Data\GoodsNodeBalanceObj.cs" />
+    <Compile Include="Data\GoodsNodeCategoryObj.cs" />
+    <Compile Include="Data\GoodsNodeGroupObj.cs" />
+    <Compile Include="GoodsAssorts.cs" />
+    <Compile Include="GroupAssort.cs" />
+    <Compile Include="Models\ActualAssortViewerModel.cs" />
+    <Compile Include="Models\BalanceEditorModel.cs" />
+    <Compile Include="Models\ModelLayout.cs" />
+    <Compile Include="UI\ActualAssortViewerForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\ActualAssortViewerForm.Designer.cs">
+      <DependentUpon>ActualAssortViewerForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Models\OrderViewerModel.cs" />
+    <Compile Include="OrderCategorys.cs" />
+    <Compile Include="UI\AssortForOrderForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\AssortForOrderForm.Designer.cs">
+      <DependentUpon>AssortForOrderForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AssortForOrderModel.cs" />
+    <Compile Include="UI\AssortimentForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\AssortimentForm.Designer.cs">
+      <DependentUpon>AssortimentForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AssortmentModel.cs" />
+    <Compile Include="UI\BalanceEditorForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\BalanceEditorForm.Designer.cs">
+      <DependentUpon>BalanceEditorForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\DataUiViewer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\DataUiViewer.Designer.cs">
+      <DependentUpon>DataUiViewer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\MinOrderForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\MinOrderForm.Designer.cs">
+      <DependentUpon>MinOrderForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Models\MinOrderModel.cs" />
+    <Compile Include="OrderShops.cs" />
+    <Compile Include="Models\OrderManagerModel.cs" />
+    <Compile Include="UI\UcOrderCompare.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\UcOrderCompare.Designer.cs">
+      <DependentUpon>UcOrderCompare.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\OrderManagerForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\OrderManagerForm.Designer.cs">
+      <DependentUpon>OrderManagerForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Orders.cs" />
+    <Compile Include="Models\OrderModel.cs" />
+    <Compile Include="UI\OrderForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\OrderForm.Designer.cs">
+      <DependentUpon>OrderForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="UI\UcOrderInfo.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\UcOrderInfo.Designer.cs">
+      <DependentUpon>UcOrderInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\OrderViewerForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\OrderViewerForm.Designer.cs">
+      <DependentUpon>OrderViewerForm.cs</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Common\Common.csproj">
+      <Project>{9F5F2C6A-CB56-44DB-9DF4-2BDE103EB33C}</Project>
+      <Name>Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DataBase\DataBase.csproj">
+      <Project>{AC856F33-A8FF-4A2A-A5BD-894DC202AB54}</Project>
+      <Name>DataBase</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ShopOrderExcel\ShopOrderExcel.csproj">
+      <Project>{14CA820F-29C5-40FC-9430-86646D904F81}</Project>
+      <Name>ShopOrderExcel</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="UI\ActualAssortViewerForm.resx">
+      <DependentUpon>ActualAssortViewerForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\AssortForOrderForm.resx">
+      <DependentUpon>AssortForOrderForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\AssortimentForm.resx">
+      <DependentUpon>AssortimentForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\BalanceEditorForm.resx">
+      <DependentUpon>BalanceEditorForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\DataUiViewer.resx">
+      <DependentUpon>DataUiViewer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\MinOrderForm.resx">
+      <DependentUpon>MinOrderForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\UcOrderCompare.resx">
+      <DependentUpon>UcOrderCompare.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\OrderForm.resx">
+      <DependentUpon>OrderForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\OrderManagerForm.resx">
+      <DependentUpon>OrderManagerForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\licenses.licx" />
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\UcOrderInfo.resx">
+      <DependentUpon>UcOrderInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\OrderViewerForm.resx">
+      <DependentUpon>OrderViewerForm.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\DataSources\DataBase.DataObject.OrderTransferCompare.datasource" />
+    <None Include="Properties\DataSources\DataBase.sp_sel_OrderGoodsByHeaderHistoryResult.datasource" />
+    <None Include="Properties\DataSources\DataBase.sp_sel_OrderTransferCompareResult.datasource" />
+    <None Include="Properties\DataSources\DataBase.vGoodsBalanceOrder.datasource" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\edit_add.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\edit_add1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\check.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\001_47.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\basket_put.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\filter.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\drink_empty.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\package.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\package %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\package %282%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\package %283%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\make.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\gearred.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\filesaveas.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\view-refresh %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\refreshgreen.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\view-refresh.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\reload_all_tabs.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\reload.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Excel-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\lock.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\kgpg.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\lock_open.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\old-edit-undo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\edit-clear %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\messagebox_critical.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\clear-left.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\view_tree.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\arrow-down-double.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\maximize.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\folder_yellow_open.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\info.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\nestle.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\filesaveas1.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
