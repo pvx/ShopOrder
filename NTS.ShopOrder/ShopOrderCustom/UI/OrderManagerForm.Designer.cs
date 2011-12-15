@@ -91,6 +91,7 @@
             this.colMinOrder = new DevExpress.XtraGrid.Columns.GridColumn();
             this.popupMenuNodes = new DevExpress.XtraBars.PopupMenu(this.components);
             this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
+            this.colSelfImport = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.barManager)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cdDateFilterItem)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cdDateFilterItem.VistaTimeProperties)).BeginInit();
@@ -457,7 +458,8 @@
             this.colBarcode,
             this.colReserved,
             this.colFreeBalance,
-            this.colMinOrder});
+            this.colMinOrder,
+            this.colSelfImport});
             styleFormatCondition1.Appearance.ForeColor = System.Drawing.Color.Red;
             styleFormatCondition1.Appearance.Options.UseForeColor = true;
             styleFormatCondition1.ApplyToRow = true;
@@ -680,6 +682,17 @@
             this.openFileDialog.FileName = "openFileDialog";
             this.openFileDialog.Filter = "Excel 2003|*.xls|Excel 2007|*.xlsx;";
             // 
+            // colSelfImport
+            // 
+            this.colSelfImport.Caption = "Собственный импорт";
+            this.colSelfImport.FieldName = "SelfImport";
+            this.colSelfImport.Name = "colSelfImport";
+            this.colSelfImport.OptionsColumn.AllowEdit = false;
+            this.colSelfImport.OptionsColumn.AllowFocus = false;
+            this.colSelfImport.OptionsColumn.ReadOnly = true;
+            this.colSelfImport.Visible = true;
+            this.colSelfImport.VisibleIndex = 9;
+            // 
             // OrderManagerForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -762,5 +775,6 @@
         private System.Windows.Forms.OpenFileDialog openFileDialog;
         private DevExpress.XtraBars.BarEditItem pbar;
         private DevExpress.XtraEditors.Repository.RepositoryItemProgressBar ProgressBar;
+        private DevExpress.XtraGrid.Columns.GridColumn colSelfImport;
     }
 }

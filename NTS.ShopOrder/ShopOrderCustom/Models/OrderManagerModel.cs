@@ -117,7 +117,7 @@ namespace ShopOrderCustom.Models
             {
                 using (var oc = UnityContainer.Resolve<OrderDataContext>())
                 {
-                    List<vOrderDayAll> orders = oc.DataBaseContext.sp_sel_OrderGoodsByHeader(_currentOrderHeader.IdOrderHeader).ToList();
+                    var orders = oc.DataBaseContext.sp_sel_OrderGoodsByHeader(_currentOrderHeader.IdOrderHeader).ToList();
 
 
                     var balance = new BindingList<GoodsBalanceObj>
@@ -128,7 +128,7 @@ namespace ShopOrderCustom.Models
                     foreach (var vo in orders)
                     {
                         var bl = new GoodsBalanceObj
-                                     {
+                        {
                             Barcode = vo.Barcode,
                             Code = vo.Code,
                             Date = vo.Date,FreeBalance = vo.FreeBalance.GetValueOrDefault(),
@@ -143,7 +143,8 @@ namespace ShopOrderCustom.Models
                             Quantity = vo.Balance,
                             QuantityInPack = vo.QuantityInPack.GetValueOrDefault(),
                             Reserved = vo.Reserved.GetValueOrDefault(),
-                            Supplier = vo.Supplier
+                            Supplier = vo.Supplier,
+                            SelfImport = vo.SelfImport.GetValueOrDefault(false)
                         };
                         balance.Add(bl);
                     }

@@ -14,6 +14,24 @@ namespace ShopOrderCustom.Data
         private decimal _price;
         private double _quantityInPack;
         private string _supplier;
+        private bool _selfImport;
+
+        public bool SelfImport
+        {
+            get
+            {
+                return _selfImport;
+            }
+            set
+            {
+                if (_selfImport != value)
+                {
+                    SendPropertyChanging();
+                    _selfImport = value;
+                    SendPropertyChanged("SelfImport");
+                }
+            }
+        }
 
         public decimal Price
         {

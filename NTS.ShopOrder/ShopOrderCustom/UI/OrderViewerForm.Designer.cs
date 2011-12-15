@@ -79,6 +79,7 @@
             this.colForOrder = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colAvgSell = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colShopBalance = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colSelfImport = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemSpinEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemSpinEdit();
             this.spselOrderGoodsByHeaderHistoryResultBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.popupMenuNodes = new DevExpress.XtraBars.PopupMenu(this.components);
@@ -383,7 +384,8 @@
             this.colIsReqAssort,
             this.colForOrder,
             this.colAvgSell,
-            this.colShopBalance});
+            this.colShopBalance,
+            this.colSelfImport});
             styleFormatCondition1.Appearance.ForeColor = System.Drawing.Color.Red;
             styleFormatCondition1.Appearance.Options.UseForeColor = true;
             styleFormatCondition1.ApplyToRow = true;
@@ -546,6 +548,15 @@
             this.colShopBalance.Visible = true;
             this.colShopBalance.VisibleIndex = 5;
             // 
+            // colSelfImport
+            // 
+            this.colSelfImport.Caption = "Собственный импорт";
+            this.colSelfImport.ColumnEdit = this.repositoryItemCheckEdit1;
+            this.colSelfImport.FieldName = "SelfImport";
+            this.colSelfImport.Name = "colSelfImport";
+            this.colSelfImport.Visible = true;
+            this.colSelfImport.VisibleIndex = 16;
+            // 
             // repositoryItemSpinEdit1
             // 
             this.repositoryItemSpinEdit1.AllowNullInput = DevExpress.Utils.DefaultBoolean.False;
@@ -657,5 +668,6 @@
         private DevExpress.XtraBars.BarButtonItem btExport;
         private DevExpress.XtraBars.BarEditItem cdDateFilterEnd;
         private DevExpress.XtraEditors.Repository.RepositoryItemDateEdit cdDateFilterItemEnd;
+        private DevExpress.XtraGrid.Columns.GridColumn colSelfImport;
     }
 }

@@ -182,36 +182,40 @@ namespace ShopOrderCustom.Models
                         var orders = from vo in oc.DataBaseContext.sp_sel_OrderBalance(_currentOrderHeader.IdOrderHeader,
                                                                    Convert.ToInt32(StoreHouseType),
                                                                    _currentOrderHeader.IdOrderState)
-                                     select new GoodsBalanceObj
-                                     {
-                                         Barcode = vo.Barcode,
-                                         Code = vo.Code,
-                                         Date = vo.Date,
-                                         FreeBalance = vo.FreeBalance.GetValueOrDefault(),
-                                         Group = vo.GoodsGroup,
-                                         id = vo.id_GoodsBalance,
-                                         Measure = vo.Measure,
-                                         MinOrder = vo.MinOrder.GetValueOrDefault(),
-                                         Name = vo.Name,
-                                         Price = vo.Price.GetValueOrDefault(),
-                                         Ordered = vo.Ordered,
-                                         Quantity = vo.Balance.GetValueOrDefault(),
-                                         QuantityInPack = vo.QuantityInPack.GetValueOrDefault(),
-                                         Reserved = vo.Reserved.GetValueOrDefault(),
-                                         Supplier = vo.Supplier,
-                                         RreqAssort = vo.IsReqAssort.GetValueOrDefault(false),
-                                         ReqQuantity = vo.ReqQuantity,
-                                         ForOrder = vo.ForOrder.GetValueOrDefault(0),
-                                         AvgSell = vo.AvgSell,
-                                         ShopBalance = vo.ShopBalance,
-                                         Quota = vo.Quota,
-                                         IsQuoted = vo.IsQuoted,IsLoaded = true
-                                     };
+                            select new GoodsBalanceObj
+                            {
+                                Barcode = vo.Barcode,
+                                Code = vo.Code,
+                                Date = vo.Date,
+                                FreeBalance = vo.FreeBalance.GetValueOrDefault(),
+                                Group = vo.GoodsGroup,
+                                id = vo.id_GoodsBalance,
+                                Measure = vo.Measure,
+                                MinOrder = vo.MinOrder.GetValueOrDefault(),
+                                Name = vo.Name,
+                                Price = vo.Price.GetValueOrDefault(),
+                                Ordered = vo.Ordered,
+                                Quantity = vo.Balance.GetValueOrDefault(),
+                                QuantityInPack = vo.QuantityInPack.GetValueOrDefault(),
+                                Reserved = vo.Reserved.GetValueOrDefault(),
+                                Supplier = vo.Supplier,
+                                RreqAssort = vo.IsReqAssort.GetValueOrDefault(false),
+                                ReqQuantity = vo.ReqQuantity,
+                                ForOrder = vo.ForOrder.GetValueOrDefault(0),
+                                AvgSell = vo.AvgSell,
+                                ShopBalance = vo.ShopBalance,
+                                Quota = vo.Quota,
+                                IsQuoted = vo.IsQuoted,
+                                SelfImport = vo.SelfImport,
+                                IsLoaded = true
+                            };
+
                         foreach (var bl in orders)
                         {
                             bl.ChangeReqQuantity += BlChangeReqQuantity;
                             balance.Add(bl);
                         }
+
                         BalanceList = balance;
                         return BalanceList;
                     }

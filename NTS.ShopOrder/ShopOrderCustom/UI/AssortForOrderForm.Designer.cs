@@ -66,6 +66,7 @@
             this.repositoryItemCheckEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
             this.repositoryItemSpinEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemSpinEdit();
             this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
+            this.colSelfImport = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.xafBar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.SaveBar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).BeginInit();
@@ -267,7 +268,8 @@
             this.colReserved,
             this.colFreeBalance,
             this.colMinOrder,
-            this.colAssortReq});
+            this.colAssortReq,
+            this.colSelfImport});
             this.gridView.GridControl = this.grid;
             this.gridView.Name = "gridView";
             this.gridView.OptionsBehavior.AllowAddRows = DevExpress.Utils.DefaultBoolean.False;
@@ -306,7 +308,7 @@
             this.colName.OptionsColumn.AllowFocus = false;
             this.colName.OptionsColumn.ReadOnly = true;
             this.colName.Visible = true;
-            this.colName.VisibleIndex = 1;
+            this.colName.VisibleIndex = 2;
             this.colName.Width = 414;
             // 
             // colPrice
@@ -328,7 +330,7 @@
             this.colQuantityInPack.OptionsColumn.AllowFocus = false;
             this.colQuantityInPack.OptionsColumn.ReadOnly = true;
             this.colQuantityInPack.Visible = true;
-            this.colQuantityInPack.VisibleIndex = 3;
+            this.colQuantityInPack.VisibleIndex = 4;
             this.colQuantityInPack.Width = 68;
             // 
             // colMeasure
@@ -340,7 +342,7 @@
             this.colMeasure.OptionsColumn.AllowFocus = false;
             this.colMeasure.OptionsColumn.ReadOnly = true;
             this.colMeasure.Visible = true;
-            this.colMeasure.VisibleIndex = 4;
+            this.colMeasure.VisibleIndex = 5;
             this.colMeasure.Width = 127;
             // 
             // colSupplier
@@ -352,7 +354,7 @@
             this.colSupplier.OptionsColumn.AllowFocus = false;
             this.colSupplier.OptionsColumn.ReadOnly = true;
             this.colSupplier.Visible = true;
-            this.colSupplier.VisibleIndex = 6;
+            this.colSupplier.VisibleIndex = 7;
             this.colSupplier.Width = 428;
             // 
             // colCode
@@ -374,7 +376,7 @@
             this.colBarcode.OptionsColumn.AllowFocus = false;
             this.colBarcode.OptionsColumn.ReadOnly = true;
             this.colBarcode.Visible = true;
-            this.colBarcode.VisibleIndex = 2;
+            this.colBarcode.VisibleIndex = 3;
             this.colBarcode.Width = 127;
             // 
             // colReserved
@@ -405,7 +407,7 @@
             this.colMinOrder.OptionsColumn.AllowFocus = false;
             this.colMinOrder.OptionsColumn.ReadOnly = true;
             this.colMinOrder.Visible = true;
-            this.colMinOrder.VisibleIndex = 5;
+            this.colMinOrder.VisibleIndex = 6;
             this.colMinOrder.Width = 90;
             // 
             // colAssortReq
@@ -442,6 +444,15 @@
             this.openFileDialog.FileName = "openFileDialog";
             this.openFileDialog.Filter = "Excel|*.xls";
             // 
+            // colSelfImport
+            // 
+            this.colSelfImport.Caption = "Собственный импорт";
+            this.colSelfImport.ColumnEdit = this.repositoryItemCheckEdit1;
+            this.colSelfImport.FieldName = "SelfImport";
+            this.colSelfImport.Name = "colSelfImport";
+            this.colSelfImport.Visible = true;
+            this.colSelfImport.VisibleIndex = 1;
+            // 
             // AssortForOrderForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -455,7 +466,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "AssortForOrderForm";
             this.Text = "Ассортимент к заказу";
-            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.AssortForOrderForm_FormClosed);
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.AssortForOrderFormFormClosed);
             ((System.ComponentModel.ISupportInitialize)(this.xafBar)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.SaveBar)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).EndInit();
@@ -504,5 +515,6 @@
         private System.Windows.Forms.OpenFileDialog openFileDialog;
         private DevExpress.XtraBars.BarStaticItem BarState;
         private DevExpress.XtraEditors.Repository.RepositoryItemProgressBar SaveBar;
+        private DevExpress.XtraGrid.Columns.GridColumn colSelfImport;
     }
 }

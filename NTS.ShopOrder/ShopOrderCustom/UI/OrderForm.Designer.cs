@@ -32,6 +32,7 @@
             DevExpress.XtraGrid.StyleFormatCondition styleFormatCondition1 = new DevExpress.XtraGrid.StyleFormatCondition();
             DevExpress.XtraGrid.StyleFormatCondition styleFormatCondition2 = new DevExpress.XtraGrid.StyleFormatCondition();
             DevExpress.XtraGrid.StyleFormatCondition styleFormatCondition3 = new DevExpress.XtraGrid.StyleFormatCondition();
+            DevExpress.XtraGrid.StyleFormatCondition styleFormatCondition4 = new DevExpress.XtraGrid.StyleFormatCondition();
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject1 = new DevExpress.Utils.SerializableAppearanceObject();
             DevExpress.Utils.SuperToolTip superToolTip1 = new DevExpress.Utils.SuperToolTip();
             DevExpress.Utils.ToolTipTitleItem toolTipTitleItem1 = new DevExpress.Utils.ToolTipTitleItem();
@@ -54,6 +55,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(OrderForm));
             this.colRreqAssort = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colQuota = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colSelfImport = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colIsQuoted = new DevExpress.XtraGrid.Columns.GridColumn();
             this.treeListColumn1 = new DevExpress.XtraTreeList.Columns.TreeListColumn();
             this.colPrice = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -182,6 +184,17 @@
             this.colQuota.Visible = true;
             this.colQuota.VisibleIndex = 15;
             // 
+            // colSelfImport
+            // 
+            this.colSelfImport.Caption = "Собственный импорт";
+            this.colSelfImport.FieldName = "SelfImport";
+            this.colSelfImport.Name = "colSelfImport";
+            this.colSelfImport.OptionsColumn.AllowEdit = false;
+            this.colSelfImport.OptionsColumn.AllowFocus = false;
+            this.colSelfImport.OptionsColumn.ReadOnly = true;
+            this.colSelfImport.Visible = true;
+            this.colSelfImport.VisibleIndex = 17;
+            // 
             // colIsQuoted
             // 
             this.colIsQuoted.Caption = "Квота активна";
@@ -290,7 +303,8 @@
             this.colAvgSell,
             this.colShopBalance,
             this.colQuota,
-            this.colIsQuoted});
+            this.colIsQuoted,
+            this.colSelfImport});
             styleFormatCondition1.Appearance.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
             styleFormatCondition1.Appearance.Options.UseFont = true;
             styleFormatCondition1.ApplyToRow = true;
@@ -307,10 +321,17 @@
             styleFormatCondition3.Column = this.colQuota;
             styleFormatCondition3.Condition = DevExpress.XtraGrid.FormatConditionEnum.Expression;
             styleFormatCondition3.Expression = "[IsQuoted] == False";
+            styleFormatCondition4.Appearance.ForeColor = System.Drawing.Color.Blue;
+            styleFormatCondition4.Appearance.Options.UseForeColor = true;
+            styleFormatCondition4.ApplyToRow = true;
+            styleFormatCondition4.Column = this.colSelfImport;
+            styleFormatCondition4.Condition = DevExpress.XtraGrid.FormatConditionEnum.Expression;
+            styleFormatCondition4.Expression = "[SelfImport]==True";
             this.gridView.FormatConditions.AddRange(new DevExpress.XtraGrid.StyleFormatCondition[] {
             styleFormatCondition1,
             styleFormatCondition2,
-            styleFormatCondition3});
+            styleFormatCondition3,
+            styleFormatCondition4});
             this.gridView.GridControl = this.grid;
             this.gridView.Name = "gridView";
             this.gridView.OptionsView.ShowAutoFilterRow = true;
@@ -1361,5 +1382,6 @@
         private DevExpress.XtraGrid.Columns.GridColumn colShopBalance;
         private DevExpress.XtraGrid.Columns.GridColumn colQuota;
         private DevExpress.XtraGrid.Columns.GridColumn colIsQuoted;
+        private DevExpress.XtraGrid.Columns.GridColumn colSelfImport;
     }
 }

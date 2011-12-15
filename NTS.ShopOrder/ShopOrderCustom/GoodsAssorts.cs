@@ -27,16 +27,15 @@ namespace ShopOrderCustom
 
         public void Load(int categoryId)
         {
-            using (OrderDataContext oc = unityContainer.Resolve<OrderDataContext>())
+            using (var oc = unityContainer.Resolve<OrderDataContext>())
             {
                 var category =
-                    oc.DataBaseContext.vGoodsOrderAssort.Where(c => c.parentId == categoryId).Select(
+                    oc.DataBaseContext.vGoodsOrderAssorts.Where(c => c.parentId == categoryId).Select(
                         c => new GoodsNodeBalanceObj()
                                  {
                                      Active = c.active.GetValueOrDefault(true),
                                      Check = c.check.GetValueOrDefault(false),
-                                     Id = c.id,
-                                     IdInt = c.id_int,
+                                     Id = c.id,IdInt = c.id_int,
                                      IdSap = c.id_sap,
                                      Name = c.name,
                                      Note = c.note,
@@ -46,7 +45,8 @@ namespace ShopOrderCustom
                                      Measure = c.Measure,
                                      MinOrder = c.MinOrder.GetValueOrDefault(0),
                                      Supplier = c.Supplier,
-                                     QuantityInPack = c.QuantityInPack.GetValueOrDefault(0)
+                                     QuantityInPack = c.QuantityInPack.GetValueOrDefault(0),
+                                     SelfImport = c.SelfImport.GetValueOrDefault(false)
                                  }).OrderBy(c => c.Name);
 
                 foreach (GoodsNodeBalanceObj categoryObj in category)

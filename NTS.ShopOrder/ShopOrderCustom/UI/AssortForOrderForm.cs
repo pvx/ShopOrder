@@ -165,7 +165,7 @@ namespace ShopOrderCustom.UI
             treeList.Refresh();
         }
 
-        private void AssortForOrderForm_FormClosed(object sender, FormClosedEventArgs e)
+        private void AssortForOrderFormFormClosed(object sender, FormClosedEventArgs e)
         {
             Model.SaveUserViewLayout(gridView);
         }

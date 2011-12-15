@@ -56,7 +56,8 @@ namespace ShopOrderCustom.UI
             {
                 if (e.Node.Level == 1)
                 {
-                    grid.DataSource = null;Model.CurrentOrderHeader = (OrderHeaderObj)e.Node.GetValue(0);
+                    grid.DataSource = null;
+                    Model.CurrentOrderHeader = (OrderHeaderObj)e.Node.GetValue(0);
                     grid.DataSource = Model.GetOrderList();
                     btInfo.Enabled = true;
                     Model.ShopObj = null;

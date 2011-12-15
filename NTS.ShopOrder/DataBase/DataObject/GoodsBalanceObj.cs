@@ -37,6 +37,7 @@ namespace DataBase.DataObject
         private decimal _shopBalance;
         private double _quota;
         private bool _isQuoted;
+        private bool _selfImport;
 
         public bool IsLoaded { get; set; }
 
@@ -59,6 +60,7 @@ namespace DataBase.DataObject
                 }
             }
         }
+
         public bool RreqAssort
         {
             get
@@ -72,6 +74,23 @@ namespace DataBase.DataObject
                     SendPropertyChanging();
                     this._reqAssort = value;
                     SendPropertyChanged("ReqQuantity");
+                }
+            }
+        }
+
+        public bool SelfImport
+        {
+            get
+            {
+                return _selfImport;
+            }
+            set
+            {
+                if ((_selfImport != value))
+                {
+                    SendPropertyChanging();
+                    _selfImport = value;
+                    SendPropertyChanged("SelfImport");
                 }
             }
         }
