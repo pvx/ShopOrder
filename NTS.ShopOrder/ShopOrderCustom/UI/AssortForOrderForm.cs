@@ -18,8 +18,20 @@ namespace ShopOrderCustom.UI
             Model = model;
             InitializeComponent();
             Model.LoadUserViewLayout(gridView);
+
+            cbGRidMode.DataSource = Model.OrderModes;
+            //LoadData();
             treeList.DataSource = Model.OrderCategorys;
             treeList.ExpandAll();
+        }
+
+        
+        void LoadData()
+        {
+            foreach (var obj in Model.OrderModes)
+            {
+                cbAutoOrderMode.Items.Add(obj);
+            }
         }
 
         private AssortForOrderModel Model { get; set; }

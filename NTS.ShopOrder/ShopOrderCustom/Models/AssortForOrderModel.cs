@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using Common;
 using Common.Logger;
+using DataBase.Repository;
 using DevExpress.XtraEditors;
 using Microsoft.Practices.Unity;
 using ShopOrderCustom.UI;
@@ -28,6 +29,8 @@ namespace ShopOrderCustom.Models
 
         public OrderCategorys OrderCategorys { get; set; }
 
+        public AutoOrderModes OrderModes { get; set; } 
+        
         public XtraForm View
         {
             get
@@ -65,6 +68,7 @@ namespace ShopOrderCustom.Models
             ViewCode = ViewConst.ED_ASSORT_FOR_ORDER;
             UnityContainer = unityContainer;
             OrderCategorys = unityContainer.Resolve<OrderCategorys>();
+            OrderModes = unityContainer.Resolve<AutoOrderModes>();
         }
     }
 }

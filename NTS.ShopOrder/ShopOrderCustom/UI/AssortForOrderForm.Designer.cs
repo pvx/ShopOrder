@@ -64,9 +64,15 @@
             this.colMinOrder = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colAssortReq = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemCheckEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
-            this.repositoryItemSpinEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemSpinEdit();
-            this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.colSelfImport = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colAutoOrderMode = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.cbGRidMode = new DevExpress.XtraEditors.Repository.RepositoryItemGridLookUpEdit();
+            this.repositoryItemGridLookUpEdit1View = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn2 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.repositoryItemSpinEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemSpinEdit();
+            this.cbAutoOrderMode = new DevExpress.XtraEditors.Repository.RepositoryItemComboBox();
+            this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
             ((System.ComponentModel.ISupportInitialize)(this.xafBar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.SaveBar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).BeginInit();
@@ -75,7 +81,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.grid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cbGRidMode)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemGridLookUpEdit1View)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemSpinEdit1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cbAutoOrderMode)).BeginInit();
             this.SuspendLayout();
             // 
             // xafBar
@@ -247,7 +256,9 @@
             this.grid.Name = "grid";
             this.grid.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemSpinEdit1,
-            this.repositoryItemCheckEdit1});
+            this.repositoryItemCheckEdit1,
+            this.cbGRidMode,
+            this.cbAutoOrderMode});
             this.grid.Size = new System.Drawing.Size(526, 332);
             this.grid.TabIndex = 2;
             this.grid.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
@@ -269,7 +280,8 @@
             this.colFreeBalance,
             this.colMinOrder,
             this.colAssortReq,
-            this.colSelfImport});
+            this.colSelfImport,
+            this.colAutoOrderMode});
             this.gridView.GridControl = this.grid;
             this.gridView.Name = "gridView";
             this.gridView.OptionsBehavior.AllowAddRows = DevExpress.Utils.DefaultBoolean.False;
@@ -309,7 +321,7 @@
             this.colName.OptionsColumn.ReadOnly = true;
             this.colName.Visible = true;
             this.colName.VisibleIndex = 2;
-            this.colName.Width = 414;
+            this.colName.Width = 142;
             // 
             // colPrice
             // 
@@ -331,7 +343,7 @@
             this.colQuantityInPack.OptionsColumn.ReadOnly = true;
             this.colQuantityInPack.Visible = true;
             this.colQuantityInPack.VisibleIndex = 4;
-            this.colQuantityInPack.Width = 68;
+            this.colQuantityInPack.Width = 23;
             // 
             // colMeasure
             // 
@@ -343,7 +355,7 @@
             this.colMeasure.OptionsColumn.ReadOnly = true;
             this.colMeasure.Visible = true;
             this.colMeasure.VisibleIndex = 5;
-            this.colMeasure.Width = 127;
+            this.colMeasure.Width = 43;
             // 
             // colSupplier
             // 
@@ -355,7 +367,7 @@
             this.colSupplier.OptionsColumn.ReadOnly = true;
             this.colSupplier.Visible = true;
             this.colSupplier.VisibleIndex = 7;
-            this.colSupplier.Width = 428;
+            this.colSupplier.Width = 89;
             // 
             // colCode
             // 
@@ -377,7 +389,7 @@
             this.colBarcode.OptionsColumn.ReadOnly = true;
             this.colBarcode.Visible = true;
             this.colBarcode.VisibleIndex = 3;
-            this.colBarcode.Width = 127;
+            this.colBarcode.Width = 43;
             // 
             // colReserved
             // 
@@ -408,7 +420,7 @@
             this.colMinOrder.OptionsColumn.ReadOnly = true;
             this.colMinOrder.Visible = true;
             this.colMinOrder.VisibleIndex = 6;
-            this.colMinOrder.Width = 90;
+            this.colMinOrder.Width = 30;
             // 
             // colAssortReq
             // 
@@ -418,11 +430,72 @@
             this.colAssortReq.Name = "colAssortReq";
             this.colAssortReq.Visible = true;
             this.colAssortReq.VisibleIndex = 0;
+            this.colAssortReq.Width = 25;
             // 
             // repositoryItemCheckEdit1
             // 
             this.repositoryItemCheckEdit1.AutoHeight = false;
             this.repositoryItemCheckEdit1.Name = "repositoryItemCheckEdit1";
+            // 
+            // colSelfImport
+            // 
+            this.colSelfImport.Caption = "Собственный импорт";
+            this.colSelfImport.ColumnEdit = this.repositoryItemCheckEdit1;
+            this.colSelfImport.FieldName = "SelfImport";
+            this.colSelfImport.Name = "colSelfImport";
+            this.colSelfImport.Visible = true;
+            this.colSelfImport.VisibleIndex = 1;
+            this.colSelfImport.Width = 25;
+            // 
+            // colAutoOrderMode
+            // 
+            this.colAutoOrderMode.Caption = "Обязательный автозаказ";
+            this.colAutoOrderMode.ColumnEdit = this.cbGRidMode;
+            this.colAutoOrderMode.FieldName = "AutoOrderModeId";
+            this.colAutoOrderMode.Name = "colAutoOrderMode";
+            this.colAutoOrderMode.Visible = true;
+            this.colAutoOrderMode.VisibleIndex = 8;
+            this.colAutoOrderMode.Width = 88;
+            // 
+            // cbGRidMode
+            // 
+            this.cbGRidMode.AutoHeight = false;
+            this.cbGRidMode.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.cbGRidMode.DisplayMember = "CategoryName";
+            this.cbGRidMode.ImmediatePopup = true;
+            this.cbGRidMode.Name = "cbGRidMode";
+            this.cbGRidMode.ShowFooter = false;
+            this.cbGRidMode.ValueMember = "Id";
+            this.cbGRidMode.View = this.repositoryItemGridLookUpEdit1View;
+            // 
+            // repositoryItemGridLookUpEdit1View
+            // 
+            this.repositoryItemGridLookUpEdit1View.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.gridColumn1,
+            this.gridColumn2});
+            this.repositoryItemGridLookUpEdit1View.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus;
+            this.repositoryItemGridLookUpEdit1View.Name = "repositoryItemGridLookUpEdit1View";
+            this.repositoryItemGridLookUpEdit1View.OptionsSelection.EnableAppearanceFocusedCell = false;
+            this.repositoryItemGridLookUpEdit1View.OptionsView.ShowGroupPanel = false;
+            // 
+            // gridColumn1
+            // 
+            this.gridColumn1.Caption = "Код";
+            this.gridColumn1.FieldName = "Id";
+            this.gridColumn1.Name = "gridColumn1";
+            this.gridColumn1.Visible = true;
+            this.gridColumn1.VisibleIndex = 0;
+            this.gridColumn1.Width = 20;
+            // 
+            // gridColumn2
+            // 
+            this.gridColumn2.Caption = "Название";
+            this.gridColumn2.FieldName = "CategoryName";
+            this.gridColumn2.Name = "gridColumn2";
+            this.gridColumn2.Visible = true;
+            this.gridColumn2.VisibleIndex = 1;
+            this.gridColumn2.Width = 364;
             // 
             // repositoryItemSpinEdit1
             // 
@@ -439,19 +512,17 @@
             0});
             this.repositoryItemSpinEdit1.Name = "repositoryItemSpinEdit1";
             // 
+            // cbAutoOrderMode
+            // 
+            this.cbAutoOrderMode.AutoHeight = false;
+            this.cbAutoOrderMode.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.cbAutoOrderMode.Name = "cbAutoOrderMode";
+            // 
             // openFileDialog
             // 
             this.openFileDialog.FileName = "openFileDialog";
             this.openFileDialog.Filter = "Excel|*.xls";
-            // 
-            // colSelfImport
-            // 
-            this.colSelfImport.Caption = "Собственный импорт";
-            this.colSelfImport.ColumnEdit = this.repositoryItemCheckEdit1;
-            this.colSelfImport.FieldName = "SelfImport";
-            this.colSelfImport.Name = "colSelfImport";
-            this.colSelfImport.Visible = true;
-            this.colSelfImport.VisibleIndex = 1;
             // 
             // AssortForOrderForm
             // 
@@ -475,7 +546,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.grid)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cbGRidMode)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemGridLookUpEdit1View)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemSpinEdit1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cbAutoOrderMode)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -516,5 +590,11 @@
         private DevExpress.XtraBars.BarStaticItem BarState;
         private DevExpress.XtraEditors.Repository.RepositoryItemProgressBar SaveBar;
         private DevExpress.XtraGrid.Columns.GridColumn colSelfImport;
+        private DevExpress.XtraGrid.Columns.GridColumn colAutoOrderMode;
+        private DevExpress.XtraEditors.Repository.RepositoryItemGridLookUpEdit cbGRidMode;
+        private DevExpress.XtraGrid.Views.Grid.GridView repositoryItemGridLookUpEdit1View;
+        private DevExpress.XtraEditors.Repository.RepositoryItemComboBox cbAutoOrderMode;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn1;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn2;
     }
 }

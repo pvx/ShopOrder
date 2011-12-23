@@ -68,6 +68,7 @@
       <DependentUpon>DataBase.dbml</DependentUpon>
     </Compile>
     <Compile Include="DataContext.cs" />
+    <Compile Include="DataObject\AutoOrderItemObj.cs" />
     <Compile Include="DataObject\BaseDataObject.cs" />
     <Compile Include="DataObject\EditGoodsBalanceObj.cs" />
     <Compile Include="DataObject\GoodsNodeObjBase.cs" />
@@ -100,6 +101,7 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
+    <Compile Include="Repository\AutoOrderModes.cs" />
     <Compile Include="Repository\BalanceEditRepo.cs" />
     <Compile Include="Repository\ShopCategorys.cs" />
     <Compile Include="Repository\ReqAssorts.cs" />

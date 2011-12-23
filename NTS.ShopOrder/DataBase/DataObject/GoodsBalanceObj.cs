@@ -2,6 +2,7 @@ using System;
 using System.ComponentModel;
 using System.Data.Linq;
 using System.Windows.Forms;
+using Common.Enum;
 
 namespace DataBase.DataObject
 {
@@ -61,20 +62,34 @@ namespace DataBase.DataObject
             }
         }
 
+        public bool IsShopBalance { get; set; }
+
         public bool RreqAssort
         {
             get
             {
-                return this._reqAssort;
+                return _reqAssort;
             }
             set
             {
-                if ((this._reqAssort != value))
+                if ((_reqAssort != value))
                 {
                     SendPropertyChanging();
-                    this._reqAssort = value;
-                    SendPropertyChanged("ReqQuantity");
+                    _reqAssort = value;
+                    SendPropertyChanged("RreqAssort");
                 }
+            }
+        }
+
+        private AutoOrderModeEnum _orderMode;
+        public AutoOrderModeEnum OrderMode
+        {
+            get { return _orderMode; }
+            set
+            {
+                SendPropertyChanging();
+                _orderMode = value;
+                SendPropertyChanged("OrderMode");
             }
         }
 
@@ -99,15 +114,69 @@ namespace DataBase.DataObject
         {
             get
             {
-                return this._isQuoted;
+                return _isQuoted;
             }
             set
             {
-                if ((this._isQuoted != value))
+                if ((_isQuoted != value))
                 {
                     SendPropertyChanging();
-                    this._isQuoted = value;
-                    SendPropertyChanged("ReqQuantity");
+                    _isQuoted = value;
+                    SendPropertyChanged("IsQuoted");
+                }
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="inval"></param>
+        /// <returns></returns>
+        public static AutoOrderModeEnum ConvertToMode(short inval)
+        {
+            switch (inval)
+            {
+                case 1:
+                    return AutoOrderModeEnum.MinOrderMode;
+                case 2:
+                    return AutoOrderModeEnum.RecommendMode;
+                case 3:
+                    return AutoOrderModeEnum.AllRecommendMode;
+                default:
+                    return AutoOrderModeEnum.NothingMode;
+            }
+        }
+
+        private void IfNotShopBalance(double value)
+        {
+            if (!IsShopBalance) 
+                return;
+            if (ShopBalance <= 0)
+                ReqQuantity = value;
+        }
+
+        public void CalcAutoOrder()
+        {
+            if (RreqAssort)
+            {
+                switch (OrderMode)
+                {
+                    case AutoOrderModeEnum.MinOrderMode:
+                        IfNotShopBalance(MinOrder);
+                        break;
+
+                    case AutoOrderModeEnum.RecommendMode:
+                        IfNotShopBalance(double.Parse(ForOrder.ToString()));
+                        break;
+
+                    case AutoOrderModeEnum.AllRecommendMode:
+                        if (IsShopBalance) 
+                            ReqQuantity = (double.Parse(ForOrder.ToString()));
+                        break;
+
+                    default:
+                        ReqQuantity = (double.Parse(ForOrder.ToString()));
+                        break;
                 }
             }
         }
@@ -172,9 +241,37 @@ namespace DataBase.DataObject
             return result;
         }
 
-        void BeforeReqQuantityChange(ref double reqQuantity)
+        private void SetValue(ref double reqQuantity, double value)
         {
-            CalcOrder(ref reqQuantity);
+            if (reqQuantity < value)
+                reqQuantity = value;
+        }
+
+        void BeforeReqQuantityChange(ref double reqQuantity)
+        {    
+            if ((!IsShopBalance) || (OrderMode == AutoOrderModeEnum.NothingMode))
+                CalcOrder(ref reqQuantity);
+            else
+            {
+                switch (OrderMode)
+                {
+                    case AutoOrderModeEnum.MinOrderMode:
+                        if ((IsShopBalance) && (ShopBalance == 0))
+                            SetValue(ref reqQuantity, MinOrder);
+                        break;
+
+                    case AutoOrderModeEnum.RecommendMode:
+                        if ((IsShopBalance) && (ShopBalance == 0))
+                            SetValue(ref reqQuantity, double.Parse(ForOrder.ToString()));
+                        break;
+
+                    case AutoOrderModeEnum.AllRecommendMode:
+                        if (IsShopBalance)
+                            SetValue(ref reqQuantity, double.Parse(ForOrder.ToString()));
+                        break;
+                }
+                CalcOrder(ref reqQuantity);
+            }
         }
 
         void AfterReqQuantityChange(double reqQuantity) 
@@ -186,16 +283,16 @@ namespace DataBase.DataObject
         {
             get
             {
-                return this._ReqQuantity;
+                return _ReqQuantity;
             }
             set
             {
-                if ((this._ReqQuantity != value))
+                if (_ReqQuantity != value)
                 {
                     if (IsLoaded)
                         BeforeReqQuantityChange(ref value);
                     SendPropertyChanging();
-                    this._ReqQuantity = value;
+                    _ReqQuantity = value;
                     SendPropertyChanged("ReqQuantity");
                     if (IsLoaded)
                     {

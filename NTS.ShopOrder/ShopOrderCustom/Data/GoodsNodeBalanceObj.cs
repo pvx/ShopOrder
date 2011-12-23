@@ -15,6 +15,7 @@ namespace ShopOrderCustom.Data
         private double _quantityInPack;
         private string _supplier;
         private bool _selfImport;
+        private short _idAutoOrderMode;
 
         public bool SelfImport
         {
@@ -127,6 +128,20 @@ namespace ShopOrderCustom.Data
                     SendPropertyChanging();
                     _minOrder = value;
                     SendPropertyChanged("MinOrder");
+                }
+            }
+        }
+
+        public short AutoOrderModeId
+        {
+            get { return _idAutoOrderMode; }
+            set
+            {
+                if (_idAutoOrderMode != value)
+                {
+                    SendPropertyChanging();
+                    _idAutoOrderMode = value;
+                    SendPropertyChanged("AutoOrderModeId");
                 }
             }
         }

@@ -109,7 +109,7 @@ namespace ShopOrderCustom
                                     {
                                         if(balanceObj.Check)
                                         {
-                                            oc.DataBaseContext.sp_ins_AssortForOrder(balanceObj.Code, balanceObj.SelfImport);
+                                            oc.DataBaseContext.sp_ins_AssortForOrder(balanceObj.Code, balanceObj.SelfImport, balanceObj.AutoOrderModeId);
                                         }
                                     }
                                 }

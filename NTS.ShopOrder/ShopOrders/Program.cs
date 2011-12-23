@@ -55,6 +55,7 @@ namespace ShopOrders
                 container.RegisterType<MinOrders>();
                 container.RegisterType<ReqAssorts>();
                 container.RegisterType<ShopCategorys>();
+                container.RegisterType<AutoOrderModes>();
                 container.RegisterType<GroupAssort>();
                 container.RegisterType<OrderCategorys>();
                 container.RegisterType<GoodsAssorts>();

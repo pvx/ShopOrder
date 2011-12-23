@@ -100,8 +100,8 @@ namespace ShopOrderCustom.Models
         {
             using (var oc = unityContainer.Resolve<OrderDataContext>())
             {
-                Guid shopId = new Guid(unityContainer.Resolve<IOrderUserInfo>().Property["USER_SHOP"]);
-                Orders orders = unityContainer.Resolve<Orders>();
+                var shopId = new Guid(unityContainer.Resolve<IOrderUserInfo>().Property["USER_SHOP"]);
+                var orders = unityContainer.Resolve<Orders>();
                 
                 var ord = (from or in oc.DataBaseContext.sp_sel_OrderHeaderOnDateOrder(shopId, _filterDate)
                           select new OrderHeaderObj()
@@ -144,7 +144,7 @@ namespace ShopOrderCustom.Models
                         if (goodsBalanceObj.RreqAssort)
                             if (goodsBalanceObj.ForOrder > 0)
                             {
-                                goodsBalanceObj.ReqQuantity = Convert.ToDouble(goodsBalanceObj.ForOrder);
+                                goodsBalanceObj.CalcAutoOrder();//ReqQuantity = Convert.ToDouble(goodsBalanceObj.ForOrder);
                                 cnt++;
                             }
                     }
@@ -152,7 +152,7 @@ namespace ShopOrderCustom.Models
                     {
                         if (goodsBalanceObj.ForOrder > 0)
                         {
-                            goodsBalanceObj.ReqQuantity = Convert.ToDouble(goodsBalanceObj.ForOrder);
+                            goodsBalanceObj.CalcAutoOrder();//.ReqQuantity = Convert.ToDouble(goodsBalanceObj.ForOrder);
                             cnt++;
                         }
                     }
@@ -178,6 +178,8 @@ namespace ShopOrderCustom.Models
 
                         _allowEdit = ((_currentOrderHeader.IdOrderState == 1) && (ServerDate.Date == _currentOrderHeader.CreateDate.Date));
                         balance.AllowEdit = _allowEdit;
+
+                        var isBalance = unityContainer.Resolve<IOrderUserInfo>().Property.ContainsKey("SHOP_BALANCE") && !(double.Parse(unityContainer.Resolve<IOrderUserInfo>().Property["SHOP_BALANCE"]) == 0);
 
                         var orders = from vo in oc.DataBaseContext.sp_sel_OrderBalance(_currentOrderHeader.IdOrderHeader,
                                                                    Convert.ToInt32(StoreHouseType),
@@ -207,7 +209,9 @@ namespace ShopOrderCustom.Models
                                 Quota = vo.Quota,
                                 IsQuoted = vo.IsQuoted,
                                 SelfImport = vo.SelfImport,
-                                IsLoaded = true
+                                OrderMode = GoodsBalanceObj.ConvertToMode(vo.AutoOrderModeId),
+                                IsLoaded = true,
+                                IsShopBalance = isBalance
                             };
 
                         foreach (var bl in orders)

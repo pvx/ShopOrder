@@ -249,10 +249,22 @@ namespace ShopOrderCustom.UI
 
         private void barButtonItem1_ItemClick(object sender, ItemClickEventArgs e)
         {
-            if (XtraMessageBox.Show("Применить рекомендованный заказ к обязательному ассортименту?", "Подтверждение рекомендованного заказа", MessageBoxButtons.YesNo) == DialogResult.Yes)
-                Model.CopyForOrder(true);
+            if (XtraMessageBox.Show("Применить рекомендованный заказ к обязательному ассортименту?",
+                                    "Подтверждение рекомендованного заказа", MessageBoxButtons.YesNo) ==
+                DialogResult.Yes)
+            {
+                Cursor.Current = Cursors.WaitCursor;
+                try
+                {
+                    Model.CopyForOrder(true);
+                }
+                finally
+                {
+                    Cursor.Current = Cursors.Default; 
+                }
+            }
         }
-        
+
         private void OrderFormFormClosed(object sender, FormClosedEventArgs e)
         {
             Model.SaveUserViewLayout(gridView);

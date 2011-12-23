@@ -46,7 +46,8 @@ namespace ShopOrderCustom
                                      MinOrder = c.MinOrder.GetValueOrDefault(0),
                                      Supplier = c.Supplier,
                                      QuantityInPack = c.QuantityInPack.GetValueOrDefault(0),
-                                     SelfImport = c.SelfImport.GetValueOrDefault(false)
+                                     SelfImport = c.SelfImport.GetValueOrDefault(false),
+                                     AutoOrderModeId = c.AutoOrderModeId.GetValueOrDefault(0)
                                  }).OrderBy(c => c.Name);
 
                 foreach (GoodsNodeBalanceObj categoryObj in category)
