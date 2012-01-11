@@ -5,6 +5,7 @@ using System.Data.Linq;
 using System.Linq;
 using System.Windows.Forms;
 using Common;
+using Common.Enum;
 using Common.Logger;
 using DataBase;
 using DataBase.DataObject;
@@ -131,6 +132,30 @@ namespace ShopOrderCustom.Models
             }
         }
 
+        public void SetAutoOrder()
+        {
+            _autoFill = true;try
+            {
+                int cnt = 0;
+                foreach (var goodsBalanceObj in BalanceList)
+                {
+                    if (goodsBalanceObj.OrderMode != AutoOrderModeEnum.NothingMode)
+                    {
+                        if (goodsBalanceObj.ForOrder > 0)
+                        {
+                            goodsBalanceObj.CalcAutoOrder();
+                            cnt++;
+                        }
+                    }
+                }
+                unityContainer.Resolve<IDBLogger>().InsertLog(string.Format("Присвоение рекомендованного количества для автоматического заказа. {0} позиций", cnt), CurrentOrderHeader.IdOrderHeader.ToString().ToUpper());
+            }
+            finally
+            {
+                _autoFill = false;
+            }    
+        }
+
         public void CopyForOrder(bool isReqAssort)
         {
             _autoFill = true;
@@ -144,7 +169,7 @@ namespace ShopOrderCustom.Models
                         if (goodsBalanceObj.RreqAssort)
                             if (goodsBalanceObj.ForOrder > 0)
                             {
-                                goodsBalanceObj.CalcAutoOrder();//ReqQuantity = Convert.ToDouble(goodsBalanceObj.ForOrder);
+                                goodsBalanceObj.CalcAutoOrder();
                                 cnt++;
                             }
                     }
@@ -152,7 +177,7 @@ namespace ShopOrderCustom.Models
                     {
                         if (goodsBalanceObj.ForOrder > 0)
                         {
-                            goodsBalanceObj.CalcAutoOrder();//.ReqQuantity = Convert.ToDouble(goodsBalanceObj.ForOrder);
+                            goodsBalanceObj.CalcAutoOrder();
                             cnt++;
                         }
                     }

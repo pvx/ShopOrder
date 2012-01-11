@@ -30,7 +30,7 @@ namespace ShopOrders
             DevExpress.UserSkins.OfficeSkins.Register();
             DevExpress.UserSkins.BonusSkins.Register();
 
-            UserLookAndFeel.Default.SetSkinStyle(DateTime.Now.Date == DateTime.Parse("31.12.2011")
+            UserLookAndFeel.Default.SetSkinStyle(DateTime.Now.Date == DateTime.Parse("28.12.2011")
                                                      ? "Xmas 2008 Blue"
                                                      : "DevExpress Style");
             using (IUnityContainer container = new UnityContainer())

@@ -55,7 +55,7 @@ namespace DataBase.Repository
         public bool Save()
         {
             bool res = false;
-            using (OrderDataContext oc = unityContainer.Resolve<OrderDataContext>())
+            using (var oc = unityContainer.Resolve<OrderDataContext>())
             {
                 DbConnection con = oc.DataBaseContext.Connection;
                 try

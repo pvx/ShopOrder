@@ -595,7 +595,7 @@
             this.Controls.Add(this.barDockControlTop);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "OrdeViewerForm";
-            this.Text = "Просмотр заявок ";
+            this.Text = "Просмотр заказов";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.OrdeViewerFormFormClosed);
             this.Load += new System.EventHandler(this.OrdeViewerFormLoad);
             ((System.ComponentModel.ISupportInitialize)(this.barManager)).EndInit();

@@ -29,29 +29,29 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            DevExpress.XtraGrid.StyleFormatCondition styleFormatCondition1 = new DevExpress.XtraGrid.StyleFormatCondition();
-            DevExpress.XtraGrid.StyleFormatCondition styleFormatCondition2 = new DevExpress.XtraGrid.StyleFormatCondition();
-            DevExpress.XtraGrid.StyleFormatCondition styleFormatCondition3 = new DevExpress.XtraGrid.StyleFormatCondition();
-            DevExpress.XtraGrid.StyleFormatCondition styleFormatCondition4 = new DevExpress.XtraGrid.StyleFormatCondition();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject1 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SuperToolTip superToolTip1 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem1 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.ToolTipItem toolTipItem1 = new DevExpress.Utils.ToolTipItem();
-            DevExpress.Utils.SuperToolTip superToolTip2 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem2 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.ToolTipItem toolTipItem2 = new DevExpress.Utils.ToolTipItem();
-            DevExpress.Utils.SuperToolTip superToolTip3 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem3 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.ToolTipItem toolTipItem3 = new DevExpress.Utils.ToolTipItem();
-            DevExpress.Utils.SuperToolTip superToolTip4 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem4 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.ToolTipItem toolTipItem4 = new DevExpress.Utils.ToolTipItem();
-            DevExpress.Utils.SuperToolTip superToolTip5 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem5 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.ToolTipItem toolTipItem5 = new DevExpress.Utils.ToolTipItem();
-            DevExpress.Utils.SuperToolTip superToolTip6 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem6 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.ToolTipItem toolTipItem6 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.XtraGrid.StyleFormatCondition styleFormatCondition5 = new DevExpress.XtraGrid.StyleFormatCondition();
+            DevExpress.XtraGrid.StyleFormatCondition styleFormatCondition6 = new DevExpress.XtraGrid.StyleFormatCondition();
+            DevExpress.XtraGrid.StyleFormatCondition styleFormatCondition7 = new DevExpress.XtraGrid.StyleFormatCondition();
+            DevExpress.XtraGrid.StyleFormatCondition styleFormatCondition8 = new DevExpress.XtraGrid.StyleFormatCondition();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject2 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SuperToolTip superToolTip7 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem7 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem7 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip9 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem9 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem9 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip10 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem10 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem10 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip11 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem11 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem11 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip12 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem12 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem12 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip8 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem8 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem8 = new DevExpress.Utils.ToolTipItem();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(OrderForm));
             this.colRreqAssort = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colQuota = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -305,33 +305,33 @@
             this.colQuota,
             this.colIsQuoted,
             this.colSelfImport});
-            styleFormatCondition1.Appearance.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
-            styleFormatCondition1.Appearance.Options.UseFont = true;
-            styleFormatCondition1.ApplyToRow = true;
-            styleFormatCondition1.Column = this.colRreqAssort;
-            styleFormatCondition1.Condition = DevExpress.XtraGrid.FormatConditionEnum.Equal;
-            styleFormatCondition1.Value1 = true;
-            styleFormatCondition2.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            styleFormatCondition2.Appearance.Options.UseBackColor = true;
-            styleFormatCondition2.Column = this.colQuota;
-            styleFormatCondition2.Condition = DevExpress.XtraGrid.FormatConditionEnum.Expression;
-            styleFormatCondition2.Expression = "[IsQuoted] == True";
-            styleFormatCondition3.Appearance.ForeColor = System.Drawing.Color.Silver;
-            styleFormatCondition3.Appearance.Options.UseForeColor = true;
-            styleFormatCondition3.Column = this.colQuota;
-            styleFormatCondition3.Condition = DevExpress.XtraGrid.FormatConditionEnum.Expression;
-            styleFormatCondition3.Expression = "[IsQuoted] == False";
-            styleFormatCondition4.Appearance.ForeColor = System.Drawing.Color.Blue;
-            styleFormatCondition4.Appearance.Options.UseForeColor = true;
-            styleFormatCondition4.ApplyToRow = true;
-            styleFormatCondition4.Column = this.colSelfImport;
-            styleFormatCondition4.Condition = DevExpress.XtraGrid.FormatConditionEnum.Expression;
-            styleFormatCondition4.Expression = "[SelfImport]==True";
+            styleFormatCondition5.Appearance.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
+            styleFormatCondition5.Appearance.Options.UseFont = true;
+            styleFormatCondition5.ApplyToRow = true;
+            styleFormatCondition5.Column = this.colRreqAssort;
+            styleFormatCondition5.Condition = DevExpress.XtraGrid.FormatConditionEnum.Equal;
+            styleFormatCondition5.Value1 = true;
+            styleFormatCondition6.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            styleFormatCondition6.Appearance.Options.UseBackColor = true;
+            styleFormatCondition6.Column = this.colQuota;
+            styleFormatCondition6.Condition = DevExpress.XtraGrid.FormatConditionEnum.Expression;
+            styleFormatCondition6.Expression = "[IsQuoted] == True";
+            styleFormatCondition7.Appearance.ForeColor = System.Drawing.Color.Silver;
+            styleFormatCondition7.Appearance.Options.UseForeColor = true;
+            styleFormatCondition7.Column = this.colQuota;
+            styleFormatCondition7.Condition = DevExpress.XtraGrid.FormatConditionEnum.Expression;
+            styleFormatCondition7.Expression = "[IsQuoted] == False";
+            styleFormatCondition8.Appearance.ForeColor = System.Drawing.Color.Blue;
+            styleFormatCondition8.Appearance.Options.UseForeColor = true;
+            styleFormatCondition8.ApplyToRow = true;
+            styleFormatCondition8.Column = this.colSelfImport;
+            styleFormatCondition8.Condition = DevExpress.XtraGrid.FormatConditionEnum.Expression;
+            styleFormatCondition8.Expression = "[SelfImport]==True";
             this.gridView.FormatConditions.AddRange(new DevExpress.XtraGrid.StyleFormatCondition[] {
-            styleFormatCondition1,
-            styleFormatCondition2,
-            styleFormatCondition3,
-            styleFormatCondition4});
+            styleFormatCondition5,
+            styleFormatCondition6,
+            styleFormatCondition7,
+            styleFormatCondition8});
             this.gridView.GridControl = this.grid;
             this.gridView.Name = "gridView";
             this.gridView.OptionsView.ShowAutoFilterRow = true;
@@ -362,7 +362,7 @@
             this.repositoryItemSpinEdit1.AllowNullInput = DevExpress.Utils.DefaultBoolean.True;
             this.repositoryItemSpinEdit1.AutoHeight = false;
             this.repositoryItemSpinEdit1.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Ellipsis, "", -1, true, false, false, DevExpress.XtraEditors.ImageLocation.MiddleCenter, null, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject1, "", null, null, true)});
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Ellipsis, "", -1, true, false, false, DevExpress.XtraEditors.ImageLocation.MiddleCenter, null, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject2, "", null, null, true)});
             this.repositoryItemSpinEdit1.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.repositoryItemSpinEdit1.HideSelection = false;
             this.repositoryItemSpinEdit1.IsFloatValue = false;
@@ -691,13 +691,13 @@
             this.btNewOrder.Glyph = global::ShopOrderCustom.Properties.Resources.basket_put;
             this.btNewOrder.Id = 0;
             this.btNewOrder.Name = "btNewOrder";
-            toolTipTitleItem1.Text = "Создание нового заказа";
-            toolTipItem1.LeftIndent = 6;
-            toolTipItem1.Text = "Создание нового заказа автоматически закроет все предыдущие заказы и их нельзя бу" +
+            toolTipTitleItem7.Text = "Создание нового заказа";
+            toolTipItem7.LeftIndent = 6;
+            toolTipItem7.Text = "Создание нового заказа автоматически закроет все предыдущие заказы и их нельзя бу" +
     "дет редактировать";
-            superToolTip1.Items.Add(toolTipTitleItem1);
-            superToolTip1.Items.Add(toolTipItem1);
-            this.btNewOrder.SuperTip = superToolTip1;
+            superToolTip7.Items.Add(toolTipTitleItem7);
+            superToolTip7.Items.Add(toolTipItem7);
+            this.btNewOrder.SuperTip = superToolTip7;
             this.btNewOrder.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.BarButtonItem1ItemClick);
             // 
             // btCommit
@@ -707,12 +707,12 @@
             this.btCommit.Glyph = global::ShopOrderCustom.Properties.Resources.check;
             this.btCommit.Id = 8;
             this.btCommit.Name = "btCommit";
-            toolTipTitleItem2.Text = "Подтвердить заказ";
-            toolTipItem2.LeftIndent = 6;
-            toolTipItem2.Text = "Подтверждение заказа закроет доступ для рдактирования заказа";
-            superToolTip2.Items.Add(toolTipTitleItem2);
-            superToolTip2.Items.Add(toolTipItem2);
-            this.btCommit.SuperTip = superToolTip2;
+            toolTipTitleItem9.Text = "Подтвердить заказ";
+            toolTipItem9.LeftIndent = 6;
+            toolTipItem9.Text = "Подтверждение заказа закроет доступ для рдактирования заказа";
+            superToolTip9.Items.Add(toolTipTitleItem9);
+            superToolTip9.Items.Add(toolTipItem9);
+            this.btCommit.SuperTip = superToolTip9;
             this.btCommit.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.BarButtonItem4ItemClick);
             // 
             // barCheckNts
@@ -723,15 +723,15 @@
             this.barCheckNts.GroupIndex = 1;
             this.barCheckNts.Id = 9;
             this.barCheckNts.Name = "barCheckNts";
-            toolTipTitleItem3.Appearance.Image = global::ShopOrderCustom.Properties.Resources.package__3_;
-            toolTipTitleItem3.Appearance.Options.UseImage = true;
-            toolTipTitleItem3.Image = global::ShopOrderCustom.Properties.Resources.package__3_;
-            toolTipTitleItem3.Text = "Фильтр склад НТС";
-            toolTipItem3.LeftIndent = 6;
-            toolTipItem3.Text = "Показывает товарные позиции НТС";
-            superToolTip3.Items.Add(toolTipTitleItem3);
-            superToolTip3.Items.Add(toolTipItem3);
-            this.barCheckNts.SuperTip = superToolTip3;
+            toolTipTitleItem10.Appearance.Image = global::ShopOrderCustom.Properties.Resources.package__3_;
+            toolTipTitleItem10.Appearance.Options.UseImage = true;
+            toolTipTitleItem10.Image = global::ShopOrderCustom.Properties.Resources.package__3_;
+            toolTipTitleItem10.Text = "Фильтр склад НТС";
+            toolTipItem10.LeftIndent = 6;
+            toolTipItem10.Text = "Показывает товарные позиции НТС";
+            superToolTip10.Items.Add(toolTipTitleItem10);
+            superToolTip10.Items.Add(toolTipItem10);
+            this.barCheckNts.SuperTip = superToolTip10;
             this.barCheckNts.CheckedChanged += new DevExpress.XtraBars.ItemClickEventHandler(this.BarCheckNtsCheckedChanged);
             // 
             // barCheck
@@ -741,15 +741,15 @@
             this.barCheck.GroupIndex = 1;
             this.barCheck.Id = 10;
             this.barCheck.Name = "barCheck";
-            toolTipTitleItem4.Appearance.Image = global::ShopOrderCustom.Properties.Resources.drink_empty;
-            toolTipTitleItem4.Appearance.Options.UseImage = true;
-            toolTipTitleItem4.Image = global::ShopOrderCustom.Properties.Resources.drink_empty;
-            toolTipTitleItem4.Text = "Фильтр склад аренды";
-            toolTipItem4.LeftIndent = 6;
-            toolTipItem4.Text = "Показывает товарные позиции других поставщиков";
-            superToolTip4.Items.Add(toolTipTitleItem4);
-            superToolTip4.Items.Add(toolTipItem4);
-            this.barCheck.SuperTip = superToolTip4;
+            toolTipTitleItem11.Appearance.Image = global::ShopOrderCustom.Properties.Resources.drink_empty;
+            toolTipTitleItem11.Appearance.Options.UseImage = true;
+            toolTipTitleItem11.Image = global::ShopOrderCustom.Properties.Resources.drink_empty;
+            toolTipTitleItem11.Text = "Фильтр склад аренды";
+            toolTipItem11.LeftIndent = 6;
+            toolTipItem11.Text = "Показывает товарные позиции других поставщиков";
+            superToolTip11.Items.Add(toolTipTitleItem11);
+            superToolTip11.Items.Add(toolTipItem11);
+            this.barCheck.SuperTip = superToolTip11;
             this.barCheck.CheckedChanged += new DevExpress.XtraBars.ItemClickEventHandler(this.BarCheckCheckedChanged);
             // 
             // barButtonItem3
@@ -758,15 +758,15 @@
             this.barButtonItem3.Glyph = global::ShopOrderCustom.Properties.Resources.Excel_icon;
             this.barButtonItem3.Id = 12;
             this.barButtonItem3.Name = "barButtonItem3";
-            toolTipTitleItem5.Appearance.Image = global::ShopOrderCustom.Properties.Resources.Excel_icon;
-            toolTipTitleItem5.Appearance.Options.UseImage = true;
-            toolTipTitleItem5.Image = global::ShopOrderCustom.Properties.Resources.Excel_icon;
-            toolTipTitleItem5.Text = "Экспорт в Excel";
-            toolTipItem5.LeftIndent = 6;
-            toolTipItem5.Text = "Экспортировать текущий набор позиций в Excel";
-            superToolTip5.Items.Add(toolTipTitleItem5);
-            superToolTip5.Items.Add(toolTipItem5);
-            this.barButtonItem3.SuperTip = superToolTip5;
+            toolTipTitleItem12.Appearance.Image = global::ShopOrderCustom.Properties.Resources.Excel_icon;
+            toolTipTitleItem12.Appearance.Options.UseImage = true;
+            toolTipTitleItem12.Image = global::ShopOrderCustom.Properties.Resources.Excel_icon;
+            toolTipTitleItem12.Text = "Экспорт в Excel";
+            toolTipItem12.LeftIndent = 6;
+            toolTipItem12.Text = "Экспортировать текущий набор позиций в Excel";
+            superToolTip12.Items.Add(toolTipTitleItem12);
+            superToolTip12.Items.Add(toolTipItem12);
+            this.barButtonItem3.SuperTip = superToolTip12;
             this.barButtonItem3.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.BarButtonItem3ItemClick);
             // 
             // btRefresh
@@ -810,9 +810,9 @@
             // barButtonItem4
             // 
             this.barButtonItem4.Caption = "Всему ассортименту";
-            this.barButtonItem4.Enabled = false;
             this.barButtonItem4.Id = 17;
             this.barButtonItem4.Name = "barButtonItem4";
+            this.barButtonItem4.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem4_ItemClick);
             // 
             // barDockControlTop
             // 
@@ -849,15 +849,15 @@
             this.barButtonItem2.GroupIndex = 1;
             this.barButtonItem2.Id = 6;
             this.barButtonItem2.Name = "barButtonItem2";
-            toolTipTitleItem6.Appearance.Image = global::ShopOrderCustom.Properties.Resources.filter;
-            toolTipTitleItem6.Appearance.Options.UseImage = true;
-            toolTipTitleItem6.Image = global::ShopOrderCustom.Properties.Resources.filter;
-            toolTipTitleItem6.Text = "Фильтр склад НТС";
-            toolTipItem6.LeftIndent = 6;
-            toolTipItem6.Text = "Показыват товарные позиции НТС";
-            superToolTip6.Items.Add(toolTipTitleItem6);
-            superToolTip6.Items.Add(toolTipItem6);
-            this.barButtonItem2.SuperTip = superToolTip6;
+            toolTipTitleItem8.Appearance.Image = global::ShopOrderCustom.Properties.Resources.filter;
+            toolTipTitleItem8.Appearance.Options.UseImage = true;
+            toolTipTitleItem8.Image = global::ShopOrderCustom.Properties.Resources.filter;
+            toolTipTitleItem8.Text = "Фильтр склад НТС";
+            toolTipItem8.LeftIndent = 6;
+            toolTipItem8.Text = "Показыват товарные позиции НТС";
+            superToolTip8.Items.Add(toolTipTitleItem8);
+            superToolTip8.Items.Add(toolTipItem8);
+            this.barButtonItem2.SuperTip = superToolTip8;
             // 
             // repositoryItemTimeEdit1
             // 

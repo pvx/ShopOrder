@@ -35,7 +35,8 @@ namespace ShopOrderCustom
                                  {
                                      Active = c.active.GetValueOrDefault(true),
                                      Check = c.check.GetValueOrDefault(false),
-                                     Id = c.id,IdInt = c.id_int,
+                                    // Id = c.id,
+                                     IdInt = c.id_int,
                                      IdSap = c.id_sap,
                                      Name = c.name,
                                      Note = c.note,
@@ -48,8 +49,7 @@ namespace ShopOrderCustom
                                      QuantityInPack = c.QuantityInPack.GetValueOrDefault(0),
                                      SelfImport = c.SelfImport.GetValueOrDefault(false),
                                      AutoOrderModeId = c.AutoOrderModeId.GetValueOrDefault(0)
-                                 }).OrderBy(c => c.Name);
-
+                                 }).OrderBy(c => c.Name).Distinct();
                 foreach (GoodsNodeBalanceObj categoryObj in category)
                 {
                     Add(categoryObj);

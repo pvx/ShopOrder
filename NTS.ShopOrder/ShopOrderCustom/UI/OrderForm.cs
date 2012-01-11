@@ -107,6 +107,7 @@ namespace ShopOrderCustom.UI
 
             if (CheckOrder())
                 return;
+
             if (treeList.DataSource != null)
             {
                 var ord = (Orders)treeList.DataSource;
@@ -122,8 +123,20 @@ namespace ShopOrderCustom.UI
                 }
                 else
                 {
-                    ord.AddOrderHeader();
-                    treeList.MoveLastVisible();
+                    grid.BeginUpdate();
+                    try
+                    {
+                        ord.AddOrderHeader();
+                        treeList.MoveLastVisible();
+                        Model.SetAutoOrder();
+                        SetStorehouse(!Model.StoreHouseType);
+                        Model.SetAutoOrder();
+                        SetStorehouse(!Model.StoreHouseType);
+                    }
+                    finally
+                    {
+                        grid.EndUpdate();
+                    }
                 }
             }
         }
@@ -185,16 +198,20 @@ namespace ShopOrderCustom.UI
             }
         }
 
+        private void SetStorehouse(bool flag)
+        {
+            Model.StoreHouseType = flag;
+            ReloadGrid();
+        }
+
         private void BarCheckCheckedChanged(object sender, ItemClickEventArgs e)
         {
-            Model.StoreHouseType = false;
-            ReloadGrid();
+            SetStorehouse(false);
         }
 
         private void BarCheckNtsCheckedChanged(object sender, ItemClickEventArgs e)
         {
-            Model.StoreHouseType = true;
-            ReloadGrid();
+            SetStorehouse(true);
         }
 
         private void BtRefreshItemClick(object sender, ItemClickEventArgs e)
@@ -268,6 +285,11 @@ namespace ShopOrderCustom.UI
         private void OrderFormFormClosed(object sender, FormClosedEventArgs e)
         {
             Model.SaveUserViewLayout(gridView);
+        }
+
+        private void barButtonItem4_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            Model.SetAutoOrder();
         }
     }
 }

@@ -147,7 +147,7 @@ namespace ShopOrders
             // 
             // mViewOrder
             // 
-            this.mViewOrder.Caption = "Просмотр заявок ";
+            this.mViewOrder.Caption = "Просмотр заказов";
             this.mViewOrder.Id = 18;
             this.mViewOrder.Name = "mViewOrder";
             this.mViewOrder.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem1_ItemClick);
