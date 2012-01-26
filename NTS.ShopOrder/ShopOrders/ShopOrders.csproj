@@ -184,6 +184,10 @@
       <Project>{AC856F33-A8FF-4A2A-A5BD-894DC202AB54}</Project>
       <Name>DataBase</Name>
     </ProjectReference>
+    <ProjectReference Include="..\ReportCore\ReportCore.csproj">
+      <Project>{985EE2DB-6C24-4D68-87FB-3EA3911D2212}</Project>
+      <Name>ReportCore</Name>
+    </ProjectReference>
     <ProjectReference Include="..\ShopOrderCustom\ShopOrderCustom.csproj">
       <Project>{F72AACF2-7F30-4AF2-B57A-0B88CD5AE6F4}</Project>
       <Name>ShopOrderCustom</Name>

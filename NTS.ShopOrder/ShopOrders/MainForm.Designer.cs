@@ -28,8 +28,9 @@ namespace ShopOrders
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
-            this.barManager = new DevExpress.XtraBars.BarManager();
+            this.barManager = new DevExpress.XtraBars.BarManager(this.components);
             this.bar2 = new DevExpress.XtraBars.Bar();
             this.mOperation = new DevExpress.XtraBars.BarSubItem();
             this.mCreateOrder = new DevExpress.XtraBars.BarButtonItem();
@@ -42,6 +43,7 @@ namespace ShopOrders
             this.mBalanceEditor = new DevExpress.XtraBars.BarButtonItem();
             this.mUsers = new DevExpress.XtraBars.BarButtonItem();
             this.iPaintStyle = new DevExpress.XtraBars.BarSubItem();
+            this.mReports = new DevExpress.XtraBars.BarSubItem();
             this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
@@ -49,7 +51,8 @@ namespace ShopOrders
             this.barButtonItem2 = new DevExpress.XtraBars.BarButtonItem();
             this.iClose = new DevExpress.XtraBars.BarButtonItem();
             this.iAbout = new DevExpress.XtraBars.BarButtonItem();
-            this.xtraTabbedMdiManager1 = new DevExpress.XtraTabbedMdi.XtraTabbedMdiManager();
+            this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
+            this.xtraTabbedMdiManager1 = new DevExpress.XtraTabbedMdi.XtraTabbedMdiManager(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.barManager)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabbedMdiManager1)).BeginInit();
             this.SuspendLayout();
@@ -77,9 +80,11 @@ namespace ShopOrders
             this.iPaintStyle,
             this.mViewOrder,
             this.mViewActualAssort,
-            this.mBalanceEditor});
+            this.mBalanceEditor,
+            this.barButtonItem1,
+            this.mReports});
             this.barManager.MainMenu = this.bar2;
-            this.barManager.MaxItemId = 21;
+            this.barManager.MaxItemId = 24;
             // 
             // bar2
             // 
@@ -90,7 +95,8 @@ namespace ShopOrders
             this.bar2.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
             new DevExpress.XtraBars.LinkPersistInfo(this.mOperation),
             new DevExpress.XtraBars.LinkPersistInfo(this.mUsers),
-            new DevExpress.XtraBars.LinkPersistInfo(this.iPaintStyle)});
+            new DevExpress.XtraBars.LinkPersistInfo(this.iPaintStyle),
+            new DevExpress.XtraBars.LinkPersistInfo(this.mReports)});
             this.bar2.OptionsBar.MultiLine = true;
             this.bar2.OptionsBar.UseWholeRow = true;
             this.bar2.Text = "Main menu";
@@ -179,6 +185,12 @@ namespace ShopOrders
             this.iPaintStyle.Id = 17;
             this.iPaintStyle.Name = "iPaintStyle";
             // 
+            // mReports
+            // 
+            this.mReports.Caption = "Îò÷¸òû";
+            this.mReports.Id = 22;
+            this.mReports.Name = "mReports";
+            // 
             // barDockControlTop
             // 
             this.barDockControlTop.CausesValidation = false;
@@ -224,6 +236,12 @@ namespace ShopOrders
             this.iAbout.Caption = "&About";
             this.iAbout.Id = 11;
             this.iAbout.Name = "iAbout";
+            // 
+            // barButtonItem1
+            // 
+            this.barButtonItem1.Caption = "barButtonItem1";
+            this.barButtonItem1.Id = 21;
+            this.barButtonItem1.Name = "barButtonItem1";
             // 
             // xtraTabbedMdiManager1
             // 
@@ -273,6 +291,8 @@ namespace ShopOrders
         private DevExpress.XtraBars.BarButtonItem mViewOrder;
         private DevExpress.XtraBars.BarButtonItem mViewActualAssort;
         private DevExpress.XtraBars.BarButtonItem mBalanceEditor;
+        private DevExpress.XtraBars.BarSubItem mReports;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem1;
 
     }
 }

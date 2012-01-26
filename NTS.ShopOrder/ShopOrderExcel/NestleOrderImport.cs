@@ -9,12 +9,13 @@ namespace ShopOrderExcel
     /// </summary>
     public class NestleOrderImport : ExcelImport
     {
-        string[][] _columns = new string[][] {
-            new string[] { "J", "код ТТ" },
-            new string[] { "R", "номер документа" },
-            new string[] { "S", "дата документа" },
-            new string[] { "AA", "код товара" },
-            new string[] { "AG", "Количество (шт.)" }
+        readonly string[][] _columns = new[]
+                                  {
+            new[] { "J", "код ТТ" },
+            new[] { "R", "номер документа" },
+            new[] { "S", "дата документа" },
+            new[] { "AA", "код товара" },
+            new[] { "AG", "Количество (шт.)" }
         };
 
 

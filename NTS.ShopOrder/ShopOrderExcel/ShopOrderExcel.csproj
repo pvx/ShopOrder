@@ -60,8 +60,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AssortForOrderImport.cs" />
+    <Compile Include="ExcelOrderImport.cs" />
+    <Compile Include="ExcelOrderImportBase.cs" />
     <Compile Include="NestleOrderImport.cs" />
     <Compile Include="NestleOrderRecord.cs" />
+    <Compile Include="OrderDataRecord.cs" />
     <Compile Include="ReqAssortImport.cs" />
     <Compile Include="ExcelImport.cs" />
     <Compile Include="DataRecord.cs" />

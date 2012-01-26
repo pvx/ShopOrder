@@ -326,7 +326,7 @@ namespace ShopOrderCustom.UI
             pbar.EditValue = e.ProgressPercentage;
         }
 
-        void WorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        void ImportNestleCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
             RefreshTree();
             pbar.EditValue = 0;
@@ -334,6 +334,16 @@ namespace ShopOrderCustom.UI
             XtraMessageBox.Show("Заказы Nestle импортированы успешно.");
             btNestleImport.Enabled = true;
             Model.UnityContainer.Resolve<IDBLogger>().InsertLog(string.Format("Заказы Nestle импортированы успешно."), string.Empty);
+        }
+
+        void ImportOrderCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            RefreshTree();
+            pbar.EditValue = 0;
+            pbar.Visibility = BarItemVisibility.Never;
+            XtraMessageBox.Show("Заказы импортированы успешно.");
+            btOrderImport.Enabled = true;
+            Model.UnityContainer.Resolve<IDBLogger>().InsertLog(string.Format("Заказы из XLS файла импортированы успешно."), string.Empty);
         }
 
         private void BtNestleImportItemClick(object sender, ItemClickEventArgs e)
@@ -345,7 +355,7 @@ namespace ShopOrderCustom.UI
                     Model.UnityContainer.Resolve<IDBLogger>().InsertLog(string.Format("Импорт заказов Nestle {0}", openFileDialog.FileName), string.Empty);
                                 
                     btNestleImport.Enabled = false;
-                    Model.LoadFromExcelNestleOrders(openFileDialog.FileName, BackgroundWorkerProgressChanged, WorkerCompleted);
+                    Model.LoadFromExcelNestleOrders(openFileDialog.FileName, BackgroundWorkerProgressChanged, ImportNestleCompleted);
                     treeList.Refresh();
                 }
                 catch (Exception ex)
@@ -359,6 +369,26 @@ namespace ShopOrderCustom.UI
         private void OrderManagerForm_FormClosed(object sender, FormClosedEventArgs e)
         {
             Model.SaveUserViewLayout(gridView);
+        }
+
+        private void BarButtonItem5ItemClick(object sender, ItemClickEventArgs e)
+        {
+            if (openFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                try
+                {
+                    Model.UnityContainer.Resolve<IDBLogger>().InsertLog(string.Format("Импорт заказов из XLS файла {0}", openFileDialog.FileName), string.Empty);
+
+                    btOrderImport.Enabled = false;
+                    Model.LoadFromExcelOrders(openFileDialog.FileName, BackgroundWorkerProgressChanged, ImportOrderCompleted);
+                    treeList.Refresh();
+                }
+                catch (Exception ex)
+                {
+                    btOrderImport.Enabled = true;
+                    XtraMessageBox.Show(ex.Message);
+                }
+            }
         }
     }
 }

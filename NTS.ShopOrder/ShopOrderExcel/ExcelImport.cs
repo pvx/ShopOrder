@@ -35,37 +35,6 @@ namespace ShopOrderExcel
         /// <exception cref="FormatException">Не правильный формат файла.</exception>
         protected virtual void ReadDoc()
         {
-            /*
-            Excelsheets = Workbook.Worksheets;
-            Sheet = (Worksheet) Excelsheets.Item[1];
-            
-            if (Sheet.Name != "AssortForOrder")
-                throw new FormatException(@"Не правильный формат файла. Лист AssortForOrder не найден.");
-                Cells = Sheet.Range["A1", Type.Missing];
-                string str = Convert.ToString(Cells.Value2);
-                if(str != "Код")
-                    throw new FormatException(@"Не правильный формат файла. Поле КОД не найдено.");
-                
-                bool endrange = true;
-                int index = 2;
-                var expression = new Regex("([0-9]-[0-9]{3,18})", RegexOptions.None);
-                while (endrange)
-                {
-                    string eindex = string.Format("A{0}", index);
-                    Cells = Sheet.Range[eindex, Type.Missing];
-                    if (Cells.Value2 != null)
-                    {
-                        Match m = expression.Match(Cells.Value2);
-                        if (m.Success)
-                            DataRecords.Add(new DataRecord() { Code = Convert.ToString(Cells.Value2) });
-                    }
-                    else
-                    {
-                        endrange = false;    
-                    }
-                    index++;
-                }
-            */
         }
 
         /// <exception cref="FileNotFoundException"><c>FileNotFoundException</c>.</exception>

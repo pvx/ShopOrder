@@ -841,4 +841,21 @@
       <Column Name="AutoOrderModeId" Type="System.Byte" DbType="TinyInt NOT NULL" CanBeNull="false" />
     </ElementType>
   </Function>
+  <Function Name="dbo.sp_ins_OrderFromXLS" Method="sp_ins_OrderFromXLS">
+    <Parameter Name="ShopCode" Parameter="shopCode" Type="System.String" DbType="NVarChar(20)" />
+    <Parameter Name="Quantity" Parameter="quantity" Type="System.Double" DbType="Float" />
+    <Parameter Name="GoodsCode" Parameter="goodsCode" Type="System.String" DbType="NVarChar(20)" />
+    <Parameter Name="WinLogin" Parameter="winLogin" Type="System.String" DbType="NVarChar(100)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.sp_get_orders_fromXLS" Method="sp_get_orders_fromXLS">
+    <ElementType Name="sp_get_orders_fromXLSResult">
+      <Column Name="ErrorNumber" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ErrorSeverity" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ErrorState" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ErrorProcedure" Type="System.String" DbType="NVarChar(128)" CanBeNull="true" />
+      <Column Name="ErrorLine" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ErrorMessage" Type="System.String" DbType="NVarChar(4000)" CanBeNull="true" />
+    </ElementType>
+  </Function>
 </Database>

@@ -167,6 +167,35 @@ namespace ShopOrderCustom.Models
             }
         }
 
+        void CreateOrdersFromXLS(IEnumerable<IDataRecord> dataRecords, BackgroundWorker bw)
+        {
+            try
+            {
+                int recTotal = dataRecords.Count();
+                int recCurent = 0;
+
+                using (var oc = UnityContainer.Resolve<OrderDataContext>())
+                {
+                    foreach (OrderDataRecord dr in dataRecords)
+                    {
+                        foreach (var itm in dr.ShopsOrder)
+                        {
+                            oc.DataBaseContext.sp_ins_OrderFromXLS(itm.Key, itm.Value, dr.Code, WindowsIdentity.GetCurrent().Name);
+                        }
+                        
+                        recCurent++;
+                        bw.ReportProgress((int)((float)recCurent / (float)recTotal * 100));
+                    }
+                    oc.DataBaseContext.sp_get_orders_fromXLS();
+                }
+            }
+            catch (Exception e)
+            {
+                Log.Error("CreateOrdersFromXLS", e);
+                throw;
+            }
+        }
+
         void CreateNestleOrders(IEnumerable<IDataRecord> dataRecords, BackgroundWorker bw)
         {
             try
@@ -196,6 +225,31 @@ namespace ShopOrderCustom.Models
             }
         }
 
+        public void LoadFromExcelOrders(string path, ProgressChangedEventHandler progressChangedEventHandler, RunWorkerCompletedEventHandler completedEventHandler)
+        {
+            Cursor.Current = Cursors.WaitCursor;
+            try
+            {
+                var ex = UnityContainer.Resolve<ExcelOrderImport>();
+                var dataExcel = ex.GetDataFromExcel(path);
+                if ((dataExcel != null) && (dataExcel.Count > 0))
+                {
+                    _backgroundWorker = new BackgroundWorker();
+                    _backgroundWorker.DoWork += BackgroundOrderImport;
+                    _backgroundWorker.RunWorkerCompleted += completedEventHandler;
+                    _backgroundWorker.WorkerReportsProgress = true;
+                    _backgroundWorker.WorkerSupportsCancellation = false;
+                    _backgroundWorker.RunWorkerAsync(dataExcel);
+
+                    _backgroundWorker.ProgressChanged += progressChangedEventHandler;
+                }
+            }
+            finally
+            {
+                Cursor.Current = Cursors.Default;
+            }
+        }
+
         public void LoadFromExcelNestleOrders(string path, ProgressChangedEventHandler progressChangedEventHandler, RunWorkerCompletedEventHandler completedEventHandler)
         {
             Cursor.Current = Cursors.WaitCursor;
@@ -203,10 +257,10 @@ namespace ShopOrderCustom.Models
             {
                 var ex = UnityContainer.Resolve<NestleOrderImport>();
                 var dataExcel = ex.GetDataFromExcel(path);
-                if (dataExcel != null)
+                if ((dataExcel != null) && (dataExcel.Count > 0))
                 {
                     _backgroundWorker = new BackgroundWorker();
-                    _backgroundWorker.DoWork += BackgroundWorkerDoWork;
+                    _backgroundWorker.DoWork += BackgroundNestleImport;
                     _backgroundWorker.RunWorkerCompleted += completedEventHandler;
                     _backgroundWorker.WorkerReportsProgress = true;
                     _backgroundWorker.WorkerSupportsCancellation = false;
@@ -221,7 +275,13 @@ namespace ShopOrderCustom.Models
             }
         }
 
-        void BackgroundWorkerDoWork(object sender, DoWorkEventArgs e)
+        void BackgroundOrderImport(object sender, DoWorkEventArgs e)
+        {
+            var worker = sender as BackgroundWorker;
+            CreateOrdersFromXLS((IList<IDataRecord>)e.Argument, worker);
+        }
+
+        void BackgroundNestleImport(object sender, DoWorkEventArgs e)
         {
             var worker = sender as BackgroundWorker;
             CreateNestleOrders((IList<IDataRecord>)e.Argument, worker);

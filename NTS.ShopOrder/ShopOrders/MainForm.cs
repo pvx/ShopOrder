@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using System.Security.Principal;
 using System.Windows.Forms;
 using Common;
@@ -6,6 +7,7 @@ using Common.Enum;
 using DevExpress.XtraBars;
 using DevExpress.XtraEditors;
 using Microsoft.Practices.Unity;
+using ReportCore;
 using ShopOrderCustom;
 using ShopOrderCustom.Models;
 using ShopOrderLogin;
@@ -24,6 +26,41 @@ namespace ShopOrders
             InitializeComponent();
             unityContainer = model.UnityContainer;
             InitSkins();
+            InitReports();
+        }
+
+        private void InitReports()
+        {
+            var repm = unityContainer.Resolve<IReportManager>().GetReportsList();
+            if (repm == null)
+                mReports.Visibility = BarItemVisibility.Never;
+            else
+            {
+                var groups = (from gr in repm where !string.IsNullOrEmpty(gr.Group) select gr.Group).Distinct();
+                foreach (string gr in groups)
+                {
+                    var subitm = new BarSubItem(barManager, gr);
+                    mReports.AddItem(subitm );
+                    var itm = repm.Where(it => it.Group == gr);
+                    foreach (var item in itm.Select(reportRecord => new BarButtonItem(barManager, reportRecord.Name) { Tag = reportRecord.Id }))
+                    {
+                        item.ItemClick += OnReportClick;
+                        subitm.AddItem(item);
+                    }
+                }
+
+                var rpwg = repm.Where(it => string.IsNullOrEmpty(it.Group));
+                foreach (var item in rpwg.Select(reportRecord => new BarButtonItem(barManager, reportRecord.Name) { Tag = reportRecord.Id }))
+                {
+                    item.ItemClick += OnReportClick;
+                    mReports.AddItem(item);
+                }             
+            }
+        }
+
+        private void OnReportClick(object sender, ItemClickEventArgs e)
+        {
+            unityContainer.Resolve<IReportManager>().ShowReport(Guid.Parse(e.Item.Tag.ToString()));
         }
 
         /*

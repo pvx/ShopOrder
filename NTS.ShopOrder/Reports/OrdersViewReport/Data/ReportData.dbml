@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="ShopOrders" Class="ReportDataDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=(local);Initial Catalog=ShopOrders;Integrated Security=True" SettingsObjectName="OrdersViewReport.Properties.Settings" SettingsPropertyName="ShopOrdersConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.vGroup" Member="vGroups">
+    <Type Name="vGroup">
+      <Column Name="id" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="id_int" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="name" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="active" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="note" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="id_sap" Type="System.String" DbType="VarChar(9)" CanBeNull="true" />
+      <Column Name="parentId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="[check]" Member="check" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.vReportOrdersByShop" Member="vReportOrdersByShops">
+    <Type Name="vReportOrdersByShop">
+      <Column Name="GoodsDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="ShopCode" Type="System.String" DbType="NVarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="ShopName" Type="System.String" DbType="NVarChar(255) NOT NULL" CanBeNull="false" />
+      <Column Name="ShopAddress" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="[Group]" Member="Group" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(255) NOT NULL" CanBeNull="false" />
+      <Column Name="Quantity" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="ReqQuantity" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Balance" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+      <Column Name="Supplier" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="Barcode" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="ShopBalance" Type="System.Decimal" DbType="Decimal(15,3) NOT NULL" CanBeNull="false" />
+      <Column Name="ShopSell" Type="System.Decimal" DbType="Decimal(15,3) NOT NULL" CanBeNull="false" />
+      <Column Name="IsReqAssort" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Shop" Member="Shops">
+    <Type Name="Shop">
+      <Column Name="id" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="ShopName" Type="System.String" DbType="NVarChar(255) NOT NULL" CanBeNull="false" />
+      <Column Name="ShopAddress" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="ShopCode" Type="System.String" DbType="NVarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="id_ShopOwner" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="id_ShopCategory" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="id_sap_entity" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="id_sap" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.vSuppliers" Member="vSuppliers">
+    <Type Name="vSupplier">
+      <Column Name="Supplier" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+    </Type>
+  </Table>
+</Database>

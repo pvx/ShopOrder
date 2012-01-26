@@ -1,4 +1,5 @@
 using System;
+using System.Diagnostics;
 using System.Windows.Forms;
 using Common;
 using Common.Logger;
@@ -7,6 +8,7 @@ using DataBase.Log;
 using DataBase.Repository;
 using DevExpress.LookAndFeel;
 using Microsoft.Practices.Unity;
+using ReportCore;
 using ShopOrderCustom;
 using ShopOrderCustom.Models;
 using ShopOrderExcel;
@@ -25,14 +27,12 @@ namespace ShopOrders
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-
+            AppDomain.CurrentDomain.UnhandledException += OnUnhandledException;
             DevExpress.Skins.SkinManager.EnableFormSkins();
             DevExpress.UserSkins.OfficeSkins.Register();
             DevExpress.UserSkins.BonusSkins.Register();
 
-            UserLookAndFeel.Default.SetSkinStyle(DateTime.Now.Date == DateTime.Parse("28.12.2011")
-                                                     ? "Xmas 2008 Blue"
-                                                     : "DevExpress Style");
+            UserLookAndFeel.Default.SetSkinStyle("DevExpress Style");
             using (IUnityContainer container = new UnityContainer())
             {
                 container.RegisterType<Logger>();
@@ -49,6 +49,7 @@ namespace ShopOrders
                 container.RegisterType<IExcelImport, AssortForOrderImport>();
                 container.RegisterType<IExcelImport, ReqAssortImport>();
                 container.RegisterType<IExcelImport, NestleOrderImport>();
+                container.RegisterType<IExcelImport, ExcelOrderImport>();
 
                 container.RegisterType<Orders>();
                 container.RegisterType<OrderShops>();
@@ -74,8 +75,41 @@ namespace ShopOrders
                 container.RegisterType<BalanceEditorModel>();
                 container.RegisterType<MainModel>();
 
+                container.RegisterInstance<IReportManager>(container.Resolve<ReportManager>());
+
                 System.Threading.Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo("ru-RU");
                 Application.Run(container.Resolve<MainModel>().View);
+            }
+        }
+
+        static void OnUnhandledException(object sender, UnhandledExceptionEventArgs e)
+        {
+            try
+            {
+                var ex = (Exception)e.ExceptionObject;
+                const string errorMsg = "An application error occurred. Please contact the adminstrator " +
+                                        "with the following information:\n\n";
+
+                if (!EventLog.SourceExists("ThreadException"))
+                {
+                    EventLog.CreateEventSource("ThreadException", "Application");
+                }
+
+                var myLog = new EventLog {Source = "ThreadException"};
+                myLog.WriteEntry(errorMsg + ex.Message + "\n\nStack Trace:\n" + ex.StackTrace);
+            }
+            catch (Exception exc)
+            {
+                try
+                {
+                    MessageBox.Show("Fatal Non-UI Error",
+                        "Fatal Non-UI Error. Could not write the error to the event log. Reason: "
+                        + exc.Message, MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                }
+                finally
+                {
+                    Application.Exit();
+                }
             }
         }
     }
