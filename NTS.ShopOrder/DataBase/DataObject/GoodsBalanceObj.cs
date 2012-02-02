@@ -7,7 +7,7 @@ using Common.Enum;
 namespace DataBase.DataObject
 {
     public delegate void ChangeReqQuantity(object sender, EventChangeReqQuantity e);
-
+    public delegate void AutoOrdered(object sender, EventChangeReqQuantity e);
     /// <summary>
     /// Класс записи остатков товара
     /// </summary>
@@ -39,13 +39,13 @@ namespace DataBase.DataObject
         private double _quota;
         private bool _isQuoted;
         private bool _selfImport;
-
         public bool IsLoaded { get; set; }
 
         public GoodsBalanceObj()
         {
             _reqAssort = false;
             IsLoaded = false;
+            _lastOrderDate = DateTime.MinValue;
         }
 
         public double Quota
@@ -152,32 +152,66 @@ namespace DataBase.DataObject
             if (!IsShopBalance) 
                 return;
             if (ShopBalance <= 0)
+            {
                 ReqQuantity = value;
+                SendOnAutoOrder();
+            }
         }
 
-        public void CalcAutoOrder()
+        public void CalcAutoOrder(DateTime now)
         {
             if (RreqAssort)
             {
                 switch (OrderMode)
                 {
                     case AutoOrderModeEnum.MinOrderMode:
-                        IfNotShopBalance(MinOrder);
+                        if (LastOrderDate <= now.Date)
+                        {
+                            IfNotShopBalance(MinOrder);
+                           // SendOnAutoOrder();
+                        }
                         break;
 
                     case AutoOrderModeEnum.RecommendMode:
-                        IfNotShopBalance(double.Parse(ForOrder.ToString()));
+                        if (LastOrderDate <= now.Date)
+                        {
+                            IfNotShopBalance(double.Parse(ForOrder.ToString()));
+                            //SendOnAutoOrder();
+                        }
                         break;
 
                     case AutoOrderModeEnum.AllRecommendMode:
-                        if (IsShopBalance) 
-                            ReqQuantity = (double.Parse(ForOrder.ToString()));
+                        if (LastOrderDate <= now.Date)
+                        {
+                            if (IsShopBalance)
+                            {
+                                ReqQuantity = (double.Parse(ForOrder.ToString()));
+                                SendOnAutoOrder();
+                            }
+                        }
                         break;
 
                     default:
                         ReqQuantity = (double.Parse(ForOrder.ToString()));
                         break;
                 }
+            }
+        }
+
+        private DateTime _lastOrderDate;
+        public DateTime LastOrderDate
+        {
+            get { return _lastOrderDate.AddDays(3).Date; }
+            set { _lastOrderDate = value; }
+        }
+
+        public event AutoOrdered OnAutoOrdeer;
+
+        protected virtual void SendOnAutoOrder()
+        {
+            if ((OnAutoOrdeer != null))
+            {
+                OnAutoOrdeer(this, new EventChangeReqQuantity() { GoodsObj = this });
             }
         }
 

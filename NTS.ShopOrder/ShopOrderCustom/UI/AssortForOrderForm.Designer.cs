@@ -32,6 +32,9 @@
             DevExpress.Utils.SuperToolTip superToolTip1 = new DevExpress.Utils.SuperToolTip();
             DevExpress.Utils.ToolTipTitleItem toolTipTitleItem1 = new DevExpress.Utils.ToolTipTitleItem();
             DevExpress.Utils.ToolTipItem toolTipItem1 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip2 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem2 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem2 = new DevExpress.Utils.ToolTipItem();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AssortForOrderForm));
             this.xafBar = new DevExpress.ExpressApp.Win.Templates.Controls.XafBarManager(this.components);
             this.xafBar2 = new DevExpress.ExpressApp.Win.Templates.Controls.XafBar();
@@ -39,6 +42,9 @@
             this.xafBar3 = new DevExpress.ExpressApp.Win.Templates.Controls.XafBar();
             this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem2 = new DevExpress.XtraBars.BarButtonItem();
+            this.cbMode = new DevExpress.XtraBars.BarEditItem();
+            this.cbItemMode = new DevExpress.XtraEditors.Repository.RepositoryItemComboBox();
+            this.barButtonItem3 = new DevExpress.XtraBars.BarButtonItem();
             this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
@@ -74,6 +80,7 @@
             this.cbAutoOrderMode = new DevExpress.XtraEditors.Repository.RepositoryItemComboBox();
             this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
             ((System.ComponentModel.ISupportInitialize)(this.xafBar)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cbItemMode)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.SaveBar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).BeginInit();
             this.splitContainerControl1.SuspendLayout();
@@ -100,10 +107,13 @@
             this.xafBar.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
             this.barButtonItem1,
             this.barButtonItem2,
-            this.BarState});
-            this.xafBar.MaxItemId = 4;
+            this.BarState,
+            this.barButtonItem3,
+            this.cbMode});
+            this.xafBar.MaxItemId = 6;
             this.xafBar.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
-            this.SaveBar});
+            this.SaveBar,
+            this.cbItemMode});
             this.xafBar.StatusBar = this.xafBar2;
             // 
             // xafBar2
@@ -135,7 +145,9 @@
             this.xafBar3.DockStyle = DevExpress.XtraBars.BarDockStyle.Top;
             this.xafBar3.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.barButtonItem1, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
-            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.barButtonItem2, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph)});
+            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.barButtonItem2, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
+            new DevExpress.XtraBars.LinkPersistInfo(this.cbMode, true),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem3)});
             this.xafBar3.TargetPageCategoryColor = System.Drawing.Color.Empty;
             this.xafBar3.Text = "Main Toolbar";
             // 
@@ -163,6 +175,39 @@
             superToolTip1.Items.Add(toolTipItem1);
             this.barButtonItem2.SuperTip = superToolTip1;
             this.barButtonItem2.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.BarButtonItem2ItemClick);
+            // 
+            // cbMode
+            // 
+            this.cbMode.Caption = "cbMode";
+            this.cbMode.Edit = this.cbItemMode;
+            this.cbMode.Id = 5;
+            this.cbMode.Name = "cbMode";
+            this.cbMode.Width = 257;
+            this.cbMode.EditValueChanged += new System.EventHandler(this.CbModeEditValueChanged);
+            // 
+            // cbItemMode
+            // 
+            this.cbItemMode.AutoHeight = false;
+            this.cbItemMode.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.cbItemMode.Name = "cbItemMode";
+            // 
+            // barButtonItem3
+            // 
+            this.barButtonItem3.Caption = "Применить";
+            this.barButtonItem3.Glyph = global::ShopOrderCustom.Properties.Resources.arrow_down_double;
+            this.barButtonItem3.Id = 4;
+            this.barButtonItem3.Name = "barButtonItem3";
+            toolTipTitleItem2.Appearance.Image = global::ShopOrderCustom.Properties.Resources.arrow_down_double;
+            toolTipTitleItem2.Appearance.Options.UseImage = true;
+            toolTipTitleItem2.Image = global::ShopOrderCustom.Properties.Resources.arrow_down_double;
+            toolTipTitleItem2.Text = "Групповое изменение";
+            toolTipItem2.LeftIndent = 6;
+            toolTipItem2.Text = "Изменение свойства \"Обязательный автозаказа\" для всех отображаемых строк";
+            superToolTip2.Items.Add(toolTipTitleItem2);
+            superToolTip2.Items.Add(toolTipItem2);
+            this.barButtonItem3.SuperTip = superToolTip2;
+            this.barButtonItem3.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.BarButtonItem3ItemClick);
             // 
             // barDockControlTop
             // 
@@ -539,6 +584,7 @@
             this.Text = "Ассортимент к заказу";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.AssortForOrderFormFormClosed);
             ((System.ComponentModel.ISupportInitialize)(this.xafBar)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cbItemMode)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.SaveBar)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).EndInit();
             this.splitContainerControl1.ResumeLayout(false);
@@ -596,5 +642,8 @@
         private DevExpress.XtraEditors.Repository.RepositoryItemComboBox cbAutoOrderMode;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn1;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn2;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem3;
+        private DevExpress.XtraBars.BarEditItem cbMode;
+        private DevExpress.XtraEditors.Repository.RepositoryItemComboBox cbItemMode;
     }
 }

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             DevExpress.XtraGrid.StyleFormatCondition styleFormatCondition1 = new DevExpress.XtraGrid.StyleFormatCondition();
             DevExpress.XtraGrid.StyleFormatCondition styleFormatCondition2 = new DevExpress.XtraGrid.StyleFormatCondition();
             DevExpress.XtraGrid.StyleFormatCondition styleFormatCondition3 = new DevExpress.XtraGrid.StyleFormatCondition();
@@ -61,7 +62,7 @@
             this.splitContainerControl1 = new DevExpress.XtraEditors.SplitContainerControl();
             this.treeList = new DevExpress.XtraTreeList.TreeList();
             this.grid = new DevExpress.XtraGrid.GridControl();
-            this.goodsBalanceObjBindingSource = new System.Windows.Forms.BindingSource();
+            this.goodsBalanceObjBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.gridView = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.colReqQuantity = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemSpinEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemSpinEdit();
@@ -84,8 +85,8 @@
             this.colAvgSell = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colShopBalance = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemTextEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
-            this.vGoodsBalanceOrderBindingSource = new System.Windows.Forms.BindingSource();
-            this.BarManager = new DevExpress.ExpressApp.Win.Templates.Controls.XafBarManager();
+            this.vGoodsBalanceOrderBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.BarManager = new DevExpress.ExpressApp.Win.Templates.Controls.XafBarManager(this.components);
             this.xafBar2 = new DevExpress.ExpressApp.Win.Templates.Controls.XafBar();
             this.xafBar3 = new DevExpress.ExpressApp.Win.Templates.Controls.XafBar();
             this.cdDateFilter = new DevExpress.XtraBars.BarEditItem();

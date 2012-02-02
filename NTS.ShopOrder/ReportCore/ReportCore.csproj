@@ -67,6 +67,12 @@
     <Compile Include="IReportMetadata.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ReportRecord.cs" />
+    <Compile Include="UI\ParamViewBase.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\ParamViewBase.Designer.cs">
+      <DependentUpon>ParamViewBase.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\ReportViewer.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -75,6 +81,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="UI\ParamViewBase.resx">
+      <DependentUpon>ParamViewBase.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UI\ReportViewer.resx">
       <DependentUpon>ReportViewer.cs</DependentUpon>
     </EmbeddedResource>

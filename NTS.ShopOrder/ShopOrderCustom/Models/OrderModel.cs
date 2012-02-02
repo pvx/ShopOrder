@@ -67,6 +67,7 @@ namespace ShopOrderCustom.Models
         private DateTime _filterDate;
         private DateTime _serverDate;
         private bool _allowEdit;
+        private Guid _shopId;
 
         public DateTime FilterDate
         {
@@ -134,7 +135,8 @@ namespace ShopOrderCustom.Models
 
         public void SetAutoOrder()
         {
-            _autoFill = true;try
+            _autoFill = true;
+            try
             {
                 int cnt = 0;
                 foreach (var goodsBalanceObj in BalanceList)
@@ -143,7 +145,7 @@ namespace ShopOrderCustom.Models
                     {
                         if (goodsBalanceObj.ForOrder > 0)
                         {
-                            goodsBalanceObj.CalcAutoOrder();
+                            goodsBalanceObj.CalcAutoOrder(_serverDate);
                             cnt++;
                         }
                     }
@@ -169,7 +171,7 @@ namespace ShopOrderCustom.Models
                         if (goodsBalanceObj.RreqAssort)
                             if (goodsBalanceObj.ForOrder > 0)
                             {
-                                goodsBalanceObj.CalcAutoOrder();
+                                goodsBalanceObj.CalcAutoOrder(_serverDate);
                                 cnt++;
                             }
                     }
@@ -177,7 +179,7 @@ namespace ShopOrderCustom.Models
                     {
                         if (goodsBalanceObj.ForOrder > 0)
                         {
-                            goodsBalanceObj.CalcAutoOrder();
+                            goodsBalanceObj.CalcAutoOrder(_serverDate);
                             cnt++;
                         }
                     }
@@ -236,12 +238,13 @@ namespace ShopOrderCustom.Models
                                 SelfImport = vo.SelfImport,
                                 OrderMode = GoodsBalanceObj.ConvertToMode(vo.AutoOrderModeId),
                                 IsLoaded = true,
-                                IsShopBalance = isBalance
-                            };
+                                IsShopBalance = isBalance,
+                                LastOrderDate = vo.LastAutoOrderDate.GetValueOrDefault(DateTime.MinValue.Date)};
 
                         foreach (var bl in orders)
                         {
                             bl.ChangeReqQuantity += BlChangeReqQuantity;
+                            bl.OnAutoOrdeer += bl_OnAutoOrdeer;
                             balance.Add(bl);
                         }
 
@@ -257,6 +260,16 @@ namespace ShopOrderCustom.Models
             return null;
         }
 
+        void bl_OnAutoOrdeer(object sender, EventChangeReqQuantity e)
+        {
+            //_shopId
+            using (var oc = unityContainer.Resolve<OrderDataContext>())
+            {
+                oc.DataBaseContext.sp_ins_AutoOrdered(_shopId, e.GoodsObj.Code);
+                e.GoodsObj.LastOrderDate = DateTime.Now.Date;
+            }
+
+        }
 
         public bool StoreHouseType { get; set;}
 
@@ -349,6 +362,7 @@ namespace ShopOrderCustom.Models
             this.unityContainer = unityContainer;
             StoreHouseType = true;
             _serverDate = DateTime.Parse(unityContainer.Resolve<IOrderUserInfo>().Property["SERVER_DATE"]);
+            _shopId = Guid.Parse(unityContainer.Resolve<IOrderUserInfo>().Property["USER_SHOP"]);
         }
     }
 }

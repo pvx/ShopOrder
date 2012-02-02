@@ -13,7 +13,7 @@ using ReportCore;
 
 namespace OrdersViewReport
 {
-    public partial class OrderViewRpt : DevExpress.XtraReports.UI.XtraReport
+    public partial class OrderViewRpt : XtraReport
     {
         public OrderViewRpt()
         {

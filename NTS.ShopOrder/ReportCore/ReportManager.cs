@@ -28,7 +28,8 @@ namespace ReportCore
             ReportsList = new List<Lazy<IReport, IReportMetadata>>();
 
             if (!Directory.Exists("Reports"))
-                Directory.CreateDirectory("Reports");var cat = new AggregateCatalog();
+                Directory.CreateDirectory("Reports");
+            var cat = new AggregateCatalog();
             cat.Catalogs.Add(new DirectoryCatalog("Reports"));
 
             var contnr = new CompositionContainer(cat);

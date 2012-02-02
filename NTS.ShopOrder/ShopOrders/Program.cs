@@ -97,9 +97,10 @@ namespace ShopOrders
 
                 var myLog = new EventLog {Source = "ThreadException"};
                 myLog.WriteEntry(errorMsg + ex.Message + "\n\nStack Trace:\n" + ex.StackTrace);
+
+                MessageBox.Show("Ошибка", ex.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Stop);
             }
-            catch (Exception exc)
-            {
+            catch (Exception exc){
                 try
                 {
                     MessageBox.Show("Fatal Non-UI Error",

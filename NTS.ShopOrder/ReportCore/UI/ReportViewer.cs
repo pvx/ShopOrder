@@ -19,8 +19,20 @@ namespace ReportCore.UI
         private void DoWork()
         {
             printControl.PrintingSystem = _report.PrintingSystem;
+            _report.RequestParameters = false;
+            _report.ParametersRequestSubmit += _report_ParametersRequestSubmit;
             _report.CreateDocument(true);
             printControl.UpdatePageView();
+
+
+            //ReportPrintTool reportPrintTool = new ReportPrintTool(_report);
+            //reportPrintTool.AutoShowParametersPanel = false;
+            //reportPrintTool.ShowPreviewDialog();
+        }
+
+        void _report_ParametersRequestSubmit(object sender, DevExpress.XtraReports.Parameters.ParametersRequestEventArgs e)
+        {
+            MessageBox.Show("ParametersRequestSubmit");
         }
 
         private XtraReport _report;

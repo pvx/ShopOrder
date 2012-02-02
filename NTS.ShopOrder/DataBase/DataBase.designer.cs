@@ -556,13 +556,6 @@ namespace DataBase
 			return ((int)(result.ReturnValue));
 		}
 		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.sp_sel_OrderBalance")]
-		public ISingleResult<sp_sel_OrderBalanceResult> sp_sel_OrderBalance([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="UniqueIdentifier")] System.Nullable<System.Guid> id_OrderHeader, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> id_strorehouse, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> id_OrderState)
-		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), id_OrderHeader, id_strorehouse, id_OrderState);
-			return ((ISingleResult<sp_sel_OrderBalanceResult>)(result.ReturnValue));
-		}
-		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.sp_ins_OrderFromXLS")]
 		public int sp_ins_OrderFromXLS([global::System.Data.Linq.Mapping.ParameterAttribute(Name="ShopCode", DbType="NVarChar(20)")] string shopCode, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Quantity", DbType="Float")] System.Nullable<double> quantity, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="GoodsCode", DbType="NVarChar(20)")] string goodsCode, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="WinLogin", DbType="NVarChar(100)")] string winLogin)
 		{
@@ -575,6 +568,20 @@ namespace DataBase
 		{
 			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())));
 			return ((ISingleResult<sp_get_orders_fromXLSResult>)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.sp_sel_OrderBalance")]
+		public ISingleResult<sp_sel_OrderBalanceResult> sp_sel_OrderBalance([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="UniqueIdentifier")] System.Nullable<System.Guid> id_OrderHeader, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> id_strorehouse, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> id_OrderState)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), id_OrderHeader, id_strorehouse, id_OrderState);
+			return ((ISingleResult<sp_sel_OrderBalanceResult>)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.sp_ins_AutoOrdered")]
+		public int sp_ins_AutoOrdered([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="UniqueIdentifier")] System.Nullable<System.Guid> id_Shop, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="GoodsCode", DbType="NVarChar(20)")] string goodsCode)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), id_Shop, goodsCode);
+			return ((int)(result.ReturnValue));
 		}
 	}
 	
@@ -10815,6 +10822,122 @@ namespace DataBase
 		}
 	}
 	
+	public partial class sp_get_orders_fromXLSResult
+	{
+		
+		private System.Nullable<int> _ErrorNumber;
+		
+		private System.Nullable<int> _ErrorSeverity;
+		
+		private System.Nullable<int> _ErrorState;
+		
+		private string _ErrorProcedure;
+		
+		private System.Nullable<int> _ErrorLine;
+		
+		private string _ErrorMessage;
+		
+		public sp_get_orders_fromXLSResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ErrorNumber", DbType="Int")]
+		public System.Nullable<int> ErrorNumber
+		{
+			get
+			{
+				return this._ErrorNumber;
+			}
+			set
+			{
+				if ((this._ErrorNumber != value))
+				{
+					this._ErrorNumber = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ErrorSeverity", DbType="Int")]
+		public System.Nullable<int> ErrorSeverity
+		{
+			get
+			{
+				return this._ErrorSeverity;
+			}
+			set
+			{
+				if ((this._ErrorSeverity != value))
+				{
+					this._ErrorSeverity = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ErrorState", DbType="Int")]
+		public System.Nullable<int> ErrorState
+		{
+			get
+			{
+				return this._ErrorState;
+			}
+			set
+			{
+				if ((this._ErrorState != value))
+				{
+					this._ErrorState = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ErrorProcedure", DbType="NVarChar(128)")]
+		public string ErrorProcedure
+		{
+			get
+			{
+				return this._ErrorProcedure;
+			}
+			set
+			{
+				if ((this._ErrorProcedure != value))
+				{
+					this._ErrorProcedure = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ErrorLine", DbType="Int")]
+		public System.Nullable<int> ErrorLine
+		{
+			get
+			{
+				return this._ErrorLine;
+			}
+			set
+			{
+				if ((this._ErrorLine != value))
+				{
+					this._ErrorLine = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ErrorMessage", DbType="NVarChar(4000)")]
+		public string ErrorMessage
+		{
+			get
+			{
+				return this._ErrorMessage;
+			}
+			set
+			{
+				if ((this._ErrorMessage != value))
+				{
+					this._ErrorMessage = value;
+				}
+			}
+		}
+	}
+	
 	public partial class sp_sel_OrderBalanceResult
 	{
 		
@@ -10867,6 +10990,8 @@ namespace DataBase
 		private bool _SelfImport;
 		
 		private byte _AutoOrderModeId;
+		
+		private System.Nullable<System.DateTime> _LastAutoOrderDate;
 		
 		public sp_sel_OrderBalanceResult()
 		{
@@ -11271,119 +11396,19 @@ namespace DataBase
 				}
 			}
 		}
-	}
-	
-	public partial class sp_get_orders_fromXLSResult
-	{
 		
-		private System.Nullable<int> _ErrorNumber;
-		
-		private System.Nullable<int> _ErrorSeverity;
-		
-		private System.Nullable<int> _ErrorState;
-		
-		private string _ErrorProcedure;
-		
-		private System.Nullable<int> _ErrorLine;
-		
-		private string _ErrorMessage;
-		
-		public sp_get_orders_fromXLSResult()
-		{
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ErrorNumber", DbType="Int")]
-		public System.Nullable<int> ErrorNumber
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LastAutoOrderDate", DbType="DateTime")]
+		public System.Nullable<System.DateTime> LastAutoOrderDate
 		{
 			get
 			{
-				return this._ErrorNumber;
+				return this._LastAutoOrderDate;
 			}
 			set
 			{
-				if ((this._ErrorNumber != value))
+				if ((this._LastAutoOrderDate != value))
 				{
-					this._ErrorNumber = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ErrorSeverity", DbType="Int")]
-		public System.Nullable<int> ErrorSeverity
-		{
-			get
-			{
-				return this._ErrorSeverity;
-			}
-			set
-			{
-				if ((this._ErrorSeverity != value))
-				{
-					this._ErrorSeverity = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ErrorState", DbType="Int")]
-		public System.Nullable<int> ErrorState
-		{
-			get
-			{
-				return this._ErrorState;
-			}
-			set
-			{
-				if ((this._ErrorState != value))
-				{
-					this._ErrorState = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ErrorProcedure", DbType="NVarChar(128)")]
-		public string ErrorProcedure
-		{
-			get
-			{
-				return this._ErrorProcedure;
-			}
-			set
-			{
-				if ((this._ErrorProcedure != value))
-				{
-					this._ErrorProcedure = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ErrorLine", DbType="Int")]
-		public System.Nullable<int> ErrorLine
-		{
-			get
-			{
-				return this._ErrorLine;
-			}
-			set
-			{
-				if ((this._ErrorLine != value))
-				{
-					this._ErrorLine = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ErrorMessage", DbType="NVarChar(4000)")]
-		public string ErrorMessage
-		{
-			get
-			{
-				return this._ErrorMessage;
-			}
-			set
-			{
-				if ((this._ErrorMessage != value))
-				{
-					this._ErrorMessage = value;
+					this._LastAutoOrderDate = value;
 				}
 			}
 		}

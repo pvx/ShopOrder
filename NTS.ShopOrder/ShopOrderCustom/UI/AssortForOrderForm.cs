@@ -2,6 +2,7 @@
 using System.Windows.Forms;
 using Common.Enum;
 using Common.Interfaces;
+using DataBase.DataObject;
 using DevExpress.XtraBars;
 using DevExpress.XtraEditors;
 using DevExpress.XtraTreeList;
@@ -18,9 +19,9 @@ namespace ShopOrderCustom.UI
             Model = model;
             InitializeComponent();
             Model.LoadUserViewLayout(gridView);
-
-            cbGRidMode.DataSource = Model.OrderModes;
-            //LoadData();
+            var dsm = Model.OrderModes;
+            cbGRidMode.DataSource = dsm;
+            cbItemMode.Items.AddRange(dsm);
             treeList.DataSource = Model.OrderCategorys;
             treeList.ExpandAll();
         }
@@ -180,6 +181,30 @@ namespace ShopOrderCustom.UI
         private void AssortForOrderFormFormClosed(object sender, FormClosedEventArgs e)
         {
             Model.SaveUserViewLayout(gridView);
+        }
+
+        private void BarButtonItem3ItemClick(object sender, ItemClickEventArgs e)
+        {
+            if ((_categoryObj != null) && (XtraMessageBox.Show("Применить выбранное свойство ко всем отображаемым строкам?",
+                                    "Применение свойства", MessageBoxButtons.YesNo) == DialogResult.Yes))
+            {
+                for (int i = 0; i < gridView.RowCount; i++)
+                {
+                    int rowHandle = gridView.GetVisibleRowHandle(i);
+                    if (gridView.IsDataRow(rowHandle))
+                    {
+                        dynamic re = gridView.GetRow(rowHandle);
+                        re.AutoOrderModeId = (short)_categoryObj.Id;
+                    }
+                }
+            }
+        }
+
+        private ShopCategoryObj _categoryObj;
+
+        private void CbModeEditValueChanged(object sender, EventArgs e)
+        {
+            _categoryObj = ((BarEditItem) sender).EditValue is ShopCategoryObj ? ((ShopCategoryObj) (((BarEditItem) sender).EditValue)) : null;  
         }
     }
 }
