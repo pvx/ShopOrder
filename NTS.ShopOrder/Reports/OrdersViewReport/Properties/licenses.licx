@@ -1,2 +1,4 @@
 DevExpress.Patch.BConnect, DevExpress.Patch.Vsa, Version=10.0.0.3, Culture=neutral, PublicKeyToken=7fc7bfca2443de66
 DevExpress.XtraReports.UI.XtraReport, DevExpress.XtraReports.v10.2, Version=10.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a
+DevExpress.XtraLayout.LayoutControl, DevExpress.XtraLayout.v10.2, Version=10.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a
+DevExpress.XtraEditors.ComboBoxEdit, DevExpress.XtraEditors.v10.2, Version=10.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a

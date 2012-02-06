@@ -35,6 +35,7 @@
     <Reference Include="DevExpress.Utils.v10.2, Version=10.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraBars.v10.2, Version=10.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.XtraEditors.v10.2, Version=10.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraLayout.v10.2, Version=10.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraPrinting.v10.2, Version=10.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraReports.v10.2, Version=10.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraRichEdit.v10.2, Version=10.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
@@ -58,8 +59,14 @@
     <Compile Include="Dynamic.cs" />
     <Compile Include="IReportCallParameter.cs" />
     <Compile Include="IReportDataSource.cs" />
+    <Compile Include="IReportItem.cs" />
     <Compile Include="IReportManager.cs" />
     <Compile Include="Model\ReportViewerModel.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="ReportCallParameter.cs" />
     <Compile Include="ReportManager.cs" />
     <Compile Include="ReportMetadataAttribute.cs" />
@@ -67,6 +74,12 @@
     <Compile Include="IReportMetadata.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ReportRecord.cs" />
+    <Compile Include="UI\ParamUIBase.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\ParamUIBase.Designer.cs">
+      <DependentUpon>ParamUIBase.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\ParamViewBase.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -81,6 +94,14 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Properties\licenses.licx" />
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\ParamUIBase.resx">
+      <DependentUpon>ParamUIBase.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UI\ParamViewBase.resx">
       <DependentUpon>ParamViewBase.cs</DependentUpon>
     </EmbeddedResource>
@@ -89,10 +110,23 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Common\Common.csproj">
+      <Project>{9F5F2C6A-CB56-44DB-9DF4-2BDE103EB33C}</Project>
+      <Name>Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\DataBase\DataBase.csproj">
       <Project>{AC856F33-A8FF-4A2A-A5BD-894DC202AB54}</Project>
       <Name>DataBase</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\edit-clear.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\window-close.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\run-build-file.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

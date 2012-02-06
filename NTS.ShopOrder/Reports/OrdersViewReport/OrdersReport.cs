@@ -17,6 +17,10 @@ namespace OrdersViewReport
             var v = new OrderViewRpt() {DataSource = ds, ReportDataConnection = parameter.Connection};
             return v;
         }
-    }
-    
+
+        public IReportItem GetReportInstance(IReportCallParameter parameter)
+        {
+            return new ReportOrderItem(parameter);
+        }
+    }   
 }

@@ -5,10 +5,12 @@ using System.ComponentModel.Composition.Hosting;
 using System.Data.SqlClient;
 using System.IO;
 using System.Linq;
+using Common;
 using DataBase;
 using DevExpress.XtraReports.UI;
 using Microsoft.Practices.Unity;
 using ReportCore.Model;
+using ReportCore.UI;
 
 namespace ReportCore
 {
@@ -27,10 +29,13 @@ namespace ReportCore
             _container = container;
             ReportsList = new List<Lazy<IReport, IReportMetadata>>();
 
-            if (!Directory.Exists("Reports"))
-                Directory.CreateDirectory("Reports");
+            string reportPath = _container.Resolve<IOrderUserInfo>().ReportFolder;
+
+            if (!Directory.Exists(reportPath))
+                Directory.CreateDirectory(reportPath);
+         
             var cat = new AggregateCatalog();
-            cat.Catalogs.Add(new DirectoryCatalog("Reports"));
+            cat.Catalogs.Add(new DirectoryCatalog(reportPath));
 
             var contnr = new CompositionContainer(cat);
 
@@ -43,6 +48,7 @@ namespace ReportCore
                 throw new Exception(string.Format("Отчёт с таким ID: {0} не существует в списке", id));
         }
 
+        [Obsolete]
         private XtraReport GetReportById(Guid id)
         {
             _connection = (SqlConnection)_container.Resolve<OrderDataContext>().DataBaseContext.Connection;
@@ -50,12 +56,22 @@ namespace ReportCore
             return ReportsList.Where(item => item.Metadata.Id == id.ToString().ToUpper()).Select(item => item.Value.GetReport(callParameter)).FirstOrDefault();
         }
 
+        private IReportItem GetReportItemById(Guid id)
+        {
+            _connection = (SqlConnection)_container.Resolve<OrderDataContext>().DataBaseContext.Connection;
+            var callParameter = new ReportCallParameter() { Connection = _connection };
+            return ReportsList.Where(item => item.Metadata.Id == id.ToString().ToUpper()).Select(item => item.Value.GetReportInstance(callParameter)).FirstOrDefault();
+        }
+
         public void ShowReport(Guid id)
         {
             CheckReport(id);
-            var rep = GetReportById(id);
-            var rvm = new ReportViewerModel(rep);
+            var rep = GetReportItemById(id);
+            var pv = new ParamViewBase(rep.GetParam());
+            pv.ShowDialog();
+            /*var rvm = new ReportViewerModel(rep);
             rvm.ShowReport();
+            */
         }
 
         public List<ReportRecord> GetReportsList()

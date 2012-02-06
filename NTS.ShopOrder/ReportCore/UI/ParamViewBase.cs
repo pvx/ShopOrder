@@ -9,11 +9,25 @@ using DevExpress.XtraEditors;
 
 namespace ReportCore.UI
 {
-    public partial class ParamViewBase : DevExpress.XtraEditors.XtraForm
+    public partial class ParamViewBase : XtraForm
     {
         public ParamViewBase()
         {
             InitializeComponent();
+        }
+
+        public ParamViewBase(ParamUIBase viewControl)
+        {
+            InitializeComponent();
+            viewControl.Dock = DockStyle.Fill;
+            paramsHolder.Controls.Add(viewControl);
+            btExecute.Click += delegate { viewControl.ExecuteReport(); };
+            btClear.Click += delegate { viewControl.ResetParamsReport(); };
+        }
+
+        private void btClear_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

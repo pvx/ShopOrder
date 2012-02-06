@@ -21,8 +21,7 @@ namespace OrdersViewReport.Data
 
         private string _supplier;
 
-        public void Load(SqlConnection connection)
-        {
+        public void Load(SqlConnection connection){
             Clear();
             if (DateBegin == DateEnd) 
                 DateEnd = DateEnd.AddDays(1);

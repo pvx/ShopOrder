@@ -11,7 +11,7 @@ namespace OrdersViewReport.Data
             using (var cn = ReportData.GetContext(connection))
             {
                 var dt = (from d in cn.Shops
-                          select new ShopItem() { ShopAddress = d.ShopAddress, ShopCode = d.ShopCode, ShopName = d.ShopName}).OrderBy(dr => dr.ShopCode);
+                          select new ShopItem() { ShopAddress = d.ShopAddress, ShopCode = d.ShopCode, ShopName = d.ShopName}).OrderBy(dr => dr.ShopName);
 
                 foreach (var item in dt)
                 {

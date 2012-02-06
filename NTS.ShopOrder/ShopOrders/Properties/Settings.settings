@@ -6,7 +6,7 @@
       <Value Profile="(Default)">Data Source={0};Initial Catalog={1};User ID={2};Password={3}</Value>
     </Setting>
     <Setting Name="Database" Type="System.String" Scope="User">
-      <Value Profile="(Default)">ShopOrders_testing</Value>
+      <Value Profile="(Default)">ShopOrders</Value>
     </Setting>
     <Setting Name="User" Type="System.String" Scope="User">
       <Value Profile="(Default)">sa</Value>
@@ -15,7 +15,10 @@
       <Value Profile="(Default)">Oberon</Value>
     </Setting>
     <Setting Name="Server" Type="System.String" Scope="User">
-      <Value Profile="(Default)">MI001-db01</Value>
+      <Value Profile="(Default)">(local)</Value>
+    </Setting>
+    <Setting Name="ReportFolder" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Reports</Value>
     </Setting>
   </Settings>
 </SettingsFile>

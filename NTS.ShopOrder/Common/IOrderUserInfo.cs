@@ -15,5 +15,6 @@ namespace Common
         string Info { get; }
         Dictionary<string, string> Property { get; set; }
         int Permission { get; }
+        string ReportFolder { get; set; }
     }
 }

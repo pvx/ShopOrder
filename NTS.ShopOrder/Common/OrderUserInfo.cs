@@ -20,6 +20,14 @@ namespace Common
             get { return GetPermission(); }
         }
 
+        private string _reportFolder;
+
+        public string ReportFolder
+        {
+            get { return _reportFolder; }
+            set { _reportFolder = value; }
+        }
+
         /// <exception cref="ArgumentNullException">Argument is null.</exception>
         private int GetPermission()
         {
@@ -28,30 +36,14 @@ namespace Common
             
             return int.Parse(_property["USER_PERMISSION"]);
         }
-        /*
-        static Permission DecodePermission(int prm)
-        {
-            switch (prm)
-            {
-                case 1:
-                    return Permission.PrmMinorder;
-                case 2:
-                    return Permission.PrmCreater;
-                case 4:
-                    return Permission.PrmManager;
-                case 8:
-                    return Permission.PrmFull;
-                default:
-                    return Permission.PrmCreater;
-            }
-        }
-        */
-        public OrderUserInfo( string server, string dataBase, string userName, string userPassword )
+
+        public OrderUserInfo( string server, string dataBase, string userName, string userPassword, string reportFolder )
         {
             _server = server;
             _dataBase = dataBase;
             _userName = userName;
             _userPassword = userPassword;
+            _reportFolder = reportFolder;
         }
 
         public string Server

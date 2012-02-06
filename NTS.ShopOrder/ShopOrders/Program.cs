@@ -40,7 +40,8 @@ namespace ShopOrders
                                         new InjectionConstructor(Settings.Default.Server,
                                         Settings.Default.Database,
                                         Settings.Default.User,
-                                        Settings.Default.Password));
+                                        Settings.Default.Password,
+                                        Settings.Default.ReportFolder));
 
                 container.RegisterType<IOrderConnection, OrderConnection>();
                 container.RegisterType<OrderDataContext>();
@@ -98,7 +99,7 @@ namespace ShopOrders
                 var myLog = new EventLog {Source = "ThreadException"};
                 myLog.WriteEntry(errorMsg + ex.Message + "\n\nStack Trace:\n" + ex.StackTrace);
 
-                MessageBox.Show("Ошибка", ex.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                MessageBox.Show("Ошибка", ex.Message, MessageBoxButtons.OK, MessageBoxIcon.Stop);
             }
             catch (Exception exc){
                 try
