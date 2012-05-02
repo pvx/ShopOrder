@@ -22,7 +22,7 @@ namespace ShopOrderCustom.UI
             InitializeComponent();
             Model = orderModel;
             Model.LoadUserViewLayout(gridView);
-            Model.ChangeDateFilter += new ChangeDateFilter(Model_ChangeDateFilter);
+            Model.ChangeDateFilter += Model_ChangeDateFilter;
             Model.FilterDate = DateTime.Now.Date;
             cdDateFilter.EditValue = Model.FilterDate;   
             

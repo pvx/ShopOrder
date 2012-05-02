@@ -33,7 +33,7 @@ namespace ShopOrderExcel
                 {
                     Match m = expression.Match(Cells.Value2);
                     if (m.Success)
-                        DataRecords.Add(new DataRecord() { Code = Convert.ToString(Cells.Value2) });
+                        DataRecords.Add(new DataRecord() {Code = Convert.ToString(Cells.Value2)});
                 }
                 else
                 {

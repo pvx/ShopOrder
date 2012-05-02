@@ -17,5 +17,8 @@ namespace Common.Enum
         ViewActualAssort = 64,
         EditUsers = 128,
         EditBalance = 256,
+        ReportView = 512,
+        CreateReturn = 1024,
+        CreateReturnSt = 2048,
     }
 }

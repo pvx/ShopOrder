@@ -11,5 +11,7 @@
        public const string VIEW_ACTUAL_ASSORT = "VIEW_ACTUAL_ASSORT";
        public const string ED_USERS = "ED_USERS";
        public const string ED_BALANCE = "ED_BALANCE";
+       public const string ED_GOODRETURN = "ED_GOODRETURN";
+       public const string ED_GOODRETURN_STATE = "ED_GOODRETURN_STATE";
     }
 }

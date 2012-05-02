@@ -30,4 +30,9 @@ namespace DataBase.DataObject
         public DateTime Date { get; set; }
         public DateTime DateEnd { get; set; }
     }
+
+    public class EventChangeReturnPositionState: EventArgs
+    {
+        public ReturnItemObj Item { get; set; }
+    }
 }

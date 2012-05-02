@@ -98,6 +98,7 @@ namespace ShopOrderCustom.Models
             get { return _currentOrderHeader; }
             set { _currentOrderHeader = value; }
         }
+
         public Orders GetOrdersHeader()
         {
             using (var oc = unityContainer.Resolve<OrderDataContext>())

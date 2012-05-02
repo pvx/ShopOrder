@@ -70,9 +70,19 @@
     <Compile Include="DataContext.cs" />
     <Compile Include="DataObject\AutoOrderItemObj.cs" />
     <Compile Include="DataObject\BaseDataObject.cs" />
+    <Compile Include="DataObject\ReturnItemPool.cs" />
+    <Compile Include="DataObject\ReasonData.cs" />
+    <Compile Include="DataObject\InvoiceData.cs" />
+    <Compile Include="DataObject\ReturnItems.cs" />
+    <Compile Include="DataObject\ReturnPosStateObj.cs" />
+    <Compile Include="DataObject\ReturnReasonObj.cs" />
+    <Compile Include="DataObject\ReturnItemObj.cs" />
+    <Compile Include="DataObject\NotifyDataObjectBase.cs" />
     <Compile Include="DataObject\EditGoodsBalanceObj.cs" />
     <Compile Include="DataObject\GoodsNodeObjBase.cs" />
     <Compile Include="DataObject\OrderTransferCompare.cs" />
+    <Compile Include="DataObject\ReturnObj.cs" />
+    <Compile Include="DataObject\ReturnStateObj.cs" />
     <Compile Include="DataObject\ShopCategoryObj.cs" />
     <Compile Include="DataObject\ReqAssortObj.cs" />
     <Compile Include="DataObject\MinOrderObj.cs" />
@@ -108,6 +118,8 @@
     <Compile Include="Repository\MinOrders.cs" />
     <Compile Include="Repository\GoodsOrderRepo.cs" />
     <Compile Include="Repository\OrderRepo.cs" />
+    <Compile Include="sp_sel_InvoiceDataForReturnResult.cs" />
+    <Compile Include="sp_sel_ReturnReasonsResult.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

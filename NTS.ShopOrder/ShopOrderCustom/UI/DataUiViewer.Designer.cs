@@ -41,6 +41,7 @@
             this.Name = "DataUiViewer";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Просмотр перенесенного заказа";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.DataUiViewer_FormClosing);
             this.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.DataUiViewer_PreviewKeyDown);
             this.ResumeLayout(false);
 

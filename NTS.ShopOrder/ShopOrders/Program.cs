@@ -4,6 +4,7 @@ using System.Windows.Forms;
 using Common;
 using Common.Logger;
 using DataBase;
+using DataBase.DataObject;
 using DataBase.Log;
 using DataBase.Repository;
 using DevExpress.LookAndFeel;
@@ -63,6 +64,11 @@ namespace ShopOrders
                 container.RegisterType<GoodsAssorts>();
                 container.RegisterType<Users>();
                 container.RegisterType<BalanceEditRepo>();
+                container.RegisterType<ReturnItems>();
+                container.RegisterType<Returns>();
+                container.RegisterType<InvoiceData>();
+                container.RegisterType<ReasonData>();
+                container.RegisterType<ReturnShops>();
 
                 container.RegisterType<LoginModel>();
                 container.RegisterType<UserManagerModel>();
@@ -74,6 +80,9 @@ namespace ShopOrders
                 container.RegisterType<AssortForOrderModel>();
                 container.RegisterType<ActualAssortViewerModel>();
                 container.RegisterType<BalanceEditorModel>();
+                container.RegisterType<GoodsReturnModel>();
+                container.RegisterType<GoodsReturnStateModel>();
+                container.RegisterType<GoodsReturnAddModel>();
                 container.RegisterType<MainModel>();
 
                 container.RegisterInstance<IReportManager>(container.Resolve<ReportManager>());
@@ -99,9 +108,10 @@ namespace ShopOrders
                 var myLog = new EventLog {Source = "ThreadException"};
                 myLog.WriteEntry(errorMsg + ex.Message + "\n\nStack Trace:\n" + ex.StackTrace);
 
-                MessageBox.Show("Ошибка", ex.Message, MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                MessageBox.Show(ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Stop);
             }
-            catch (Exception exc){
+            catch (Exception exc)
+            {
                 try
                 {
                     MessageBox.Show("Fatal Non-UI Error",

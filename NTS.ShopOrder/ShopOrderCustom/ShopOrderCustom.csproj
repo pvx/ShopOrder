@@ -30,6 +30,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <DocumentationFile>bin\Debug\ShopOrderCustom.XML</DocumentationFile>
+    <CodeAnalysisRuleSet>BasicDesignGuidelineRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -41,19 +42,24 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="DevExpress.BonusSkins.v10.2, Version=10.2.8.0, Culture=neutral, PublicKeyToken=95fc6c5621878f0a" />
+    <Reference Include="DevExpress.Charts.v10.2.Core, Version=10.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.Data.v10.2, Version=10.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.ExpressApp.v10.2, Version=10.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.ExpressApp.Win.v10.2, Version=10.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.OfficeSkins.v10.2, Version=10.2.8.0, Culture=neutral, PublicKeyToken=95fc6c5621878f0a" />
     <Reference Include="DevExpress.Persistent.Base.v10.2, Version=10.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.PivotGrid.v10.2.Core, Version=10.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.RichEdit.v10.2.Core, Version=10.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.Utils.v10.2, Version=10.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.Xpo.v10.2, Version=10.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.XtraBars.v10.2, Version=10.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraCharts.v10.2, Version=10.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraEditors.v10.2, Version=10.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraGrid.v10.2, Version=10.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraLayout.v10.2, Version=10.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.XtraNavBar.v10.2, Version=10.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraPivotGrid.v10.2, Version=10.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraReports.v10.2, Version=10.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraRichEdit.v10.2, Version=10.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.XtraTreeList.v10.2, Version=10.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraVerticalGrid.v10.2, Version=10.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
@@ -86,7 +92,13 @@
     <Compile Include="GroupAssort.cs" />
     <Compile Include="Models\ActualAssortViewerModel.cs" />
     <Compile Include="Models\BalanceEditorModel.cs" />
+    <Compile Include="Models\GoodsReturnStateModel.cs" />
+    <Compile Include="Models\GoodsReturnAddModel.cs" />
+    <Compile Include="Models\GoodsReturnModel.cs" />
     <Compile Include="Models\ModelLayout.cs" />
+    <Compile Include="Returns.cs" />
+    <Compile Include="ReturnShopObj.cs" />
+    <Compile Include="ReturnShops.cs" />
     <Compile Include="UI\ActualAssortViewerForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -121,6 +133,24 @@
     <Compile Include="UI\DataUiViewer.Designer.cs">
       <DependentUpon>DataUiViewer.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI\GoodsReturnAddDlg.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\GoodsReturnAddDlg.Designer.cs">
+      <DependentUpon>GoodsReturnAddDlg.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\GoodsReturnForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\GoodsReturnForm.Designer.cs">
+      <DependentUpon>GoodsReturnForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\GoodsReturnStateForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\GoodsReturnStateForm.Designer.cs">
+      <DependentUpon>GoodsReturnStateForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\MinOrderForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -130,6 +160,12 @@
     <Compile Include="Models\MinOrderModel.cs" />
     <Compile Include="OrderShops.cs" />
     <Compile Include="Models\OrderManagerModel.cs" />
+    <Compile Include="UI\UcGoodReturnSelect.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\UcGoodReturnSelect.Designer.cs">
+      <DependentUpon>UcGoodReturnSelect.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\UcOrderCompare.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -186,9 +222,11 @@
   <ItemGroup>
     <EmbeddedResource Include="UI\ActualAssortViewerForm.resx">
       <DependentUpon>ActualAssortViewerForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\AssortForOrderForm.resx">
       <DependentUpon>AssortForOrderForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\AssortimentForm.resx">
       <DependentUpon>AssortimentForm.cs</DependentUpon>
@@ -199,8 +237,20 @@
     <EmbeddedResource Include="UI\DataUiViewer.resx">
       <DependentUpon>DataUiViewer.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UI\GoodsReturnAddDlg.resx">
+      <DependentUpon>GoodsReturnAddDlg.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\GoodsReturnForm.resx">
+      <DependentUpon>GoodsReturnForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\GoodsReturnStateForm.resx">
+      <DependentUpon>GoodsReturnStateForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UI\MinOrderForm.resx">
       <DependentUpon>MinOrderForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\UcGoodReturnSelect.resx">
+      <DependentUpon>UcGoodReturnSelect.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\UcOrderCompare.resx">
       <DependentUpon>UcOrderCompare.cs</DependentUpon>
@@ -215,6 +265,7 @@
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\UcOrderInfo.resx">
       <DependentUpon>UcOrderInfo.cs</DependentUpon>
@@ -334,6 +385,16 @@
   <ItemGroup>
     <None Include="Resources\ImportXLS.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\edit_add_9140.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\edit_6107.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\list-remove_6798.png" />
+  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

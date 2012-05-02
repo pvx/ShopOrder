@@ -1,6 +1,5 @@
 using System;
-using Common;
-using Common.Logger;
+using Common;using Common.Logger;
 using Microsoft.Practices.Unity;
 
 namespace DataBase

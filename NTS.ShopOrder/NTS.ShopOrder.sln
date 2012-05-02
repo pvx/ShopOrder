@@ -120,4 +120,8 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{4237D95E-E588-42F7-A824-0FBFA3626211} = {F3CF4BD2-F7FB-4D3C-B37F-533316C179C8}
 	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		BuildVersion_StartDate = 2012/4/17
+		BuildVersion_BuildVersioningStyle = None.None.None.Increment
+	EndGlobalSection
 EndGlobal

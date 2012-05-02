@@ -864,4 +864,150 @@
     <Parameter Name="GoodsCode" Parameter="goodsCode" Type="System.String" DbType="NVarChar(20)" />
     <Return Type="System.Int32" />
   </Function>
+  <Function Name="dbo.sp_ins_ReturnHeader" Method="sp_ins_ReturnHeader">
+    <Parameter Name="IdReturnHeader" Parameter="idReturnHeader" Type="System.Guid" DbType="UniqueIdentifier" />
+    <Parameter Name="IdReturnState" Parameter="idReturnState" Type="System.Int32" DbType="Int" />
+    <Parameter Name="IdUser" Parameter="idUser" Type="System.Guid" DbType="UniqueIdentifier" />
+    <Parameter Name="winlogin" Type="System.String" DbType="NVarChar(100)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.sp_sel_ReturnStates" Method="sp_sel_ReturnStates">
+    <ElementType Name="sp_sel_ReturnStatesResult">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.sp_sel_ReturnHeaderOnDate" Method="sp_sel_ReturnHeaderOnDate">
+    <Parameter Name="id_shop" Type="System.Guid" DbType="UniqueIdentifier" />
+    <Parameter Name="filterDate" Type="System.DateTime" DbType="DateTime" />
+    <ElementType Name="sp_sel_ReturnHeaderOnDateResult">
+      <Column Name="id" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="id_User" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="id_ReturnState" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="WinLogin" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.sp_upd_ReturnHeaderState" Method="sp_upd_ReturnHeaderState">
+    <Parameter Name="IdReturnHeader" Parameter="idReturnHeader" Type="System.Guid" DbType="UniqueIdentifier" />
+    <Parameter Name="IdState" Parameter="idState" Type="System.Int32" DbType="Int" />
+    <Parameter Name="winlogin" Type="System.String" DbType="NVarChar(100)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.sp_sel_ReturnReasons" Method="sp_sel_ReturnReasons">
+    <ElementType Name="sp_sel_ReturnReasonsResult">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(255) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.sp_ins_ReturnItem" Method="sp_ins_ReturnItem">
+    <Parameter Name="id_ReturnItem" Type="System.Guid" DbType="UniqueIdentifier" />
+    <Parameter Name="id_ReturnHeader" Type="System.Guid" DbType="UniqueIdentifier" />
+    <Parameter Name="id_InvoiceData" Type="System.Int32" DbType="Int" />
+    <Parameter Name="id_ReturnReason" Type="System.Int32" DbType="Int" />
+    <Parameter Name="Quantity" Parameter="quantity" Type="System.Double" DbType="Float" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.sp_del_ReturnItem" Method="sp_del_ReturnItem">
+    <Parameter Name="id_ReturnItem" Type="System.Guid" DbType="UniqueIdentifier" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.sp_upd_ReturnItem" Method="sp_upd_ReturnItem">
+    <Parameter Name="id_ReturnItem" Type="System.Guid" DbType="UniqueIdentifier" />
+    <Parameter Name="id_ReturnHeader" Type="System.Guid" DbType="UniqueIdentifier" />
+    <Parameter Name="id_InvoiceData" Type="System.Int32" DbType="Int" />
+    <Parameter Name="id_ReturnReason" Type="System.Int32" DbType="Int" />
+    <Parameter Name="Quantity" Parameter="quantity" Type="System.Double" DbType="Float" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.sp_sel_ReturnHeaderOnDateSt" Method="sp_sel_ReturnHeaderOnDateSt">
+    <Parameter Name="id_shop" Type="System.Guid" DbType="UniqueIdentifier" />
+    <Parameter Name="dateFilter" Type="System.DateTime" DbType="DateTime" />
+    <ElementType Name="sp_sel_ReturnHeaderOnDateStResult">
+      <Column Name="id_ReturnHeader" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="id_ReturnState" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="id_User" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="id_Shop" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.sp_sel_ReturnShopsOnDateSt" Method="sp_sel_ReturnShopsOnDateSt">
+    <Parameter Name="dateFilter" Type="System.DateTime" DbType="DateTime" />
+    <ElementType Name="sp_sel_ReturnShopsOnDateStResult">
+      <Column Name="id_Shop" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="ShopName" Type="System.String" DbType="NVarChar(255) NOT NULL" CanBeNull="false" />
+      <Column Name="ShopCode" Type="System.String" DbType="NVarChar(10) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.sp_upd_ReturnStatesPos" Method="sp_upd_ReturnStatesPos">
+    <Parameter Name="id_GoodsReturn" Type="System.Guid" DbType="UniqueIdentifier" />
+    <Parameter Name="id_ReturnPositionState" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.sp_sel_ReturnItems" Method="sp_sel_ReturnItems">
+    <Parameter Name="ReturnHeaderId" Parameter="returnHeaderId" Type="System.Guid" DbType="UniqueIdentifier" />
+    <ElementType Name="sp_sel_ReturnItemsResult">
+      <Column Name="id" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="id_ReturnReason" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="id_ReturnHeader" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="id_InvoiceData" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="QuantityRet" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+      <Column Name="Date" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="Code" Type="System.String" DbType="NVarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="Quantity" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+      <Column Name="InvoiceDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="Price" Type="System.Decimal" DbType="Decimal(15,2) NOT NULL" CanBeNull="false" />
+      <Column Name="Number" Type="System.String" DbType="NVarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="Seria" Type="System.String" DbType="NVarChar(5) NOT NULL" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(255) NOT NULL" CanBeNull="false" />
+      <Column Name="[Group]" Member="Group" Type="System.String" DbType="NVarChar(255) NOT NULL" CanBeNull="false" />
+      <Column Name="Supplier" Type="System.String" DbType="NVarChar(255) NOT NULL" CanBeNull="false" />
+      <Column Name="id_ReturnPositionState" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Barcode" Type="System.String" DbType="NVarChar(20) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.sp_sel_InvoiceDataForReturn" Method="sp_sel_InvoiceDataForReturn">
+    <Parameter Name="id_shop" Type="System.Guid" DbType="UniqueIdentifier" />
+    <ElementType Name="sp_sel_InvoiceDataForReturnResult">
+      <Column Name="Quantity" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+      <Column Name="InvoiceDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="Price" Type="System.Decimal" DbType="Decimal(15,2) NOT NULL" CanBeNull="false" />
+      <Column Name="Number" Type="System.String" DbType="NVarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="Seria" Type="System.String" DbType="NVarChar(5) NOT NULL" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(255) NOT NULL" CanBeNull="false" />
+      <Column Name="[Group]" Member="Group" Type="System.String" DbType="NVarChar(255) NOT NULL" CanBeNull="false" />
+      <Column Name="Supplier" Type="System.String" DbType="NVarChar(255) NOT NULL" CanBeNull="false" />
+      <Column Name="id_Invoice" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Barcode" Type="System.String" DbType="NVarChar(20) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.sp_sel_InvoiceItemForReturn" Method="sp_sel_InvoiceItemForReturn">
+    <Parameter Name="id_invoice" Type="System.Int32" DbType="Int" />
+    <ElementType Name="sp_sel_InvoiceItemForReturnResult">
+      <Column Name="Quantity" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+      <Column Name="InvoiceDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="Price" Type="System.Decimal" DbType="Decimal(15,2) NOT NULL" CanBeNull="false" />
+      <Column Name="Number" Type="System.String" DbType="NVarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="Seria" Type="System.String" DbType="NVarChar(5) NOT NULL" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(255) NOT NULL" CanBeNull="false" />
+      <Column Name="[Group]" Member="Group" Type="System.String" DbType="NVarChar(255) NOT NULL" CanBeNull="false" />
+      <Column Name="Supplier" Type="System.String" DbType="NVarChar(255) NOT NULL" CanBeNull="false" />
+      <Column Name="id_Invoice" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Barcode" Type="System.String" DbType="NVarChar(20) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.sp_sel_ReturnStatesPos" Method="sp_sel_ReturnStatesPos">
+    <ElementType Name="sp_sel_ReturnStatesPosResult">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="StateCode" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.sp_sel_InvoiceDataForReturnRefresh" Method="sp_sel_InvoiceDataForReturnRefresh">
+    <Parameter Name="id_shop" Type="System.Guid" DbType="UniqueIdentifier" />
+    <ElementType Name="sp_sel_InvoiceDataForReturnRefreshResult">
+      <Column Name="Quantity" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+      <Column Name="id_Invoice" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
 </Database>

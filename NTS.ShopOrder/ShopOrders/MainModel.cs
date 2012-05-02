@@ -29,6 +29,8 @@ namespace ShopOrders
         private OrderViewerModel _orderViewerModel;
         private ActualAssortViewerModel _actualAssortViewerModel;
         private BalanceEditorModel _balanceEditorModel;
+        private GoodsReturnModel _goodsReturnModel;
+        private GoodsReturnStateModel _goodsReturnStateModel; 
 
         private XtraForm _view;
         public XtraForm View
@@ -59,7 +61,10 @@ namespace ShopOrders
             _modelDict.Add(typeof(UserManagerModel), () => UnityContainer.Resolve<UserManagerModel>());
             _modelDict.Add(typeof(OrderViewerModel), () => UnityContainer.Resolve<OrderViewerModel>());
             _modelDict.Add(typeof(ActualAssortViewerModel), () => UnityContainer.Resolve<ActualAssortViewerModel>());
-            _modelDict.Add(typeof(BalanceEditorModel), () => UnityContainer.Resolve<BalanceEditorModel>());  
+            _modelDict.Add(typeof(BalanceEditorModel), () => UnityContainer.Resolve<BalanceEditorModel>());
+
+            _modelDict.Add(typeof(GoodsReturnModel), () => UnityContainer.Resolve<GoodsReturnModel>());
+            _modelDict.Add(typeof(GoodsReturnStateModel), () => UnityContainer.Resolve<GoodsReturnStateModel>()); 
         }
 
         public void ShowForm(Type typeModel)
@@ -72,7 +77,7 @@ namespace ShopOrders
                     _balanceEditorModel.View.MdiParent = View;
                     _balanceEditorModel.View.WindowState = FormWindowState.Maximized;
                     _balanceEditorModel.View.Show();
-                    _balanceEditorModel.View.FormClosed += new FormClosedEventHandler(BalanceEditorModelFormClosed);
+                    _balanceEditorModel.View.FormClosed += BalanceEditorModelFormClosed;
                 }
                 else
                 {
@@ -88,7 +93,7 @@ namespace ShopOrders
                     _actualAssortViewerModel.View.MdiParent = View;
                     _actualAssortViewerModel.View.WindowState = FormWindowState.Maximized;
                     _actualAssortViewerModel.View.Show();
-                    _actualAssortViewerModel.View.FormClosed += new FormClosedEventHandler(AssortViewerFormClosed);
+                    _actualAssortViewerModel.View.FormClosed += AssortViewerFormClosed;
                 }
                 else
                 {
@@ -104,7 +109,7 @@ namespace ShopOrders
                     _orderViewerModel.View.MdiParent = View;
                     _orderViewerModel.View.WindowState = FormWindowState.Maximized;
                     _orderViewerModel.View.Show();
-                    _orderViewerModel.View.FormClosed += new FormClosedEventHandler(OrderViewerModelClose);
+                    _orderViewerModel.View.FormClosed += OrderViewerModelClose;
                 }
                 else
                 {
@@ -120,7 +125,7 @@ namespace ShopOrders
                     _assortForOrderModel.View.MdiParent = View;
                     _assortForOrderModel.View.WindowState = FormWindowState.Maximized;
                     _assortForOrderModel.View.Show();
-                    _assortForOrderModel.View.FormClosed += new FormClosedEventHandler(AssortForOrderCloser);
+                    _assortForOrderModel.View.FormClosed += AssortForOrderCloser;
                 }
                 else
                 {
@@ -136,7 +141,7 @@ namespace ShopOrders
                     _orderModel.View.MdiParent = View;
                     _orderModel.View.WindowState = FormWindowState.Maximized;
                     _orderModel.View.Show();
-                    _orderModel.View.FormClosed += new FormClosedEventHandler(OrderCloser);
+                    _orderModel.View.FormClosed += OrderCloser;
                 }
                 else
                 {
@@ -152,7 +157,7 @@ namespace ShopOrders
                     _orderManagerModel.View.MdiParent = View;
                     _orderManagerModel.View.WindowState = FormWindowState.Maximized;
                     _orderManagerModel.View.Show();
-                    _orderManagerModel.View.FormClosed += new FormClosedEventHandler(OrderManagerClose);
+                    _orderManagerModel.View.FormClosed += OrderManagerClose;
                 }
                 else
                 {
@@ -168,7 +173,7 @@ namespace ShopOrders
                     _assortmentModel.View.MdiParent = View;
                     _assortmentModel.View.WindowState = FormWindowState.Maximized;
                     _assortmentModel.View.Show();
-                    _assortmentModel.View.FormClosed += new FormClosedEventHandler(AssortClose);
+                    _assortmentModel.View.FormClosed += AssortClose;
                 }
                 else
                 {
@@ -183,7 +188,7 @@ namespace ShopOrders
                     _minOrderModel.View.MdiParent = View;
                     _minOrderModel.View.WindowState = FormWindowState.Maximized;
                     _minOrderModel.View.Show();
-                    _minOrderModel.View.FormClosed += new FormClosedEventHandler(MinOrderClose);
+                    _minOrderModel.View.FormClosed += MinOrderClose;
                 }
                 else
                 {
@@ -199,18 +204,61 @@ namespace ShopOrders
                     _userManagerModel.View.MdiParent = View;
                     _userManagerModel.View.WindowState = FormWindowState.Maximized;
                     _userManagerModel.View.Show();
-                    _userManagerModel.View.FormClosed += new FormClosedEventHandler(UserManagerClose);
+                    _userManagerModel.View.FormClosed += UserManagerClose;
                 }
                 else
                 {
                     _userManagerModel.View.BringToFront();
                 }
             }
+
+            if (typeModel.Equals(typeof(GoodsReturnModel)))
+            {
+                if (_goodsReturnModel == null)
+                {
+                    _goodsReturnModel = (GoodsReturnModel)_modelDict[typeModel].Invoke();
+                    _goodsReturnModel.View.MdiParent = View;
+                    _goodsReturnModel.View.WindowState = FormWindowState.Maximized;
+                    _goodsReturnModel.View.Show();
+                    _goodsReturnModel.View.FormClosed += GoodsReturnClose;
+                }
+                else
+                {
+                    _goodsReturnModel.View.BringToFront();
+                }
+            }
+
+            if (typeModel.Equals(typeof(GoodsReturnStateModel)))
+            {
+                if (_goodsReturnStateModel == null)
+                {
+                    _goodsReturnStateModel = (GoodsReturnStateModel)_modelDict[typeModel].Invoke();
+                    _goodsReturnStateModel.View.MdiParent = View;
+                    _goodsReturnStateModel.View.WindowState = FormWindowState.Maximized;
+                    _goodsReturnStateModel.View.Show();
+                    _goodsReturnStateModel.View.FormClosed += GoodsReturnStateModelClose;
+                }
+                else
+                {
+                    _goodsReturnStateModel.View.BringToFront();
+                }
+            }
+        }
+
+        private void GoodsReturnStateModelClose(object sender, FormClosedEventArgs e)
+        {
+            _goodsReturnStateModel = null;
+        }
+
+        private void GoodsReturnClose(object sender, FormClosedEventArgs e)
+        {
+            _goodsReturnModel = null;
         }
 
         private void BalanceEditorModelFormClosed(object sender, FormClosedEventArgs e)
         {
-            _balanceEditorModel = null;}
+            _balanceEditorModel = null;
+        }
 
         void AssortViewerFormClosed(object sender, FormClosedEventArgs e)
         {

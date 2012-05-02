@@ -108,6 +108,9 @@ namespace ShopOrders
             mViewActualAssort.Visibility = GetPermission(Permission.ViewActualAssort);
             mUsers.Visibility = GetPermission(Permission.EditUsers);
             mBalanceEditor.Visibility = GetPermission(Permission.EditBalance);
+            mReports.Visibility = GetPermission(Permission.ReportView);
+            mGoodsReturn.Visibility = GetPermission(Permission.CreateReturn);
+            mGoodsReturnSt.Visibility = GetPermission(Permission.CreateReturnSt);
         }
 
         private void MainForm_Load(object sender, System.EventArgs e)
@@ -198,6 +201,16 @@ namespace ShopOrders
         private void MBalanceEditorItemClick(object sender, ItemClickEventArgs e)
         {
             Model.ShowForm(typeof(BalanceEditorModel));
+        }
+
+        private void MGoodsReturnItemClick(object sender, ItemClickEventArgs e)
+        {
+            Model.ShowForm(typeof(GoodsReturnModel));
+        }
+
+        private void MGoodsReturnStItemClick(object sender, ItemClickEventArgs e)
+        {
+            Model.ShowForm(typeof(GoodsReturnStateModel));
         }
     }
 }
