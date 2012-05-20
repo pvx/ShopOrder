@@ -68,7 +68,8 @@ namespace DataBase.DataObject
                                ReturnReasonObjs = ReturnReasons,
                                Id = o.id,
                                ReturnPositionStateId = o.id_ReturnPositionState,
-                               Barcode = o.Barcode
+                               Barcode = o.Barcode,
+                               Code = o.Code
                             });
                 foreach (var returnObj in rets)
                 {

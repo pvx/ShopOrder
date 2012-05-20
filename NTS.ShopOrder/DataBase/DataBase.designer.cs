@@ -668,20 +668,6 @@ namespace DataBase
 			return ((ISingleResult<sp_sel_ReturnItemsResult>)(result.ReturnValue));
 		}
 		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.sp_sel_InvoiceDataForReturn")]
-		public ISingleResult<sp_sel_InvoiceDataForReturnResult> sp_sel_InvoiceDataForReturn([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="UniqueIdentifier")] System.Nullable<System.Guid> id_shop)
-		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), id_shop);
-			return ((ISingleResult<sp_sel_InvoiceDataForReturnResult>)(result.ReturnValue));
-		}
-		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.sp_sel_InvoiceItemForReturn")]
-		public ISingleResult<sp_sel_InvoiceItemForReturnResult> sp_sel_InvoiceItemForReturn([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> id_invoice)
-		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), id_invoice);
-			return ((ISingleResult<sp_sel_InvoiceItemForReturnResult>)(result.ReturnValue));
-		}
-		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.sp_sel_ReturnStatesPos")]
 		public ISingleResult<sp_sel_ReturnStatesPosResult> sp_sel_ReturnStatesPos()
 		{
@@ -694,6 +680,20 @@ namespace DataBase
 		{
 			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), id_shop);
 			return ((ISingleResult<sp_sel_InvoiceDataForReturnRefreshResult>)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.sp_sel_InvoiceDataForReturn")]
+		public ISingleResult<sp_sel_InvoiceDataForReturnResult> sp_sel_InvoiceDataForReturn([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="UniqueIdentifier")] System.Nullable<System.Guid> id_shop)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), id_shop);
+			return ((ISingleResult<sp_sel_InvoiceDataForReturnResult>)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.sp_sel_InvoiceItemForReturn")]
+		public ISingleResult<sp_sel_InvoiceItemForReturnResult> sp_sel_InvoiceItemForReturn([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> id_invoice)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), id_invoice);
+			return ((ISingleResult<sp_sel_InvoiceItemForReturnResult>)(result.ReturnValue));
 		}
 	}
 	
@@ -12186,6 +12186,112 @@ namespace DataBase
 		}
 	}
 	
+	public partial class sp_sel_ReturnStatesPosResult
+	{
+		
+		private int _id;
+		
+		private string _Name;
+		
+		private string _StateCode;
+		
+		public sp_sel_ReturnStatesPosResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id", DbType="Int NOT NULL")]
+		public int id
+		{
+			get
+			{
+				return this._id;
+			}
+			set
+			{
+				if ((this._id != value))
+				{
+					this._id = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Name", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		public string Name
+		{
+			get
+			{
+				return this._Name;
+			}
+			set
+			{
+				if ((this._Name != value))
+				{
+					this._Name = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_StateCode", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		public string StateCode
+		{
+			get
+			{
+				return this._StateCode;
+			}
+			set
+			{
+				if ((this._StateCode != value))
+				{
+					this._StateCode = value;
+				}
+			}
+		}
+	}
+	
+	public partial class sp_sel_InvoiceDataForReturnRefreshResult
+	{
+		
+		private double _Quantity;
+		
+		private int _id_Invoice;
+		
+		public sp_sel_InvoiceDataForReturnRefreshResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Quantity", DbType="Float NOT NULL")]
+		public double Quantity
+		{
+			get
+			{
+				return this._Quantity;
+			}
+			set
+			{
+				if ((this._Quantity != value))
+				{
+					this._Quantity = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_Invoice", DbType="Int NOT NULL")]
+		public int id_Invoice
+		{
+			get
+			{
+				return this._id_Invoice;
+			}
+			set
+			{
+				if ((this._id_Invoice != value))
+				{
+					this._id_Invoice = value;
+				}
+			}
+		}
+	}
+	
 	public partial class sp_sel_InvoiceDataForReturnResult
 	{
 		
@@ -12208,6 +12314,8 @@ namespace DataBase
 		private int _id_Invoice;
 		
 		private string _Barcode;
+		
+		private string _Code;
 		
 		public sp_sel_InvoiceDataForReturnResult()
 		{
@@ -12372,6 +12480,22 @@ namespace DataBase
 				}
 			}
 		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Code", DbType="NVarChar(20) NOT NULL", CanBeNull=false)]
+		public string Code
+		{
+			get
+			{
+				return this._Code;
+			}
+			set
+			{
+				if ((this._Code != value))
+				{
+					this._Code = value;
+				}
+			}
+		}
 	}
 	
 	public partial class sp_sel_InvoiceItemForReturnResult
@@ -12396,6 +12520,8 @@ namespace DataBase
 		private int _id_Invoice;
 		
 		private string _Barcode;
+		
+		private string _Code;
 		
 		public sp_sel_InvoiceItemForReturnResult()
 		{
@@ -12560,109 +12686,19 @@ namespace DataBase
 				}
 			}
 		}
-	}
-	
-	public partial class sp_sel_ReturnStatesPosResult
-	{
 		
-		private int _id;
-		
-		private string _Name;
-		
-		private string _StateCode;
-		
-		public sp_sel_ReturnStatesPosResult()
-		{
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id", DbType="Int NOT NULL")]
-		public int id
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Code", DbType="NVarChar(20) NOT NULL", CanBeNull=false)]
+		public string Code
 		{
 			get
 			{
-				return this._id;
+				return this._Code;
 			}
 			set
 			{
-				if ((this._id != value))
+				if ((this._Code != value))
 				{
-					this._id = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Name", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
-		public string Name
-		{
-			get
-			{
-				return this._Name;
-			}
-			set
-			{
-				if ((this._Name != value))
-				{
-					this._Name = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_StateCode", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
-		public string StateCode
-		{
-			get
-			{
-				return this._StateCode;
-			}
-			set
-			{
-				if ((this._StateCode != value))
-				{
-					this._StateCode = value;
-				}
-			}
-		}
-	}
-	
-	public partial class sp_sel_InvoiceDataForReturnRefreshResult
-	{
-		
-		private double _Quantity;
-		
-		private int _id_Invoice;
-		
-		public sp_sel_InvoiceDataForReturnRefreshResult()
-		{
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Quantity", DbType="Float NOT NULL")]
-		public double Quantity
-		{
-			get
-			{
-				return this._Quantity;
-			}
-			set
-			{
-				if ((this._Quantity != value))
-				{
-					this._Quantity = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_Invoice", DbType="Int NOT NULL")]
-		public int id_Invoice
-		{
-			get
-			{
-				return this._id_Invoice;
-			}
-			set
-			{
-				if ((this._id_Invoice != value))
-				{
-					this._id_Invoice = value;
+					this._Code = value;
 				}
 			}
 		}

@@ -193,7 +193,21 @@ namespace ShopOrderCustom.UI
                         "Применение свойства", MessageBoxButtons.YesNo) == DialogResult.Yes))
             {
                 var ids = Model.ReturnStatePos.Where(g => g.StateCode == "AGREEDNTS" || g.StateCode == "NOTAGREED").Select(s => s.Id).ToArray();
+                var selPos = new List<ReturnItemObj>();
                 for (int i = 0; i < gridView.RowCount; i++)
+                {
+                    int rowHandle = gridView.GetVisibleRowHandle(i);
+                    if (gridView.IsDataRow(rowHandle))
+                    {
+                        dynamic re = gridView.GetRow(rowHandle);
+                        if (!ids.Any(x => x == re.ReturnPositionStateId))
+                            selPos.Add(re);
+                    }
+                }
+                foreach (var curItem in selPos)
+                    curItem.ReturnPositionStateId = _categoryObj.Id;
+                
+                /*for (int i = 0; i < gridView.RowCount; i++)
                 {
                     int rowHandle = gridView.GetVisibleRowHandle(i);
                     if (gridView.IsDataRow(rowHandle))
@@ -204,7 +218,7 @@ namespace ShopOrderCustom.UI
                         if(!ids.Any(x => x == re.ReturnPositionStateId))
                             re.ReturnPositionStateId = _categoryObj.Id;
                     }
-                }
+                }*/
             }
         }
 

@@ -2,6 +2,7 @@ using System;
 using System.ComponentModel;
 using System.Data.Linq;
 using System.Windows.Forms;
+using Common.Calculations;
 using Common.Enum;
 
 namespace DataBase.DataObject
@@ -282,29 +283,38 @@ namespace DataBase.DataObject
         }
 
         void BeforeReqQuantityChange(ref double reqQuantity)
-        {    
-            if ((!IsShopBalance) || (OrderMode == AutoOrderModeEnum.NothingMode))
-                CalcOrder(ref reqQuantity);
+        {
+            if((MinOrder == QuantityInPack) && (!RoundOrderHelper.Check(Quantity, QuantityInPack)))
+            {
+                reqQuantity = RoundOrderHelper.Calc(reqQuantity, Quantity, QuantityInPack, MinOrder);
+                if ((IsQuoted) && (reqQuantity > Quota))
+                    reqQuantity = Quota;
+            }
             else
             {
-                switch (OrderMode)
+                if ((!IsShopBalance) || (OrderMode == AutoOrderModeEnum.NothingMode))
+                    CalcOrder(ref reqQuantity);
+                else
                 {
-                    case AutoOrderModeEnum.MinOrderMode:
-                        if ((IsShopBalance) && (ShopBalance == 0))
-                            SetValue(ref reqQuantity, MinOrder);
-                        break;
+                    switch (OrderMode)
+                    {
+                        case AutoOrderModeEnum.MinOrderMode:
+                            if ((IsShopBalance) && (ShopBalance == 0))
+                                SetValue(ref reqQuantity, MinOrder);
+                            break;
 
-                    case AutoOrderModeEnum.RecommendMode:
-                        if ((IsShopBalance) && (ShopBalance == 0))
-                            SetValue(ref reqQuantity, double.Parse(ForOrder.ToString()));
-                        break;
+                        case AutoOrderModeEnum.RecommendMode:
+                            if ((IsShopBalance) && (ShopBalance == 0))
+                                SetValue(ref reqQuantity, double.Parse(ForOrder.ToString()));
+                            break;
 
-                    case AutoOrderModeEnum.AllRecommendMode:
-                        if (IsShopBalance)
-                            SetValue(ref reqQuantity, double.Parse(ForOrder.ToString()));
-                        break;
+                        case AutoOrderModeEnum.AllRecommendMode:
+                            if (IsShopBalance)
+                                SetValue(ref reqQuantity, double.Parse(ForOrder.ToString()));
+                            break;
+                    }
+                    CalcOrder(ref reqQuantity);
                 }
-                CalcOrder(ref reqQuantity);
             }
         }
 

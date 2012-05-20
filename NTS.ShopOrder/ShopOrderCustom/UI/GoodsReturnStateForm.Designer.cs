@@ -82,6 +82,7 @@
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colBarcode = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colCode = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemSpinEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemSpinEdit();
             this.repositoryItemTextEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
             this.repositoryItemTimeEdit2 = new DevExpress.XtraEditors.Repository.RepositoryItemTimeEdit();
@@ -282,22 +283,22 @@
             // 
             this.barDockControlBottom.CausesValidation = false;
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.barDockControlBottom.Location = new System.Drawing.Point(0, 480);
-            this.barDockControlBottom.Size = new System.Drawing.Size(968, 23);
+            this.barDockControlBottom.Location = new System.Drawing.Point(0, 477);
+            this.barDockControlBottom.Size = new System.Drawing.Size(968, 26);
             // 
             // barDockControlLeft
             // 
             this.barDockControlLeft.CausesValidation = false;
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
             this.barDockControlLeft.Location = new System.Drawing.Point(0, 47);
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 433);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 430);
             // 
             // barDockControlRight
             // 
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
             this.barDockControlRight.Location = new System.Drawing.Point(968, 47);
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 433);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 430);
             // 
             // barButtonItem2
             // 
@@ -339,7 +340,7 @@
             this.splitContainerControl1.Panel1.Text = "Panel1";
             this.splitContainerControl1.Panel2.Controls.Add(this.grid);
             this.splitContainerControl1.Panel2.Text = "Panel2";
-            this.splitContainerControl1.Size = new System.Drawing.Size(968, 433);
+            this.splitContainerControl1.Size = new System.Drawing.Size(968, 430);
             this.splitContainerControl1.SplitterPosition = 225;
             this.splitContainerControl1.TabIndex = 5;
             this.splitContainerControl1.Text = "splitContainerControl1";
@@ -356,7 +357,7 @@
             this.treeList.OptionsView.ShowCheckBoxes = true;
             this.treeList.OptionsView.ShowHorzLines = false;
             this.treeList.OptionsView.ShowVertLines = false;
-            this.treeList.Size = new System.Drawing.Size(225, 433);
+            this.treeList.Size = new System.Drawing.Size(225, 430);
             this.treeList.StateImageList = this.ilNode;
             this.treeList.TabIndex = 0;
             this.treeList.GetStateImage += new DevExpress.XtraTreeList.GetStateImageEventHandler(this.TreeListGetStateImage);
@@ -388,7 +389,7 @@
             this.repositoryItemLookUpEdit1,
             this.repositoryItemLookUpEdit2,
             this.lpStatePos});
-            this.grid.Size = new System.Drawing.Size(738, 433);
+            this.grid.Size = new System.Drawing.Size(738, 430);
             this.grid.TabIndex = 0;
             this.grid.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView});
@@ -408,7 +409,8 @@
             this.colReturn,
             this.colReturnReason,
             this.colPosState,
-            this.colBarcode});
+            this.colBarcode,
+            this.colCode});
             this.gridView.GridControl = this.grid;
             this.gridView.Name = "gridView";
             this.gridView.OptionsDetail.EnableMasterViewMode = false;
@@ -429,7 +431,7 @@
             this.colName.SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Count;
             this.colName.Visible = true;
             this.colName.VisibleIndex = 0;
-            this.colName.Width = 296;
+            this.colName.Width = 143;
             // 
             // colGroup
             // 
@@ -440,7 +442,7 @@
             this.colGroup.OptionsColumn.ReadOnly = true;
             this.colGroup.Visible = true;
             this.colGroup.VisibleIndex = 1;
-            this.colGroup.Width = 160;
+            this.colGroup.Width = 77;
             // 
             // colSupplier
             // 
@@ -450,8 +452,8 @@
             this.colSupplier.OptionsColumn.AllowEdit = false;
             this.colSupplier.OptionsColumn.ReadOnly = true;
             this.colSupplier.Visible = true;
-            this.colSupplier.VisibleIndex = 2;
-            this.colSupplier.Width = 122;
+            this.colSupplier.VisibleIndex = 3;
+            this.colSupplier.Width = 56;
             // 
             // colLot
             // 
@@ -461,8 +463,8 @@
             this.colLot.OptionsColumn.AllowEdit = false;
             this.colLot.OptionsColumn.ReadOnly = true;
             this.colLot.Visible = true;
-            this.colLot.VisibleIndex = 3;
-            this.colLot.Width = 134;
+            this.colLot.VisibleIndex = 4;
+            this.colLot.Width = 61;
             // 
             // colDateInvoice
             // 
@@ -472,8 +474,8 @@
             this.colDateInvoice.OptionsColumn.AllowEdit = false;
             this.colDateInvoice.OptionsColumn.ReadOnly = true;
             this.colDateInvoice.Visible = true;
-            this.colDateInvoice.VisibleIndex = 4;
-            this.colDateInvoice.Width = 134;
+            this.colDateInvoice.VisibleIndex = 5;
+            this.colDateInvoice.Width = 61;
             // 
             // colPrice
             // 
@@ -483,8 +485,8 @@
             this.colPrice.OptionsColumn.AllowEdit = false;
             this.colPrice.OptionsColumn.ReadOnly = true;
             this.colPrice.Visible = true;
-            this.colPrice.VisibleIndex = 5;
-            this.colPrice.Width = 91;
+            this.colPrice.VisibleIndex = 6;
+            this.colPrice.Width = 42;
             // 
             // colQuantity
             // 
@@ -509,8 +511,8 @@
             this.colReturn.SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Custom;
             this.colReturn.SummaryItem.Tag = "summary";
             this.colReturn.Visible = true;
-            this.colReturn.VisibleIndex = 7;
-            this.colReturn.Width = 137;
+            this.colReturn.VisibleIndex = 8;
+            this.colReturn.Width = 63;
             // 
             // colReturnReason
             // 
@@ -521,8 +523,8 @@
             this.colReturnReason.OptionsColumn.AllowEdit = false;
             this.colReturnReason.OptionsColumn.ReadOnly = true;
             this.colReturnReason.Visible = true;
-            this.colReturnReason.VisibleIndex = 8;
-            this.colReturnReason.Width = 172;
+            this.colReturnReason.VisibleIndex = 9;
+            this.colReturnReason.Width = 52;
             // 
             // lpReasonLookUp
             // 
@@ -549,7 +551,8 @@
             this.colPosState.MinWidth = 70;
             this.colPosState.Name = "colPosState";
             this.colPosState.Visible = true;
-            this.colPosState.VisibleIndex = 9;
+            this.colPosState.VisibleIndex = 10;
+            this.colPosState.Width = 72;
             // 
             // lpStatePos
             // 
@@ -590,8 +593,19 @@
             this.colBarcode.OptionsColumn.AllowEdit = false;
             this.colBarcode.OptionsColumn.ReadOnly = true;
             this.colBarcode.Visible = true;
-            this.colBarcode.VisibleIndex = 6;
-            this.colBarcode.Width = 93;
+            this.colBarcode.VisibleIndex = 7;
+            this.colBarcode.Width = 42;
+            // 
+            // colCode
+            // 
+            this.colCode.Caption = "Код товара";
+            this.colCode.FieldName = "Code";
+            this.colCode.Name = "colCode";
+            this.colCode.OptionsColumn.AllowEdit = false;
+            this.colCode.OptionsColumn.ReadOnly = true;
+            this.colCode.Visible = true;
+            this.colCode.VisibleIndex = 2;
+            this.colCode.Width = 51;
             // 
             // repositoryItemSpinEdit1
             // 
@@ -720,5 +734,6 @@
         private DevExpress.XtraBars.BarButtonItem barButtonItem1;
         private DevExpress.XtraGrid.Columns.GridColumn colBarcode;
         private DevExpress.XtraBars.BarButtonItem btExport;
+        private DevExpress.XtraGrid.Columns.GridColumn colCode;
     }
 }

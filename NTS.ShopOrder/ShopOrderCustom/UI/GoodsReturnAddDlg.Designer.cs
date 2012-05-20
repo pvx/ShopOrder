@@ -56,6 +56,7 @@
             this.layoutControlItem4 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem5 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.colCode = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cbGoodsLk.Properties)).BeginInit();
@@ -122,7 +123,8 @@
             this.colName,
             this.colBarcode,
             this.colSupplier,
-            this.colGroup});
+            this.colGroup,
+            this.colCode});
             this.searchLookUpEdit1View.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus;
             this.searchLookUpEdit1View.Name = "searchLookUpEdit1View";
             this.searchLookUpEdit1View.OptionsSelection.EnableAppearanceFocusedCell = false;
@@ -417,6 +419,14 @@
             this.layoutControlItem1.Text = "Товар";
             this.layoutControlItem1.TextSize = new System.Drawing.Size(93, 13);
             // 
+            // colCode
+            // 
+            this.colCode.Caption = "Код товара";
+            this.colCode.FieldName = "Code";
+            this.colCode.Name = "colCode";
+            this.colCode.Visible = true;
+            this.colCode.VisibleIndex = 9;
+            // 
             // GoodsReturnAddDlg
             // 
             this.AcceptButton = this.btOk;
@@ -488,5 +498,6 @@
         private DevExpress.XtraGrid.Columns.GridColumn colSupplier;
         private DevExpress.XtraGrid.Columns.GridColumn colBarcode;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem1;
+        private DevExpress.XtraGrid.Columns.GridColumn colCode;
     }
 }

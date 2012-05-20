@@ -31,6 +31,20 @@ namespace DataBase.DataObject
             }
         }
 
+        public string Code
+        {
+            get { return _code; }
+            set
+            {
+                if ((_code != value))
+                {
+                    SendPropertyChanging("Code");
+                    _code = value;
+                    SendPropertyChanged("Code");
+                }
+            }
+        }
+
         public ReturnItemObj()
         {
             Id = Guid.NewGuid();
@@ -56,6 +70,7 @@ namespace DataBase.DataObject
             Id = itemObj.Id;
             ReturnPositionStateId = itemObj.ReturnPositionStateId;
             Barcode = itemObj.Barcode;
+            Code = itemObj.Code;
         }
 
         private int _returnPositionStateId;
@@ -85,6 +100,8 @@ namespace DataBase.DataObject
         }
 
         private string _barcode;
+        private string _code;
+
         public string Barcode
         {
             get { return _barcode; }

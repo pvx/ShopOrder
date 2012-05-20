@@ -95,6 +95,13 @@ namespace ShopOrderCustom.Properties {
             }
         }
         
+        internal static System.Drawing.Bitmap DeSelectAll {
+            get {
+                object obj = ResourceManager.GetObject("DeSelectAll", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
         internal static System.Drawing.Bitmap drink_empty {
             get {
                 object obj = ResourceManager.GetObject("drink_empty", resourceCulture);
@@ -266,6 +273,13 @@ namespace ShopOrderCustom.Properties {
         internal static System.Drawing.Bitmap reload_all_tabs {
             get {
                 object obj = ResourceManager.GetObject("reload_all_tabs", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap SelectAll {
+            get {
+                object obj = ResourceManager.GetObject("SelectAll", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

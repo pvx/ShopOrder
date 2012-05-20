@@ -64,6 +64,7 @@
     <Compile Include="BaseView.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Calculations\RoundOrderHelper.cs" />
     <Compile Include="Enum\AutoOrderModeEnum.cs" />
     <Compile Include="ViewConst.cs" />
     <Compile Include="DictionaryPropertyGridAdapter.cs" />

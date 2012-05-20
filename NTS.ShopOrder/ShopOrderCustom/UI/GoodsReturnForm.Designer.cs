@@ -89,6 +89,7 @@
             this.repositoryItemTextEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
             this.repositoryItemTimeEdit2 = new DevExpress.XtraEditors.Repository.RepositoryItemTimeEdit();
             this.repositoryItemLookUpEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
+            this.colCode = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.BarManager)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cdDateFilterItem)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cdDateFilterItem.VistaTimeProperties)).BeginInit();
@@ -414,7 +415,8 @@
             this.colQuantity,
             this.colReturn,
             this.colReturnReason,
-            this.colReturnPositionState});
+            this.colReturnPositionState,
+            this.colCode});
             this.gridView.GridControl = this.grid;
             this.gridView.Name = "gridView";
             this.gridView.OptionsBehavior.ReadOnly = true;
@@ -623,6 +625,14 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.repositoryItemLookUpEdit1.Name = "repositoryItemLookUpEdit1";
             // 
+            // colCode
+            // 
+            this.colCode.Caption = "Код товара";
+            this.colCode.FieldName = "Code";
+            this.colCode.Name = "colCode";
+            this.colCode.Visible = true;
+            this.colCode.VisibleIndex = 10;
+            // 
             // GoodsReturnForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -701,5 +711,6 @@
         private DevExpress.XtraGrid.Columns.GridColumn colReturnPositionState;
         private DevExpress.XtraEditors.Repository.RepositoryItemGridLookUpEdit lpStatePos;
         private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
+        private DevExpress.XtraGrid.Columns.GridColumn colCode;
     }
 }

@@ -966,6 +966,20 @@
       <Column Name="Barcode" Type="System.String" DbType="NVarChar(20) NOT NULL" CanBeNull="false" />
     </ElementType>
   </Function>
+  <Function Name="dbo.sp_sel_ReturnStatesPos" Method="sp_sel_ReturnStatesPos">
+    <ElementType Name="sp_sel_ReturnStatesPosResult">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="StateCode" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.sp_sel_InvoiceDataForReturnRefresh" Method="sp_sel_InvoiceDataForReturnRefresh">
+    <Parameter Name="id_shop" Type="System.Guid" DbType="UniqueIdentifier" />
+    <ElementType Name="sp_sel_InvoiceDataForReturnRefreshResult">
+      <Column Name="Quantity" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+      <Column Name="id_Invoice" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
   <Function Name="dbo.sp_sel_InvoiceDataForReturn" Method="sp_sel_InvoiceDataForReturn">
     <Parameter Name="id_shop" Type="System.Guid" DbType="UniqueIdentifier" />
     <ElementType Name="sp_sel_InvoiceDataForReturnResult">
@@ -979,6 +993,7 @@
       <Column Name="Supplier" Type="System.String" DbType="NVarChar(255) NOT NULL" CanBeNull="false" />
       <Column Name="id_Invoice" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="Barcode" Type="System.String" DbType="NVarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="Code" Type="System.String" DbType="NVarChar(20) NOT NULL" CanBeNull="false" />
     </ElementType>
   </Function>
   <Function Name="dbo.sp_sel_InvoiceItemForReturn" Method="sp_sel_InvoiceItemForReturn">
@@ -994,20 +1009,7 @@
       <Column Name="Supplier" Type="System.String" DbType="NVarChar(255) NOT NULL" CanBeNull="false" />
       <Column Name="id_Invoice" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="Barcode" Type="System.String" DbType="NVarChar(20) NOT NULL" CanBeNull="false" />
-    </ElementType>
-  </Function>
-  <Function Name="dbo.sp_sel_ReturnStatesPos" Method="sp_sel_ReturnStatesPos">
-    <ElementType Name="sp_sel_ReturnStatesPosResult">
-      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="Name" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="StateCode" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
-    </ElementType>
-  </Function>
-  <Function Name="dbo.sp_sel_InvoiceDataForReturnRefresh" Method="sp_sel_InvoiceDataForReturnRefresh">
-    <Parameter Name="id_shop" Type="System.Guid" DbType="UniqueIdentifier" />
-    <ElementType Name="sp_sel_InvoiceDataForReturnRefreshResult">
-      <Column Name="Quantity" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
-      <Column Name="id_Invoice" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Code" Type="System.String" DbType="NVarChar(20) NOT NULL" CanBeNull="false" />
     </ElementType>
   </Function>
 </Database>

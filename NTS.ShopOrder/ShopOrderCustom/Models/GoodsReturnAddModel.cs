@@ -1,13 +1,9 @@
 ﻿using System;
-using System.Linq;
-using System.Windows.Forms;
-using Common;
+using System.Linq;using Common;
 using Common.Logger;
 using DataBase;
 using DataBase.DataObject;
-using DevExpress.XtraEditors;
 using Microsoft.Practices.Unity;
-using ShopOrderCustom.UI;
 
 namespace ShopOrderCustom.Models
 {
@@ -96,7 +92,8 @@ namespace ShopOrderCustom.Models
                               Supplier = ret.Supplier,
                               ReturnReasonId = reason.id,
                               Barcode = ret.Barcode,
-                              ReturnPositionStateId = 1
+                              ReturnPositionStateId = 1,
+                              Code = ret.Code
                           };
 
         }
@@ -130,7 +127,8 @@ namespace ShopOrderCustom.Models
                                      id_Invoice = item.InvoiceDataId,
                                      QuantityRet = item.QuantityRet,
                                      ReturnReasonId = item.ReturnReasonId,
-                                     Barcode = item.Barcode
+                                     Barcode = item.Barcode,
+                                     Code = item.Code
                                  };
                 invoiceData.Add(EdititItem);
             }    

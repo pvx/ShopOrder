@@ -19,6 +19,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Reports", "Reports", "{F3CF
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrdersViewReport", "Reports\OrdersViewReport\OrdersViewReport.csproj", "{4237D95E-E588-42F7-A824-0FBFA3626211}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{E3863561-3D91-414E-93E9-E2B01D784662}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common.Test", "Common.Test\Common.Test.csproj", "{7812DD84-3909-4C76-8B5C-23DE6602C878}"
+EndProject
 Global
 	GlobalSection(SubversionScc) = preSolution
 		Svn-Managed = True
@@ -113,15 +117,26 @@ Global
 		{4237D95E-E588-42F7-A824-0FBFA3626211}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{4237D95E-E588-42F7-A824-0FBFA3626211}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{4237D95E-E588-42F7-A824-0FBFA3626211}.Release|x86.ActiveCfg = Release|Any CPU
+		{7812DD84-3909-4C76-8B5C-23DE6602C878}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7812DD84-3909-4C76-8B5C-23DE6602C878}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7812DD84-3909-4C76-8B5C-23DE6602C878}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{7812DD84-3909-4C76-8B5C-23DE6602C878}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{7812DD84-3909-4C76-8B5C-23DE6602C878}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{7812DD84-3909-4C76-8B5C-23DE6602C878}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7812DD84-3909-4C76-8B5C-23DE6602C878}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7812DD84-3909-4C76-8B5C-23DE6602C878}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{7812DD84-3909-4C76-8B5C-23DE6602C878}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{7812DD84-3909-4C76-8B5C-23DE6602C878}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{4237D95E-E588-42F7-A824-0FBFA3626211} = {F3CF4BD2-F7FB-4D3C-B37F-533316C179C8}
+		{7812DD84-3909-4C76-8B5C-23DE6602C878} = {E3863561-3D91-414E-93E9-E2B01D784662}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		BuildVersion_StartDate = 2012/4/17
 		BuildVersion_BuildVersioningStyle = None.None.None.Increment
+		BuildVersion_StartDate = 2012/4/17
 	EndGlobalSection
 EndGlobal

@@ -35,6 +35,12 @@
             DevExpress.Utils.SuperToolTip superToolTip2 = new DevExpress.Utils.SuperToolTip();
             DevExpress.Utils.ToolTipTitleItem toolTipTitleItem2 = new DevExpress.Utils.ToolTipTitleItem();
             DevExpress.Utils.ToolTipItem toolTipItem2 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip3 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem3 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem3 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip4 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem4 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem4 = new DevExpress.Utils.ToolTipItem();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AssortForOrderForm));
             this.xafBar = new DevExpress.ExpressApp.Win.Templates.Controls.XafBarManager(this.components);
             this.xafBar2 = new DevExpress.ExpressApp.Win.Templates.Controls.XafBar();
@@ -45,6 +51,8 @@
             this.cbMode = new DevExpress.XtraBars.BarEditItem();
             this.cbItemMode = new DevExpress.XtraEditors.Repository.RepositoryItemComboBox();
             this.barButtonItem3 = new DevExpress.XtraBars.BarButtonItem();
+            this.barBtnSelectAll = new DevExpress.XtraBars.BarButtonItem();
+            this.barBtnDeselectAll = new DevExpress.XtraBars.BarButtonItem();
             this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
@@ -109,8 +117,10 @@
             this.barButtonItem2,
             this.BarState,
             this.barButtonItem3,
-            this.cbMode});
-            this.xafBar.MaxItemId = 6;
+            this.cbMode,
+            this.barBtnSelectAll,
+            this.barBtnDeselectAll});
+            this.xafBar.MaxItemId = 9;
             this.xafBar.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.SaveBar,
             this.cbItemMode});
@@ -147,7 +157,9 @@
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.barButtonItem1, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.barButtonItem2, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
             new DevExpress.XtraBars.LinkPersistInfo(this.cbMode, true),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem3)});
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem3),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barBtnSelectAll, true),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barBtnDeselectAll)});
             this.xafBar3.TargetPageCategoryColor = System.Drawing.Color.Empty;
             this.xafBar3.Text = "Main Toolbar";
             // 
@@ -208,6 +220,34 @@
             superToolTip2.Items.Add(toolTipItem2);
             this.barButtonItem3.SuperTip = superToolTip2;
             this.barButtonItem3.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.BarButtonItem3ItemClick);
+            // 
+            // barBtnSelectAll
+            // 
+            this.barBtnSelectAll.Caption = "Выбрать все";
+            this.barBtnSelectAll.Glyph = global::ShopOrderCustom.Properties.Resources.SelectAll;
+            this.barBtnSelectAll.Id = 6;
+            this.barBtnSelectAll.Name = "barBtnSelectAll";
+            toolTipTitleItem3.Text = "Отметить все";
+            toolTipItem3.LeftIndent = 6;
+            toolTipItem3.Text = "Отметить свойство \"К заказу\" для всех отображаемых строк";
+            superToolTip3.Items.Add(toolTipTitleItem3);
+            superToolTip3.Items.Add(toolTipItem3);
+            this.barBtnSelectAll.SuperTip = superToolTip3;
+            this.barBtnSelectAll.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.BarBtnSelectAllItemClick);
+            // 
+            // barBtnDeselectAll
+            // 
+            this.barBtnDeselectAll.Caption = "Снять выделение со всех";
+            this.barBtnDeselectAll.Glyph = global::ShopOrderCustom.Properties.Resources.DeSelectAll;
+            this.barBtnDeselectAll.Id = 7;
+            this.barBtnDeselectAll.Name = "barBtnDeselectAll";
+            toolTipTitleItem4.Text = "Снять отметку";
+            toolTipItem4.LeftIndent = 6;
+            toolTipItem4.Text = "Снять отметку со свойства \"К заказу\" для всех отображаемых строк";
+            superToolTip4.Items.Add(toolTipTitleItem4);
+            superToolTip4.Items.Add(toolTipItem4);
+            this.barBtnDeselectAll.SuperTip = superToolTip4;
+            this.barBtnDeselectAll.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.BarBtnDeselectAllItemClick);
             // 
             // barDockControlTop
             // 
@@ -366,7 +406,7 @@
             this.colName.OptionsColumn.ReadOnly = true;
             this.colName.Visible = true;
             this.colName.VisibleIndex = 2;
-            this.colName.Width = 142;
+            this.colName.Width = 137;
             // 
             // colPrice
             // 
@@ -388,7 +428,7 @@
             this.colQuantityInPack.OptionsColumn.ReadOnly = true;
             this.colQuantityInPack.Visible = true;
             this.colQuantityInPack.VisibleIndex = 4;
-            this.colQuantityInPack.Width = 23;
+            this.colQuantityInPack.Width = 22;
             // 
             // colMeasure
             // 
@@ -400,7 +440,7 @@
             this.colMeasure.OptionsColumn.ReadOnly = true;
             this.colMeasure.Visible = true;
             this.colMeasure.VisibleIndex = 5;
-            this.colMeasure.Width = 43;
+            this.colMeasure.Width = 38;
             // 
             // colSupplier
             // 
@@ -412,7 +452,7 @@
             this.colSupplier.OptionsColumn.ReadOnly = true;
             this.colSupplier.Visible = true;
             this.colSupplier.VisibleIndex = 7;
-            this.colSupplier.Width = 89;
+            this.colSupplier.Width = 84;
             // 
             // colCode
             // 
@@ -434,7 +474,7 @@
             this.colBarcode.OptionsColumn.ReadOnly = true;
             this.colBarcode.Visible = true;
             this.colBarcode.VisibleIndex = 3;
-            this.colBarcode.Width = 43;
+            this.colBarcode.Width = 38;
             // 
             // colReserved
             // 
@@ -465,7 +505,7 @@
             this.colMinOrder.OptionsColumn.ReadOnly = true;
             this.colMinOrder.Visible = true;
             this.colMinOrder.VisibleIndex = 6;
-            this.colMinOrder.Width = 30;
+            this.colMinOrder.Width = 25;
             // 
             // colAssortReq
             // 
@@ -475,7 +515,7 @@
             this.colAssortReq.Name = "colAssortReq";
             this.colAssortReq.Visible = true;
             this.colAssortReq.VisibleIndex = 0;
-            this.colAssortReq.Width = 25;
+            this.colAssortReq.Width = 26;
             // 
             // repositoryItemCheckEdit1
             // 
@@ -490,7 +530,7 @@
             this.colSelfImport.Name = "colSelfImport";
             this.colSelfImport.Visible = true;
             this.colSelfImport.VisibleIndex = 1;
-            this.colSelfImport.Width = 25;
+            this.colSelfImport.Width = 22;
             // 
             // colAutoOrderMode
             // 
@@ -500,7 +540,7 @@
             this.colAutoOrderMode.Name = "colAutoOrderMode";
             this.colAutoOrderMode.Visible = true;
             this.colAutoOrderMode.VisibleIndex = 8;
-            this.colAutoOrderMode.Width = 88;
+            this.colAutoOrderMode.Width = 116;
             // 
             // cbGRidMode
             // 
@@ -645,5 +685,7 @@
         private DevExpress.XtraBars.BarButtonItem barButtonItem3;
         private DevExpress.XtraBars.BarEditItem cbMode;
         private DevExpress.XtraEditors.Repository.RepositoryItemComboBox cbItemMode;
+        private DevExpress.XtraBars.BarButtonItem barBtnSelectAll;
+        private DevExpress.XtraBars.BarButtonItem barBtnDeselectAll;
     }
 }

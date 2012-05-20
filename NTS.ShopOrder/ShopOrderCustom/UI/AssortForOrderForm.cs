@@ -206,5 +206,31 @@ namespace ShopOrderCustom.UI
         {
             _categoryObj = ((BarEditItem) sender).EditValue is ShopCategoryObj ? ((ShopCategoryObj) (((BarEditItem) sender).EditValue)) : null;  
         }
+
+        private void BarBtnSelectAllItemClick(object sender, ItemClickEventArgs e)
+        {
+            Cursor = Cursors.WaitCursor;
+            gridView.ActiveFilter.Remove(colAssortReq);
+            for (int i = 0; i < gridView.RowCount; i++)
+            {
+                int rowHandle = gridView.GetVisibleRowHandle(i);
+                if (gridView.IsDataRow(rowHandle))
+                    gridView.SetRowCellValue(rowHandle, colAssortReq, true);
+            }
+            Cursor = Cursors.Default;
+        }
+
+        private void BarBtnDeselectAllItemClick(object sender, ItemClickEventArgs e)
+        {
+            Cursor = Cursors.WaitCursor;
+            gridView.ActiveFilter.Remove(colAssortReq);
+            for (int i = 0; i < gridView.RowCount; i++)
+            {
+                int rowHandle = gridView.GetVisibleRowHandle(i);
+                if (gridView.IsDataRow(rowHandle))
+                    gridView.SetRowCellValue(rowHandle, colAssortReq, false);
+            }
+            Cursor = Cursors.Default;
+        }
     }
 }
