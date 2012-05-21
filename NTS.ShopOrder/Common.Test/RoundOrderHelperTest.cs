@@ -11,14 +11,14 @@ namespace Common.Test
     [TestFixture]
     public class RoundOrderHelperTest : TestFixtureBase
     {
-        private static readonly double[] Quantity       = new double[] { 0, 1, 15, 7 , 24, 159 }; // остаток на складе
-        private static readonly double[] QuantityInPack = new double[] { 0, 1, 12, 12, 12, 6 }; //   
-        private static readonly double[] MinOrder       = new double[] { 0, 1, 12, 12, 12, 6 }; //  
+        private static readonly double[] Quantity       = new double[] { 0, 1, 15, 7 , 24, 159,         1000 }; // остаток на складе
+        private static readonly double[] QuantityInPack = new double[] { 0, 1, 12, 12, 12, 6,           12 }; //   
+        private static readonly double[] MinOrder       = new double[] { 0, 1, 12, 12, 12, 6,           12 }; //  
 
-        private static readonly double[] ReqQty         = new double[] { 0, 1, 13, 12, 21, 29 }; //
-        private static readonly double[] ClResult       = new double[] { Single.NaN, 0, 3, 7, 0, 3 }; // 
-        private static readonly double[] CalcRes        = new double[] { Single.NaN, 0, 15, 7, 24, 27 }; // 
-        private static readonly bool[] ChResult         = new[] { false, true, false, false, true, false }; // 
+        private static readonly double[] ReqQty         = new double[] { 0, 1, 13, 12, 21, 29,          45 }; // вводимое колво
+        private static readonly double[] ClResult       = new double[] { Single.NaN, 0, 3, 7, 0, 3,     4}; // 
+        private static readonly double[] CalcRes        = new double[] { Single.NaN, 0, 15, 7, 24, 27,  52 }; // результат
+        private static readonly bool[] ChResult         = new[] { false, true, false, false, true, false, false }; // 
         [Test]
         public void CheckTest()
         {for (int inx = 0; inx < ChResult.Length; inx++)
