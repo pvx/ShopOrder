@@ -284,7 +284,8 @@ namespace DataBase.DataObject
 
         void BeforeReqQuantityChange(ref double reqQuantity)
         {
-            if((MinOrder == QuantityInPack) && (!RoundOrderHelper.Check(Quantity, QuantityInPack)))
+            //Изменено
+            if((MinOrder == QuantityInPack) /*&& (!RoundOrderHelper.Check(Quantity, QuantityInPack))*/)
             {
                 reqQuantity = RoundOrderHelper.Calc(reqQuantity, Quantity, QuantityInPack, MinOrder);
                 if ((IsQuoted) && (reqQuantity > Quota))

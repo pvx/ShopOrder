@@ -9,11 +9,15 @@ namespace Common.Calculations
 
         public static bool Check(double quantity, double quantityInPack)
         {
+            //Изменено
+            quantityInPack = quantityInPack == 0 ? 1 : quantityInPack;
             return quantity % quantityInPack == 0;
         }
 
         public static double CalcMod(double quantity, double quantityInPack)
         {
+            //Изменено
+            quantityInPack = quantityInPack == 0 ? 1 : quantityInPack;
             return quantity % quantityInPack;
         }
 
@@ -32,7 +36,9 @@ namespace Common.Calculations
 
             if(mod >= cl)
             {
-                res = CalcC(reqQuantity, minOrder) - quantityInPack + mod;
+                //Изменено
+                res = CalcC(reqQuantity, minOrder);
+                res = (res == 0 ? quantityInPack - quantityInPack + mod : res - quantityInPack + mod);
             }
             else
             {
