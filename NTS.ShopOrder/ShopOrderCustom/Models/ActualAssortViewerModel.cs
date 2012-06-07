@@ -18,7 +18,7 @@ namespace ShopOrderCustom.Models
     public class ActualAssortViewerModel : ModelLayout
     {
 
-        public IUnityContainer UnityContainer { get; set; }
+        //public IUnityContainer UnityContainer { get; set; }
 
         [Dependency]
         public IOrderUserInfo OrderUserInfo { get; set; }
@@ -76,7 +76,7 @@ namespace ShopOrderCustom.Models
         public ActualAssortViewerModel(IUnityContainer unityContainer) : base(unityContainer)
         {
             ViewCode = ViewConst.VIEW_ACTUAL_ASSORT;
-            UnityContainer = unityContainer;
+            //UnityContainer = unityContainer;
         }
     }
 }

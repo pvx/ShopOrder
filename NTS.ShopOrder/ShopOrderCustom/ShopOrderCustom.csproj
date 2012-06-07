@@ -84,6 +84,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="TreeData\GoodsNodeDataBase.cs" />
+    <Compile Include="Data\GoodsDistributionObj.cs" />
     <Compile Include="GridLayoutSerializer.cs" />
     <Compile Include="Data\GoodsNodeBalanceObj.cs" />
     <Compile Include="Data\GoodsNodeCategoryObj.cs" />
@@ -92,6 +94,7 @@
     <Compile Include="GroupAssort.cs" />
     <Compile Include="Models\ActualAssortViewerModel.cs" />
     <Compile Include="Models\BalanceEditorModel.cs" />
+    <Compile Include="Models\DistributionFormModel.cs" />
     <Compile Include="Models\GoodsReturnStateModel.cs" />
     <Compile Include="Models\GoodsReturnAddModel.cs" />
     <Compile Include="Models\GoodsReturnModel.cs" />
@@ -132,6 +135,12 @@
     </Compile>
     <Compile Include="UI\DataUiViewer.Designer.cs">
       <DependentUpon>DataUiViewer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\DistributionForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\DistributionForm.Designer.cs">
+      <DependentUpon>DistributionForm.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\GoodsReturnAddDlg.cs">
       <SubType>Form</SubType>
@@ -236,6 +245,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UI\DataUiViewer.resx">
       <DependentUpon>DataUiViewer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\DistributionForm.resx">
+      <DependentUpon>DistributionForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\GoodsReturnAddDlg.resx">
       <DependentUpon>GoodsReturnAddDlg.cs</DependentUpon>

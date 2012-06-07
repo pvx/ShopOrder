@@ -15,7 +15,7 @@ namespace ShopOrderCustom.Models
     /// </summary>
     public class AssortForOrderModel : ModelLayout
     {
-        public IUnityContainer UnityContainer { get; set; }
+        //public IUnityContainer UnityContainer { get; set; }
 
         [Dependency]
         public IOrderUserInfo OrderUserInfo { get; set; }
@@ -66,8 +66,9 @@ namespace ShopOrderCustom.Models
         public AssortForOrderModel(IUnityContainer unityContainer) : base(unityContainer)
         {
             ViewCode = ViewConst.ED_ASSORT_FOR_ORDER;
-            UnityContainer = unityContainer;
+            //UnityContainer = unityContainer;
             OrderCategorys = unityContainer.Resolve<OrderCategorys>();
+            OrderCategorys.Load();
             OrderModes = unityContainer.Resolve<AutoOrderModes>();
         }
     }

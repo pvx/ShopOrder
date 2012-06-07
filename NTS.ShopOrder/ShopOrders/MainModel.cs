@@ -30,7 +30,8 @@ namespace ShopOrders
         private ActualAssortViewerModel _actualAssortViewerModel;
         private BalanceEditorModel _balanceEditorModel;
         private GoodsReturnModel _goodsReturnModel;
-        private GoodsReturnStateModel _goodsReturnStateModel; 
+        private GoodsReturnStateModel _goodsReturnStateModel;
+        private DistributionFormModel _distributionFormModel;
 
         private XtraForm _view;
         public XtraForm View
@@ -65,10 +66,28 @@ namespace ShopOrders
 
             _modelDict.Add(typeof(GoodsReturnModel), () => UnityContainer.Resolve<GoodsReturnModel>());
             _modelDict.Add(typeof(GoodsReturnStateModel), () => UnityContainer.Resolve<GoodsReturnStateModel>()); 
+        
+            _modelDict.Add(typeof(DistributionFormModel), () => UnityContainer.Resolve<DistributionFormModel>());
         }
 
         public void ShowForm(Type typeModel)
         {
+            if (typeModel.Equals(typeof(DistributionFormModel)))
+            {
+                if (_distributionFormModel == null)
+                {
+                    _distributionFormModel = (DistributionFormModel)_modelDict[typeModel].Invoke();
+                    _distributionFormModel.View.MdiParent = View;
+                    _distributionFormModel.View.WindowState = FormWindowState.Maximized;
+                    _distributionFormModel.View.Show();
+                    _distributionFormModel.View.FormClosed += DistributionFormModelClosed;
+                }
+                else
+                {
+                    _distributionFormModel.View.BringToFront();
+                }
+            }
+
             if (typeModel.Equals(typeof(BalanceEditorModel)))
             {
                 if (_balanceEditorModel == null)
@@ -243,6 +262,11 @@ namespace ShopOrders
                     _goodsReturnStateModel.View.BringToFront();
                 }
             }
+        }
+
+        private void DistributionFormModelClosed(object sender, FormClosedEventArgs e)
+        {
+            _distributionFormModel = null;
         }
 
         private void GoodsReturnStateModelClose(object sender, FormClosedEventArgs e)

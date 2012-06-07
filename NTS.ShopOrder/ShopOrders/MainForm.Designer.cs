@@ -54,6 +54,7 @@ namespace ShopOrders
             this.iAbout = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
             this.xtraTabbedMdiManager1 = new DevExpress.XtraTabbedMdi.XtraTabbedMdiManager();
+            this.mDistributionGoods = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.barManager)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabbedMdiManager1)).BeginInit();
             this.SuspendLayout();
@@ -85,9 +86,10 @@ namespace ShopOrders
             this.barButtonItem1,
             this.mReports,
             this.mGoodsReturn,
-            this.mGoodsReturnSt});
+            this.mGoodsReturnSt,
+            this.mDistributionGoods});
             this.barManager.MainMenu = this.bar2;
-            this.barManager.MaxItemId = 26;
+            this.barManager.MaxItemId = 27;
             // 
             // bar2
             // 
@@ -118,7 +120,8 @@ namespace ShopOrders
             new DevExpress.XtraBars.LinkPersistInfo(this.mViewActualAssort),
             new DevExpress.XtraBars.LinkPersistInfo(this.mBalanceEditor),
             new DevExpress.XtraBars.LinkPersistInfo(this.mGoodsReturn),
-            new DevExpress.XtraBars.LinkPersistInfo(this.mGoodsReturnSt)});
+            new DevExpress.XtraBars.LinkPersistInfo(this.mGoodsReturnSt),
+            new DevExpress.XtraBars.LinkPersistInfo(this.mDistributionGoods)});
             this.mOperation.Name = "mOperation";
             // 
             // mCreateOrder
@@ -266,6 +269,13 @@ namespace ShopOrders
             // 
             this.xtraTabbedMdiManager1.MdiParent = this;
             // 
+            // mDistributionGoods
+            // 
+            this.mDistributionGoods.Caption = "Распределение товаров";
+            this.mDistributionGoods.Id = 26;
+            this.mDistributionGoods.Name = "mDistributionGoods";
+            this.mDistributionGoods.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.MDistributionGoodsItemClick);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -314,6 +324,7 @@ namespace ShopOrders
         private DevExpress.XtraBars.BarButtonItem barButtonItem1;
         private DevExpress.XtraBars.BarButtonItem mGoodsReturn;
         private DevExpress.XtraBars.BarButtonItem mGoodsReturnSt;
+        private DevExpress.XtraBars.BarButtonItem mDistributionGoods;
 
     }
 }

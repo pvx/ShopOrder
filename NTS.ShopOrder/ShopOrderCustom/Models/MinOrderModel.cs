@@ -13,7 +13,7 @@ namespace ShopOrderCustom
     /// </summary>
     public class MinOrderModel : ModelLayout
     {
-        public IUnityContainer UnityContainer { get; set; }
+        //public IUnityContainer UnityContainer { get; set; }
 
         [Dependency]
         public IOrderUserInfo OrderUserInfo { get; set; }
@@ -57,7 +57,7 @@ namespace ShopOrderCustom
         public MinOrderModel(IUnityContainer unityContainer) : base(unityContainer)
         {
             ViewCode = ViewConst.ED_MIN_ORDER;
-            UnityContainer = unityContainer;
+            //UnityContainer = unityContainer;
             _shopCategorys = unityContainer.Resolve<ShopCategorys>();
         }
     }

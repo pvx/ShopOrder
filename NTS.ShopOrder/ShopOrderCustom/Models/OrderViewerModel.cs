@@ -18,7 +18,7 @@ namespace ShopOrderCustom.Models
     {
         public event ChangeDateFilter ChangeDateFilter;
 
-        public IUnityContainer UnityContainer { get; set; }
+        //public IUnityContainer UnityContainer { get; set; }
 
         [Dependency]
         public IOrderUserInfo OrderUserInfo { get; set; }
@@ -162,7 +162,7 @@ namespace ShopOrderCustom.Models
         public OrderViewerModel(IUnityContainer unityContainer) : base(unityContainer)
         {
             ViewCode = ViewConst.VIEW_ORDERS;
-            UnityContainer = unityContainer;
+            //UnityContainer = unityContainer;
             _serverDate = DateTime.Parse(unityContainer.Resolve<IOrderUserInfo>().Property["SERVER_DATE"]);
             _filterDate = _serverDate;
             _filterDateEnd = _serverDate;

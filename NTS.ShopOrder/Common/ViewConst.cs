@@ -13,5 +13,6 @@
        public const string ED_BALANCE = "ED_BALANCE";
        public const string ED_GOODRETURN = "ED_GOODRETURN";
        public const string ED_GOODRETURN_STATE = "ED_GOODRETURN_STATE";
+       public const string ED_DISTRIBUTION = "ED_DISTRIBUTION";
     }
 }

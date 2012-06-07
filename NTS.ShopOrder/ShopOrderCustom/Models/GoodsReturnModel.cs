@@ -40,7 +40,7 @@ namespace ShopOrderCustom.Models
             : base(unityContainer)
         {
             ViewCode = ViewConst.ED_GOODRETURN;
-            this.unityContainer = unityContainer;
+            //this.UnityContainer = unityContainer;
             _shopId = Guid.Parse(unityContainer.Resolve<IOrderUserInfo>().Property["USER_SHOP"]);
             _serverDate = DateTime.Parse(unityContainer.Resolve<IOrderUserInfo>().Property["SERVER_DATE"]);
             _goodsReturnAddModel = unityContainer.Resolve<GoodsReturnAddModel>();
@@ -58,7 +58,7 @@ namespace ShopOrderCustom.Models
             return true;
         }
 
-        public IUnityContainer unityContainer { get; set; }
+        //public IUnityContainer UnityContainer { get; set; }
 
         [Dependency]
         public Logger Log { get; set; }
@@ -104,14 +104,14 @@ namespace ShopOrderCustom.Models
 
         public Returns GetReturnsHeader()
         {
-            var ret = unityContainer.Resolve<Returns>();
+            var ret = UnityContainer.Resolve<Returns>();
             ret.Load(_filterDate);
             return ret;          
         }
 
         private void LoadStatePos()
         {
-            using (var oc = unityContainer.Resolve<OrderDataContext>())
+            using (var oc = UnityContainer.Resolve<OrderDataContext>())
             {
                 ReturnStatePos = (from or in oc.DataBaseContext.sp_sel_ReturnStatesPos()
                                   select new ReturnPosStateObj() { Id = or.id, Name = or.Name, StateCode = or.StateCode }).ToList();
@@ -131,7 +131,7 @@ namespace ShopOrderCustom.Models
                     {
 
                         _currentReturnHeader.CommitReturn();
-                        using (var oc = unityContainer.Resolve<OrderDataContext>())
+                        using (var oc = UnityContainer.Resolve<OrderDataContext>())
                         {
                             WindowsIdentity wi = WindowsIdentity.GetCurrent();
                             oc.DataBaseContext.sp_upd_ReturnHeaderState(_currentReturnHeader.Id,
@@ -192,7 +192,7 @@ namespace ShopOrderCustom.Models
             {
                 if(XtraMessageBox.Show("Вы действительно хотите удалить позицию?", "Удаление позиции возврата", MessageBoxButtons.YesNo) == DialogResult.Yes)
                 {
-                    using (var oc = unityContainer.Resolve<OrderDataContext>())
+                    using (var oc = UnityContainer.Resolve<OrderDataContext>())
                     {
                         //WindowsIdentity wi = WindowsIdentity.GetCurrent();
                         oc.DataBaseContext.sp_del_ReturnItem(items.Id);

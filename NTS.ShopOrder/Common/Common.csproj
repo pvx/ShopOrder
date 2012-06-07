@@ -65,7 +65,9 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Calculations\RoundOrderHelper.cs" />
+    <Compile Include="Exchanger.cs" />
     <Compile Include="Enum\AutoOrderModeEnum.cs" />
+    <Compile Include="Interfaces\IExchanger.cs" />
     <Compile Include="ViewConst.cs" />
     <Compile Include="DictionaryPropertyGridAdapter.cs" />
     <Compile Include="DictionaryPropertyDescriptor.cs" />

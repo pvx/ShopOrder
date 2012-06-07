@@ -16,7 +16,7 @@ namespace ShopOrderCustom
     /// </summary>
     public class GroupAssort : BindingList<GoodsNodeGroupObj>, TreeList.IVirtualTreeListData, ICheckInfo
     {
-        private IUnityContainer unityContainer { get; set; }
+        protected IUnityContainer unityContainer { get; set; }
 
         [InjectionConstructor]
         public GroupAssort(IUnityContainer container)
@@ -24,7 +24,7 @@ namespace ShopOrderCustom
             unityContainer = container;
         }
 
-        public void Load(int categoryId)
+        public virtual void Load(int categoryId)
         {
             using (var oc = unityContainer.Resolve<OrderDataContext>())
             {

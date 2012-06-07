@@ -2,6 +2,7 @@ using System;
 using System.Diagnostics;
 using System.Windows.Forms;
 using Common;
+using Common.Interfaces;
 using Common.Logger;
 using DataBase;
 using DataBase.DataObject;
@@ -36,6 +37,8 @@ namespace ShopOrders
             UserLookAndFeel.Default.SetSkinStyle("DevExpress Style");
             using (IUnityContainer container = new UnityContainer())
             {
+                container.RegisterType<IExchanger, Exchanger>(new ContainerControlledLifetimeManager());
+
                 container.RegisterType<Logger>();
                 container.RegisterType<IOrderUserInfo, OrderUserInfo>(new ContainerControlledLifetimeManager(),
                                         new InjectionConstructor(Settings.Default.Server,
@@ -83,6 +86,7 @@ namespace ShopOrders
                 container.RegisterType<GoodsReturnModel>();
                 container.RegisterType<GoodsReturnStateModel>();
                 container.RegisterType<GoodsReturnAddModel>();
+                container.RegisterType<DistributionFormModel>();
                 container.RegisterType<MainModel>();
 
                 container.RegisterInstance<IReportManager>(container.Resolve<ReportManager>());

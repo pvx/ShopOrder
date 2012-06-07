@@ -12,7 +12,7 @@ namespace ShopOrderCustom.Models
     /// </summary>
     public class BalanceEditorModel : ModelLayout
     {
-        public IUnityContainer UnityContainer { get; set; }
+        //public IUnityContainer UnityContainer { get; set; }
 
         [Dependency]
         public IOrderUserInfo OrderUserInfo { get; set; }
@@ -49,7 +49,7 @@ namespace ShopOrderCustom.Models
             : base(unityContainer)
         {
             ViewCode = ViewConst.ED_BALANCE;
-            UnityContainer = unityContainer;
+            //UnityContainer = unityContainer;
             _editRepo = UnityContainer.Resolve<BalanceEditRepo>();
         }
 

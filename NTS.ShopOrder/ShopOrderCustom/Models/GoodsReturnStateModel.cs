@@ -29,7 +29,7 @@ namespace ShopOrderCustom.Models
             : base(unityContainer)
         {
             ViewCode = ViewConst.ED_GOODRETURN_STATE;
-            this.unityContainer = unityContainer;
+            //this.UnityContainer = unityContainer;
             _serverDate = DateTime.Parse(unityContainer.Resolve<IOrderUserInfo>().Property["SERVER_DATE"]);
             LoadReasons();
             LoadStatePos();
@@ -64,7 +64,7 @@ namespace ShopOrderCustom.Models
         {
             return true;//((_currentReturnHeader.ReturnStateId == 1) && (_serverDate.Date == _currentReturnHeader.CreateDate.Date));
         }
-        public IUnityContainer unityContainer { get; set; }
+        //public IUnityContainer UnityContainer { get; set; }
 
         [Dependency]
         public Logger Log { get; set; }
@@ -110,14 +110,14 @@ namespace ShopOrderCustom.Models
 
         public ReturnShops GetReturnShop()
         {
-            var ret = unityContainer.Resolve<ReturnShops>();
+            var ret = UnityContainer.Resolve<ReturnShops>();
             ret.Load(_filterDate);
             return ret;  
         }
 
         private void LoadReasons()
         {
-            using (var oc = unityContainer.Resolve<OrderDataContext>())
+            using (var oc = UnityContainer.Resolve<OrderDataContext>())
             {
                 ReturnReasons = (from or in oc.DataBaseContext.sp_sel_ReturnReasons()
                                  select new ReturnReasonObj() { Id = or.id, Name = or.Name }).ToList();
@@ -125,7 +125,7 @@ namespace ShopOrderCustom.Models
         }
         private void LoadStatePos()
         {
-            using (var oc = unityContainer.Resolve<OrderDataContext>())
+            using (var oc = UnityContainer.Resolve<OrderDataContext>())
             {
                 ReturnStatePos = (from or in oc.DataBaseContext.sp_sel_ReturnStatesPos()
                                   select new ReturnPosStateObj() { Id = or.id, Name = or.Name, StateCode = or.StateCode }).ToList();
@@ -137,7 +137,7 @@ namespace ShopOrderCustom.Models
             if (obj != null)
             {
                 //_currentReturnHeader.CommitReturn();
-                using (var oc = unityContainer.Resolve<OrderDataContext>())
+                using (var oc = UnityContainer.Resolve<OrderDataContext>())
                 {
                     WindowsIdentity wi = WindowsIdentity.GetCurrent();
                     oc.DataBaseContext.sp_upd_ReturnHeaderState(obj.Id,

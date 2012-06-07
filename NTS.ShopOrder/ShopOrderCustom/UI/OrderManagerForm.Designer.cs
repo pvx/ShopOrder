@@ -93,6 +93,7 @@
             this.colSelfImport = new DevExpress.XtraGrid.Columns.GridColumn();
             this.popupMenuNodes = new DevExpress.XtraBars.PopupMenu(this.components);
             this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
+            this.btDistribOrders = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.barManager)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cdDateFilterItem)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cdDateFilterItem.VistaTimeProperties)).BeginInit();
@@ -148,8 +149,9 @@
             this.barSubItem1,
             this.btNestleImport,
             this.pbar,
-            this.btOrderImport});
-            this.barManager.MaxItemId = 15;
+            this.btOrderImport,
+            this.btDistribOrders});
+            this.barManager.MaxItemId = 16;
             this.barManager.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemProgressBar1,
             this.cdDateFilterItem,
@@ -277,7 +279,8 @@
             this.barSubItem1.Id = 11;
             this.barSubItem1.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
             new DevExpress.XtraBars.LinkPersistInfo(this.btNestleImport),
-            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btOrderImport, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph)});
+            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btOrderImport, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
+            new DevExpress.XtraBars.LinkPersistInfo(this.btDistribOrders)});
             this.barSubItem1.Name = "barSubItem1";
             // 
             // btNestleImport
@@ -703,6 +706,13 @@
             this.openFileDialog.FileName = "openFileDialog";
             this.openFileDialog.Filter = "Excel 2003|*.xls|Excel 2007|*.xlsx;";
             // 
+            // btDistribOrders
+            // 
+            this.btDistribOrders.Caption = "Заказы по распределению";
+            this.btDistribOrders.Id = 15;
+            this.btDistribOrders.Name = "btDistribOrders";
+            this.btDistribOrders.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem5_ItemClick);
+            // 
             // OrderManagerForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -787,5 +797,6 @@
         private DevExpress.XtraEditors.Repository.RepositoryItemProgressBar ProgressBar;
         private DevExpress.XtraGrid.Columns.GridColumn colSelfImport;
         private DevExpress.XtraBars.BarButtonItem btOrderImport;
+        private DevExpress.XtraBars.BarButtonItem btDistribOrders;
     }
 }

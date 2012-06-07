@@ -390,5 +390,38 @@ namespace ShopOrderCustom.UI
                 }
             }
         }
+
+        private void barButtonItem5_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            if (XtraMessageBox.Show("Создать заказы по распределению?",
+                                            "Заказы по распределению",
+                                            MessageBoxButtons.YesNo) == DialogResult.Yes)
+            {
+                try
+                {
+                    Model.UnityContainer.Resolve<IDBLogger>().InsertLog(string.Format("Заказы по распределению"), string.Empty);
+
+                    btDistribOrders.Enabled = false;
+                    Model.CreateOrdersFromDistribution(BackgroundWorkerProgressChanged, CreateOrdersFromDistributionCompleted);
+                    treeList.Refresh();
+                }
+                catch (Exception ex)
+                {
+                    btDistribOrders.Enabled = true;
+                    XtraMessageBox.Show(ex.Message);
+                }
+            }
+        }
+
+
+        void CreateOrdersFromDistributionCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            RefreshTree();
+            pbar.EditValue = 0;
+            pbar.Visibility = BarItemVisibility.Never;
+            XtraMessageBox.Show("Заказы по распределению успешно созданы.");
+            btDistribOrders.Enabled = true;
+            Model.UnityContainer.Resolve<IDBLogger>().InsertLog(string.Format("Заказы по распределению успешно созданы."), string.Empty);
+        }
     }
 }

@@ -28,7 +28,7 @@ namespace ShopOrderCustom.Models
 
         public event ChangeDateFilter ChangeDateFilter;
 
-        public IUnityContainer UnityContainer { get; set; }
+        //public IUnityContainer UnityContainer { get; set; }
 
         [Dependency]
         public IOrderUserInfo OrderUserInfo { get; set; }
@@ -225,6 +225,21 @@ namespace ShopOrderCustom.Models
             }
         }
 
+        void CreateDistribOrders()
+        {
+            try
+            {
+                using (var oc = UnityContainer.Resolve<OrderDataContext>())
+                {
+                    oc.DataBaseContext.sp_get_orders_fromDistribution(WindowsIdentity.GetCurrent().Name);
+                }
+            }
+            catch (Exception e)
+            {
+                Log.Error("CreateDistribOrders", e);
+            }
+        }
+
         public void LoadFromExcelOrders(string path, ProgressChangedEventHandler progressChangedEventHandler, RunWorkerCompletedEventHandler completedEventHandler)
         {
             Cursor.Current = Cursors.WaitCursor;
@@ -275,6 +290,32 @@ namespace ShopOrderCustom.Models
             }
         }
 
+        public void CreateOrdersFromDistribution(ProgressChangedEventHandler progressChangedEventHandler, RunWorkerCompletedEventHandler completedEventHandler)
+        {
+            Cursor.Current = Cursors.WaitCursor;
+            try
+            {
+                    _backgroundWorker = new BackgroundWorker();
+                    _backgroundWorker.DoWork += BackgroundCreateDistribOrders;
+                    _backgroundWorker.RunWorkerCompleted += completedEventHandler;
+                    _backgroundWorker.WorkerReportsProgress = true;
+                    _backgroundWorker.WorkerSupportsCancellation = false;
+                    _backgroundWorker.RunWorkerAsync();
+
+                    _backgroundWorker.ProgressChanged += progressChangedEventHandler;
+                
+            }
+            finally
+            {
+                Cursor.Current = Cursors.Default;
+            }
+        }
+
+        private void BackgroundCreateDistribOrders(object sender, DoWorkEventArgs e)
+        {
+            CreateDistribOrders();
+        }
+
         void BackgroundOrderImport(object sender, DoWorkEventArgs e)
         {
             var worker = sender as BackgroundWorker;
@@ -291,7 +332,7 @@ namespace ShopOrderCustom.Models
         public OrderManagerModel(IUnityContainer unityContainer) : base(unityContainer)
         {
             ViewCode = ViewConst.PROCESS_ORDERS;
-            UnityContainer = unityContainer;
+            //UnityContainer = unityContainer;
             _serverDate = DateTime.Parse(unityContainer.Resolve<IOrderUserInfo>().Property["SERVER_DATE"]);
         }
     }

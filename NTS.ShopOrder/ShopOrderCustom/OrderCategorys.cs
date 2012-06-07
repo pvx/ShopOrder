@@ -2,9 +2,7 @@ using System;
 using System.ComponentModel;
 using System.Data.Common;
 using System.Linq;
-using Common;
 using DataBase;
-using DataBase.DataObject;
 using DevExpress.XtraTreeList;
 using Microsoft.Practices.Unity;
 using ShopOrderCustom.Data;
@@ -13,16 +11,16 @@ namespace ShopOrderCustom
 {
     /// <summary>
     /// Класс списка категорий товаров
-    /// </summary>
+    /// </summary>//
     public class OrderCategorys : BindingList<GoodsNodeCategoryObj>, TreeList.IVirtualTreeListData
     {
-        private IUnityContainer unityContainer { get; set; }
+        protected IUnityContainer unityContainer { get; set; }
 
         [InjectionConstructor]
         public OrderCategorys(IUnityContainer container)
         {
             unityContainer = container;
-            Load();
+            //Load();
         }
 
         public void CheckedGoodsByCode(string code)
@@ -33,8 +31,8 @@ namespace ShopOrderCustom
                     ((GroupAssort)categoryObj.ObjectList).CheckedGoodsByCode(code);
             }    
         }
-
-        private void Load()
+        
+        public virtual void Load()
         {
             using (var oc = unityContainer.Resolve<OrderDataContext>())
             {

@@ -35,7 +35,7 @@ namespace ShopOrderCustom
                                  {
                                      Active = c.active.GetValueOrDefault(true),
                                      Check = c.check.GetValueOrDefault(false),
-                                    // Id = c.id,
+                                     Price = c.Price.GetValueOrDefault(0),
                                      IdInt = c.id_int,
                                      IdSap = c.id_sap,
                                      Name = c.name,

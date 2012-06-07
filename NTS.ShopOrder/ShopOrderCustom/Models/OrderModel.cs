@@ -23,7 +23,7 @@ namespace ShopOrderCustom.Models
     {
         public event ChangeDateFilter ChangeDateFilter;
 
-        public IUnityContainer unityContainer { get; set; }
+        //public IUnityContainer UnityContainer { get; set; }
 
         [Dependency]
         public IOrderUserInfo OrderUserInfo { get; set; }
@@ -101,10 +101,10 @@ namespace ShopOrderCustom.Models
 
         public Orders GetOrdersHeader()
         {
-            using (var oc = unityContainer.Resolve<OrderDataContext>())
+            using (var oc = UnityContainer.Resolve<OrderDataContext>())
             {
-                var shopId = new Guid(unityContainer.Resolve<IOrderUserInfo>().Property["USER_SHOP"]);
-                var orders = unityContainer.Resolve<Orders>();
+                var shopId = new Guid(UnityContainer.Resolve<IOrderUserInfo>().Property["USER_SHOP"]);
+                var orders = UnityContainer.Resolve<Orders>();
                 
                 var ord = (from or in oc.DataBaseContext.sp_sel_OrderHeaderOnDateOrder(shopId, _filterDate)
                           select new OrderHeaderObj()
@@ -151,7 +151,7 @@ namespace ShopOrderCustom.Models
                         }
                     }
                 }
-                unityContainer.Resolve<IDBLogger>().InsertLog(string.Format("Присвоение рекомендованного количества для автоматического заказа. {0} позиций", cnt), CurrentOrderHeader.IdOrderHeader.ToString().ToUpper());
+                UnityContainer.Resolve<IDBLogger>().InsertLog(string.Format("Присвоение рекомендованного количества для автоматического заказа. {0} позиций", cnt), CurrentOrderHeader.IdOrderHeader.ToString().ToUpper());
             }
             finally
             {
@@ -185,7 +185,7 @@ namespace ShopOrderCustom.Models
                         }
                     }
                 }
-                unityContainer.Resolve<IDBLogger>().InsertLog(string.Format("Присвоение рекомендованного заказа. {0} позиций", cnt), CurrentOrderHeader.IdOrderHeader.ToString().ToUpper());
+                UnityContainer.Resolve<IDBLogger>().InsertLog(string.Format("Присвоение рекомендованного заказа. {0} позиций", cnt), CurrentOrderHeader.IdOrderHeader.ToString().ToUpper());
             }
             finally
             {
@@ -200,14 +200,14 @@ namespace ShopOrderCustom.Models
                 Cursor.Current = Cursors.WaitCursor;
                 try
                 {
-                    using (var oc = unityContainer.Resolve<OrderDataContext>())
+                    using (var oc = UnityContainer.Resolve<OrderDataContext>())
                     {                  
                         var balance = new BindingList<GoodsBalanceObj>();
 
                         _allowEdit = ((_currentOrderHeader.IdOrderState == 1) && (ServerDate.Date == _currentOrderHeader.CreateDate.Date));
                         balance.AllowEdit = _allowEdit;
 
-                        var isBalance = unityContainer.Resolve<IOrderUserInfo>().Property.ContainsKey("SHOP_BALANCE") && !(double.Parse(unityContainer.Resolve<IOrderUserInfo>().Property["SHOP_BALANCE"]) == 0);
+                        var isBalance = UnityContainer.Resolve<IOrderUserInfo>().Property.ContainsKey("SHOP_BALANCE") && !(double.Parse(UnityContainer.Resolve<IOrderUserInfo>().Property["SHOP_BALANCE"]) == 0);
 
                         var orders = from vo in oc.DataBaseContext.sp_sel_OrderBalance(_currentOrderHeader.IdOrderHeader,
                                                                    Convert.ToInt32(StoreHouseType),
@@ -264,7 +264,7 @@ namespace ShopOrderCustom.Models
         void bl_OnAutoOrdeer(object sender, EventChangeReqQuantity e)
         {
             //_shopId
-            using (var oc = unityContainer.Resolve<OrderDataContext>())
+            using (var oc = UnityContainer.Resolve<OrderDataContext>())
             {
                 oc.DataBaseContext.sp_ins_AutoOrdered(_shopId, e.GoodsObj.Code);
                 e.GoodsObj.LastOrderDate = DateTime.Now.Date;
@@ -277,10 +277,10 @@ namespace ShopOrderCustom.Models
         void SaveOrder(GoodsBalanceObj goodsObj)
         {
             {
-                using (var oc = unityContainer.Resolve<OrderDataContext>())
+                using (var oc = UnityContainer.Resolve<OrderDataContext>())
                 {
                     oc.DataBaseContext.spCreateOrderNew(goodsObj.id, IdOrderHeader, goodsObj.ReqQuantity);
-                    unityContainer.Resolve<IDBLogger>().InsertLog(string.Format("Позиция заказа. товар = '{0}' колво = {1}", goodsObj.id, goodsObj.ReqQuantity), IdOrderHeader.ToString().ToUpper());
+                    UnityContainer.Resolve<IDBLogger>().InsertLog(string.Format("Позиция заказа. товар = '{0}' колво = {1}", goodsObj.id, goodsObj.ReqQuantity), IdOrderHeader.ToString().ToUpper());
                     var gods = oc.DataBaseContext.sp_sel_OrderBalanceRefresh(IdOrderHeader, goodsObj.id).Single();
 
                     goodsObj.Ordered = gods.Ordered;
@@ -319,7 +319,7 @@ namespace ShopOrderCustom.Models
         public bool CheckCreateOrder()
         {
             bool ret;
-            using (var oc = unityContainer.Resolve<OrderDataContext>())
+            using (var oc = UnityContainer.Resolve<OrderDataContext>())
             {
                 ret = oc.DataBaseContext.IsCanOrder().GetValueOrDefault(false);}
             return ret;
@@ -327,7 +327,7 @@ namespace ShopOrderCustom.Models
 
         public bool CheckSaveOrder()
         {
-            using (var oc = unityContainer.Resolve<OrderDataContext>())
+            using (var oc = UnityContainer.Resolve<OrderDataContext>())
             {
                 ISingleResult<sp_sel_CheckOrderSaveResult> res = oc.DataBaseContext.sp_sel_CheckOrderSave(CurrentOrderHeader.IdOrderHeader);
                 foreach (sp_sel_CheckOrderSaveResult spSelCheckOrderSaveResult in res)
@@ -340,7 +340,7 @@ namespace ShopOrderCustom.Models
 
         public bool CheckSaveOrder(Guid idOrderHeader)
         {
-            using (var oc = unityContainer.Resolve<OrderDataContext>())
+            using (var oc = UnityContainer.Resolve<OrderDataContext>())
             {
                 ISingleResult<sp_sel_CheckOrderSaveResult> res = oc.DataBaseContext.sp_sel_CheckOrderSave(idOrderHeader);
                 foreach (sp_sel_CheckOrderSaveResult spSelCheckOrderSaveResult in res)
@@ -360,7 +360,7 @@ namespace ShopOrderCustom.Models
             : base(unityContainer)
         {
             ViewCode = ViewConst.CR_ORDER;
-            this.unityContainer = unityContainer;
+            //this.UnityContainer = unityContainer;
             StoreHouseType = true;
             _serverDate = DateTime.Parse(unityContainer.Resolve<IOrderUserInfo>().Property["SERVER_DATE"]);
             _shopId = Guid.Parse(unityContainer.Resolve<IOrderUserInfo>().Property["USER_SHOP"]);

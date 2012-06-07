@@ -16,7 +16,7 @@ namespace ShopOrderCustom.Models
     /// </summary>
     public class AssortmentModel : ModelLayout
     {
-        public IUnityContainer UnityContainer { get; set; }
+        //public IUnityContainer UnityContainer { get; set; }
 
         [Dependency]
         public IOrderUserInfo OrderUserInfo { get; set; }
@@ -86,7 +86,7 @@ namespace ShopOrderCustom.Models
         public AssortmentModel(IUnityContainer unityContainer) : base(unityContainer)
         {
             ViewCode = ViewConst.ED_REQ_ASSORT;
-            UnityContainer = unityContainer;
+            //UnityContainer = unityContainer;
             Assorts = unityContainer.Resolve<ReqAssorts>();
             _shopCategorys = unityContainer.Resolve<ShopCategorys>();
         }

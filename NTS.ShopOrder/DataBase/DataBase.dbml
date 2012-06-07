@@ -247,6 +247,12 @@
       <Column Name="[check]" Member="check" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
     </Type>
   </Table>
+  <Table Name="dbo.AutoOrderMode" Member="AutoOrderModes">
+    <Type Name="AutoOrderMode">
+      <Column Name="id" Type="System.Byte" DbType="TinyInt NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(255) NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
   <Table Name="dbo.vGoodsOrderAssort" Member="vGoodsOrderAssorts">
     <Type Name="vGoodsOrderAssort">
       <Column Name="id" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
@@ -265,12 +271,7 @@
       <Column Name="QuantityInPack" Type="System.Double" DbType="Float" CanBeNull="true" />
       <Column Name="SelfImport" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
       <Column Name="AutoOrderModeId" Type="System.Byte" DbType="TinyInt" CanBeNull="true" />
-    </Type>
-  </Table>
-  <Table Name="dbo.AutoOrderMode" Member="AutoOrderModes">
-    <Type Name="AutoOrderMode">
-      <Column Name="id" Type="System.Byte" DbType="TinyInt NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="Name" Type="System.String" DbType="NVarChar(255) NOT NULL" CanBeNull="false" />
+      <Column Name="Price" Type="System.Decimal" DbType="Decimal(15,2)" CanBeNull="true" />
     </Type>
   </Table>
   <Function Name="dbo.GetUser" Method="GetUser" IsComposable="true">
@@ -1010,6 +1011,48 @@
       <Column Name="id_Invoice" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="Barcode" Type="System.String" DbType="NVarChar(20) NOT NULL" CanBeNull="false" />
       <Column Name="Code" Type="System.String" DbType="NVarChar(20) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.sp_sel_GoodsDistribution" Method="sp_sel_GoodsDistribution">
+    <Parameter Name="id_ShopCategory" Type="System.Int32" DbType="Int" />
+    <Parameter Name="id_ParentGroupId" Type="System.Int32" DbType="Int" />
+    <ElementType Name="sp_sel_GoodsDistributionResult">
+      <Column Name="id_int" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="name" Type="System.String" DbType="NVarChar(255) NOT NULL" CanBeNull="false" />
+      <Column Name="active" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="note" Type="System.String" DbType="VarChar(1) NOT NULL" CanBeNull="false" />
+      <Column Name="id_sap" Type="System.String" DbType="VarChar(1) NOT NULL" CanBeNull="false" />
+      <Column Name="parentId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="[check]" Member="check" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="Barcode" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="Code" Type="System.String" DbType="NVarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="Supplier" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="Measure" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="QuantityInPack" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Price" Type="System.Decimal" DbType="Decimal(15,2)" CanBeNull="true" />
+      <Column Name="Norm" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.sp_del_GoodsNorm" Method="sp_del_GoodsNorm">
+    <Parameter Name="id_ShopCategory" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.sp_ins_GoodsNorm" Method="sp_ins_GoodsNorm">
+    <Parameter Name="id_ShopCategory" Type="System.Int32" DbType="Int" />
+    <Parameter Name="Norm" Parameter="norm" Type="System.Double" DbType="Float" />
+    <Parameter Name="GoodsCode" Parameter="goodsCode" Type="System.String" DbType="NVarChar(20)" />
+    <Parameter Name="WinLogin" Parameter="winLogin" Type="System.String" DbType="NVarChar(50)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.sp_get_orders_fromDistribution" Method="sp_get_orders_fromDistribution">
+    <Parameter Name="WinLogin" Parameter="winLogin" Type="System.String" DbType="NVarChar(100)" />
+    <ElementType Name="sp_get_orders_fromDistributionResult">
+      <Column Name="ErrorNumber" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ErrorSeverity" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ErrorState" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ErrorProcedure" Type="System.String" DbType="NVarChar(128)" CanBeNull="true" />
+      <Column Name="ErrorLine" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ErrorMessage" Type="System.String" DbType="NVarChar(4000)" CanBeNull="true" />
     </ElementType>
   </Function>
 </Database>

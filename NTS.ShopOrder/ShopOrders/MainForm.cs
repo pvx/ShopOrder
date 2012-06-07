@@ -111,6 +111,7 @@ namespace ShopOrders
             mReports.Visibility = GetPermission(Permission.ReportView);
             mGoodsReturn.Visibility = GetPermission(Permission.CreateReturn);
             mGoodsReturnSt.Visibility = GetPermission(Permission.CreateReturnSt);
+            mDistributionGoods.Visibility = GetPermission(Permission.DistributionGoods);
         }
 
         private void MainForm_Load(object sender, System.EventArgs e)
@@ -211,6 +212,11 @@ namespace ShopOrders
         private void MGoodsReturnStItemClick(object sender, ItemClickEventArgs e)
         {
             Model.ShowForm(typeof(GoodsReturnStateModel));
+        }
+
+        private void MDistributionGoodsItemClick(object sender, ItemClickEventArgs e)
+        {
+            Model.ShowForm(typeof(DistributionFormModel));
         }
     }
 }

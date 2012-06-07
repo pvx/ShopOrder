@@ -14,6 +14,8 @@ namespace ShopOrderCustom.Models
     {
         private readonly IUnityContainer _unityContainer;
 
+        public IUnityContainer UnityContainer { get { return _unityContainer; } }
+
         protected ModelLayout(IUnityContainer container)
         {
             _unityContainer = container;
