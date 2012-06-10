@@ -5,6 +5,7 @@ using Common.Interfaces;
 using DataBase.DataObject;
 using DevExpress.XtraBars;
 using DevExpress.XtraEditors;
+using DevExpress.XtraGrid.Views.Grid;
 using DevExpress.XtraTreeList.Nodes;
 using ShopOrderCustom.Models;
 using ShopOrderCustom.TreeData;
@@ -137,6 +138,11 @@ namespace ShopOrderCustom.UI
         private void GridViewCellValueChanged(object sender, DevExpress.XtraGrid.Views.Base.CellValueChangedEventArgs e)
         {
             treeList.Refresh();
+            if(e.Column.FieldName == "Check")
+            {
+                colNorm.ColumnEdit.ReadOnly = !(bool) e.Value;
+                colNorm.OptionsColumn.AllowEdit = (bool)e.Value;
+            }
         }
 
         private void TreeListGetStateImage(object sender, DevExpress.XtraTreeList.GetStateImageEventArgs e)
@@ -147,14 +153,14 @@ namespace ShopOrderCustom.UI
             {
                 var obj = e.Node.GetValue(0) as GoodsDataCategory;
                 if (obj.ObjectList is ICheckInfo)
-                    checkInfo = (ICheckInfo)obj.ObjectList;
+                    checkInfo = obj.ObjectList;
             }
 
             if (e.Node.GetValue(0) is GoodsDataGroup)
             {
                 var obj = e.Node.GetValue(0) as GoodsDataGroup;
                 if (obj.ObjectList is ICheckInfo)
-                    checkInfo = (ICheckInfo)obj.ObjectList;
+                    checkInfo = obj.ObjectList;
             }
 
             if (checkInfo != null)
@@ -189,5 +195,26 @@ namespace ShopOrderCustom.UI
             }
         }
 
+        private void GridViewFocusedRowChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e)
+        {
+            //if (Model.CurrentReturnHeader != null)
+            {
+                var view = sender as GridView;
+                if (view != null)
+                {
+                    if (e.FocusedRowHandle >= 0)
+                    {
+                        var ch = (bool)view.GetRowCellValue(e.FocusedRowHandle, "Check");
+                        colNorm.ColumnEdit.ReadOnly = !ch;
+                        colNorm.OptionsColumn.AllowEdit = ch;
+                    }
+                    else
+                    {
+                        colNorm.ColumnEdit.ReadOnly = false;
+                        colNorm.OptionsColumn.AllowEdit = false;
+                    }
+                }
+            }
+        }
     }
 }

@@ -228,6 +228,22 @@ namespace ShopOrderCustom.TreeData
         private decimal _price;
         private string _supplier;
 
+        private bool _loaded;
+        public bool Loaded
+        {
+            get { return _loaded; }
+            set { _loaded = value; }
+        }
+
+        protected override void AfterNodeCheck(bool check)
+        {
+            base.AfterNodeCheck(check);
+            if (Loaded)
+            {
+                if (!check)
+                    Norm = 0;
+            }
+        }
 
         public decimal Price
         {
@@ -497,8 +513,6 @@ namespace ShopOrderCustom.TreeData
 
         public override void Load()
         {
-            int categoryId = 1;
-
             using (var oc = UnityContainer.Resolve<OrderDataContext>())
             {
                 var category = from c in oc.DataBaseContext.vGroup
@@ -617,6 +631,7 @@ namespace ShopOrderCustom.TreeData
                                    Measure = c.Measure,
                                    Supplier = c.Supplier,
                                    Norm = c.Norm,
+                                   Loaded = true
                                };
 
                 foreach (var categoryObj in category)

@@ -56,6 +56,7 @@
             this.barSubItem1 = new DevExpress.XtraBars.BarSubItem();
             this.btNestleImport = new DevExpress.XtraBars.BarButtonItem();
             this.btOrderImport = new DevExpress.XtraBars.BarButtonItem();
+            this.btDistribOrders = new DevExpress.XtraBars.BarButtonItem();
             this.bar3 = new DevExpress.XtraBars.Bar();
             this.pbar = new DevExpress.XtraBars.BarEditItem();
             this.ProgressBar = new DevExpress.XtraEditors.Repository.RepositoryItemProgressBar();
@@ -93,7 +94,6 @@
             this.colSelfImport = new DevExpress.XtraGrid.Columns.GridColumn();
             this.popupMenuNodes = new DevExpress.XtraBars.PopupMenu(this.components);
             this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
-            this.btDistribOrders = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.barManager)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cdDateFilterItem)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cdDateFilterItem.VistaTimeProperties)).BeginInit();
@@ -285,6 +285,7 @@
             // 
             // btNestleImport
             // 
+            this.btNestleImport.Caption = "Импорт заказов Nestle";
             this.btNestleImport.Glyph = global::ShopOrderCustom.Properties.Resources.nestle;
             this.btNestleImport.Id = 12;
             this.btNestleImport.Name = "btNestleImport";
@@ -292,10 +293,19 @@
             // 
             // btOrderImport
             // 
+            this.btOrderImport.Caption = "Импорт из файла";
             this.btOrderImport.Glyph = global::ShopOrderCustom.Properties.Resources.ImportXLS;
             this.btOrderImport.Id = 14;
             this.btOrderImport.Name = "btOrderImport";
             this.btOrderImport.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.BarButtonItem5ItemClick);
+            // 
+            // btDistribOrders
+            // 
+            this.btDistribOrders.Caption = "Заказы по распределению";
+            this.btDistribOrders.Glyph = global::ShopOrderCustom.Properties.Resources.ImportDistrib;
+            this.btDistribOrders.Id = 15;
+            this.btDistribOrders.Name = "btDistribOrders";
+            this.btDistribOrders.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem5_ItemClick);
             // 
             // bar3
             // 
@@ -705,13 +715,6 @@
             // 
             this.openFileDialog.FileName = "openFileDialog";
             this.openFileDialog.Filter = "Excel 2003|*.xls|Excel 2007|*.xlsx;";
-            // 
-            // btDistribOrders
-            // 
-            this.btDistribOrders.Caption = "Заказы по распределению";
-            this.btDistribOrders.Id = 15;
-            this.btDistribOrders.Name = "btDistribOrders";
-            this.btDistribOrders.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem5_ItemClick);
             // 
             // OrderManagerForm
             // 
