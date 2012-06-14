@@ -265,14 +265,7 @@ namespace DataBase.DataObject
         void BeforeReqQuantityChange(ref double reqQuantity)
         {
             //Изменено
-            if((MinOrder == QuantityInPack) /*&& (!RoundOrderHelper.Check(Quantity, QuantityInPack))*/)
-            {
-                reqQuantity = RoundOrderHelper.Calc(reqQuantity, Quantity, QuantityInPack, MinOrder);
-                if ((IsQuoted) && (reqQuantity > Quota))
-                    reqQuantity = Quota;
-            }
-            else
-            {
+
                 if ((!IsShopBalance) || (OrderMode == AutoOrderModeEnum.NothingMode))
                     CalcOrder(ref reqQuantity);
                 else
@@ -295,8 +288,7 @@ namespace DataBase.DataObject
                             break;
                     }
                     CalcOrder(ref reqQuantity);
-                }
-            }
+                }           
         }
 
         void AfterReqQuantityChange(double reqQuantity) 

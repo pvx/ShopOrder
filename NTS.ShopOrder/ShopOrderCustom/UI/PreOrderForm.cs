@@ -121,7 +121,7 @@ namespace ShopOrderCustom.UI
                         treeList.MoveLastVisible();
                     }
                 }
-                else
+                /*else
                 {
                     grid.BeginUpdate();
                     try
@@ -140,6 +140,7 @@ namespace ShopOrderCustom.UI
                         grid.EndUpdate();
                     }
                 }
+                 * */
             }
         }
 

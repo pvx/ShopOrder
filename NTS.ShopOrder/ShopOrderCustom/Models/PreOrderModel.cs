@@ -295,7 +295,7 @@ namespace ShopOrderCustom.Models
             try
             {
                 gb.ChangePreReqQuantity -= BlChangeReqQuantity;
-
+                /*
                 if ((!_autoFill) && ((gb.Ordered + gb.Quantity) < gb.ReqQuantity))
                 {
                     if(XtraMessageBox.Show("Остатки меньше чем заказываемое количество. Заказать?", "Внимание!",
@@ -308,6 +308,8 @@ namespace ShopOrderCustom.Models
                 {
                     SaveOrder(gb);
                 }
+                */
+                SaveOrder(gb);
             }
             finally
             {

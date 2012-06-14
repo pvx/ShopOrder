@@ -836,6 +836,13 @@ namespace DataBase
 			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), id_OrderHeader);
 			return ((ISingleResult<sp_sel_PreOrderGoodsByHeaderResult>)(result.ReturnValue));
 		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.sp_upd_PreOrdersHeaderState")]
+		public int sp_upd_PreOrdersHeaderState1([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="UniqueIdentifier")] System.Nullable<System.Guid> id_OrderHeader, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> state)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), id_OrderHeader, state);
+			return ((int)(result.ReturnValue));
+		}
 	}
 	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.GoodsBalance")]

@@ -468,6 +468,28 @@ namespace ShopOrderCustom.TreeData
         {
         }
 
+        public void ChangeSelectedOrderState()
+        {
+            using (var oc = UnityContainer.Resolve<OrderDataContext>())
+            {
+                foreach (var obj in Items)
+                {
+                    if (obj.ObjectList != null)
+                    {
+                        foreach (var ord in obj.ObjectList)
+                        {
+                            if ((ord.Check) && (ord.IdOrderState == 2))
+                            {
+                                oc.DataBaseContext.sp_upd_PreOrdersHeaderState(ord.IdOrderHeader, 1);
+                                ord.IdOrderState = 1;
+                                UnityContainer.Resolve<IDBLogger>().InsertLog(string.Format("Откат статуса пред заказа с Подтвержден на Введен."), ord.IdOrderHeader.ToString().ToUpper());
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
         public override StateCheck GetCheckState()
         {
             int count = Items.Where(c => c.Check).Count();

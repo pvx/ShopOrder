@@ -109,6 +109,7 @@ namespace ShopOrderCustom.UI
         private void SetCheckedChildNodes(TreeListNode node, CheckState check)
         {
             if (node.GetValue(0) != null)
+            {
                 if (Equals(node.GetValue(0).GetType(), typeof(OrderHeaderData)))
                 {
                     var oh = (OrderHeaderData)node.GetValue(0);
@@ -122,6 +123,21 @@ namespace ShopOrderCustom.UI
                         node.CheckState = CheckState.Unchecked;
                     }
                 }
+
+                if (Equals(node.GetValue(0).GetType(), typeof(PreOrderHeaderData)))
+                {
+                    var oh = (PreOrderHeaderData)node.GetValue(0);
+                    if (oh.IdOrderState == 2)
+                    {
+                        oh.Check = check == CheckState.Checked;
+                    }
+                    else
+                    {
+                        oh.Check = false;
+                        node.CheckState = CheckState.Unchecked;
+                    }
+                }
+            }
 
             for (int i = 0; i < node.Nodes.Count; i++)
             {
@@ -160,6 +176,10 @@ namespace ShopOrderCustom.UI
             if (e.Node.GetValue(0).GetType().Equals(typeof(OrderHeaderData)))
             {
                 e.CanCheck = (e.Node.GetValue(0) as OrderHeaderData).IdOrderState == 2;
+            }
+            if (e.Node.GetValue(0).GetType().Equals(typeof(PreOrderHeaderData)))
+            {
+                e.CanCheck = (e.Node.GetValue(0) as PreOrderHeaderData).IdOrderState == 2;
             }
             e.State = (e.PrevState == CheckState.Checked ? CheckState.Unchecked : CheckState.Checked);
         }
@@ -247,6 +267,12 @@ namespace ShopOrderCustom.UI
             if (treeList.DataSource is ShopNode)
             {
                 var os = (treeList.DataSource as ShopNode);
+                os.ChangeSelectedOrderState();
+            }
+
+            if (treeList.DataSource is PreShopNode)
+            {
+                var os = (treeList.DataSource as PreShopNode);
                 os.ChangeSelectedOrderState();
             }
         }
