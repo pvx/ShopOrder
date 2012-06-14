@@ -194,6 +194,15 @@ namespace ShopOrderCustom.UI
                     XtraMessageBox.Show("Заказы сформированы");
                 }
             }
+
+            if (treeList.DataSource is PreShopNode)
+            {
+                var os = (PreShopNode)treeList.DataSource;
+                if (os.SaveSelectedOrder())
+                {
+                    XtraMessageBox.Show("Заказы сформированы");
+                }
+            }
         }
 
         private void TreeListCustomDrawNodeCell(object sender, CustomDrawNodeCellEventArgs e)

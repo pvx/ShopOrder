@@ -468,6 +468,33 @@ namespace ShopOrderCustom.TreeData
         {
         }
 
+        public bool SaveSelectedOrder()
+        {
+            bool ret = false;
+
+            using (var oc = UnityContainer.Resolve<OrderDataContext>())
+            {
+                foreach (PreShopData obj in Items)
+                {
+                    if (obj.ObjectList != null)
+                    {
+                        foreach (var ord in (obj.ObjectList))
+                        {
+                            if ((ord.Check) && (ord.IdOrderState == 2))
+                            {
+                                oc.DataBaseContext.sp_ins_PreOrderForProcess(ord.IdOrderHeader);
+                                ord.IdOrderState = 3;
+                                ord.ProcesDate = DateTime.Now;
+                                UnityContainer.Resolve<IDBLogger>().InsertLog(string.Format("Смена статуса заказа с Подтвержден на Обработан."), ord.IdOrderHeader.ToString().ToUpper());
+                                ret = true;
+                            }
+                        }
+                    }
+                }
+            }
+            return ret;
+        }
+
         public void ChangeSelectedOrderState()
         {
             using (var oc = UnityContainer.Resolve<OrderDataContext>())

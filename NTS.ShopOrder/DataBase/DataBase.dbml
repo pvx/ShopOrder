@@ -1311,4 +1311,8 @@
     <Parameter Name="state" Type="System.Int32" DbType="Int" />
     <Return Type="System.Int32" />
   </Function>
+  <Function Name="dbo.sp_ins_PreOrderForProcess" Method="sp_ins_PreOrderForProcess">
+    <Parameter Name="id_OrderHeader" Type="System.Guid" DbType="UniqueIdentifier" />
+    <Return Type="System.Int32" />
+  </Function>
 </Database>
