@@ -1,5 +1,5 @@
-﻿<?xml version="1.0" encoding="utf-8"?><Database Name="ShopOrders" Class="DataBaseDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
-  <Connection Mode="AppSettings" ConnectionString="Data Source=(local);Initial Catalog=ShopOrders;Integrated Security=True" SettingsObjectName="DataBase.Properties.Settings" SettingsPropertyName="ShopOrdersConnectionString2" Provider="System.Data.SqlClient" />
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="ShopOrders_PVX" Class="DataBaseDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=MI001-DB01;Initial Catalog=ShopOrders_PVX;Integrated Security=True" SettingsObjectName="DataBase.Properties.Settings" SettingsPropertyName="ShopOrders_PVXConnectionString" Provider="System.Data.SqlClient" />
   <Table Name="dbo.GoodsBalance" Member="GoodsBalance">
     <Type Name="GoodsBalance">
       <Column Name="id" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
@@ -272,6 +272,12 @@
       <Column Name="SelfImport" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
       <Column Name="AutoOrderModeId" Type="System.Byte" DbType="TinyInt" CanBeNull="true" />
       <Column Name="Price" Type="System.Decimal" DbType="Decimal(15,2)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.PreOrderState" Member="PreOrderStates">
+    <Type Name="PreOrderState">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
     </Type>
   </Table>
   <Function Name="dbo.GetUser" Method="GetUser" IsComposable="true">
@@ -1054,5 +1060,210 @@
       <Column Name="ErrorLine" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="ErrorMessage" Type="System.String" DbType="NVarChar(4000)" CanBeNull="true" />
     </ElementType>
+  </Function>
+  <Function Name="dbo.spCreatePreOrderNew" Method="spCreatePreOrderNew">
+    <Parameter Name="id_GoodsBalance" Type="System.Guid" DbType="UniqueIdentifier" />
+    <Parameter Name="id_PreOrderHeader" Type="System.Guid" DbType="UniqueIdentifier" />
+    <Parameter Name="Quantity" Parameter="quantity" Type="System.Double" DbType="Float" />
+    <ElementType Name="spCreatePreOrderNewResult">
+      <Column Name="ReqQuantity" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+      <Column Name="Ordered" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Balance" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="id_GoodsBalance" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="GoodsGroup" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(255) NOT NULL" CanBeNull="false" />
+      <Column Name="Price" Type="System.Decimal" DbType="Decimal(15,2)" CanBeNull="true" />
+      <Column Name="QuantityInPack" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Measure" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="Supplier" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="Code" Type="System.String" DbType="NVarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="Barcode" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="Date" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="Reserved" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="FreeBalance" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="MinOrder" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="id_PreOrderHeader" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="IsReqAssort" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.sp_sel_PreOrderBalance" Method="sp_sel_PreOrderBalance">
+    <Parameter Name="id_PreOrderHeader" Type="System.Guid" DbType="UniqueIdentifier" />
+    <Parameter Name="id_strorehouse" Type="System.Int32" DbType="Int" />
+    <Parameter Name="id_PreOrderState" Type="System.Int32" DbType="Int" />
+    <ElementType Name="sp_sel_PreOrderBalanceResult">
+      <Column Name="Balance" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="id_GoodsBalance" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="GoodsGroup" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(255) NOT NULL" CanBeNull="false" />
+      <Column Name="Price" Type="System.Decimal" DbType="Decimal(15,2)" CanBeNull="true" />
+      <Column Name="QuantityInPack" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Measure" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="Supplier" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="Code" Type="System.String" DbType="NVarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="Barcode" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="Date" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="Reserved" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="FreeBalance" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="MinOrder" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="IsReqAssort" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="ReqQuantity" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+      <Column Name="Ordered" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+      <Column Name="id_OrderHeader" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="ForOrder" Type="System.Decimal" DbType="Decimal(15,3)" CanBeNull="true" />
+      <Column Name="AvgSell" Type="System.Decimal" DbType="Decimal(15,3) NOT NULL" CanBeNull="false" />
+      <Column Name="ShopBalance" Type="System.Decimal" DbType="Decimal(15,3) NOT NULL" CanBeNull="false" />
+      <Column Name="Quota" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+      <Column Name="IsQuoted" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="SelfImport" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="AutoOrderModeId" Type="System.Byte" DbType="TinyInt NOT NULL" CanBeNull="false" />
+      <Column Name="LastAutoOrderDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.sp_sel_PreOrderBalanceRefresh" Method="sp_sel_PreOrderBalanceRefresh">
+    <Parameter Name="id_PreOrderHeader" Type="System.Guid" DbType="UniqueIdentifier" />
+    <Parameter Name="id_GoodsBalance" Type="System.Guid" DbType="UniqueIdentifier" />
+    <ElementType Name="sp_sel_PreOrderBalanceRefreshResult">
+      <Column Name="Balance" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="id_GoodsBalance" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="GoodsGroup" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(255) NOT NULL" CanBeNull="false" />
+      <Column Name="Price" Type="System.Decimal" DbType="Decimal(15,2)" CanBeNull="true" />
+      <Column Name="QuantityInPack" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Measure" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="Supplier" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="Code" Type="System.String" DbType="NVarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="Barcode" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="Date" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="Reserved" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="FreeBalance" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="MinOrder" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="IsReqAssort" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="ReqQuantity" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+      <Column Name="Ordered" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+      <Column Name="id_OrderHeader" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="Quota" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+      <Column Name="IsQuoted" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.sp_sel_PreOrderHeaderOnDate" Method="sp_sel_PreOrderHeaderOnDate">
+    <Parameter Name="id_shop" Type="System.Guid" DbType="UniqueIdentifier" />
+    <Parameter Name="filterDate" Type="System.DateTime" DbType="DateTime" />
+    <ElementType Name="sp_sel_PreOrderHeaderOnDateResult">
+      <Column Name="id_PreOrderHeader" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="id_User" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="id_PreOrderState" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="CommitDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="ProcesDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Note" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="UserName" Type="System.String" DbType="NVarChar(255) NOT NULL" CanBeNull="false" />
+      <Column Name="id_Shop" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="ShopName" Type="System.String" DbType="NVarChar(255) NOT NULL" CanBeNull="false" />
+      <Column Name="ShopCode" Type="System.String" DbType="NVarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="ShopAddress" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="id_ShopOwner" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="id_ShopCategory" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="LockDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="LockUser" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.sp_sel_PreOrderHeaderOnDateAll" Method="sp_sel_PreOrderHeaderOnDateAll">
+    <Parameter Name="id_shop" Type="System.Guid" DbType="UniqueIdentifier" />
+    <Parameter Name="filterDate" Type="System.DateTime" DbType="DateTime" />
+    <ElementType Name="sp_sel_PreOrderHeaderOnDateAllResult">
+      <Column Name="id_PreOrderHeader" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="id_User" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="id_PreOrderState" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="CommitDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="ProcesDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Note" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="UserName" Type="System.String" DbType="NVarChar(255) NOT NULL" CanBeNull="false" />
+      <Column Name="id_Shop" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="ShopName" Type="System.String" DbType="NVarChar(255) NOT NULL" CanBeNull="false" />
+      <Column Name="ShopCode" Type="System.String" DbType="NVarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="ShopAddress" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="id_ShopOwner" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="id_ShopCategory" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="LockDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="LockUser" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.sp_sel_PreOrderHeaderOnDateOrder" Method="sp_sel_PreOrderHeaderOnDateOrder">
+    <Parameter Name="id_shop" Type="System.Guid" DbType="UniqueIdentifier" />
+    <Parameter Name="filterDate" Type="System.DateTime" DbType="DateTime" />
+    <ElementType Name="sp_sel_PreOrderHeaderOnDateOrderResult">
+      <Column Name="id_PreOrderHeader" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="id_User" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="id_PreOrderState" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="CommitDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="ProcesDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Note" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="UserName" Type="System.String" DbType="NVarChar(255) NOT NULL" CanBeNull="false" />
+      <Column Name="id_Shop" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="ShopName" Type="System.String" DbType="NVarChar(255) NOT NULL" CanBeNull="false" />
+      <Column Name="ShopCode" Type="System.String" DbType="NVarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="ShopAddress" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="id_ShopOwner" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="id_ShopCategory" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="LockDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="LockUser" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.sp_sel_PreOrderHeaderOnDatePeriodAll" Method="sp_sel_PreOrderHeaderOnDatePeriodAll">
+    <Parameter Name="id_shop" Type="System.Guid" DbType="UniqueIdentifier" />
+    <Parameter Name="filterDate" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="filterDateEnd" Type="System.DateTime" DbType="DateTime" />
+    <ElementType Name="sp_sel_PreOrderHeaderOnDatePeriodAllResult">
+      <Column Name="id_PreOrderHeader" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="id_User" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="id_PreOrderState" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="CommitDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="ProcesDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Note" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="UserName" Type="System.String" DbType="NVarChar(255) NOT NULL" CanBeNull="false" />
+      <Column Name="id_Shop" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="ShopName" Type="System.String" DbType="NVarChar(255) NOT NULL" CanBeNull="false" />
+      <Column Name="ShopCode" Type="System.String" DbType="NVarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="ShopAddress" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="id_ShopOwner" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="id_ShopCategory" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="LockDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="LockUser" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.sp_sel_CheckPreOrderSave" Method="sp_sel_CheckPreOrderSave">
+    <Parameter Name="id_PreOrderHeader" Type="System.Guid" DbType="UniqueIdentifier" />
+    <ElementType Name="sp_sel_CheckPreOrderSaveResult">
+      <Column Name="" Member="Column1" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.sp_upd_PreOrdersHeaderState" Method="sp_upd_PreOrdersHeaderState">
+    <Parameter Name="id_PreOrderHeader" Type="System.Guid" DbType="UniqueIdentifier" />
+    <Parameter Name="state" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.GetUserPreOrder" Method="GetUserPreOrder" IsComposable="true">
+    <Parameter Name="id_goodsBalance" Type="System.Guid" DbType="UniqueIdentifier" />
+    <Return Type="System.Double" />
+  </Function>
+  <Function Name="dbo.GetUserPreOrderHeader" Method="GetUserPreOrderHeader" IsComposable="true">
+    <Parameter Name="id_goodsBalance" Type="System.Guid" DbType="UniqueIdentifier" />
+    <Parameter Name="id_preOrderHeader" Type="System.Guid" DbType="UniqueIdentifier" />
+    <Return Type="System.Double" />
+  </Function>
+  <Function Name="dbo.sp_ins_PreOrdersHeader" Method="sp_ins_PreOrdersHeader">
+    <Parameter Name="IdPreOrderHeader" Parameter="idPreOrderHeader" Type="System.Guid" DbType="UniqueIdentifier" />
+    <Parameter Name="IdPreOrderState" Parameter="idPreOrderState" Type="System.Int32" DbType="Int" />
+    <Parameter Name="IdUser" Parameter="idUser" Type="System.Guid" DbType="UniqueIdentifier" />
+    <Parameter Name="CreateDate" Parameter="createDate" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="winlogin" Type="System.String" DbType="NVarChar(100)" />
+    <Return Type="System.Int32" />
   </Function>
 </Database>

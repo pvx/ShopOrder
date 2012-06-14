@@ -112,6 +112,7 @@ namespace ShopOrders
             mGoodsReturn.Visibility = GetPermission(Permission.CreateReturn);
             mGoodsReturnSt.Visibility = GetPermission(Permission.CreateReturnSt);
             mDistributionGoods.Visibility = GetPermission(Permission.DistributionGoods);
+            miPreOrder.Visibility = BarItemVisibility.Always;
         }
 
         private void MainForm_Load(object sender, System.EventArgs e)
@@ -217,6 +218,11 @@ namespace ShopOrders
         private void MDistributionGoodsItemClick(object sender, ItemClickEventArgs e)
         {
             Model.ShowForm(typeof(DistributionFormModel));
+        }
+
+        private void miPreOrder_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            Model.ShowForm(typeof(PreOrderModel));
         }
     }
 }

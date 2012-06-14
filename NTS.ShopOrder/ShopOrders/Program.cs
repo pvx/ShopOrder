@@ -57,6 +57,7 @@ namespace ShopOrders
                 container.RegisterType<IExcelImport, ExcelOrderImport>();
 
                 container.RegisterType<Orders>();
+                container.RegisterType<PreOrders>();
                 container.RegisterType<OrderShops>();
                 container.RegisterType<MinOrders>();
                 container.RegisterType<ReqAssorts>();
@@ -87,6 +88,7 @@ namespace ShopOrders
                 container.RegisterType<GoodsReturnStateModel>();
                 container.RegisterType<GoodsReturnAddModel>();
                 container.RegisterType<DistributionFormModel>();
+                container.RegisterType<PreOrderModel>();
                 container.RegisterType<MainModel>();
 
                 container.RegisterInstance<IReportManager>(container.Resolve<ReportManager>());

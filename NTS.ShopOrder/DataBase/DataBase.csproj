@@ -70,6 +70,8 @@
     <Compile Include="DataContext.cs" />
     <Compile Include="DataObject\AutoOrderItemObj.cs" />
     <Compile Include="DataObject\BaseDataObject.cs" />
+    <Compile Include="DataObject\PreGoodBalanceObj.cs" />
+    <Compile Include="DataObject\PreOrderHeaderObj.cs" />
     <Compile Include="DataObject\ReturnItemPool.cs" />
     <Compile Include="DataObject\ReasonData.cs" />
     <Compile Include="DataObject\InvoiceData.cs" />

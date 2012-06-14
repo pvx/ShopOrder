@@ -32,6 +32,7 @@ namespace ShopOrders
         private GoodsReturnModel _goodsReturnModel;
         private GoodsReturnStateModel _goodsReturnStateModel;
         private DistributionFormModel _distributionFormModel;
+        private PreOrderModel _preOrderModel;
 
         private XtraForm _view;
         public XtraForm View
@@ -68,6 +69,8 @@ namespace ShopOrders
             _modelDict.Add(typeof(GoodsReturnStateModel), () => UnityContainer.Resolve<GoodsReturnStateModel>()); 
         
             _modelDict.Add(typeof(DistributionFormModel), () => UnityContainer.Resolve<DistributionFormModel>());
+
+            _modelDict.Add(typeof(PreOrderModel), () => UnityContainer.Resolve<PreOrderModel>());
         }
 
         public void ShowForm(Type typeModel)
@@ -262,6 +265,22 @@ namespace ShopOrders
                     _goodsReturnStateModel.View.BringToFront();
                 }
             }
+
+            if (typeModel.Equals(typeof(PreOrderModel)))
+            {
+                if (_preOrderModel == null)
+                {
+                    _preOrderModel = (PreOrderModel)_modelDict[typeModel].Invoke();
+                    _preOrderModel.View.MdiParent = View;
+                    _preOrderModel.View.WindowState = FormWindowState.Maximized;
+                    _preOrderModel.View.Show();
+                    _preOrderModel.View.FormClosed += PreOrderCloser;
+                }
+                else
+                {
+                    _orderModel.View.BringToFront();
+                }
+            }
         }
 
         private void DistributionFormModelClosed(object sender, FormClosedEventArgs e)
@@ -322,6 +341,11 @@ namespace ShopOrders
         void OrderCloser(object sender, FormClosedEventArgs e)
         {
             _orderModel = null;
+        }
+
+        void PreOrderCloser(object sender, FormClosedEventArgs e)
+        {
+            _preOrderModel = null;
         }
 
         public bool Login()

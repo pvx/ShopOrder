@@ -10,6 +10,11 @@ namespace DataBase.DataObject
         public GoodsBalanceObj GoodsObj { get; set; }
     }
 
+    public class EventChangePreReqQuantity : EventArgs
+    {
+        public PreGoodsBalanceObj GoodsObj { get; set; }
+    }
+
     public class EventChangeBalance : EventArgs
     {
             public EditGoodsBalanceObj GoodsObj { get; set; }

@@ -84,6 +84,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Models\PreOrderModel.cs" />
+    <Compile Include="PreOrders.cs" />
     <Compile Include="TreeData\GoodsNodeDataBase.cs" />
     <Compile Include="Data\GoodsDistributionObj.cs" />
     <Compile Include="GridLayoutSerializer.cs" />
@@ -169,6 +171,12 @@
     <Compile Include="Models\MinOrderModel.cs" />
     <Compile Include="OrderShops.cs" />
     <Compile Include="Models\OrderManagerModel.cs" />
+    <Compile Include="UI\PreOrderForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\PreOrderForm.Designer.cs">
+      <DependentUpon>PreOrderForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\UcGoodReturnSelect.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -260,6 +268,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UI\MinOrderForm.resx">
       <DependentUpon>MinOrderForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\PreOrderForm.resx">
+      <DependentUpon>PreOrderForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\UcGoodReturnSelect.resx">
       <DependentUpon>UcGoodReturnSelect.cs</DependentUpon>
@@ -414,6 +425,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\ImportDistrib.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\snow.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

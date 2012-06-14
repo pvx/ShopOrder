@@ -28,8 +28,9 @@ namespace ShopOrders
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
-            this.barManager = new DevExpress.XtraBars.BarManager();
+            this.barManager = new DevExpress.XtraBars.BarManager(this.components);
             this.bar2 = new DevExpress.XtraBars.Bar();
             this.mOperation = new DevExpress.XtraBars.BarSubItem();
             this.mCreateOrder = new DevExpress.XtraBars.BarButtonItem();
@@ -42,6 +43,7 @@ namespace ShopOrders
             this.mBalanceEditor = new DevExpress.XtraBars.BarButtonItem();
             this.mGoodsReturn = new DevExpress.XtraBars.BarButtonItem();
             this.mGoodsReturnSt = new DevExpress.XtraBars.BarButtonItem();
+            this.mDistributionGoods = new DevExpress.XtraBars.BarButtonItem();
             this.mUsers = new DevExpress.XtraBars.BarButtonItem();
             this.mReports = new DevExpress.XtraBars.BarSubItem();
             this.iPaintStyle = new DevExpress.XtraBars.BarSubItem();
@@ -53,8 +55,8 @@ namespace ShopOrders
             this.iClose = new DevExpress.XtraBars.BarButtonItem();
             this.iAbout = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
-            this.xtraTabbedMdiManager1 = new DevExpress.XtraTabbedMdi.XtraTabbedMdiManager();
-            this.mDistributionGoods = new DevExpress.XtraBars.BarButtonItem();
+            this.xtraTabbedMdiManager1 = new DevExpress.XtraTabbedMdi.XtraTabbedMdiManager(this.components);
+            this.miPreOrder = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.barManager)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabbedMdiManager1)).BeginInit();
             this.SuspendLayout();
@@ -87,9 +89,10 @@ namespace ShopOrders
             this.mReports,
             this.mGoodsReturn,
             this.mGoodsReturnSt,
-            this.mDistributionGoods});
+            this.mDistributionGoods,
+            this.miPreOrder});
             this.barManager.MainMenu = this.bar2;
-            this.barManager.MaxItemId = 27;
+            this.barManager.MaxItemId = 28;
             // 
             // bar2
             // 
@@ -121,7 +124,8 @@ namespace ShopOrders
             new DevExpress.XtraBars.LinkPersistInfo(this.mBalanceEditor),
             new DevExpress.XtraBars.LinkPersistInfo(this.mGoodsReturn),
             new DevExpress.XtraBars.LinkPersistInfo(this.mGoodsReturnSt),
-            new DevExpress.XtraBars.LinkPersistInfo(this.mDistributionGoods)});
+            new DevExpress.XtraBars.LinkPersistInfo(this.mDistributionGoods),
+            new DevExpress.XtraBars.LinkPersistInfo(this.miPreOrder)});
             this.mOperation.Name = "mOperation";
             // 
             // mCreateOrder
@@ -193,6 +197,13 @@ namespace ShopOrders
             this.mGoodsReturnSt.Id = 25;
             this.mGoodsReturnSt.Name = "mGoodsReturnSt";
             this.mGoodsReturnSt.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.MGoodsReturnStItemClick);
+            // 
+            // mDistributionGoods
+            // 
+            this.mDistributionGoods.Caption = "Распределение товаров";
+            this.mDistributionGoods.Id = 26;
+            this.mDistributionGoods.Name = "mDistributionGoods";
+            this.mDistributionGoods.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.MDistributionGoodsItemClick);
             // 
             // mUsers
             // 
@@ -269,12 +280,12 @@ namespace ShopOrders
             // 
             this.xtraTabbedMdiManager1.MdiParent = this;
             // 
-            // mDistributionGoods
+            // miPreOrder
             // 
-            this.mDistributionGoods.Caption = "Распределение товаров";
-            this.mDistributionGoods.Id = 26;
-            this.mDistributionGoods.Name = "mDistributionGoods";
-            this.mDistributionGoods.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.MDistributionGoodsItemClick);
+            this.miPreOrder.Caption = "Кроссдокинговый заказ";
+            this.miPreOrder.Id = 27;
+            this.miPreOrder.Name = "miPreOrder";
+            this.miPreOrder.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.miPreOrder_ItemClick);
             // 
             // MainForm
             // 
@@ -325,6 +336,7 @@ namespace ShopOrders
         private DevExpress.XtraBars.BarButtonItem mGoodsReturn;
         private DevExpress.XtraBars.BarButtonItem mGoodsReturnSt;
         private DevExpress.XtraBars.BarButtonItem mDistributionGoods;
+        private DevExpress.XtraBars.BarButtonItem miPreOrder;
 
     }
 }
