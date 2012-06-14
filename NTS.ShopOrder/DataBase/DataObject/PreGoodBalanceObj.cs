@@ -36,7 +36,9 @@ namespace DataBase.DataObject
         private bool _isQuoted;
         private bool _selfImport;
         public bool IsLoaded { get; set; }
+
         
+
         public double Quota
         {
             get { return _quota; }

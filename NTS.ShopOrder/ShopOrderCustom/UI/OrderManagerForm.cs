@@ -93,7 +93,7 @@ namespace ShopOrderCustom.UI
                 if (e.Node.Level == 1)
                 {
                     Model.CurrentOrderHeader = (OrderHeaderData)e.Node.GetValue(0);
-                    grid.DataSource = Model.GetOrderList();
+                    grid.DataSource = Model.GetGridDs();
                     btChangeState.Enabled = Model.CurrentOrderHeader.IdOrderState == 2;
                     btInfo.Enabled = true;
                 }

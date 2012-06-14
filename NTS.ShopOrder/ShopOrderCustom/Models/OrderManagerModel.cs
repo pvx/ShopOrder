@@ -50,8 +50,6 @@ namespace ShopOrderCustom.Models
         public event ChangeDateFilter ChangeDateFilter;
         public event ChangeManagerType ManagerTypeChanged;
 
-        //public IUnityContainer UnityContainer { get; set; }
-
         [Dependency]
         public IOrderUserInfo OrderUserInfo { get; set; }
 
@@ -139,9 +137,6 @@ namespace ShopOrderCustom.Models
 
         private ShopNode GetOrdersHeader()
         {
-            //var os = UnityContainer.Resolve<OrderShops>(); 
-            //os.Load(_filterDate);
-
             var os = UnityContainer.Resolve<ShopNode>();
             os.FilterDate = _filterDate;
             os.Load();
@@ -164,7 +159,20 @@ namespace ShopOrderCustom.Models
             return ret;
         }
 
-        public BindingList<GoodsBalanceObj> GetOrderList()
+        public object GetGridDs()
+        {
+            switch (ManagerType)
+            {
+                case OrderManagerType.OrderManager:
+                    return GetOrderList();
+                case OrderManagerType.PreOrderManager:
+                    return GetPreOrderList();
+                default:
+                    return null;
+            }
+        }
+
+        private BindingList<GoodsBalanceObj> GetOrderList()
         {
             if (_currentOrderHeader != null)
             {
@@ -199,6 +207,51 @@ namespace ShopOrderCustom.Models
                             Supplier = vo.Supplier,
                             SelfImport = vo.SelfImport.GetValueOrDefault(false)
                         };
+                        balance.Add(bl);
+                    }
+                    return balance;
+                }
+            }
+            return null;
+        }
+
+        private BindingList<PreGoodsBalanceData> GetPreOrderList()
+        {
+            if (_currentOrderHeader != null)
+            {
+                using (var oc = UnityContainer.Resolve<OrderDataContext>())
+                {
+                    var orders = oc.DataBaseContext.sp_sel_PreOrderGoodsByHeader(_currentOrderHeader.IdOrderHeader).ToList();
+
+
+                    var balance = new BindingList<PreGoodsBalanceData>
+                    {
+                        AllowEdit = _currentOrderHeader.IdOrderState == 1
+                    };
+
+                    foreach (var vo in orders)
+                    {
+                        var bl = new PreGoodsBalanceData
+                        {
+                            Barcode = vo.Barcode,
+                            Code = vo.Code,
+                            Date = vo.Date,
+                            FreeBalance = vo.FreeBalance.GetValueOrDefault(),
+                            Group = vo.GoodsGroup,
+                            id = vo.id_GoodsBalance,
+                            Measure = vo.Measure,
+                            MinOrder = vo.MinOrder.GetValueOrDefault(),
+                            Name = vo.Name,
+                            Price = vo.Price.GetValueOrDefault(),
+                            ReqQuantity = vo.ReqQuantity,
+                            Ordered = vo.Ordered,
+                            Quantity = vo.Balance,
+                            QuantityInPack = vo.QuantityInPack.GetValueOrDefault(),
+                            Reserved = vo.Reserved.GetValueOrDefault(),
+                            Supplier = vo.Supplier,
+                            SelfImport = vo.SelfImport.GetValueOrDefault(false)
+                        };
+                        bl.AddCommitData(bl.SelfImport ? null : new GoodsBalanceObj(){Code = bl.Code});
                         balance.Add(bl);
                     }
                     return balance;
@@ -385,7 +438,6 @@ namespace ShopOrderCustom.Models
         public OrderManagerModel(IUnityContainer unityContainer) : base(unityContainer)
         {
             ViewCode = ViewConst.PROCESS_ORDERS;
-            //UnityContainer = unityContainer;
             _serverDate = DateTime.Parse(unityContainer.Resolve<IOrderUserInfo>().Property["SERVER_DATE"]);
             ManagerType = OrderManagerType.OrderManager; 
         }

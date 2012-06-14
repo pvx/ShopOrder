@@ -85,6 +85,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Models\PreOrderModel.cs" />
+    <Compile Include="PreGoodsBalanceObj.cs" />
     <Compile Include="PreOrders.cs" />
     <Compile Include="TreeData\GoodsNodeDataBase.cs" />
     <Compile Include="Data\GoodsDistributionObj.cs" />
