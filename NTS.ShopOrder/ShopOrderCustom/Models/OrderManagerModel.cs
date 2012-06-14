@@ -11,6 +11,7 @@ using DataBase;
 using DataBase.DataObject;
 using DevExpress.XtraEditors;
 using Microsoft.Practices.Unity;
+using ShopOrderCustom.TreeData;
 using ShopOrderCustom.UI;
 using ShopOrderExcel;
 using ShopOrderExcel.Interfaces;
@@ -19,14 +20,35 @@ namespace ShopOrderCustom.Models
 {
     public delegate void ChangeDateFilter(object sender, EventChangeDateFilter e);
 
+    public delegate void ChangeManagerType(object sender, EventChangeManagerType e);
+
+    public class EventChangeManagerType : EventArgs
+    {
+        public OrderManagerType ManagerType { get; set; }
+    }
+
+
     /// <summary>
     /// Модель данных UI менеджера заказов
     /// </summary>
     public class OrderManagerModel : ModelLayout
     {
+
         private BackgroundWorker _backgroundWorker;
 
+        private OrderManagerType _managerType;
+        public OrderManagerType ManagerType
+        {
+            get { return _managerType; }
+            set
+            {
+                _managerType = value;
+                OnManagerTypeChanged(_managerType);
+            }
+        }
+
         public event ChangeDateFilter ChangeDateFilter;
+        public event ChangeManagerType ManagerTypeChanged;
 
         //public IUnityContainer UnityContainer { get; set; }
 
@@ -60,11 +82,18 @@ namespace ShopOrderCustom.Models
                 }
             }
         }
-
         private XtraForm _view;
 
-        private OrderHeaderObj _currentOrderHeader;
+        private OrderHeaderData _currentOrderHeader;
         private readonly DateTime _serverDate;
+
+        protected virtual void OnManagerTypeChanged(OrderManagerType managerType)
+        {
+            if(ManagerTypeChanged != null)
+            {
+                ManagerTypeChanged(this, new EventChangeManagerType() { ManagerType = managerType });
+            }
+        }
 
         protected virtual void SendChangeDataFilter(DateTime date)
         {
@@ -89,25 +118,49 @@ namespace ShopOrderCustom.Models
                     _view = value;}
         }
 
-        public OrderHeaderObj CurrentOrderHeader
+        public OrderHeaderData CurrentOrderHeader
         {
             get { return _currentOrderHeader; }
             set { _currentOrderHeader = value; }
         }
  
-        public OrderShops GetOrdersHeader()
+        public object GetTreeDs()
         {
-            var os = UnityContainer.Resolve<OrderShops>(); 
-            os.Load(_filterDate);
+            switch (ManagerType)
+            {
+                case OrderManagerType.OrderManager:
+                    return GetOrdersHeader();
+                case OrderManagerType.PreOrderManager:
+                    return GetPreOrdersHeader();
+                default:
+                    return null;
+            }
+        }
+
+        private ShopNode GetOrdersHeader()
+        {
+            //var os = UnityContainer.Resolve<OrderShops>(); 
+            //os.Load(_filterDate);
+
+            var os = UnityContainer.Resolve<ShopNode>();
+            os.FilterDate = _filterDate;
+            os.Load();
             return os;           
+        }
+
+        private PreShopNode GetPreOrdersHeader()
+        {
+            var os = UnityContainer.Resolve<PreShopNode>();
+            os.FilterDate = _filterDate;
+            os.Load();
+            return os;
         }
         
         public bool CanCheck(OrderHeaderObj orderHeaderObj)
         {
             bool ret = false;
             if (orderHeaderObj.IdOrderState == 2)
-                ret = OrderUserInfo.UserName.Equals(orderHeaderObj.LockUser) ||
-                      string.IsNullOrEmpty(orderHeaderObj.LockUser);
+                ret = OrderUserInfo.UserName.Equals(orderHeaderObj.LockUser) || string.IsNullOrEmpty(orderHeaderObj.LockUser);
             return ret;
         }
 
@@ -334,6 +387,7 @@ namespace ShopOrderCustom.Models
             ViewCode = ViewConst.PROCESS_ORDERS;
             //UnityContainer = unityContainer;
             _serverDate = DateTime.Parse(unityContainer.Resolve<IOrderUserInfo>().Property["SERVER_DATE"]);
+            ManagerType = OrderManagerType.OrderManager; 
         }
     }
 }

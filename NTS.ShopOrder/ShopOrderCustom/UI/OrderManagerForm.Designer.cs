@@ -42,11 +42,15 @@
             DevExpress.Utils.ToolTipItem toolTipItem3 = new DevExpress.Utils.ToolTipItem();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(OrderManagerForm));
             DevExpress.XtraGrid.StyleFormatCondition styleFormatCondition1 = new DevExpress.XtraGrid.StyleFormatCondition();
+            DevExpress.XtraGrid.StyleFormatCondition styleFormatCondition2 = new DevExpress.XtraGrid.StyleFormatCondition();
             this.colOrdered = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn7 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.barManager = new DevExpress.XtraBars.BarManager(this.components);
             this.bar1 = new DevExpress.XtraBars.Bar();
             this.cdDateFilter = new DevExpress.XtraBars.BarEditItem();
             this.cdDateFilterItem = new DevExpress.XtraEditors.Repository.RepositoryItemDateEdit();
+            this.btOrders = new DevExpress.XtraBars.BarCheckItem();
+            this.btPreOrders = new DevExpress.XtraBars.BarCheckItem();
             this.barButtonItem2 = new DevExpress.XtraBars.BarButtonItem();
             this.btInfo = new DevExpress.XtraBars.BarButtonItem();
             this.btCreateOrders = new DevExpress.XtraBars.BarButtonItem();
@@ -92,6 +96,25 @@
             this.colFreeBalance = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colMinOrder = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colSelfImport = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridViewPre = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn2 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn3 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn4 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn5 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn6 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn8 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn9 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn10 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn11 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn12 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn13 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn14 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn15 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn16 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn17 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn18 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn19 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.popupMenuNodes = new DevExpress.XtraBars.PopupMenu(this.components);
             this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
             ((System.ComponentModel.ISupportInitialize)(this.barManager)).BeginInit();
@@ -106,6 +129,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.gridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemSpinEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTimeEdit1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridViewPre)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.popupMenuNodes)).BeginInit();
             this.SuspendLayout();
             // 
@@ -125,6 +149,23 @@
             this.colOrdered.Visible = true;
             this.colOrdered.VisibleIndex = 0;
             this.colOrdered.Width = 50;
+            // 
+            // gridColumn7
+            // 
+            this.gridColumn7.AppearanceCell.BackColor = System.Drawing.Color.PaleGoldenrod;
+            this.gridColumn7.AppearanceCell.Options.UseBackColor = true;
+            this.gridColumn7.Caption = "Резерв";
+            this.gridColumn7.FieldName = "Ordered";
+            this.gridColumn7.MaxWidth = 100;
+            this.gridColumn7.MinWidth = 50;
+            this.gridColumn7.Name = "gridColumn7";
+            this.gridColumn7.OptionsColumn.AllowEdit = false;
+            this.gridColumn7.OptionsColumn.AllowFocus = false;
+            this.gridColumn7.OptionsColumn.ReadOnly = true;
+            this.gridColumn7.SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Sum;
+            this.gridColumn7.Visible = true;
+            this.gridColumn7.VisibleIndex = 0;
+            this.gridColumn7.Width = 50;
             // 
             // barManager
             // 
@@ -150,8 +191,10 @@
             this.btNestleImport,
             this.pbar,
             this.btOrderImport,
-            this.btDistribOrders});
-            this.barManager.MaxItemId = 16;
+            this.btDistribOrders,
+            this.btOrders,
+            this.btPreOrders});
+            this.barManager.MaxItemId = 18;
             this.barManager.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemProgressBar1,
             this.cdDateFilterItem,
@@ -166,6 +209,8 @@
             this.bar1.DockStyle = DevExpress.XtraBars.BarDockStyle.Top;
             this.bar1.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.cdDateFilter, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
+            new DevExpress.XtraBars.LinkPersistInfo(this.btOrders, true),
+            new DevExpress.XtraBars.LinkPersistInfo(this.btPreOrders),
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem2, true),
             new DevExpress.XtraBars.LinkPersistInfo(this.btInfo, true),
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btCreateOrders, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
@@ -195,6 +240,25 @@
             this.cdDateFilterItem.VistaTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton()});
             // 
+            // btOrders
+            // 
+            this.btOrders.Caption = "Обычные заказы";
+            this.btOrders.Checked = true;
+            this.btOrders.Glyph = global::ShopOrderCustom.Properties.Resources.basket_put;
+            this.btOrders.GroupIndex = 1;
+            this.btOrders.Id = 16;
+            this.btOrders.Name = "btOrders";
+            this.btOrders.CheckedChanged += new DevExpress.XtraBars.ItemClickEventHandler(this.BtOrdersCheckedChanged);
+            // 
+            // btPreOrders
+            // 
+            this.btPreOrders.Caption = "Кроссдокинговые заказы";
+            this.btPreOrders.Glyph = global::ShopOrderCustom.Properties.Resources.view_refresh;
+            this.btPreOrders.GroupIndex = 1;
+            this.btPreOrders.Id = 17;
+            this.btPreOrders.Name = "btPreOrders";
+            this.btPreOrders.CheckedChanged += new DevExpress.XtraBars.ItemClickEventHandler(this.BtPreOrdersCheckedChanged);
+            // 
             // barButtonItem2
             // 
             this.barButtonItem2.Caption = "Раскрыть все";
@@ -207,7 +271,7 @@
             superToolTip1.Items.Add(toolTipTitleItem1);
             superToolTip1.Items.Add(toolTipItem1);
             this.barButtonItem2.SuperTip = superToolTip1;
-            this.barButtonItem2.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem2_ItemClick);
+            this.barButtonItem2.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.BarButtonItem2ItemClick);
             // 
             // btInfo
             // 
@@ -342,14 +406,14 @@
             this.barDockControlTop.CausesValidation = false;
             this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
-            this.barDockControlTop.Size = new System.Drawing.Size(978, 47);
+            this.barDockControlTop.Size = new System.Drawing.Size(952, 47);
             // 
             // barDockControlBottom
             // 
             this.barDockControlBottom.CausesValidation = false;
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.barDockControlBottom.Location = new System.Drawing.Point(0, 429);
-            this.barDockControlBottom.Size = new System.Drawing.Size(978, 23);
+            this.barDockControlBottom.Size = new System.Drawing.Size(952, 23);
             // 
             // barDockControlLeft
             // 
@@ -362,7 +426,7 @@
             // 
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(978, 47);
+            this.barDockControlRight.Location = new System.Drawing.Point(952, 47);
             this.barDockControlRight.Size = new System.Drawing.Size(0, 382);
             // 
             // barButtonItem3
@@ -391,7 +455,7 @@
             this.splitContainerControl1.Panel1.Text = "Panel1";
             this.splitContainerControl1.Panel2.Controls.Add(this.grid);
             this.splitContainerControl1.Panel2.Text = "Panel2";
-            this.splitContainerControl1.Size = new System.Drawing.Size(978, 382);
+            this.splitContainerControl1.Size = new System.Drawing.Size(952, 382);
             this.splitContainerControl1.SplitterPosition = 260;
             this.splitContainerControl1.TabIndex = 4;
             this.splitContainerControl1.Text = "splitContainerControl1";
@@ -421,7 +485,7 @@
             this.treeList.AfterCheckNode += new DevExpress.XtraTreeList.NodeEventHandler(this.TreeListAfterCheckNode);
             this.treeList.CustomDrawNodeCell += new DevExpress.XtraTreeList.CustomDrawNodeCellEventHandler(this.TreeListCustomDrawNodeCell);
             this.treeList.DoubleClick += new System.EventHandler(this.treeList_DoubleClick);
-            this.treeList.MouseUp += new System.Windows.Forms.MouseEventHandler(this.treeList_MouseUp);
+            this.treeList.MouseUp += new System.Windows.Forms.MouseEventHandler(this.TreeListMouseUp);
             // 
             // treeListColumn1
             // 
@@ -458,10 +522,11 @@
             this.grid.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemSpinEdit1,
             this.repositoryItemTimeEdit1});
-            this.grid.Size = new System.Drawing.Size(713, 382);
+            this.grid.Size = new System.Drawing.Size(687, 382);
             this.grid.TabIndex = 1;
             this.grid.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
-            this.gridView});
+            this.gridView,
+            this.gridViewPre});
             // 
             // gridView
             // 
@@ -704,6 +769,241 @@
             this.colSelfImport.Visible = true;
             this.colSelfImport.VisibleIndex = 9;
             // 
+            // gridViewPre
+            // 
+            this.gridViewPre.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.gridColumn1,
+            this.gridColumn2,
+            this.gridColumn3,
+            this.gridColumn4,
+            this.gridColumn5,
+            this.gridColumn6,
+            this.gridColumn7,
+            this.gridColumn8,
+            this.gridColumn9,
+            this.gridColumn10,
+            this.gridColumn11,
+            this.gridColumn12,
+            this.gridColumn13,
+            this.gridColumn14,
+            this.gridColumn15,
+            this.gridColumn16,
+            this.gridColumn17,
+            this.gridColumn18,
+            this.gridColumn19});
+            styleFormatCondition2.Appearance.ForeColor = System.Drawing.Color.Red;
+            styleFormatCondition2.Appearance.Options.UseForeColor = true;
+            styleFormatCondition2.ApplyToRow = true;
+            styleFormatCondition2.Column = this.gridColumn7;
+            styleFormatCondition2.Condition = DevExpress.XtraGrid.FormatConditionEnum.Equal;
+            styleFormatCondition2.Value1 = 0;
+            this.gridViewPre.FormatConditions.AddRange(new DevExpress.XtraGrid.StyleFormatCondition[] {
+            styleFormatCondition2});
+            this.gridViewPre.GridControl = this.grid;
+            this.gridViewPre.Name = "gridViewPre";
+            this.gridViewPre.OptionsView.ShowFooter = true;
+            // 
+            // gridColumn1
+            // 
+            this.gridColumn1.AppearanceCell.BackColor = System.Drawing.Color.LightGreen;
+            this.gridColumn1.AppearanceCell.Options.UseBackColor = true;
+            this.gridColumn1.Caption = "Заказ";
+            this.gridColumn1.ColumnEdit = this.repositoryItemSpinEdit1;
+            this.gridColumn1.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.gridColumn1.FieldName = "ReqQuantity";
+            this.gridColumn1.MaxWidth = 50;
+            this.gridColumn1.Name = "gridColumn1";
+            this.gridColumn1.OptionsColumn.AllowEdit = false;
+            this.gridColumn1.SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Sum;
+            this.gridColumn1.Width = 50;
+            // 
+            // gridColumn2
+            // 
+            this.gridColumn2.FieldName = "id";
+            this.gridColumn2.Name = "gridColumn2";
+            this.gridColumn2.OptionsColumn.AllowEdit = false;
+            this.gridColumn2.OptionsColumn.AllowFocus = false;
+            this.gridColumn2.OptionsColumn.ReadOnly = true;
+            this.gridColumn2.Width = 27;
+            // 
+            // gridColumn3
+            // 
+            this.gridColumn3.Caption = "Группа товара";
+            this.gridColumn3.FieldName = "Group";
+            this.gridColumn3.Name = "gridColumn3";
+            this.gridColumn3.OptionsColumn.AllowEdit = false;
+            this.gridColumn3.OptionsColumn.AllowFocus = false;
+            this.gridColumn3.OptionsColumn.ReadOnly = true;
+            this.gridColumn3.Visible = true;
+            this.gridColumn3.VisibleIndex = 3;
+            this.gridColumn3.Width = 72;
+            // 
+            // gridColumn4
+            // 
+            this.gridColumn4.Caption = "Название";
+            this.gridColumn4.FieldName = "Name";
+            this.gridColumn4.Name = "gridColumn4";
+            this.gridColumn4.OptionsColumn.AllowEdit = false;
+            this.gridColumn4.OptionsColumn.AllowFocus = false;
+            this.gridColumn4.OptionsColumn.ReadOnly = true;
+            this.gridColumn4.Visible = true;
+            this.gridColumn4.VisibleIndex = 2;
+            this.gridColumn4.Width = 87;
+            // 
+            // gridColumn5
+            // 
+            this.gridColumn5.Caption = "Цена";
+            this.gridColumn5.FieldName = "Price";
+            this.gridColumn5.Name = "gridColumn5";
+            this.gridColumn5.OptionsColumn.AllowEdit = false;
+            this.gridColumn5.OptionsColumn.AllowFocus = false;
+            this.gridColumn5.OptionsColumn.ReadOnly = true;
+            this.gridColumn5.Visible = true;
+            this.gridColumn5.VisibleIndex = 4;
+            this.gridColumn5.Width = 35;
+            // 
+            // gridColumn6
+            // 
+            this.gridColumn6.Caption = "Кол. в упаковке";
+            this.gridColumn6.FieldName = "QuantityInPack";
+            this.gridColumn6.Name = "gridColumn6";
+            this.gridColumn6.OptionsColumn.AllowEdit = false;
+            this.gridColumn6.OptionsColumn.AllowFocus = false;
+            this.gridColumn6.OptionsColumn.ReadOnly = true;
+            this.gridColumn6.Width = 89;
+            // 
+            // gridColumn8
+            // 
+            this.gridColumn8.Caption = "Ед. изм. (шт/упак.)";
+            this.gridColumn8.FieldName = "Measure";
+            this.gridColumn8.Name = "gridColumn8";
+            this.gridColumn8.OptionsColumn.AllowEdit = false;
+            this.gridColumn8.OptionsColumn.AllowFocus = false;
+            this.gridColumn8.OptionsColumn.ReadOnly = true;
+            this.gridColumn8.Visible = true;
+            this.gridColumn8.VisibleIndex = 5;
+            this.gridColumn8.Width = 77;
+            // 
+            // gridColumn9
+            // 
+            this.gridColumn9.AppearanceCell.BackColor = System.Drawing.Color.LightCoral;
+            this.gridColumn9.AppearanceCell.Options.UseBackColor = true;
+            this.gridColumn9.Caption = "Остаток";
+            this.gridColumn9.FieldName = "Quantity";
+            this.gridColumn9.MaxWidth = 50;
+            this.gridColumn9.Name = "gridColumn9";
+            this.gridColumn9.OptionsColumn.AllowEdit = false;
+            this.gridColumn9.OptionsColumn.AllowFocus = false;
+            this.gridColumn9.OptionsColumn.ReadOnly = true;
+            this.gridColumn9.SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Sum;
+            this.gridColumn9.Width = 50;
+            // 
+            // gridColumn10
+            // 
+            this.gridColumn10.Caption = "Поставщик";
+            this.gridColumn10.FieldName = "Supplier";
+            this.gridColumn10.Name = "gridColumn10";
+            this.gridColumn10.OptionsColumn.AllowEdit = false;
+            this.gridColumn10.OptionsColumn.AllowFocus = false;
+            this.gridColumn10.OptionsColumn.ReadOnly = true;
+            this.gridColumn10.Visible = true;
+            this.gridColumn10.VisibleIndex = 6;
+            this.gridColumn10.Width = 48;
+            // 
+            // gridColumn11
+            // 
+            this.gridColumn11.Caption = "Код товара";
+            this.gridColumn11.FieldName = "Code";
+            this.gridColumn11.Name = "gridColumn11";
+            this.gridColumn11.OptionsColumn.AllowEdit = false;
+            this.gridColumn11.OptionsColumn.AllowFocus = false;
+            this.gridColumn11.OptionsColumn.ReadOnly = true;
+            this.gridColumn11.Width = 68;
+            // 
+            // gridColumn12
+            // 
+            this.gridColumn12.Caption = "Время создания";
+            this.gridColumn12.ColumnEdit = this.repositoryItemTimeEdit1;
+            this.gridColumn12.FieldName = "Date";
+            this.gridColumn12.Name = "gridColumn12";
+            this.gridColumn12.OptionsColumn.AllowEdit = false;
+            this.gridColumn12.OptionsColumn.AllowFocus = false;
+            this.gridColumn12.OptionsColumn.ReadOnly = true;
+            this.gridColumn12.Visible = true;
+            this.gridColumn12.VisibleIndex = 7;
+            this.gridColumn12.Width = 60;
+            // 
+            // gridColumn13
+            // 
+            this.gridColumn13.Caption = "Штрихкод";
+            this.gridColumn13.FieldName = "Barcode";
+            this.gridColumn13.Name = "gridColumn13";
+            this.gridColumn13.OptionsColumn.AllowEdit = false;
+            this.gridColumn13.OptionsColumn.AllowFocus = false;
+            this.gridColumn13.OptionsColumn.ReadOnly = true;
+            this.gridColumn13.Visible = true;
+            this.gridColumn13.VisibleIndex = 8;
+            this.gridColumn13.Width = 42;
+            // 
+            // gridColumn14
+            // 
+            this.gridColumn14.FieldName = "Reserved";
+            this.gridColumn14.Name = "gridColumn14";
+            this.gridColumn14.OptionsColumn.AllowEdit = false;
+            this.gridColumn14.OptionsColumn.AllowFocus = false;
+            this.gridColumn14.OptionsColumn.ReadOnly = true;
+            this.gridColumn14.Width = 55;
+            // 
+            // gridColumn15
+            // 
+            this.gridColumn15.FieldName = "FreeBalance";
+            this.gridColumn15.Name = "gridColumn15";
+            this.gridColumn15.OptionsColumn.AllowEdit = false;
+            this.gridColumn15.OptionsColumn.AllowFocus = false;
+            this.gridColumn15.OptionsColumn.ReadOnly = true;
+            this.gridColumn15.Width = 71;
+            // 
+            // gridColumn16
+            // 
+            this.gridColumn16.AppearanceCell.BackColor = System.Drawing.Color.CornflowerBlue;
+            this.gridColumn16.AppearanceCell.Options.UseBackColor = true;
+            this.gridColumn16.Caption = "Минимальный заказ";
+            this.gridColumn16.FieldName = "MinOrder";
+            this.gridColumn16.MaxWidth = 100;
+            this.gridColumn16.MinWidth = 50;
+            this.gridColumn16.Name = "gridColumn16";
+            this.gridColumn16.OptionsColumn.AllowEdit = false;
+            this.gridColumn16.OptionsColumn.AllowFocus = false;
+            this.gridColumn16.OptionsColumn.ReadOnly = true;
+            this.gridColumn16.Visible = true;
+            this.gridColumn16.VisibleIndex = 1;
+            this.gridColumn16.Width = 58;
+            // 
+            // gridColumn17
+            // 
+            this.gridColumn17.Caption = "Собственный импорт";
+            this.gridColumn17.FieldName = "SelfImport";
+            this.gridColumn17.Name = "gridColumn17";
+            this.gridColumn17.OptionsColumn.AllowEdit = false;
+            this.gridColumn17.OptionsColumn.AllowFocus = false;
+            this.gridColumn17.OptionsColumn.ReadOnly = true;
+            this.gridColumn17.Visible = true;
+            this.gridColumn17.VisibleIndex = 9;
+            // 
+            // gridColumn18
+            // 
+            this.gridColumn18.Caption = "Заказ магазина";
+            this.gridColumn18.Name = "gridColumn18";
+            this.gridColumn18.Visible = true;
+            this.gridColumn18.VisibleIndex = 10;
+            // 
+            // gridColumn19
+            // 
+            this.gridColumn19.Caption = "Фактический заказ";
+            this.gridColumn19.Name = "gridColumn19";
+            this.gridColumn19.Visible = true;
+            this.gridColumn19.VisibleIndex = 11;
+            // 
             // popupMenuNodes
             // 
             this.popupMenuNodes.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
@@ -720,7 +1020,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(978, 452);
+            this.ClientSize = new System.Drawing.Size(952, 452);
             this.Controls.Add(this.splitContainerControl1);
             this.Controls.Add(this.barDockControlLeft);
             this.Controls.Add(this.barDockControlRight);
@@ -729,7 +1029,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "OrderManagerForm";
             this.Text = "Формирование заказов";
-            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.OrderManagerForm_FormClosed);
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.OrderManagerFormFormClosed);
             ((System.ComponentModel.ISupportInitialize)(this.barManager)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cdDateFilterItem.VistaTimeProperties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cdDateFilterItem)).EndInit();
@@ -742,6 +1042,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.gridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemSpinEdit1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTimeEdit1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridViewPre)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.popupMenuNodes)).EndInit();
             this.ResumeLayout(false);
 
@@ -801,5 +1102,27 @@
         private DevExpress.XtraGrid.Columns.GridColumn colSelfImport;
         private DevExpress.XtraBars.BarButtonItem btOrderImport;
         private DevExpress.XtraBars.BarButtonItem btDistribOrders;
+        private DevExpress.XtraGrid.Views.Grid.GridView gridViewPre;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn1;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn2;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn3;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn4;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn5;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn6;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn7;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn8;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn9;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn10;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn11;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn12;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn13;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn14;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn15;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn16;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn17;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn18;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn19;
+        private DevExpress.XtraBars.BarCheckItem btOrders;
+        private DevExpress.XtraBars.BarCheckItem btPreOrders;
     }
 }

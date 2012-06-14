@@ -104,6 +104,7 @@
     <Compile Include="Returns.cs" />
     <Compile Include="ReturnShopObj.cs" />
     <Compile Include="ReturnShops.cs" />
+    <Compile Include="TreeData\ShopNode.cs" />
     <Compile Include="UI\ActualAssortViewerForm.cs">
       <SubType>Form</SubType>
     </Compile>

@@ -13,24 +13,56 @@ using DevExpress.XtraTreeList;
 using DevExpress.XtraTreeList.Nodes;
 using Microsoft.Practices.Unity;
 using ShopOrderCustom.Models;
+using ShopOrderCustom.TreeData;
 
 namespace ShopOrderCustom.UI
 {
+    public enum OrderManagerType
+    {
+        OrderManager,
+        PreOrderManager
+    }
+
     public partial class OrderManagerForm : XtraForm
     {
         public OrderManagerForm(OrderManagerModel model)
         {
             Model = model;
             InitializeComponent();
-            Model.LoadUserViewLayout(gridView);
-            Model.ChangeDateFilter += Model_ChangeDateFilter;
-            Model.FilterDate = DateTime.Now.Date;
+            Model.LoadUserViewLayout(gridView);                       
+            Model.ManagerTypeChanged += ModelManagerTypeChanged;
+            Model.FilterDate = DateTime.Now.Date; 
+            Model.ManagerType = OrderManagerType.OrderManager;                  
+        }
+
+        void ModelManagerTypeChanged(object sender, EventChangeManagerType e)
+        {
+            switch(e.ManagerType)
+            {
+                case 
+                    OrderManagerType.OrderManager: grid.MainView = grid.ViewCollection[0];
+                    Model.ChangeDateFilter -= ModelPreChangeDateFilter;
+                    Model.ChangeDateFilter += ModelChangeDateFilter;
+                    break;
+
+                case OrderManagerType.PreOrderManager: grid.MainView = grid.ViewCollection[1];
+                    Model.ChangeDateFilter -= ModelChangeDateFilter;
+                    Model.ChangeDateFilter += ModelPreChangeDateFilter;
+                    break;
+            }        
             cdDateFilter.EditValue = Model.FilterDate;
+            RefreshTree();
+        }
+
+        void ModelPreChangeDateFilter(object sender, EventChangeDateFilter e)
+        {
+            SetUi();
+            DataBinding();
         }
 
         private OrderManagerModel Model { get; set; }
 
-        private void Model_ChangeDateFilter(object sender, EventChangeDateFilter e)
+        private void ModelChangeDateFilter(object sender, EventChangeDateFilter e)
         {
             SetUi();
             DataBinding();
@@ -40,7 +72,7 @@ namespace ShopOrderCustom.UI
         {
             grid.DataSource = null;
             treeList.ExpandAll();
-            treeList.DataSource = Model.GetOrdersHeader();
+            treeList.DataSource = Model.GetTreeDs();
             treeList.BestFitColumns();
         }
 
@@ -60,7 +92,7 @@ namespace ShopOrderCustom.UI
             {
                 if (e.Node.Level == 1)
                 {
-                    Model.CurrentOrderHeader = (OrderHeaderObj)e.Node.GetValue(0);
+                    Model.CurrentOrderHeader = (OrderHeaderData)e.Node.GetValue(0);
                     grid.DataSource = Model.GetOrderList();
                     btChangeState.Enabled = Model.CurrentOrderHeader.IdOrderState == 2;
                     btInfo.Enabled = true;
@@ -77,16 +109,16 @@ namespace ShopOrderCustom.UI
         private void SetCheckedChildNodes(TreeListNode node, CheckState check)
         {
             if (node.GetValue(0) != null)
-                if (Equals(node.GetValue(0).GetType(), typeof(OrderHeaderObj)))
+                if (Equals(node.GetValue(0).GetType(), typeof(OrderHeaderData)))
                 {
-                    var oh = (OrderHeaderObj)node.GetValue(0);
-                    if (Model.CanCheck(oh))
+                    var oh = (OrderHeaderData)node.GetValue(0);
+                    if (oh.IdOrderState == 2)
                     {
-                        oh.Checked = check == CheckState.Checked;
+                        oh.Check = check == CheckState.Checked;
                     }
                     else
                     {
-                        oh.Checked = false;
+                        oh.Check = false;
                         node.CheckState = CheckState.Unchecked;
                     }
                 }
@@ -125,46 +157,72 @@ namespace ShopOrderCustom.UI
 
         private void TreeListBeforeCheckNode(object sender, CheckNodeEventArgs e)
         {
-            if (e.Node.GetValue(0).GetType().Equals(typeof(OrderHeaderObj)))
+            if (e.Node.GetValue(0).GetType().Equals(typeof(OrderHeaderData)))
             {
-                e.CanCheck = Model.CanCheck((e.Node.GetValue(0) as OrderHeaderObj));
+                e.CanCheck = (e.Node.GetValue(0) as OrderHeaderData).IdOrderState == 2;
             }
             e.State = (e.PrevState == CheckState.Checked ? CheckState.Unchecked : CheckState.Checked);
         }
 
         private void BarButtonItem1ItemClick(object sender, ItemClickEventArgs e)
         {
-            if (treeList.DataSource is OrderShops)
+            if (treeList.DataSource is ShopNode)
             {
-                var os = (OrderShops)treeList.DataSource;
+                var os = (ShopNode)treeList.DataSource;
                 if (os.SaveSelectedOrder())
                 {
                     XtraMessageBox.Show("Заказы сформированы");
                 }
             }
         }
-        
+
         private void TreeListCustomDrawNodeCell(object sender, CustomDrawNodeCellEventArgs e)
         {
-            if (e.Node.GetValue(0).GetType().Equals(typeof(OrderShopObj)))
+
+            if (e.Node.GetValue(0).GetType().Equals(typeof (ShopData)))
             {
                 e.Appearance.BackColor = Color.Empty;
-                var oh = (OrderShopObj)e.CellValue;
-                if(((Orders) oh.Orders).IsExistInState(2))
+                var oh = (ShopData) e.CellValue;
+                if (oh.ObjectList.IsExistInState(2))
                 {
                     e.Appearance.BackColor = Color.LightGreen;
                 }
             }
 
-            if (e.Node.GetValue(0).GetType().Equals(typeof(OrderHeaderObj)))
+            if (e.Node.GetValue(0).GetType().Equals(typeof (PreShopData)))
+            {
+                e.Appearance.BackColor = Color.Empty;
+                var oh = (PreShopData) e.CellValue;
+                if (oh.ObjectList.IsExistInState(2))
+                {
+                    e.Appearance.BackColor = Color.LightGreen;
+                }
+            }
+
+            if (e.Node.GetValue(0).GetType().Equals(typeof(OrderHeaderData)))
             {
                 e.Appearance.BackColor2 = Color.Empty;
-                var oh = (OrderHeaderObj)e.CellValue;
+                var oh = (OrderHeaderData)e.CellValue;
 
                 if (oh != null)
                 {
                     e.Appearance.BackColor = oh.IdOrderState != 2 ? Color.LightPink : Color.LightGreen;
-                    e.Appearance.BackColor = oh.Locked ? Color.Violet : e.Appearance.BackColor;
+                }
+                if (e.Node.Focused)
+                {
+                    e.Appearance.BackColor2 = Color.White;
+                    return;
+                }
+            }
+
+            if (e.Node.GetValue(0).GetType().Equals(typeof (PreOrderHeaderData)))
+            {
+                e.Appearance.BackColor2 = Color.Empty;
+                var oh = (PreOrderHeaderData) e.CellValue;
+
+                if (oh != null)
+                {
+                    e.Appearance.BackColor = oh.IdOrderState != 2 ? Color.LightPink : Color.LightGreen;
                 }
                 if (e.Node.Focused)
                 {
@@ -186,21 +244,21 @@ namespace ShopOrderCustom.UI
 
         private void BarButtonLockClick(object sender, ItemClickEventArgs e)
         {
-            if (treeList.DataSource is OrderShops)
+            if (treeList.DataSource is ShopNode)
             {
-                var os = (treeList.DataSource as OrderShops);
+                var os = (treeList.DataSource as ShopNode);
                 os.ChangeSelectedOrderState();
             }
         }
 
         private void TreeListGetStateImage(object sender, GetStateImageEventArgs e)
         {
-            if (e.Node.GetValue(0) is OrderShopObj)
+            if ((e.Node.GetValue(0) is ShopData) || ((e.Node.GetValue(0) is PreShopData)))
                 e.NodeImageIndex = 0;
-
-            if (e.Node.GetValue(0) is OrderHeaderObj)
+            
+            if ((e.Node.GetValue(0) is OrderHeaderData) || ((e.Node.GetValue(0) is PreOrderHeaderData)))
             {
-                var oh = e.Node.GetValue(0) as OrderHeaderObj;
+                var oh = e.Node.GetValue(0) as OrderHeaderData;
                 if (oh.IdOrderState == 3)
                     e.NodeImageIndex = 1;
                 if (oh.IdOrderState == 2)
@@ -209,14 +267,15 @@ namespace ShopOrderCustom.UI
                     e.NodeImageIndex = 3;
                 if (oh.IdOrderState == 6)
                     e.NodeImageIndex = 3;
-            }
+            }     
         }
 
-        private void barButtonItem2_ItemClick(object sender, ItemClickEventArgs e)
+        private void BarButtonItem2ItemClick(object sender, ItemClickEventArgs e)
         {
-            treeList.ExpandAll();}
+            treeList.ExpandAll();
+        }
 
-        private void treeList_MouseUp(object sender, MouseEventArgs e)
+        private void TreeListMouseUp(object sender, MouseEventArgs e)
         {
             var tree = sender as TreeList;
             if (tree != null)
@@ -303,10 +362,9 @@ namespace ShopOrderCustom.UI
             {
                 using (var oc = Model.UnityContainer.Resolve<OrderDataContext>())
                 {
-
-                    using (
-                        var dw =
-                            new DataUiViewer(new UcOrderInfo(Utility.StringToDictObj(oc.DataBaseContext.GetOrderInfo(Model.CurrentOrderHeader.IdOrderHeader)))))
+                    var data =
+                        Utility.StringToDictObj(Model.ManagerType == OrderManagerType.OrderManager ? oc.DataBaseContext.GetOrderInfo(Model.CurrentOrderHeader.IdOrderHeader) : oc.DataBaseContext.GetPreOrderInfo(Model.CurrentOrderHeader.IdOrderHeader));
+                    using (var dw = new DataUiViewer(new UcOrderInfo(data)))
                     {
                         dw.Text = @"Информация о заказе";
                         dw.ShowDialog();
@@ -366,7 +424,7 @@ namespace ShopOrderCustom.UI
             }
         }
 
-        private void OrderManagerForm_FormClosed(object sender, FormClosedEventArgs e)
+        private void OrderManagerFormFormClosed(object sender, FormClosedEventArgs e)
         {
             Model.SaveUserViewLayout(gridView);
         }
@@ -422,6 +480,16 @@ namespace ShopOrderCustom.UI
             XtraMessageBox.Show("Заказы по распределению успешно созданы.");
             btDistribOrders.Enabled = true;
             Model.UnityContainer.Resolve<IDBLogger>().InsertLog(string.Format("Заказы по распределению успешно созданы."), string.Empty);
+        }
+
+        private void BtOrdersCheckedChanged(object sender, ItemClickEventArgs e)
+        {
+            Model.ManagerType = OrderManagerType.OrderManager;
+        }
+
+        private void BtPreOrdersCheckedChanged(object sender, ItemClickEventArgs e)
+        {
+            Model.ManagerType = OrderManagerType.PreOrderManager;
         }
     }
 }

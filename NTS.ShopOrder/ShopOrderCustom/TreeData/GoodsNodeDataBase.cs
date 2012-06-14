@@ -359,6 +359,11 @@ namespace ShopOrderCustom.TreeData
         {
             info.Cancel = true;
         }
+
+        public virtual void CheckAll(bool check)
+        {
+            
+        }
     }
 
     public abstract class NodeDistribBase<T> : NodeBase<T>, ICheckInfo
@@ -591,7 +596,7 @@ namespace ShopOrderCustom.TreeData
             }
         }
 
-        public void CheckAll(bool check)
+        public override void CheckAll(bool check)
         {
             foreach (var item in Items)
             {
@@ -697,7 +702,7 @@ namespace ShopOrderCustom.TreeData
             return GetState();
         }
 
-        public void CheckAll(bool check)
+        public override void CheckAll(bool check)
         {
             foreach (var item in Items)
             {

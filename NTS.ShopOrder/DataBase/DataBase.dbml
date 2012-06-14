@@ -1,5 +1,5 @@
-﻿<?xml version="1.0" encoding="utf-8"?><Database Name="ShopOrders_PVX" Class="DataBaseDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
-  <Connection Mode="AppSettings" ConnectionString="Data Source=MI001-DB01;Initial Catalog=ShopOrders_PVX;Integrated Security=True" SettingsObjectName="DataBase.Properties.Settings" SettingsPropertyName="ShopOrders_PVXConnectionString" Provider="System.Data.SqlClient" />
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="ShopOrders" Class="DataBaseDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=(local);Initial Catalog=ShopOrders;Integrated Security=True" SettingsObjectName="DataBase.Properties.Settings" SettingsPropertyName="ShopOrdersConnectionString2" Provider="System.Data.SqlClient" />
   <Table Name="dbo.GoodsBalance" Member="GoodsBalance">
     <Type Name="GoodsBalance">
       <Column Name="id" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
@@ -1265,5 +1265,45 @@
     <Parameter Name="CreateDate" Parameter="createDate" Type="System.DateTime" DbType="DateTime" />
     <Parameter Name="winlogin" Type="System.String" DbType="NVarChar(100)" />
     <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.GetPreOrderInfo" Method="GetPreOrderInfo" IsComposable="true">
+    <Parameter Name="id_orderHeader" Type="System.Guid" DbType="UniqueIdentifier" />
+    <Return Type="System.String" />
+  </Function>
+  <Function Name="dbo.sp_sel_PreShopOnDate" Method="sp_sel_PreShopOnDate">
+    <Parameter Name="FilterDate" Parameter="filterDate" Type="System.DateTime" DbType="DateTime" />
+    <ElementType Name="sp_sel_PreShopOnDateResult">
+      <Column Name="id_shop" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="ShopName" Type="System.String" DbType="NVarChar(255) NOT NULL" CanBeNull="false" />
+      <Column Name="ShopAddress" Type="System.String" DbType="NVarChar(255) NOT NULL" CanBeNull="false" />
+      <Column Name="ShopCode" Type="System.String" DbType="NVarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="id_ShopOwner" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="id_ShopCategory" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="id_user" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="UserLogin" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.sp_sel_PreOrderGoodsByHeader" Method="sp_sel_PreOrderGoodsByHeader">
+    <Parameter Name="id_OrderHeader" Type="System.Guid" DbType="UniqueIdentifier" />
+    <ElementType Name="sp_sel_PreOrderGoodsByHeaderResult">
+      <Column Name="ReqQuantity" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+      <Column Name="Ordered" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+      <Column Name="Balance" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="id_GoodsBalance" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="GoodsGroup" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(255) NOT NULL" CanBeNull="false" />
+      <Column Name="Price" Type="System.Decimal" DbType="Decimal(15,2)" CanBeNull="true" />
+      <Column Name="QuantityInPack" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Measure" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="Supplier" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="Code" Type="System.String" DbType="NVarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="Barcode" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="Date" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="Reserved" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="FreeBalance" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="MinOrder" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="id_OrderHeader" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="SelfImport" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+    </ElementType>
   </Function>
 </Database>
