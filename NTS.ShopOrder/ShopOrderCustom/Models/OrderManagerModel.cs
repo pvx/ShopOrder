@@ -222,7 +222,7 @@ namespace ShopOrderCustom.Models
                 using (var oc = UnityContainer.Resolve<OrderDataContext>())
                 {
                     var orders = oc.DataBaseContext.sp_sel_PreOrderGoodsByHeader(_currentOrderHeader.IdOrderHeader).ToList();
-
+                    var commitOrders = oc.DataBaseContext.sp_sel_PreOrderCommitGoodsByHeader(_currentOrderHeader.IdOrderHeader).ToList();
 
                     var balance = new BindingList<PreGoodsBalanceData>
                     {
@@ -249,13 +249,44 @@ namespace ShopOrderCustom.Models
                             QuantityInPack = vo.QuantityInPack.GetValueOrDefault(),
                             Reserved = vo.Reserved.GetValueOrDefault(),
                             Supplier = vo.Supplier,
-                            SelfImport = vo.SelfImport.GetValueOrDefault(false)
-                        };
-                        bl.AddCommitData(bl.SelfImport ? null : new GoodsBalanceObj(){Code = bl.Code});
+                            SelfImport = vo.SelfImport.GetValueOrDefault(false),
+                            CommitList = GetCommitList(commitOrders, vo.id_PreOrder)
+                        };                       
                         balance.Add(bl);
                     }
                     return balance;
                 }
+            }
+            return null;
+        }
+
+        private BindingList<GoodsBalanceObj> GetCommitList(IEnumerable<sp_sel_PreOrderCommitGoodsByHeaderResult> commitOrders, Guid idPreOrder)
+        {
+            var list = commitOrders.Where(x => x.id_PreOrder == idPreOrder).ToList();
+            if ((list.Count > 0))
+            {
+                var ret = new BindingList<GoodsBalanceObj>(){AllowEdit = false, AllowNew = false, AllowRemove = false};
+                foreach (var i in list)
+                {
+                    var gb = new GoodsBalanceObj()
+                                 {
+                                     Barcode = i.Barcode,
+                                     Code = i.Code,
+                                     Date = i.Date,
+                                     Group = i.GoodsGroup,
+                                     Measure = i.Measure,
+                                     Supplier = i.Supplier,
+                                     SelfImport = i.SelfImport.GetValueOrDefault(false),
+                                     Quantity = i.Ordered.GetValueOrDefault(0),
+                                     Price = i.Price.GetValueOrDefault(0),
+                                     QuantityInPack = i.QuantityInPack.GetValueOrDefault(0),
+                                     Name = i.Name,
+                                     MinOrder = i.MinOrder.GetValueOrDefault(0),
+                                     
+                                 };
+                    ret.Add(gb);
+                }
+                return ret;
             }
             return null;
         }

@@ -642,7 +642,7 @@ namespace ShopOrderCustom.TreeData
                                          CommitDate = or.CommitDate.GetValueOrDefault()
                                      };
 
-                var sdic = (from sd in oc.DataBaseContext.OrderState
+                var sdic = (from sd in oc.DataBaseContext.PreOrderStates
                             select sd);
 
                 foreach (var categoryObj in category)

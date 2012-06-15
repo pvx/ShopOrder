@@ -1283,6 +1283,34 @@
       <Column Name="UserLogin" Type="System.Int32" DbType="Int" CanBeNull="true" />
     </ElementType>
   </Function>
+  <Function Name="dbo.sp_upd_PreOrdersHeaderState" Method="sp_upd_PreOrdersHeaderState1">
+    <Parameter Name="id_OrderHeader" Type="System.Guid" DbType="UniqueIdentifier" />
+    <Parameter Name="state" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.sp_ins_PreOrderForProcess" Method="sp_ins_PreOrderForProcess">
+    <Parameter Name="id_OrderHeader" Type="System.Guid" DbType="UniqueIdentifier" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.sp_sel_PreOrderCommitGoodsByHeader" Method="sp_sel_PreOrderCommitGoodsByHeader">
+    <Parameter Name="id_OrderHeader" Type="System.Guid" DbType="UniqueIdentifier" />
+    <ElementType Name="sp_sel_PreOrderCommitGoodsByHeaderResult">
+      <Column Name="Ordered" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="id_GoodsBalance" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="GoodsGroup" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(255) NOT NULL" CanBeNull="false" />
+      <Column Name="Price" Type="System.Decimal" DbType="Decimal(15,2)" CanBeNull="true" />
+      <Column Name="QuantityInPack" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Measure" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="Supplier" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="Code" Type="System.String" DbType="NVarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="Barcode" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="Date" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="MinOrder" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="SelfImport" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="id_PreOrder" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
   <Function Name="dbo.sp_sel_PreOrderGoodsByHeader" Method="sp_sel_PreOrderGoodsByHeader">
     <Parameter Name="id_OrderHeader" Type="System.Guid" DbType="UniqueIdentifier" />
     <ElementType Name="sp_sel_PreOrderGoodsByHeaderResult">
@@ -1304,15 +1332,7 @@
       <Column Name="MinOrder" Type="System.Double" DbType="Float" CanBeNull="true" />
       <Column Name="id_OrderHeader" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
       <Column Name="SelfImport" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="id_PreOrder" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
     </ElementType>
-  </Function>
-  <Function Name="dbo.sp_upd_PreOrdersHeaderState" Method="sp_upd_PreOrdersHeaderState1">
-    <Parameter Name="id_OrderHeader" Type="System.Guid" DbType="UniqueIdentifier" />
-    <Parameter Name="state" Type="System.Int32" DbType="Int" />
-    <Return Type="System.Int32" />
-  </Function>
-  <Function Name="dbo.sp_ins_PreOrderForProcess" Method="sp_ins_PreOrderForProcess">
-    <Parameter Name="id_OrderHeader" Type="System.Guid" DbType="UniqueIdentifier" />
-    <Return Type="System.Int32" />
   </Function>
 </Database>

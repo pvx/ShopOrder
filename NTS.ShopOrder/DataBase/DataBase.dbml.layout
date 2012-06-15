@@ -134,7 +134,7 @@
         <elementListCompartment Id="8eafef33-eed4-4dfd-899e-13809b935f02" absoluteBounds="3.515, 4.2100000000000009, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <associationConnector edgePoints="[(1.75 : 3.69399251302083); (1.75 : 4.53929768880208); (3.5 : 4.53929768880208)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+    <associationConnector edgePoints="[(2.75 : 3.69399251302083); (3.125 : 4.06899251302083); (3.125 : 3.375); (3.5 : 3.75)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/DataBaseDataContext/ShopCategory/ShopCategory_ReqAssort" />
       <nodes>
         <classShapeMoniker Id="29ac76c7-1fee-4c74-a3b5-91e5811b8c98" />

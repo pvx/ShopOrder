@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.ComponentModel;
+using System.Linq;
 using DataBase.DataObject;
 using DevExpress.Data;
 
@@ -7,23 +8,53 @@ namespace ShopOrderCustom
 {
     public class PreGoodsBalanceData: PreGoodsBalanceObj
     {
-        public BindingList<GoodsBalanceObj> _CommitList = new BindingList<GoodsBalanceObj>();
+        public BindingList<GoodsBalanceObj> _CommitList;
 
         public BindingList<GoodsBalanceObj> CommitList
         {
-            get { return _CommitList; }
+            get { return GetRowState() == 0 ? null : _CommitList; }
+            set { _CommitList = value; }
         }
 
-        public void AddCommitData(GoodsBalanceObj obj)
+        public double FactOrder { get { return GetFactOrder(); } }
+
+
+        public int StateRow
         {
-            if (obj != null)
-            {
-                if (_CommitList != null)
-                    _CommitList = new BindingList<GoodsBalanceObj>();
-                _CommitList.Add(obj);
-            }
+            get { return GetRowState(); }
         }
-        
+
+        private int GetRowState()
+        {
+            if (_CommitList == null)
+                return 2;
+            if (_CommitList.Count > 1)
+                return 1;
+
+            if ((_CommitList.Count == 1) && (Code == _CommitList[0].Code))
+            {
+                return 0;
+            }
+            else
+            {
+                return 1;
+            }
+
+            if (_CommitList.Where(x => x.Code == Code).SingleOrDefault() != null)
+                return 0;
+
+            return 2;
+        }
+
+        private double GetFactOrder()
+        {
+            if(_CommitList != null)
+            {
+                return _CommitList.Sum(x => x.Quantity);
+            }
+            return 0;
+        }
+
         /*
         public string GetRelationName(int index, int relationIndex)
         {

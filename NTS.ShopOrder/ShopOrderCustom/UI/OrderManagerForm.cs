@@ -39,13 +39,15 @@ namespace ShopOrderCustom.UI
         {
             switch(e.ManagerType)
             {
-                case 
-                    OrderManagerType.OrderManager: grid.MainView = grid.ViewCollection[0];
+                case
+                    OrderManagerType.OrderManager:
+                    grid.MainView = gridView;//.ViewCollection[0];
                     Model.ChangeDateFilter -= ModelPreChangeDateFilter;
                     Model.ChangeDateFilter += ModelChangeDateFilter;
                     break;
 
-                case OrderManagerType.PreOrderManager: grid.MainView = grid.ViewCollection[1];
+                case OrderManagerType.PreOrderManager:
+                    grid.MainView = gridViewPre;//.ViewCollection[1];
                     Model.ChangeDateFilter -= ModelChangeDateFilter;
                     Model.ChangeDateFilter += ModelPreChangeDateFilter;
                     break;
@@ -525,6 +527,11 @@ namespace ShopOrderCustom.UI
         private void BtPreOrdersCheckedChanged(object sender, ItemClickEventArgs e)
         {
             Model.ManagerType = OrderManagerType.PreOrderManager;
+        }
+
+        private void gridViewPre_MasterRowGetChildList(object sender, DevExpress.XtraGrid.Views.Grid.MasterRowGetChildListEventArgs e)
+        {
+
         }
     }
 }
