@@ -1,23 +1,20 @@
-﻿using System.Collections;
-using System.ComponentModel;
+﻿using System.ComponentModel;
 using System.Linq;
 using DataBase.DataObject;
-using DevExpress.Data;
 
 namespace ShopOrderCustom
 {
     public class PreGoodsBalanceData: PreGoodsBalanceObj
     {
-        public BindingList<GoodsBalanceObj> _CommitList;
+        private BindingList<GoodsBalanceObj> _commitList;
 
         public BindingList<GoodsBalanceObj> CommitList
         {
-            get { return GetRowState() == 0 ? null : _CommitList; }
-            set { _CommitList = value; }
+            get { return GetRowState() == 0 ? null : _commitList; }
+            set { _commitList = value; }
         }
 
         public double FactOrder { get { return GetFactOrder(); } }
-
 
         public int StateRow
         {
@@ -26,12 +23,12 @@ namespace ShopOrderCustom
 
         private int GetRowState()
         {
-            if (_CommitList == null)
+            if (_commitList == null)
                 return 2;
-            if (_CommitList.Count > 1)
+            if (_commitList.Count > 1)
                 return 1;
 
-            if ((_CommitList.Count == 1) && (Code == _CommitList[0].Code))
+            if ((_commitList.Count == 1) && (Code == _commitList[0].Code))
             {
                 return 0;
             }
@@ -40,7 +37,7 @@ namespace ShopOrderCustom
                 return 1;
             }
 
-            if (_CommitList.Where(x => x.Code == Code).SingleOrDefault() != null)
+            if (_commitList.Where(x => x.Code == Code).SingleOrDefault() != null)
                 return 0;
 
             return 2;
@@ -48,9 +45,9 @@ namespace ShopOrderCustom
 
         private double GetFactOrder()
         {
-            if(_CommitList != null)
+            if(_commitList != null)
             {
-                return _CommitList.Sum(x => x.Quantity);
+                return _commitList.Sum(x => x.Quantity);
             }
             return 0;
         }

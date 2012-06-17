@@ -5,8 +5,8 @@
     /// </summary>
     public enum Storehouse
     {
-        Rent=0,
+        Rent = 0,
         NTS = 1,
-        Cold=2
+        Cold = 2
     }
 }

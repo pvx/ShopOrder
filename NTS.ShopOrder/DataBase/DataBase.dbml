@@ -1086,39 +1086,6 @@
       <Column Name="IsReqAssort" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
     </ElementType>
   </Function>
-  <Function Name="dbo.sp_sel_PreOrderBalance" Method="sp_sel_PreOrderBalance">
-    <Parameter Name="id_PreOrderHeader" Type="System.Guid" DbType="UniqueIdentifier" />
-    <Parameter Name="id_strorehouse" Type="System.Int32" DbType="Int" />
-    <Parameter Name="id_PreOrderState" Type="System.Int32" DbType="Int" />
-    <ElementType Name="sp_sel_PreOrderBalanceResult">
-      <Column Name="Balance" Type="System.Double" DbType="Float" CanBeNull="true" />
-      <Column Name="id_GoodsBalance" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
-      <Column Name="GoodsGroup" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
-      <Column Name="Name" Type="System.String" DbType="NVarChar(255) NOT NULL" CanBeNull="false" />
-      <Column Name="Price" Type="System.Decimal" DbType="Decimal(15,2)" CanBeNull="true" />
-      <Column Name="QuantityInPack" Type="System.Double" DbType="Float" CanBeNull="true" />
-      <Column Name="Measure" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
-      <Column Name="Supplier" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
-      <Column Name="Code" Type="System.String" DbType="NVarChar(20) NOT NULL" CanBeNull="false" />
-      <Column Name="Barcode" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
-      <Column Name="Date" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
-      <Column Name="Reserved" Type="System.Double" DbType="Float" CanBeNull="true" />
-      <Column Name="FreeBalance" Type="System.Double" DbType="Float" CanBeNull="true" />
-      <Column Name="MinOrder" Type="System.Double" DbType="Float" CanBeNull="true" />
-      <Column Name="IsReqAssort" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
-      <Column Name="ReqQuantity" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
-      <Column Name="Ordered" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
-      <Column Name="id_OrderHeader" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
-      <Column Name="ForOrder" Type="System.Decimal" DbType="Decimal(15,3)" CanBeNull="true" />
-      <Column Name="AvgSell" Type="System.Decimal" DbType="Decimal(15,3) NOT NULL" CanBeNull="false" />
-      <Column Name="ShopBalance" Type="System.Decimal" DbType="Decimal(15,3) NOT NULL" CanBeNull="false" />
-      <Column Name="Quota" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
-      <Column Name="IsQuoted" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
-      <Column Name="SelfImport" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
-      <Column Name="AutoOrderModeId" Type="System.Byte" DbType="TinyInt NOT NULL" CanBeNull="false" />
-      <Column Name="LastAutoOrderDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-    </ElementType>
-  </Function>
   <Function Name="dbo.sp_sel_PreOrderBalanceRefresh" Method="sp_sel_PreOrderBalanceRefresh">
     <Parameter Name="id_PreOrderHeader" Type="System.Guid" DbType="UniqueIdentifier" />
     <Parameter Name="id_GoodsBalance" Type="System.Guid" DbType="UniqueIdentifier" />
@@ -1333,6 +1300,40 @@
       <Column Name="id_OrderHeader" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
       <Column Name="SelfImport" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
       <Column Name="id_PreOrder" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.sp_sel_PreOrderBalance" Method="sp_sel_PreOrderBalance">
+    <Parameter Name="id_PreOrderHeader" Type="System.Guid" DbType="UniqueIdentifier" />
+    <Parameter Name="id_strorehouse" Type="System.Int32" DbType="Int" />
+    <Parameter Name="id_PreOrderState" Type="System.Int32" DbType="Int" />
+    <ElementType Name="sp_sel_PreOrderBalanceResult">
+      <Column Name="Balance" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="id_GoodsBalance" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="GoodsGroup" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(255) NOT NULL" CanBeNull="false" />
+      <Column Name="Price" Type="System.Decimal" DbType="Decimal(15,2)" CanBeNull="true" />
+      <Column Name="QuantityInPack" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Measure" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="Supplier" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="Code" Type="System.String" DbType="NVarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="Barcode" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="Date" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="Reserved" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="FreeBalance" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="MinOrder" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="IsReqAssort" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="ReqQuantity" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+      <Column Name="Ordered" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+      <Column Name="id_OrderHeader" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="ForOrder" Type="System.Decimal" DbType="Decimal(15,3)" CanBeNull="true" />
+      <Column Name="AvgSell" Type="System.Decimal" DbType="Decimal(15,3) NOT NULL" CanBeNull="false" />
+      <Column Name="ShopBalance" Type="System.Decimal" DbType="Decimal(15,3) NOT NULL" CanBeNull="false" />
+      <Column Name="Quota" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+      <Column Name="IsQuoted" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="SelfImport" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="AutoOrderModeId" Type="System.Byte" DbType="TinyInt NOT NULL" CanBeNull="false" />
+      <Column Name="LastAutoOrderDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="id_PreOrder" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
     </ElementType>
   </Function>
 </Database>

@@ -742,13 +742,6 @@ namespace DataBase
 			return ((ISingleResult<spCreatePreOrderNewResult>)(result.ReturnValue));
 		}
 		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.sp_sel_PreOrderBalance")]
-		public ISingleResult<sp_sel_PreOrderBalanceResult> sp_sel_PreOrderBalance([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="UniqueIdentifier")] System.Nullable<System.Guid> id_PreOrderHeader, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> id_strorehouse, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> id_PreOrderState)
-		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), id_PreOrderHeader, id_strorehouse, id_PreOrderState);
-			return ((ISingleResult<sp_sel_PreOrderBalanceResult>)(result.ReturnValue));
-		}
-		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.sp_sel_PreOrderBalanceRefresh")]
 		public ISingleResult<sp_sel_PreOrderBalanceRefreshResult> sp_sel_PreOrderBalanceRefresh([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="UniqueIdentifier")] System.Nullable<System.Guid> id_PreOrderHeader, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="UniqueIdentifier")] System.Nullable<System.Guid> id_GoodsBalance)
 		{
@@ -856,6 +849,13 @@ namespace DataBase
 		{
 			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), id_OrderHeader);
 			return ((ISingleResult<sp_sel_PreOrderGoodsByHeaderResult>)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.sp_sel_PreOrderBalance")]
+		public ISingleResult<sp_sel_PreOrderBalanceResult> sp_sel_PreOrderBalance([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="UniqueIdentifier")] System.Nullable<System.Guid> id_PreOrderHeader, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> id_strorehouse, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> id_PreOrderState)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), id_PreOrderHeader, id_strorehouse, id_PreOrderState);
+			return ((ISingleResult<sp_sel_PreOrderBalanceResult>)(result.ReturnValue));
 		}
 	}
 	
@@ -13678,482 +13678,6 @@ namespace DataBase
 		}
 	}
 	
-	public partial class sp_sel_PreOrderBalanceResult
-	{
-		
-		private System.Nullable<double> _Balance;
-		
-		private System.Guid _id_GoodsBalance;
-		
-		private string _GoodsGroup;
-		
-		private string _Name;
-		
-		private System.Nullable<decimal> _Price;
-		
-		private System.Nullable<double> _QuantityInPack;
-		
-		private string _Measure;
-		
-		private string _Supplier;
-		
-		private string _Code;
-		
-		private string _Barcode;
-		
-		private System.DateTime _Date;
-		
-		private System.Nullable<double> _Reserved;
-		
-		private System.Nullable<double> _FreeBalance;
-		
-		private System.Nullable<double> _MinOrder;
-		
-		private System.Nullable<bool> _IsReqAssort;
-		
-		private double _ReqQuantity;
-		
-		private double _Ordered;
-		
-		private System.Nullable<System.Guid> _id_OrderHeader;
-		
-		private System.Nullable<decimal> _ForOrder;
-		
-		private decimal _AvgSell;
-		
-		private decimal _ShopBalance;
-		
-		private double _Quota;
-		
-		private bool _IsQuoted;
-		
-		private System.Nullable<bool> _SelfImport;
-		
-		private byte _AutoOrderModeId;
-		
-		private System.Nullable<System.DateTime> _LastAutoOrderDate;
-		
-		public sp_sel_PreOrderBalanceResult()
-		{
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Balance", DbType="Float")]
-		public System.Nullable<double> Balance
-		{
-			get
-			{
-				return this._Balance;
-			}
-			set
-			{
-				if ((this._Balance != value))
-				{
-					this._Balance = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_GoodsBalance", DbType="UniqueIdentifier NOT NULL")]
-		public System.Guid id_GoodsBalance
-		{
-			get
-			{
-				return this._id_GoodsBalance;
-			}
-			set
-			{
-				if ((this._id_GoodsBalance != value))
-				{
-					this._id_GoodsBalance = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_GoodsGroup", DbType="NVarChar(255)")]
-		public string GoodsGroup
-		{
-			get
-			{
-				return this._GoodsGroup;
-			}
-			set
-			{
-				if ((this._GoodsGroup != value))
-				{
-					this._GoodsGroup = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Name", DbType="NVarChar(255) NOT NULL", CanBeNull=false)]
-		public string Name
-		{
-			get
-			{
-				return this._Name;
-			}
-			set
-			{
-				if ((this._Name != value))
-				{
-					this._Name = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Price", DbType="Decimal(15,2)")]
-		public System.Nullable<decimal> Price
-		{
-			get
-			{
-				return this._Price;
-			}
-			set
-			{
-				if ((this._Price != value))
-				{
-					this._Price = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_QuantityInPack", DbType="Float")]
-		public System.Nullable<double> QuantityInPack
-		{
-			get
-			{
-				return this._QuantityInPack;
-			}
-			set
-			{
-				if ((this._QuantityInPack != value))
-				{
-					this._QuantityInPack = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Measure", DbType="NVarChar(255)")]
-		public string Measure
-		{
-			get
-			{
-				return this._Measure;
-			}
-			set
-			{
-				if ((this._Measure != value))
-				{
-					this._Measure = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Supplier", DbType="NVarChar(255)")]
-		public string Supplier
-		{
-			get
-			{
-				return this._Supplier;
-			}
-			set
-			{
-				if ((this._Supplier != value))
-				{
-					this._Supplier = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Code", DbType="NVarChar(20) NOT NULL", CanBeNull=false)]
-		public string Code
-		{
-			get
-			{
-				return this._Code;
-			}
-			set
-			{
-				if ((this._Code != value))
-				{
-					this._Code = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Barcode", DbType="NVarChar(20)")]
-		public string Barcode
-		{
-			get
-			{
-				return this._Barcode;
-			}
-			set
-			{
-				if ((this._Barcode != value))
-				{
-					this._Barcode = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Date", DbType="DateTime NOT NULL")]
-		public System.DateTime Date
-		{
-			get
-			{
-				return this._Date;
-			}
-			set
-			{
-				if ((this._Date != value))
-				{
-					this._Date = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Reserved", DbType="Float")]
-		public System.Nullable<double> Reserved
-		{
-			get
-			{
-				return this._Reserved;
-			}
-			set
-			{
-				if ((this._Reserved != value))
-				{
-					this._Reserved = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FreeBalance", DbType="Float")]
-		public System.Nullable<double> FreeBalance
-		{
-			get
-			{
-				return this._FreeBalance;
-			}
-			set
-			{
-				if ((this._FreeBalance != value))
-				{
-					this._FreeBalance = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MinOrder", DbType="Float")]
-		public System.Nullable<double> MinOrder
-		{
-			get
-			{
-				return this._MinOrder;
-			}
-			set
-			{
-				if ((this._MinOrder != value))
-				{
-					this._MinOrder = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IsReqAssort", DbType="Bit")]
-		public System.Nullable<bool> IsReqAssort
-		{
-			get
-			{
-				return this._IsReqAssort;
-			}
-			set
-			{
-				if ((this._IsReqAssort != value))
-				{
-					this._IsReqAssort = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ReqQuantity", DbType="Float NOT NULL")]
-		public double ReqQuantity
-		{
-			get
-			{
-				return this._ReqQuantity;
-			}
-			set
-			{
-				if ((this._ReqQuantity != value))
-				{
-					this._ReqQuantity = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Ordered", DbType="Float NOT NULL")]
-		public double Ordered
-		{
-			get
-			{
-				return this._Ordered;
-			}
-			set
-			{
-				if ((this._Ordered != value))
-				{
-					this._Ordered = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_OrderHeader", DbType="UniqueIdentifier")]
-		public System.Nullable<System.Guid> id_OrderHeader
-		{
-			get
-			{
-				return this._id_OrderHeader;
-			}
-			set
-			{
-				if ((this._id_OrderHeader != value))
-				{
-					this._id_OrderHeader = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ForOrder", DbType="Decimal(15,3)")]
-		public System.Nullable<decimal> ForOrder
-		{
-			get
-			{
-				return this._ForOrder;
-			}
-			set
-			{
-				if ((this._ForOrder != value))
-				{
-					this._ForOrder = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AvgSell", DbType="Decimal(15,3) NOT NULL")]
-		public decimal AvgSell
-		{
-			get
-			{
-				return this._AvgSell;
-			}
-			set
-			{
-				if ((this._AvgSell != value))
-				{
-					this._AvgSell = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ShopBalance", DbType="Decimal(15,3) NOT NULL")]
-		public decimal ShopBalance
-		{
-			get
-			{
-				return this._ShopBalance;
-			}
-			set
-			{
-				if ((this._ShopBalance != value))
-				{
-					this._ShopBalance = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Quota", DbType="Float NOT NULL")]
-		public double Quota
-		{
-			get
-			{
-				return this._Quota;
-			}
-			set
-			{
-				if ((this._Quota != value))
-				{
-					this._Quota = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IsQuoted", DbType="Bit NOT NULL")]
-		public bool IsQuoted
-		{
-			get
-			{
-				return this._IsQuoted;
-			}
-			set
-			{
-				if ((this._IsQuoted != value))
-				{
-					this._IsQuoted = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SelfImport", DbType="Bit")]
-		public System.Nullable<bool> SelfImport
-		{
-			get
-			{
-				return this._SelfImport;
-			}
-			set
-			{
-				if ((this._SelfImport != value))
-				{
-					this._SelfImport = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AutoOrderModeId", DbType="TinyInt NOT NULL")]
-		public byte AutoOrderModeId
-		{
-			get
-			{
-				return this._AutoOrderModeId;
-			}
-			set
-			{
-				if ((this._AutoOrderModeId != value))
-				{
-					this._AutoOrderModeId = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LastAutoOrderDate", DbType="DateTime")]
-		public System.Nullable<System.DateTime> LastAutoOrderDate
-		{
-			get
-			{
-				return this._LastAutoOrderDate;
-			}
-			set
-			{
-				if ((this._LastAutoOrderDate != value))
-				{
-					this._LastAutoOrderDate = value;
-				}
-			}
-		}
-	}
-	
 	public partial class sp_sel_PreOrderBalanceRefreshResult
 	{
 		
@@ -16551,6 +16075,500 @@ namespace DataBase
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_PreOrder", DbType="UniqueIdentifier NOT NULL")]
 		public System.Guid id_PreOrder
+		{
+			get
+			{
+				return this._id_PreOrder;
+			}
+			set
+			{
+				if ((this._id_PreOrder != value))
+				{
+					this._id_PreOrder = value;
+				}
+			}
+		}
+	}
+	
+	public partial class sp_sel_PreOrderBalanceResult
+	{
+		
+		private System.Nullable<double> _Balance;
+		
+		private System.Guid _id_GoodsBalance;
+		
+		private string _GoodsGroup;
+		
+		private string _Name;
+		
+		private System.Nullable<decimal> _Price;
+		
+		private System.Nullable<double> _QuantityInPack;
+		
+		private string _Measure;
+		
+		private string _Supplier;
+		
+		private string _Code;
+		
+		private string _Barcode;
+		
+		private System.DateTime _Date;
+		
+		private System.Nullable<double> _Reserved;
+		
+		private System.Nullable<double> _FreeBalance;
+		
+		private System.Nullable<double> _MinOrder;
+		
+		private System.Nullable<bool> _IsReqAssort;
+		
+		private double _ReqQuantity;
+		
+		private double _Ordered;
+		
+		private System.Nullable<System.Guid> _id_OrderHeader;
+		
+		private System.Nullable<decimal> _ForOrder;
+		
+		private decimal _AvgSell;
+		
+		private decimal _ShopBalance;
+		
+		private double _Quota;
+		
+		private bool _IsQuoted;
+		
+		private System.Nullable<bool> _SelfImport;
+		
+		private byte _AutoOrderModeId;
+		
+		private System.Nullable<System.DateTime> _LastAutoOrderDate;
+		
+		private System.Nullable<System.Guid> _id_PreOrder;
+		
+		public sp_sel_PreOrderBalanceResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Balance", DbType="Float")]
+		public System.Nullable<double> Balance
+		{
+			get
+			{
+				return this._Balance;
+			}
+			set
+			{
+				if ((this._Balance != value))
+				{
+					this._Balance = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_GoodsBalance", DbType="UniqueIdentifier NOT NULL")]
+		public System.Guid id_GoodsBalance
+		{
+			get
+			{
+				return this._id_GoodsBalance;
+			}
+			set
+			{
+				if ((this._id_GoodsBalance != value))
+				{
+					this._id_GoodsBalance = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_GoodsGroup", DbType="NVarChar(255)")]
+		public string GoodsGroup
+		{
+			get
+			{
+				return this._GoodsGroup;
+			}
+			set
+			{
+				if ((this._GoodsGroup != value))
+				{
+					this._GoodsGroup = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Name", DbType="NVarChar(255) NOT NULL", CanBeNull=false)]
+		public string Name
+		{
+			get
+			{
+				return this._Name;
+			}
+			set
+			{
+				if ((this._Name != value))
+				{
+					this._Name = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Price", DbType="Decimal(15,2)")]
+		public System.Nullable<decimal> Price
+		{
+			get
+			{
+				return this._Price;
+			}
+			set
+			{
+				if ((this._Price != value))
+				{
+					this._Price = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_QuantityInPack", DbType="Float")]
+		public System.Nullable<double> QuantityInPack
+		{
+			get
+			{
+				return this._QuantityInPack;
+			}
+			set
+			{
+				if ((this._QuantityInPack != value))
+				{
+					this._QuantityInPack = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Measure", DbType="NVarChar(255)")]
+		public string Measure
+		{
+			get
+			{
+				return this._Measure;
+			}
+			set
+			{
+				if ((this._Measure != value))
+				{
+					this._Measure = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Supplier", DbType="NVarChar(255)")]
+		public string Supplier
+		{
+			get
+			{
+				return this._Supplier;
+			}
+			set
+			{
+				if ((this._Supplier != value))
+				{
+					this._Supplier = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Code", DbType="NVarChar(20) NOT NULL", CanBeNull=false)]
+		public string Code
+		{
+			get
+			{
+				return this._Code;
+			}
+			set
+			{
+				if ((this._Code != value))
+				{
+					this._Code = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Barcode", DbType="NVarChar(20)")]
+		public string Barcode
+		{
+			get
+			{
+				return this._Barcode;
+			}
+			set
+			{
+				if ((this._Barcode != value))
+				{
+					this._Barcode = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Date", DbType="DateTime NOT NULL")]
+		public System.DateTime Date
+		{
+			get
+			{
+				return this._Date;
+			}
+			set
+			{
+				if ((this._Date != value))
+				{
+					this._Date = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Reserved", DbType="Float")]
+		public System.Nullable<double> Reserved
+		{
+			get
+			{
+				return this._Reserved;
+			}
+			set
+			{
+				if ((this._Reserved != value))
+				{
+					this._Reserved = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FreeBalance", DbType="Float")]
+		public System.Nullable<double> FreeBalance
+		{
+			get
+			{
+				return this._FreeBalance;
+			}
+			set
+			{
+				if ((this._FreeBalance != value))
+				{
+					this._FreeBalance = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MinOrder", DbType="Float")]
+		public System.Nullable<double> MinOrder
+		{
+			get
+			{
+				return this._MinOrder;
+			}
+			set
+			{
+				if ((this._MinOrder != value))
+				{
+					this._MinOrder = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IsReqAssort", DbType="Bit")]
+		public System.Nullable<bool> IsReqAssort
+		{
+			get
+			{
+				return this._IsReqAssort;
+			}
+			set
+			{
+				if ((this._IsReqAssort != value))
+				{
+					this._IsReqAssort = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ReqQuantity", DbType="Float NOT NULL")]
+		public double ReqQuantity
+		{
+			get
+			{
+				return this._ReqQuantity;
+			}
+			set
+			{
+				if ((this._ReqQuantity != value))
+				{
+					this._ReqQuantity = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Ordered", DbType="Float NOT NULL")]
+		public double Ordered
+		{
+			get
+			{
+				return this._Ordered;
+			}
+			set
+			{
+				if ((this._Ordered != value))
+				{
+					this._Ordered = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_OrderHeader", DbType="UniqueIdentifier")]
+		public System.Nullable<System.Guid> id_OrderHeader
+		{
+			get
+			{
+				return this._id_OrderHeader;
+			}
+			set
+			{
+				if ((this._id_OrderHeader != value))
+				{
+					this._id_OrderHeader = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ForOrder", DbType="Decimal(15,3)")]
+		public System.Nullable<decimal> ForOrder
+		{
+			get
+			{
+				return this._ForOrder;
+			}
+			set
+			{
+				if ((this._ForOrder != value))
+				{
+					this._ForOrder = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AvgSell", DbType="Decimal(15,3) NOT NULL")]
+		public decimal AvgSell
+		{
+			get
+			{
+				return this._AvgSell;
+			}
+			set
+			{
+				if ((this._AvgSell != value))
+				{
+					this._AvgSell = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ShopBalance", DbType="Decimal(15,3) NOT NULL")]
+		public decimal ShopBalance
+		{
+			get
+			{
+				return this._ShopBalance;
+			}
+			set
+			{
+				if ((this._ShopBalance != value))
+				{
+					this._ShopBalance = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Quota", DbType="Float NOT NULL")]
+		public double Quota
+		{
+			get
+			{
+				return this._Quota;
+			}
+			set
+			{
+				if ((this._Quota != value))
+				{
+					this._Quota = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IsQuoted", DbType="Bit NOT NULL")]
+		public bool IsQuoted
+		{
+			get
+			{
+				return this._IsQuoted;
+			}
+			set
+			{
+				if ((this._IsQuoted != value))
+				{
+					this._IsQuoted = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SelfImport", DbType="Bit")]
+		public System.Nullable<bool> SelfImport
+		{
+			get
+			{
+				return this._SelfImport;
+			}
+			set
+			{
+				if ((this._SelfImport != value))
+				{
+					this._SelfImport = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AutoOrderModeId", DbType="TinyInt NOT NULL")]
+		public byte AutoOrderModeId
+		{
+			get
+			{
+				return this._AutoOrderModeId;
+			}
+			set
+			{
+				if ((this._AutoOrderModeId != value))
+				{
+					this._AutoOrderModeId = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LastAutoOrderDate", DbType="DateTime")]
+		public System.Nullable<System.DateTime> LastAutoOrderDate
+		{
+			get
+			{
+				return this._LastAutoOrderDate;
+			}
+			set
+			{
+				if ((this._LastAutoOrderDate != value))
+				{
+					this._LastAutoOrderDate = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_PreOrder", DbType="UniqueIdentifier")]
+		public System.Nullable<System.Guid> id_PreOrder
 		{
 			get
 			{

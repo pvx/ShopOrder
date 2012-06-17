@@ -23,13 +23,13 @@ namespace ShopOrderCustom.UI
             InitializeComponent();
             Model = model;
             Model.LoadUserViewLayout(gridView);
-            Model.ChangeDateFilter += Model_ChangeDateFilter;
+            Model.ChangeDateFilter += ModelChangeDateFilter;
             Model.FilterDate = DateTime.Now.Date;
             cdDateFilter.EditValue = Model.FilterDate;   
             
         }
 
-        private void Model_ChangeDateFilter(object sender, EventChangeDateFilter e)
+        private void ModelChangeDateFilter(object sender, EventChangeDateFilter e)
         {
             InitTreeListControl();
         }
@@ -79,7 +79,7 @@ namespace ShopOrderCustom.UI
         {
             var ord = treeList.DataSource as PreOrders;
             if (ord != null)
-                foreach (PreOrderHeaderObj orderHeaderObj in ord)
+                foreach (var orderHeaderObj in ord)
                 {
                     if (orderHeaderObj.IdOrderState == 1)
                     {
@@ -121,26 +121,27 @@ namespace ShopOrderCustom.UI
                         treeList.MoveLastVisible();
                     }
                 }
-                /*else
+                else
                 {
                     grid.BeginUpdate();
                     try
                     {
                         ord.AddOrderHeader();
                         treeList.MoveLastVisible();
+                        /*
                         Model.SetAutoOrder();
                         SetStorehouse(Storehouse.NTS);
                         Model.SetAutoOrder();
                         SetStorehouse(Storehouse.Rent);
                         Model.SetAutoOrder();
                         SetStorehouse(Storehouse.Cold);
+                        */
                     }
                     finally
                     {
                         grid.EndUpdate();
                     }
                 }
-                 * */
             }
         }
 

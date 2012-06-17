@@ -29,14 +29,16 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            DevExpress.Utils.SuperToolTip superToolTip1 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem1 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.ToolTipItem toolTipItem1 = new DevExpress.Utils.ToolTipItem();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject1 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.XtraGrid.GridLevelNode gridLevelNode1 = new DevExpress.XtraGrid.GridLevelNode();
             DevExpress.XtraGrid.StyleFormatCondition styleFormatCondition1 = new DevExpress.XtraGrid.StyleFormatCondition();
             DevExpress.XtraGrid.StyleFormatCondition styleFormatCondition2 = new DevExpress.XtraGrid.StyleFormatCondition();
             DevExpress.XtraGrid.StyleFormatCondition styleFormatCondition3 = new DevExpress.XtraGrid.StyleFormatCondition();
             DevExpress.XtraGrid.StyleFormatCondition styleFormatCondition4 = new DevExpress.XtraGrid.StyleFormatCondition();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject1 = new DevExpress.Utils.SerializableAppearanceObject();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PreOrderForm));
+            DevExpress.Utils.SuperToolTip superToolTip1 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem1 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem1 = new DevExpress.Utils.ToolTipItem();
             DevExpress.Utils.SuperToolTip superToolTip2 = new DevExpress.Utils.SuperToolTip();
             DevExpress.Utils.ToolTipTitleItem toolTipTitleItem2 = new DevExpress.Utils.ToolTipTitleItem();
             DevExpress.Utils.ToolTipItem toolTipItem2 = new DevExpress.Utils.ToolTipItem();
@@ -55,10 +57,54 @@
             DevExpress.Utils.SuperToolTip superToolTip7 = new DevExpress.Utils.SuperToolTip();
             DevExpress.Utils.ToolTipTitleItem toolTipTitleItem7 = new DevExpress.Utils.ToolTipTitleItem();
             DevExpress.Utils.ToolTipItem toolTipItem7 = new DevExpress.Utils.ToolTipItem();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PreOrderForm));
+            this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.gridColumn21 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn22 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn23 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn24 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn25 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn26 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn27 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn29 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn30 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn31 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn32 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn35 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn36 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.grid = new DevExpress.XtraGrid.GridControl();
+            this.goodsBalanceObjBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.gridView = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.colReqQuantity = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.repositoryItemSpinEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemSpinEdit();
+            this.colid = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colGroup = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colName = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colPrice = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colQuantityInPack = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colOrdered = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colMeasure = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colQuantity = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colSupplier = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colCode = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colDate = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.repositoryItemTimeEdit2 = new DevExpress.XtraEditors.Repository.RepositoryItemTimeEdit();
+            this.colBarcode = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colReserved = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colFreeBalance = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colMinOrder = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colRreqAssort = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colForOrder = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colAvgSell = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colShopBalance = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colQuota = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colIsQuoted = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colSelfImport = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colStatus = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colFactQuantity = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.repositoryItemImageComboBox1 = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
+            this.ilState = new System.Windows.Forms.ImageList(this.components);
+            this.repositoryItemTextEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
             this.actionContainerBarItem4 = new DevExpress.ExpressApp.Win.Templates.ActionContainers.ActionContainerBarItem();
             this.actionContainerBarItem3 = new DevExpress.ExpressApp.Win.Templates.ActionContainers.ActionContainerBarItem();
             this.actionContainerBarItem10 = new DevExpress.ExpressApp.Win.Templates.ActionContainers.ActionContainerBarItem();
@@ -104,34 +150,6 @@
             this.actionContainerBarItem19 = new DevExpress.ExpressApp.Win.Templates.ActionContainers.ActionContainerBarItem();
             this.mainMenuItem4 = new DevExpress.ExpressApp.Win.Templates.MainMenuItem();
             this.bеForOrder = new DevExpress.XtraBars.BarSubItem();
-            this.colGroup = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colid = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colName = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.repositoryItemSpinEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemSpinEdit();
-            this.colQuantityInPack = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colSupplier = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colOrdered = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colQuantity = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colReqQuantity = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colMeasure = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colIsQuoted = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridView = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.colPrice = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colCode = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colDate = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.repositoryItemTimeEdit2 = new DevExpress.XtraEditors.Repository.RepositoryItemTimeEdit();
-            this.colBarcode = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colReserved = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colFreeBalance = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colMinOrder = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colForOrder = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colAvgSell = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colShopBalance = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colStatus = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colFactQuantity = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.grid = new DevExpress.XtraGrid.GridControl();
-            this.goodsBalanceObjBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.repositoryItemTextEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
             this.treeListColumn1 = new DevExpress.XtraTreeList.Columns.TreeListColumn();
             this.splitContainerControl1 = new DevExpress.XtraEditors.SplitContainerControl();
             this.treeList = new DevExpress.XtraTreeList.TreeList();
@@ -148,13 +166,15 @@
             this.xafBar2 = new DevExpress.ExpressApp.Win.Templates.Controls.XafBar();
             this.BarManager = new DevExpress.ExpressApp.Win.Templates.Controls.XafBarManager(this.components);
             this.vGoodsBalanceOrderBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTimeEdit1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemSpinEdit1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTimeEdit2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.grid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.goodsBalanceObjBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemSpinEdit1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTimeEdit2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTimeEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).BeginInit();
             this.splitContainerControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.treeList)).BeginInit();
@@ -163,6 +183,599 @@
             ((System.ComponentModel.ISupportInitialize)(this.BarManager)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.vGoodsBalanceOrderBindingSource)).BeginInit();
             this.SuspendLayout();
+            // 
+            // gridView1
+            // 
+            this.gridView1.Appearance.ColumnFilterButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(244)))), ((int)(((byte)(250)))));
+            this.gridView1.Appearance.ColumnFilterButton.BackColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(154)))), ((int)(((byte)(153)))), ((int)(((byte)(182)))));
+            this.gridView1.Appearance.ColumnFilterButton.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(244)))), ((int)(((byte)(250)))));
+            this.gridView1.Appearance.ColumnFilterButton.ForeColor = System.Drawing.Color.Black;
+            this.gridView1.Appearance.ColumnFilterButton.GradientMode = System.Drawing.Drawing2D.LinearGradientMode.Vertical;
+            this.gridView1.Appearance.ColumnFilterButton.Options.UseBackColor = true;
+            this.gridView1.Appearance.ColumnFilterButton.Options.UseBorderColor = true;
+            this.gridView1.Appearance.ColumnFilterButton.Options.UseForeColor = true;
+            this.gridView1.Appearance.ColumnFilterButtonActive.BackColor = System.Drawing.Color.White;
+            this.gridView1.Appearance.ColumnFilterButtonActive.BackColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(198)))), ((int)(((byte)(198)))), ((int)(((byte)(215)))));
+            this.gridView1.Appearance.ColumnFilterButtonActive.BorderColor = System.Drawing.Color.White;
+            this.gridView1.Appearance.ColumnFilterButtonActive.ForeColor = System.Drawing.Color.Black;
+            this.gridView1.Appearance.ColumnFilterButtonActive.GradientMode = System.Drawing.Drawing2D.LinearGradientMode.Vertical;
+            this.gridView1.Appearance.ColumnFilterButtonActive.Options.UseBackColor = true;
+            this.gridView1.Appearance.ColumnFilterButtonActive.Options.UseBorderColor = true;
+            this.gridView1.Appearance.ColumnFilterButtonActive.Options.UseForeColor = true;
+            this.gridView1.Appearance.Empty.BackColor = System.Drawing.Color.White;
+            this.gridView1.Appearance.Empty.Options.UseBackColor = true;
+            this.gridView1.Appearance.EvenRow.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(244)))), ((int)(((byte)(250)))));
+            this.gridView1.Appearance.EvenRow.ForeColor = System.Drawing.Color.Black;
+            this.gridView1.Appearance.EvenRow.Options.UseBackColor = true;
+            this.gridView1.Appearance.EvenRow.Options.UseForeColor = true;
+            this.gridView1.Appearance.FilterCloseButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(244)))), ((int)(((byte)(250)))));
+            this.gridView1.Appearance.FilterCloseButton.BackColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(154)))), ((int)(((byte)(153)))), ((int)(((byte)(182)))));
+            this.gridView1.Appearance.FilterCloseButton.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(244)))), ((int)(((byte)(250)))));
+            this.gridView1.Appearance.FilterCloseButton.GradientMode = System.Drawing.Drawing2D.LinearGradientMode.Vertical;
+            this.gridView1.Appearance.FilterCloseButton.Options.UseBackColor = true;
+            this.gridView1.Appearance.FilterCloseButton.Options.UseBorderColor = true;
+            this.gridView1.Appearance.FilterPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(133)))), ((int)(((byte)(131)))), ((int)(((byte)(161)))));
+            this.gridView1.Appearance.FilterPanel.ForeColor = System.Drawing.Color.White;
+            this.gridView1.Appearance.FilterPanel.Options.UseBackColor = true;
+            this.gridView1.Appearance.FilterPanel.Options.UseForeColor = true;
+            this.gridView1.Appearance.FixedLine.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(124)))), ((int)(((byte)(124)))), ((int)(((byte)(148)))));
+            this.gridView1.Appearance.FixedLine.Options.UseBackColor = true;
+            this.gridView1.Appearance.FocusedRow.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(178)))), ((int)(((byte)(180)))), ((int)(((byte)(191)))));
+            this.gridView1.Appearance.FocusedRow.ForeColor = System.Drawing.Color.Black;
+            this.gridView1.Appearance.FocusedRow.Options.UseBackColor = true;
+            this.gridView1.Appearance.FocusedRow.Options.UseForeColor = true;
+            this.gridView1.Appearance.FooterPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(244)))), ((int)(((byte)(250)))));
+            this.gridView1.Appearance.FooterPanel.BackColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(154)))), ((int)(((byte)(153)))), ((int)(((byte)(182)))));
+            this.gridView1.Appearance.FooterPanel.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(244)))), ((int)(((byte)(250)))));
+            this.gridView1.Appearance.FooterPanel.GradientMode = System.Drawing.Drawing2D.LinearGradientMode.Vertical;
+            this.gridView1.Appearance.FooterPanel.Options.UseBackColor = true;
+            this.gridView1.Appearance.FooterPanel.Options.UseBorderColor = true;
+            this.gridView1.Appearance.GroupButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(215)))), ((int)(((byte)(229)))));
+            this.gridView1.Appearance.GroupButton.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(215)))), ((int)(((byte)(229)))));
+            this.gridView1.Appearance.GroupButton.ForeColor = System.Drawing.Color.Black;
+            this.gridView1.Appearance.GroupButton.Options.UseBackColor = true;
+            this.gridView1.Appearance.GroupButton.Options.UseBorderColor = true;
+            this.gridView1.Appearance.GroupButton.Options.UseForeColor = true;
+            this.gridView1.Appearance.GroupFooter.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(215)))), ((int)(((byte)(229)))));
+            this.gridView1.Appearance.GroupFooter.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(215)))), ((int)(((byte)(229)))));
+            this.gridView1.Appearance.GroupFooter.ForeColor = System.Drawing.Color.Black;
+            this.gridView1.Appearance.GroupFooter.Options.UseBackColor = true;
+            this.gridView1.Appearance.GroupFooter.Options.UseBorderColor = true;
+            this.gridView1.Appearance.GroupFooter.Options.UseForeColor = true;
+            this.gridView1.Appearance.GroupPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(133)))), ((int)(((byte)(131)))), ((int)(((byte)(161)))));
+            this.gridView1.Appearance.GroupPanel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(244)))), ((int)(((byte)(250)))));
+            this.gridView1.Appearance.GroupPanel.Options.UseBackColor = true;
+            this.gridView1.Appearance.GroupPanel.Options.UseForeColor = true;
+            this.gridView1.Appearance.GroupRow.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(215)))), ((int)(((byte)(229)))));
+            this.gridView1.Appearance.GroupRow.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(215)))), ((int)(((byte)(229)))));
+            this.gridView1.Appearance.GroupRow.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Bold);
+            this.gridView1.Appearance.GroupRow.ForeColor = System.Drawing.Color.Black;
+            this.gridView1.Appearance.GroupRow.Options.UseBackColor = true;
+            this.gridView1.Appearance.GroupRow.Options.UseBorderColor = true;
+            this.gridView1.Appearance.GroupRow.Options.UseFont = true;
+            this.gridView1.Appearance.GroupRow.Options.UseForeColor = true;
+            this.gridView1.Appearance.HeaderPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(244)))), ((int)(((byte)(250)))));
+            this.gridView1.Appearance.HeaderPanel.BackColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(154)))), ((int)(((byte)(153)))), ((int)(((byte)(182)))));
+            this.gridView1.Appearance.HeaderPanel.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(244)))), ((int)(((byte)(250)))));
+            this.gridView1.Appearance.HeaderPanel.ForeColor = System.Drawing.Color.Black;
+            this.gridView1.Appearance.HeaderPanel.GradientMode = System.Drawing.Drawing2D.LinearGradientMode.Vertical;
+            this.gridView1.Appearance.HeaderPanel.Options.UseBackColor = true;
+            this.gridView1.Appearance.HeaderPanel.Options.UseBorderColor = true;
+            this.gridView1.Appearance.HeaderPanel.Options.UseForeColor = true;
+            this.gridView1.Appearance.HideSelectionRow.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(218)))), ((int)(((byte)(219)))), ((int)(((byte)(226)))));
+            this.gridView1.Appearance.HideSelectionRow.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(133)))), ((int)(((byte)(131)))), ((int)(((byte)(161)))));
+            this.gridView1.Appearance.HideSelectionRow.Options.UseBackColor = true;
+            this.gridView1.Appearance.HideSelectionRow.Options.UseForeColor = true;
+            this.gridView1.Appearance.HorzLine.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(164)))), ((int)(((byte)(164)))), ((int)(((byte)(188)))));
+            this.gridView1.Appearance.HorzLine.Options.UseBackColor = true;
+            this.gridView1.Appearance.OddRow.BackColor = System.Drawing.Color.White;
+            this.gridView1.Appearance.OddRow.ForeColor = System.Drawing.Color.Black;
+            this.gridView1.Appearance.OddRow.Options.UseBackColor = true;
+            this.gridView1.Appearance.OddRow.Options.UseForeColor = true;
+            this.gridView1.Appearance.Preview.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(253)))));
+            this.gridView1.Appearance.Preview.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(163)))), ((int)(((byte)(165)))), ((int)(((byte)(177)))));
+            this.gridView1.Appearance.Preview.Options.UseBackColor = true;
+            this.gridView1.Appearance.Preview.Options.UseForeColor = true;
+            this.gridView1.Appearance.Row.BackColor = System.Drawing.Color.White;
+            this.gridView1.Appearance.Row.ForeColor = System.Drawing.Color.Black;
+            this.gridView1.Appearance.Row.Options.UseBackColor = true;
+            this.gridView1.Appearance.Row.Options.UseForeColor = true;
+            this.gridView1.Appearance.RowSeparator.BackColor = System.Drawing.Color.White;
+            this.gridView1.Appearance.RowSeparator.Options.UseBackColor = true;
+            this.gridView1.Appearance.SelectedRow.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(197)))), ((int)(((byte)(205)))));
+            this.gridView1.Appearance.SelectedRow.ForeColor = System.Drawing.Color.Black;
+            this.gridView1.Appearance.SelectedRow.Options.UseBackColor = true;
+            this.gridView1.Appearance.SelectedRow.Options.UseForeColor = true;
+            this.gridView1.Appearance.VertLine.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(164)))), ((int)(((byte)(164)))), ((int)(((byte)(188)))));
+            this.gridView1.Appearance.VertLine.Options.UseBackColor = true;
+            this.gridView1.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.gridColumn21,
+            this.gridColumn22,
+            this.gridColumn23,
+            this.gridColumn24,
+            this.gridColumn25,
+            this.gridColumn26,
+            this.gridColumn27,
+            this.gridColumn29,
+            this.gridColumn30,
+            this.gridColumn31,
+            this.gridColumn32,
+            this.gridColumn35,
+            this.gridColumn36});
+            this.gridView1.GridControl = this.grid;
+            this.gridView1.Name = "gridView1";
+            this.gridView1.OptionsBehavior.AllowAddRows = DevExpress.Utils.DefaultBoolean.False;
+            this.gridView1.OptionsBehavior.AllowDeleteRows = DevExpress.Utils.DefaultBoolean.False;
+            this.gridView1.OptionsBehavior.AutoPopulateColumns = false;
+            this.gridView1.OptionsBehavior.Editable = false;
+            this.gridView1.OptionsView.EnableAppearanceEvenRow = true;
+            this.gridView1.OptionsView.EnableAppearanceOddRow = true;
+            this.gridView1.OptionsView.ShowGroupPanel = false;
+            // 
+            // gridColumn21
+            // 
+            this.gridColumn21.FieldName = "id";
+            this.gridColumn21.Name = "gridColumn21";
+            this.gridColumn21.OptionsColumn.AllowEdit = false;
+            this.gridColumn21.OptionsColumn.AllowFocus = false;
+            this.gridColumn21.OptionsColumn.ReadOnly = true;
+            this.gridColumn21.Width = 27;
+            // 
+            // gridColumn22
+            // 
+            this.gridColumn22.Caption = "Группа товара";
+            this.gridColumn22.FieldName = "Group";
+            this.gridColumn22.Name = "gridColumn22";
+            this.gridColumn22.OptionsColumn.AllowEdit = false;
+            this.gridColumn22.OptionsColumn.AllowFocus = false;
+            this.gridColumn22.OptionsColumn.ReadOnly = true;
+            this.gridColumn22.Visible = true;
+            this.gridColumn22.VisibleIndex = 3;
+            this.gridColumn22.Width = 72;
+            // 
+            // gridColumn23
+            // 
+            this.gridColumn23.Caption = "Название";
+            this.gridColumn23.FieldName = "Name";
+            this.gridColumn23.Name = "gridColumn23";
+            this.gridColumn23.OptionsColumn.AllowEdit = false;
+            this.gridColumn23.OptionsColumn.AllowFocus = false;
+            this.gridColumn23.OptionsColumn.ReadOnly = true;
+            this.gridColumn23.Visible = true;
+            this.gridColumn23.VisibleIndex = 2;
+            this.gridColumn23.Width = 87;
+            // 
+            // gridColumn24
+            // 
+            this.gridColumn24.Caption = "Цена";
+            this.gridColumn24.FieldName = "Price";
+            this.gridColumn24.Name = "gridColumn24";
+            this.gridColumn24.OptionsColumn.AllowEdit = false;
+            this.gridColumn24.OptionsColumn.AllowFocus = false;
+            this.gridColumn24.OptionsColumn.ReadOnly = true;
+            this.gridColumn24.Visible = true;
+            this.gridColumn24.VisibleIndex = 4;
+            this.gridColumn24.Width = 35;
+            // 
+            // gridColumn25
+            // 
+            this.gridColumn25.Caption = "Кол. в упаковке";
+            this.gridColumn25.FieldName = "QuantityInPack";
+            this.gridColumn25.Name = "gridColumn25";
+            this.gridColumn25.OptionsColumn.AllowEdit = false;
+            this.gridColumn25.OptionsColumn.AllowFocus = false;
+            this.gridColumn25.OptionsColumn.ReadOnly = true;
+            this.gridColumn25.Width = 89;
+            // 
+            // gridColumn26
+            // 
+            this.gridColumn26.AppearanceCell.BackColor = System.Drawing.Color.PaleGoldenrod;
+            this.gridColumn26.AppearanceCell.Options.UseBackColor = true;
+            this.gridColumn26.Caption = "Фактический заказ";
+            this.gridColumn26.FieldName = "Quantity";
+            this.gridColumn26.MaxWidth = 100;
+            this.gridColumn26.MinWidth = 50;
+            this.gridColumn26.Name = "gridColumn26";
+            this.gridColumn26.OptionsColumn.AllowEdit = false;
+            this.gridColumn26.OptionsColumn.AllowFocus = false;
+            this.gridColumn26.OptionsColumn.ReadOnly = true;
+            this.gridColumn26.SummaryItem.FieldName = "Ordered";
+            this.gridColumn26.SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Sum;
+            this.gridColumn26.Visible = true;
+            this.gridColumn26.VisibleIndex = 0;
+            this.gridColumn26.Width = 50;
+            // 
+            // gridColumn27
+            // 
+            this.gridColumn27.Caption = "Ед. изм. (шт/упак.)";
+            this.gridColumn27.FieldName = "Measure";
+            this.gridColumn27.Name = "gridColumn27";
+            this.gridColumn27.OptionsColumn.AllowEdit = false;
+            this.gridColumn27.OptionsColumn.AllowFocus = false;
+            this.gridColumn27.OptionsColumn.ReadOnly = true;
+            this.gridColumn27.Visible = true;
+            this.gridColumn27.VisibleIndex = 5;
+            this.gridColumn27.Width = 77;
+            // 
+            // gridColumn29
+            // 
+            this.gridColumn29.Caption = "Поставщик";
+            this.gridColumn29.FieldName = "Supplier";
+            this.gridColumn29.Name = "gridColumn29";
+            this.gridColumn29.OptionsColumn.AllowEdit = false;
+            this.gridColumn29.OptionsColumn.AllowFocus = false;
+            this.gridColumn29.OptionsColumn.ReadOnly = true;
+            this.gridColumn29.Visible = true;
+            this.gridColumn29.VisibleIndex = 6;
+            this.gridColumn29.Width = 48;
+            // 
+            // gridColumn30
+            // 
+            this.gridColumn30.Caption = "Код товара";
+            this.gridColumn30.FieldName = "Code";
+            this.gridColumn30.Name = "gridColumn30";
+            this.gridColumn30.OptionsColumn.AllowEdit = false;
+            this.gridColumn30.OptionsColumn.AllowFocus = false;
+            this.gridColumn30.OptionsColumn.ReadOnly = true;
+            this.gridColumn30.Width = 68;
+            // 
+            // gridColumn31
+            // 
+            this.gridColumn31.Caption = "Время создания";
+            this.gridColumn31.FieldName = "Date";
+            this.gridColumn31.Name = "gridColumn31";
+            this.gridColumn31.OptionsColumn.AllowEdit = false;
+            this.gridColumn31.OptionsColumn.AllowFocus = false;
+            this.gridColumn31.OptionsColumn.ReadOnly = true;
+            this.gridColumn31.Width = 60;
+            // 
+            // gridColumn32
+            // 
+            this.gridColumn32.Caption = "Штрихкод";
+            this.gridColumn32.FieldName = "Barcode";
+            this.gridColumn32.Name = "gridColumn32";
+            this.gridColumn32.OptionsColumn.AllowEdit = false;
+            this.gridColumn32.OptionsColumn.AllowFocus = false;
+            this.gridColumn32.OptionsColumn.ReadOnly = true;
+            this.gridColumn32.Visible = true;
+            this.gridColumn32.VisibleIndex = 7;
+            this.gridColumn32.Width = 42;
+            // 
+            // gridColumn35
+            // 
+            this.gridColumn35.AppearanceCell.BackColor = System.Drawing.Color.CornflowerBlue;
+            this.gridColumn35.AppearanceCell.Options.UseBackColor = true;
+            this.gridColumn35.Caption = "Минимальный заказ";
+            this.gridColumn35.FieldName = "MinOrder";
+            this.gridColumn35.MaxWidth = 100;
+            this.gridColumn35.MinWidth = 50;
+            this.gridColumn35.Name = "gridColumn35";
+            this.gridColumn35.OptionsColumn.AllowEdit = false;
+            this.gridColumn35.OptionsColumn.AllowFocus = false;
+            this.gridColumn35.OptionsColumn.ReadOnly = true;
+            this.gridColumn35.Visible = true;
+            this.gridColumn35.VisibleIndex = 1;
+            this.gridColumn35.Width = 58;
+            // 
+            // gridColumn36
+            // 
+            this.gridColumn36.Caption = "Собственный импорт";
+            this.gridColumn36.FieldName = "SelfImport";
+            this.gridColumn36.Name = "gridColumn36";
+            this.gridColumn36.OptionsColumn.AllowEdit = false;
+            this.gridColumn36.OptionsColumn.AllowFocus = false;
+            this.gridColumn36.OptionsColumn.ReadOnly = true;
+            this.gridColumn36.Visible = true;
+            this.gridColumn36.VisibleIndex = 8;
+            // 
+            // grid
+            // 
+            this.grid.DataSource = this.goodsBalanceObjBindingSource;
+            this.grid.Dock = System.Windows.Forms.DockStyle.Fill;
+            gridLevelNode1.LevelTemplate = this.gridView1;
+            gridLevelNode1.RelationName = "CommitList";
+            this.grid.LevelTree.Nodes.AddRange(new DevExpress.XtraGrid.GridLevelNode[] {
+            gridLevelNode1});
+            this.grid.Location = new System.Drawing.Point(0, 0);
+            this.grid.MainView = this.gridView;
+            this.grid.Name = "grid";
+            this.grid.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
+            this.repositoryItemSpinEdit1,
+            this.repositoryItemTextEdit1,
+            this.repositoryItemTimeEdit2,
+            this.repositoryItemImageComboBox1});
+            this.grid.Size = new System.Drawing.Size(790, 431);
+            this.grid.TabIndex = 0;
+            this.grid.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.gridView,
+            this.gridView1});
+            // 
+            // gridView
+            // 
+            this.gridView.Appearance.FocusedCell.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.gridView.Appearance.FocusedCell.Options.UseBackColor = true;
+            this.gridView.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.colReqQuantity,
+            this.colid,
+            this.colGroup,
+            this.colName,
+            this.colPrice,
+            this.colQuantityInPack,
+            this.colOrdered,
+            this.colMeasure,
+            this.colQuantity,
+            this.colSupplier,
+            this.colCode,
+            this.colDate,
+            this.colBarcode,
+            this.colReserved,
+            this.colFreeBalance,
+            this.colMinOrder,
+            this.colRreqAssort,
+            this.colForOrder,
+            this.colAvgSell,
+            this.colShopBalance,
+            this.colQuota,
+            this.colIsQuoted,
+            this.colSelfImport,
+            this.colStatus,
+            this.colFactQuantity,
+            this.gridColumn1});
+            styleFormatCondition1.Appearance.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
+            styleFormatCondition1.Appearance.Options.UseFont = true;
+            styleFormatCondition1.ApplyToRow = true;
+            styleFormatCondition1.Column = this.colRreqAssort;
+            styleFormatCondition1.Condition = DevExpress.XtraGrid.FormatConditionEnum.Equal;
+            styleFormatCondition1.Value1 = true;
+            styleFormatCondition2.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            styleFormatCondition2.Appearance.Options.UseBackColor = true;
+            styleFormatCondition2.Column = this.colQuota;
+            styleFormatCondition2.Condition = DevExpress.XtraGrid.FormatConditionEnum.Expression;
+            styleFormatCondition2.Expression = "[IsQuoted] == True";
+            styleFormatCondition3.Appearance.ForeColor = System.Drawing.Color.Silver;
+            styleFormatCondition3.Appearance.Options.UseForeColor = true;
+            styleFormatCondition3.Column = this.colQuota;
+            styleFormatCondition3.Condition = DevExpress.XtraGrid.FormatConditionEnum.Expression;
+            styleFormatCondition3.Expression = "[IsQuoted] == False";
+            styleFormatCondition4.Appearance.ForeColor = System.Drawing.Color.Blue;
+            styleFormatCondition4.Appearance.Options.UseForeColor = true;
+            styleFormatCondition4.ApplyToRow = true;
+            styleFormatCondition4.Column = this.colSelfImport;
+            styleFormatCondition4.Condition = DevExpress.XtraGrid.FormatConditionEnum.Expression;
+            styleFormatCondition4.Expression = "[SelfImport]==True";
+            this.gridView.FormatConditions.AddRange(new DevExpress.XtraGrid.StyleFormatCondition[] {
+            styleFormatCondition1,
+            styleFormatCondition2,
+            styleFormatCondition3,
+            styleFormatCondition4});
+            this.gridView.GridControl = this.grid;
+            this.gridView.Name = "gridView";
+            this.gridView.OptionsView.ShowAutoFilterRow = true;
+            this.gridView.OptionsView.ShowFooter = true;
+            this.gridView.SortInfo.AddRange(new DevExpress.XtraGrid.Columns.GridColumnSortInfo[] {
+            new DevExpress.XtraGrid.Columns.GridColumnSortInfo(this.colRreqAssort, DevExpress.Data.ColumnSortOrder.Descending)});
+            // 
+            // colReqQuantity
+            // 
+            this.colReqQuantity.AppearanceCell.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.colReqQuantity.AppearanceCell.Options.UseBackColor = true;
+            this.colReqQuantity.Caption = "Заказ";
+            this.colReqQuantity.ColumnEdit = this.repositoryItemSpinEdit1;
+            this.colReqQuantity.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.colReqQuantity.FieldName = "ReqQuantity";
+            this.colReqQuantity.MaxWidth = 100;
+            this.colReqQuantity.MinWidth = 50;
+            this.colReqQuantity.Name = "colReqQuantity";
+            this.colReqQuantity.SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Sum;
+            this.colReqQuantity.Visible = true;
+            this.colReqQuantity.VisibleIndex = 1;
+            this.colReqQuantity.Width = 52;
+            // 
+            // repositoryItemSpinEdit1
+            // 
+            this.repositoryItemSpinEdit1.AllowNullInput = DevExpress.Utils.DefaultBoolean.True;
+            this.repositoryItemSpinEdit1.AutoHeight = false;
+            this.repositoryItemSpinEdit1.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Ellipsis, "", -1, true, false, false, DevExpress.XtraEditors.ImageLocation.MiddleCenter, null, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject1, "", null, null, true)});
+            this.repositoryItemSpinEdit1.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.repositoryItemSpinEdit1.HideSelection = false;
+            this.repositoryItemSpinEdit1.IsFloatValue = false;
+            this.repositoryItemSpinEdit1.Mask.EditMask = "\\d+";
+            this.repositoryItemSpinEdit1.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.RegEx;
+            this.repositoryItemSpinEdit1.MaxValue = new decimal(new int[] {
+            1000000,
+            0,
+            0,
+            0});
+            this.repositoryItemSpinEdit1.Name = "repositoryItemSpinEdit1";
+            // 
+            // colid
+            // 
+            this.colid.FieldName = "id";
+            this.colid.Name = "colid";
+            this.colid.OptionsColumn.AllowEdit = false;
+            this.colid.OptionsColumn.AllowFocus = false;
+            this.colid.OptionsColumn.ReadOnly = true;
+            this.colid.Width = 27;
+            // 
+            // colGroup
+            // 
+            this.colGroup.Caption = "Группа товара";
+            this.colGroup.FieldName = "Group";
+            this.colGroup.Name = "colGroup";
+            this.colGroup.OptionsColumn.AllowEdit = false;
+            this.colGroup.OptionsColumn.AllowFocus = false;
+            this.colGroup.OptionsColumn.ReadOnly = true;
+            this.colGroup.Visible = true;
+            this.colGroup.VisibleIndex = 10;
+            this.colGroup.Width = 48;
+            // 
+            // colName
+            // 
+            this.colName.Caption = "Название";
+            this.colName.FieldName = "Name";
+            this.colName.Name = "colName";
+            this.colName.OptionsColumn.AllowEdit = false;
+            this.colName.OptionsColumn.AllowFocus = false;
+            this.colName.OptionsColumn.ReadOnly = true;
+            this.colName.SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Count;
+            this.colName.Visible = true;
+            this.colName.VisibleIndex = 9;
+            this.colName.Width = 46;
+            // 
+            // colPrice
+            // 
+            this.colPrice.Caption = "Цена";
+            this.colPrice.FieldName = "Price";
+            this.colPrice.Name = "colPrice";
+            this.colPrice.OptionsColumn.AllowEdit = false;
+            this.colPrice.OptionsColumn.AllowFocus = false;
+            this.colPrice.OptionsColumn.ReadOnly = true;
+            this.colPrice.Visible = true;
+            this.colPrice.VisibleIndex = 11;
+            this.colPrice.Width = 22;
+            // 
+            // colQuantityInPack
+            // 
+            this.colQuantityInPack.Caption = "Кол. в упаковке";
+            this.colQuantityInPack.FieldName = "QuantityInPack";
+            this.colQuantityInPack.Name = "colQuantityInPack";
+            this.colQuantityInPack.OptionsColumn.AllowEdit = false;
+            this.colQuantityInPack.OptionsColumn.AllowFocus = false;
+            this.colQuantityInPack.OptionsColumn.ReadOnly = true;
+            this.colQuantityInPack.Width = 27;
+            // 
+            // colOrdered
+            // 
+            this.colOrdered.AppearanceCell.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.colOrdered.AppearanceCell.Options.UseBackColor = true;
+            this.colOrdered.Caption = "Резерв";
+            this.colOrdered.FieldName = "Ordered";
+            this.colOrdered.MaxWidth = 100;
+            this.colOrdered.MinWidth = 50;
+            this.colOrdered.Name = "colOrdered";
+            this.colOrdered.OptionsColumn.AllowEdit = false;
+            this.colOrdered.OptionsColumn.AllowFocus = false;
+            this.colOrdered.OptionsColumn.ReadOnly = true;
+            this.colOrdered.SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Sum;
+            this.colOrdered.Visible = true;
+            this.colOrdered.VisibleIndex = 2;
+            this.colOrdered.Width = 52;
+            // 
+            // colMeasure
+            // 
+            this.colMeasure.Caption = "Ед. изм. (шт/упак.)";
+            this.colMeasure.FieldName = "Measure";
+            this.colMeasure.Name = "colMeasure";
+            this.colMeasure.OptionsColumn.AllowEdit = false;
+            this.colMeasure.OptionsColumn.AllowFocus = false;
+            this.colMeasure.OptionsColumn.ReadOnly = true;
+            this.colMeasure.Visible = true;
+            this.colMeasure.VisibleIndex = 12;
+            this.colMeasure.Width = 22;
+            // 
+            // colQuantity
+            // 
+            this.colQuantity.AppearanceCell.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.colQuantity.AppearanceCell.Options.UseBackColor = true;
+            this.colQuantity.Caption = "Остаток";
+            this.colQuantity.FieldName = "Quantity";
+            this.colQuantity.MaxWidth = 100;
+            this.colQuantity.MinWidth = 50;
+            this.colQuantity.Name = "colQuantity";
+            this.colQuantity.OptionsColumn.AllowEdit = false;
+            this.colQuantity.OptionsColumn.AllowFocus = false;
+            this.colQuantity.OptionsColumn.ReadOnly = true;
+            this.colQuantity.SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Sum;
+            this.colQuantity.Width = 50;
+            // 
+            // colSupplier
+            // 
+            this.colSupplier.Caption = "Поставщик";
+            this.colSupplier.FieldName = "Supplier";
+            this.colSupplier.Name = "colSupplier";
+            this.colSupplier.OptionsColumn.AllowEdit = false;
+            this.colSupplier.OptionsColumn.AllowFocus = false;
+            this.colSupplier.OptionsColumn.ReadOnly = true;
+            this.colSupplier.Visible = true;
+            this.colSupplier.VisibleIndex = 13;
+            this.colSupplier.Width = 22;
+            // 
+            // colCode
+            // 
+            this.colCode.Caption = "Код товара";
+            this.colCode.FieldName = "Code";
+            this.colCode.Name = "colCode";
+            this.colCode.OptionsColumn.AllowEdit = false;
+            this.colCode.OptionsColumn.AllowFocus = false;
+            this.colCode.OptionsColumn.ReadOnly = true;
+            this.colCode.Width = 27;
+            // 
+            // colDate
+            // 
+            this.colDate.Caption = "Время";
+            this.colDate.ColumnEdit = this.repositoryItemTimeEdit2;
+            this.colDate.FieldName = "Date";
+            this.colDate.Name = "colDate";
+            this.colDate.OptionsColumn.AllowEdit = false;
+            this.colDate.OptionsColumn.AllowFocus = false;
+            this.colDate.OptionsColumn.ReadOnly = true;
+            this.colDate.Visible = true;
+            this.colDate.VisibleIndex = 14;
+            this.colDate.Width = 22;
+            // 
+            // repositoryItemTimeEdit2
+            // 
+            this.repositoryItemTimeEdit2.AutoHeight = false;
+            this.repositoryItemTimeEdit2.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton()});
+            this.repositoryItemTimeEdit2.Name = "repositoryItemTimeEdit2";
+            // 
+            // colBarcode
+            // 
+            this.colBarcode.Caption = "Штрихкод";
+            this.colBarcode.FieldName = "Barcode";
+            this.colBarcode.Name = "colBarcode";
+            this.colBarcode.OptionsColumn.AllowEdit = false;
+            this.colBarcode.OptionsColumn.AllowFocus = false;
+            this.colBarcode.OptionsColumn.ReadOnly = true;
+            this.colBarcode.Visible = true;
+            this.colBarcode.VisibleIndex = 15;
+            this.colBarcode.Width = 78;
+            // 
+            // colReserved
+            // 
+            this.colReserved.FieldName = "Reserved";
+            this.colReserved.Name = "colReserved";
+            this.colReserved.OptionsColumn.AllowEdit = false;
+            this.colReserved.OptionsColumn.AllowFocus = false;
+            this.colReserved.OptionsColumn.ReadOnly = true;
+            this.colReserved.Width = 27;
+            // 
+            // colFreeBalance
+            // 
+            this.colFreeBalance.FieldName = "FreeBalance";
+            this.colFreeBalance.Name = "colFreeBalance";
+            this.colFreeBalance.OptionsColumn.AllowEdit = false;
+            this.colFreeBalance.OptionsColumn.AllowFocus = false;
+            this.colFreeBalance.OptionsColumn.ReadOnly = true;
+            this.colFreeBalance.Width = 33;
+            // 
+            // colMinOrder
+            // 
+            this.colMinOrder.AppearanceCell.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(130)))), ((int)(((byte)(160)))), ((int)(((byte)(240)))));
+            this.colMinOrder.AppearanceCell.Options.UseBackColor = true;
+            this.colMinOrder.Caption = "Минимальный заказ";
+            this.colMinOrder.FieldName = "MinOrder";
+            this.colMinOrder.MaxWidth = 100;
+            this.colMinOrder.MinWidth = 50;
+            this.colMinOrder.Name = "colMinOrder";
+            this.colMinOrder.OptionsColumn.AllowEdit = false;
+            this.colMinOrder.OptionsColumn.AllowFocus = false;
+            this.colMinOrder.OptionsColumn.ReadOnly = true;
+            this.colMinOrder.Visible = true;
+            this.colMinOrder.VisibleIndex = 6;
+            this.colMinOrder.Width = 52;
             // 
             // colRreqAssort
             // 
@@ -178,6 +791,50 @@
             this.colRreqAssort.VisibleIndex = 16;
             this.colRreqAssort.Width = 20;
             // 
+            // colForOrder
+            // 
+            this.colForOrder.Caption = "Рекомендовано";
+            this.colForOrder.DisplayFormat.FormatString = "N00";
+            this.colForOrder.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.colForOrder.FieldName = "ForOrder";
+            this.colForOrder.MaxWidth = 100;
+            this.colForOrder.MinWidth = 50;
+            this.colForOrder.Name = "colForOrder";
+            this.colForOrder.OptionsColumn.AllowEdit = false;
+            this.colForOrder.OptionsColumn.AllowFocus = false;
+            this.colForOrder.OptionsColumn.ReadOnly = true;
+            this.colForOrder.Visible = true;
+            this.colForOrder.VisibleIndex = 5;
+            this.colForOrder.Width = 52;
+            // 
+            // colAvgSell
+            // 
+            this.colAvgSell.Caption = "Средние продажи";
+            this.colAvgSell.DisplayFormat.FormatString = "N00";
+            this.colAvgSell.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.colAvgSell.FieldName = "AvgSell";
+            this.colAvgSell.Name = "colAvgSell";
+            this.colAvgSell.OptionsColumn.AllowEdit = false;
+            this.colAvgSell.OptionsColumn.AllowFocus = false;
+            this.colAvgSell.OptionsColumn.ReadOnly = true;
+            this.colAvgSell.Visible = true;
+            this.colAvgSell.VisibleIndex = 8;
+            this.colAvgSell.Width = 28;
+            // 
+            // colShopBalance
+            // 
+            this.colShopBalance.Caption = "Остатки магазина";
+            this.colShopBalance.DisplayFormat.FormatString = "N00";
+            this.colShopBalance.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.colShopBalance.FieldName = "ShopBalance";
+            this.colShopBalance.Name = "colShopBalance";
+            this.colShopBalance.OptionsColumn.AllowEdit = false;
+            this.colShopBalance.OptionsColumn.AllowFocus = false;
+            this.colShopBalance.OptionsColumn.ReadOnly = true;
+            this.colShopBalance.Visible = true;
+            this.colShopBalance.VisibleIndex = 7;
+            this.colShopBalance.Width = 28;
+            // 
             // colQuota
             // 
             this.colQuota.Caption = "Квота заказа";
@@ -190,6 +847,18 @@
             this.colQuota.VisibleIndex = 17;
             this.colQuota.Width = 36;
             // 
+            // colIsQuoted
+            // 
+            this.colIsQuoted.Caption = "Квота активна";
+            this.colIsQuoted.FieldName = "IsQuoted";
+            this.colIsQuoted.Name = "colIsQuoted";
+            this.colIsQuoted.OptionsColumn.AllowEdit = false;
+            this.colIsQuoted.OptionsColumn.AllowFocus = false;
+            this.colIsQuoted.OptionsColumn.ReadOnly = true;
+            this.colIsQuoted.Visible = true;
+            this.colIsQuoted.VisibleIndex = 18;
+            this.colIsQuoted.Width = 20;
+            // 
             // colSelfImport
             // 
             this.colSelfImport.Caption = "Собственный импорт";
@@ -200,7 +869,75 @@
             this.colSelfImport.OptionsColumn.ReadOnly = true;
             this.colSelfImport.Visible = true;
             this.colSelfImport.VisibleIndex = 19;
-            this.colSelfImport.Width = 31;
+            this.colSelfImport.Width = 45;
+            // 
+            // colStatus
+            // 
+            this.colStatus.Caption = "Статус";
+            this.colStatus.FieldName = "Status";
+            this.colStatus.MaxWidth = 100;
+            this.colStatus.MinWidth = 50;
+            this.colStatus.Name = "colStatus";
+            this.colStatus.OptionsColumn.AllowEdit = false;
+            this.colStatus.OptionsColumn.AllowFocus = false;
+            this.colStatus.OptionsColumn.ReadOnly = true;
+            this.colStatus.Visible = true;
+            this.colStatus.VisibleIndex = 4;
+            this.colStatus.Width = 52;
+            // 
+            // colFactQuantity
+            // 
+            this.colFactQuantity.Caption = "Фактический заказ";
+            this.colFactQuantity.FieldName = "FactQuantity";
+            this.colFactQuantity.MaxWidth = 100;
+            this.colFactQuantity.MinWidth = 50;
+            this.colFactQuantity.Name = "colFactQuantity";
+            this.colFactQuantity.OptionsColumn.AllowEdit = false;
+            this.colFactQuantity.OptionsColumn.AllowFocus = false;
+            this.colFactQuantity.OptionsColumn.ReadOnly = true;
+            this.colFactQuantity.Visible = true;
+            this.colFactQuantity.VisibleIndex = 3;
+            // 
+            // gridColumn1
+            // 
+            this.gridColumn1.Caption = "Статус";
+            this.gridColumn1.ColumnEdit = this.repositoryItemImageComboBox1;
+            this.gridColumn1.FieldName = "StateRow";
+            this.gridColumn1.MaxWidth = 50;
+            this.gridColumn1.MinWidth = 50;
+            this.gridColumn1.Name = "gridColumn1";
+            this.gridColumn1.OptionsColumn.AllowEdit = false;
+            this.gridColumn1.OptionsColumn.AllowFocus = false;
+            this.gridColumn1.OptionsColumn.ReadOnly = true;
+            this.gridColumn1.UnboundType = DevExpress.Data.UnboundColumnType.Integer;
+            this.gridColumn1.Visible = true;
+            this.gridColumn1.VisibleIndex = 0;
+            this.gridColumn1.Width = 50;
+            // 
+            // repositoryItemImageComboBox1
+            // 
+            this.repositoryItemImageComboBox1.AutoHeight = false;
+            this.repositoryItemImageComboBox1.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.repositoryItemImageComboBox1.Items.AddRange(new DevExpress.XtraEditors.Controls.ImageComboBoxItem[] {
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 0, 0),
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 1, 1),
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 2, 2)});
+            this.repositoryItemImageComboBox1.Name = "repositoryItemImageComboBox1";
+            this.repositoryItemImageComboBox1.SmallImages = this.ilState;
+            // 
+            // ilState
+            // 
+            this.ilState.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("ilState.ImageStream")));
+            this.ilState.TransparentColor = System.Drawing.Color.Transparent;
+            this.ilState.Images.SetKeyName(0, "check_7519.png");
+            this.ilState.Images.SetKeyName(1, "add_5224.png");
+            this.ilState.Images.SetKeyName(2, "delete_4774.png");
+            // 
+            // repositoryItemTextEdit1
+            // 
+            this.repositoryItemTextEdit1.AutoHeight = false;
+            this.repositoryItemTextEdit1.Name = "repositoryItemTextEdit1";
             // 
             // actionContainerBarItem4
             // 
@@ -672,399 +1409,6 @@
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.None, false, this.barButtonItem4, false)});
             this.bеForOrder.Name = "bеForOrder";
             // 
-            // colGroup
-            // 
-            this.colGroup.Caption = "Группа товара";
-            this.colGroup.FieldName = "Group";
-            this.colGroup.Name = "colGroup";
-            this.colGroup.OptionsColumn.AllowEdit = false;
-            this.colGroup.OptionsColumn.AllowFocus = false;
-            this.colGroup.OptionsColumn.ReadOnly = true;
-            this.colGroup.Visible = true;
-            this.colGroup.VisibleIndex = 10;
-            this.colGroup.Width = 49;
-            // 
-            // colid
-            // 
-            this.colid.FieldName = "id";
-            this.colid.Name = "colid";
-            this.colid.OptionsColumn.AllowEdit = false;
-            this.colid.OptionsColumn.AllowFocus = false;
-            this.colid.OptionsColumn.ReadOnly = true;
-            this.colid.Width = 27;
-            // 
-            // colName
-            // 
-            this.colName.Caption = "Название";
-            this.colName.FieldName = "Name";
-            this.colName.Name = "colName";
-            this.colName.OptionsColumn.AllowEdit = false;
-            this.colName.OptionsColumn.AllowFocus = false;
-            this.colName.OptionsColumn.ReadOnly = true;
-            this.colName.SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Count;
-            this.colName.Visible = true;
-            this.colName.VisibleIndex = 9;
-            this.colName.Width = 47;
-            // 
-            // repositoryItemSpinEdit1
-            // 
-            this.repositoryItemSpinEdit1.AllowNullInput = DevExpress.Utils.DefaultBoolean.True;
-            this.repositoryItemSpinEdit1.AutoHeight = false;
-            this.repositoryItemSpinEdit1.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Ellipsis, "", -1, true, false, false, DevExpress.XtraEditors.ImageLocation.MiddleCenter, null, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject1, "", null, null, true)});
-            this.repositoryItemSpinEdit1.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
-            this.repositoryItemSpinEdit1.HideSelection = false;
-            this.repositoryItemSpinEdit1.IsFloatValue = false;
-            this.repositoryItemSpinEdit1.Mask.EditMask = "\\d+";
-            this.repositoryItemSpinEdit1.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.RegEx;
-            this.repositoryItemSpinEdit1.MaxValue = new decimal(new int[] {
-            1000000,
-            0,
-            0,
-            0});
-            this.repositoryItemSpinEdit1.Name = "repositoryItemSpinEdit1";
-            // 
-            // colQuantityInPack
-            // 
-            this.colQuantityInPack.Caption = "Кол. в упаковке";
-            this.colQuantityInPack.FieldName = "QuantityInPack";
-            this.colQuantityInPack.Name = "colQuantityInPack";
-            this.colQuantityInPack.OptionsColumn.AllowEdit = false;
-            this.colQuantityInPack.OptionsColumn.AllowFocus = false;
-            this.colQuantityInPack.OptionsColumn.ReadOnly = true;
-            this.colQuantityInPack.Width = 27;
-            // 
-            // colSupplier
-            // 
-            this.colSupplier.Caption = "Поставщик";
-            this.colSupplier.FieldName = "Supplier";
-            this.colSupplier.Name = "colSupplier";
-            this.colSupplier.OptionsColumn.AllowEdit = false;
-            this.colSupplier.OptionsColumn.AllowFocus = false;
-            this.colSupplier.OptionsColumn.ReadOnly = true;
-            this.colSupplier.Visible = true;
-            this.colSupplier.VisibleIndex = 13;
-            this.colSupplier.Width = 23;
-            // 
-            // colOrdered
-            // 
-            this.colOrdered.AppearanceCell.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.colOrdered.AppearanceCell.Options.UseBackColor = true;
-            this.colOrdered.Caption = "Резерв";
-            this.colOrdered.FieldName = "Ordered";
-            this.colOrdered.MaxWidth = 100;
-            this.colOrdered.MinWidth = 50;
-            this.colOrdered.Name = "colOrdered";
-            this.colOrdered.OptionsColumn.AllowEdit = false;
-            this.colOrdered.OptionsColumn.AllowFocus = false;
-            this.colOrdered.OptionsColumn.ReadOnly = true;
-            this.colOrdered.SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Sum;
-            this.colOrdered.Visible = true;
-            this.colOrdered.VisibleIndex = 5;
-            this.colOrdered.Width = 50;
-            // 
-            // colQuantity
-            // 
-            this.colQuantity.AppearanceCell.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.colQuantity.AppearanceCell.Options.UseBackColor = true;
-            this.colQuantity.Caption = "Остаток";
-            this.colQuantity.FieldName = "Quantity";
-            this.colQuantity.MaxWidth = 100;
-            this.colQuantity.MinWidth = 50;
-            this.colQuantity.Name = "colQuantity";
-            this.colQuantity.OptionsColumn.AllowEdit = false;
-            this.colQuantity.OptionsColumn.AllowFocus = false;
-            this.colQuantity.OptionsColumn.ReadOnly = true;
-            this.colQuantity.SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Sum;
-            this.colQuantity.Visible = true;
-            this.colQuantity.VisibleIndex = 6;
-            this.colQuantity.Width = 50;
-            // 
-            // colReqQuantity
-            // 
-            this.colReqQuantity.AppearanceCell.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.colReqQuantity.AppearanceCell.Options.UseBackColor = true;
-            this.colReqQuantity.Caption = "Заказ";
-            this.colReqQuantity.ColumnEdit = this.repositoryItemSpinEdit1;
-            this.colReqQuantity.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
-            this.colReqQuantity.FieldName = "ReqQuantity";
-            this.colReqQuantity.MaxWidth = 100;
-            this.colReqQuantity.MinWidth = 50;
-            this.colReqQuantity.Name = "colReqQuantity";
-            this.colReqQuantity.SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Sum;
-            this.colReqQuantity.Visible = true;
-            this.colReqQuantity.VisibleIndex = 0;
-            this.colReqQuantity.Width = 50;
-            // 
-            // colMeasure
-            // 
-            this.colMeasure.Caption = "Ед. изм. (шт/упак.)";
-            this.colMeasure.FieldName = "Measure";
-            this.colMeasure.Name = "colMeasure";
-            this.colMeasure.OptionsColumn.AllowEdit = false;
-            this.colMeasure.OptionsColumn.AllowFocus = false;
-            this.colMeasure.OptionsColumn.ReadOnly = true;
-            this.colMeasure.Visible = true;
-            this.colMeasure.VisibleIndex = 12;
-            this.colMeasure.Width = 23;
-            // 
-            // colIsQuoted
-            // 
-            this.colIsQuoted.Caption = "Квота активна";
-            this.colIsQuoted.FieldName = "IsQuoted";
-            this.colIsQuoted.Name = "colIsQuoted";
-            this.colIsQuoted.OptionsColumn.AllowEdit = false;
-            this.colIsQuoted.OptionsColumn.AllowFocus = false;
-            this.colIsQuoted.OptionsColumn.ReadOnly = true;
-            this.colIsQuoted.Visible = true;
-            this.colIsQuoted.VisibleIndex = 18;
-            this.colIsQuoted.Width = 20;
-            // 
-            // gridView
-            // 
-            this.gridView.Appearance.FocusedCell.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            this.gridView.Appearance.FocusedCell.Options.UseBackColor = true;
-            this.gridView.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
-            this.colReqQuantity,
-            this.colid,
-            this.colGroup,
-            this.colName,
-            this.colPrice,
-            this.colQuantityInPack,
-            this.colOrdered,
-            this.colMeasure,
-            this.colQuantity,
-            this.colSupplier,
-            this.colCode,
-            this.colDate,
-            this.colBarcode,
-            this.colReserved,
-            this.colFreeBalance,
-            this.colMinOrder,
-            this.colRreqAssort,
-            this.colForOrder,
-            this.colAvgSell,
-            this.colShopBalance,
-            this.colQuota,
-            this.colIsQuoted,
-            this.colSelfImport,
-            this.colStatus,
-            this.colFactQuantity});
-            styleFormatCondition1.Appearance.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
-            styleFormatCondition1.Appearance.Options.UseFont = true;
-            styleFormatCondition1.ApplyToRow = true;
-            styleFormatCondition1.Column = this.colRreqAssort;
-            styleFormatCondition1.Condition = DevExpress.XtraGrid.FormatConditionEnum.Equal;
-            styleFormatCondition1.Value1 = true;
-            styleFormatCondition2.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            styleFormatCondition2.Appearance.Options.UseBackColor = true;
-            styleFormatCondition2.Column = this.colQuota;
-            styleFormatCondition2.Condition = DevExpress.XtraGrid.FormatConditionEnum.Expression;
-            styleFormatCondition2.Expression = "[IsQuoted] == True";
-            styleFormatCondition3.Appearance.ForeColor = System.Drawing.Color.Silver;
-            styleFormatCondition3.Appearance.Options.UseForeColor = true;
-            styleFormatCondition3.Column = this.colQuota;
-            styleFormatCondition3.Condition = DevExpress.XtraGrid.FormatConditionEnum.Expression;
-            styleFormatCondition3.Expression = "[IsQuoted] == False";
-            styleFormatCondition4.Appearance.ForeColor = System.Drawing.Color.Blue;
-            styleFormatCondition4.Appearance.Options.UseForeColor = true;
-            styleFormatCondition4.ApplyToRow = true;
-            styleFormatCondition4.Column = this.colSelfImport;
-            styleFormatCondition4.Condition = DevExpress.XtraGrid.FormatConditionEnum.Expression;
-            styleFormatCondition4.Expression = "[SelfImport]==True";
-            this.gridView.FormatConditions.AddRange(new DevExpress.XtraGrid.StyleFormatCondition[] {
-            styleFormatCondition1,
-            styleFormatCondition2,
-            styleFormatCondition3,
-            styleFormatCondition4});
-            this.gridView.GridControl = this.grid;
-            this.gridView.Name = "gridView";
-            this.gridView.OptionsView.ShowAutoFilterRow = true;
-            this.gridView.OptionsView.ShowFooter = true;
-            this.gridView.SortInfo.AddRange(new DevExpress.XtraGrid.Columns.GridColumnSortInfo[] {
-            new DevExpress.XtraGrid.Columns.GridColumnSortInfo(this.colRreqAssort, DevExpress.Data.ColumnSortOrder.Descending)});
-            // 
-            // colPrice
-            // 
-            this.colPrice.Caption = "Цена";
-            this.colPrice.FieldName = "Price";
-            this.colPrice.Name = "colPrice";
-            this.colPrice.OptionsColumn.AllowEdit = false;
-            this.colPrice.OptionsColumn.AllowFocus = false;
-            this.colPrice.OptionsColumn.ReadOnly = true;
-            this.colPrice.Visible = true;
-            this.colPrice.VisibleIndex = 11;
-            this.colPrice.Width = 23;
-            // 
-            // colCode
-            // 
-            this.colCode.Caption = "Код товара";
-            this.colCode.FieldName = "Code";
-            this.colCode.Name = "colCode";
-            this.colCode.OptionsColumn.AllowEdit = false;
-            this.colCode.OptionsColumn.AllowFocus = false;
-            this.colCode.OptionsColumn.ReadOnly = true;
-            this.colCode.Width = 27;
-            // 
-            // colDate
-            // 
-            this.colDate.Caption = "Время";
-            this.colDate.ColumnEdit = this.repositoryItemTimeEdit2;
-            this.colDate.FieldName = "Date";
-            this.colDate.Name = "colDate";
-            this.colDate.OptionsColumn.AllowEdit = false;
-            this.colDate.OptionsColumn.AllowFocus = false;
-            this.colDate.OptionsColumn.ReadOnly = true;
-            this.colDate.Visible = true;
-            this.colDate.VisibleIndex = 14;
-            this.colDate.Width = 23;
-            // 
-            // repositoryItemTimeEdit2
-            // 
-            this.repositoryItemTimeEdit2.AutoHeight = false;
-            this.repositoryItemTimeEdit2.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton()});
-            this.repositoryItemTimeEdit2.Name = "repositoryItemTimeEdit2";
-            // 
-            // colBarcode
-            // 
-            this.colBarcode.Caption = "Штрихкод";
-            this.colBarcode.FieldName = "Barcode";
-            this.colBarcode.Name = "colBarcode";
-            this.colBarcode.OptionsColumn.AllowEdit = false;
-            this.colBarcode.OptionsColumn.AllowFocus = false;
-            this.colBarcode.OptionsColumn.ReadOnly = true;
-            this.colBarcode.Visible = true;
-            this.colBarcode.VisibleIndex = 15;
-            this.colBarcode.Width = 77;
-            // 
-            // colReserved
-            // 
-            this.colReserved.FieldName = "Reserved";
-            this.colReserved.Name = "colReserved";
-            this.colReserved.OptionsColumn.AllowEdit = false;
-            this.colReserved.OptionsColumn.AllowFocus = false;
-            this.colReserved.OptionsColumn.ReadOnly = true;
-            this.colReserved.Width = 27;
-            // 
-            // colFreeBalance
-            // 
-            this.colFreeBalance.FieldName = "FreeBalance";
-            this.colFreeBalance.Name = "colFreeBalance";
-            this.colFreeBalance.OptionsColumn.AllowEdit = false;
-            this.colFreeBalance.OptionsColumn.AllowFocus = false;
-            this.colFreeBalance.OptionsColumn.ReadOnly = true;
-            this.colFreeBalance.Width = 33;
-            // 
-            // colMinOrder
-            // 
-            this.colMinOrder.AppearanceCell.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(130)))), ((int)(((byte)(160)))), ((int)(((byte)(240)))));
-            this.colMinOrder.AppearanceCell.Options.UseBackColor = true;
-            this.colMinOrder.Caption = "Минимальный заказ";
-            this.colMinOrder.FieldName = "MinOrder";
-            this.colMinOrder.MaxWidth = 100;
-            this.colMinOrder.MinWidth = 50;
-            this.colMinOrder.Name = "colMinOrder";
-            this.colMinOrder.OptionsColumn.AllowEdit = false;
-            this.colMinOrder.OptionsColumn.AllowFocus = false;
-            this.colMinOrder.OptionsColumn.ReadOnly = true;
-            this.colMinOrder.Visible = true;
-            this.colMinOrder.VisibleIndex = 4;
-            this.colMinOrder.Width = 50;
-            // 
-            // colForOrder
-            // 
-            this.colForOrder.Caption = "Рекомендовано";
-            this.colForOrder.DisplayFormat.FormatString = "N00";
-            this.colForOrder.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
-            this.colForOrder.FieldName = "ForOrder";
-            this.colForOrder.MaxWidth = 100;
-            this.colForOrder.MinWidth = 50;
-            this.colForOrder.Name = "colForOrder";
-            this.colForOrder.OptionsColumn.AllowEdit = false;
-            this.colForOrder.OptionsColumn.AllowFocus = false;
-            this.colForOrder.OptionsColumn.ReadOnly = true;
-            this.colForOrder.Visible = true;
-            this.colForOrder.VisibleIndex = 3;
-            this.colForOrder.Width = 50;
-            // 
-            // colAvgSell
-            // 
-            this.colAvgSell.Caption = "Средние продажи";
-            this.colAvgSell.DisplayFormat.FormatString = "N00";
-            this.colAvgSell.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
-            this.colAvgSell.FieldName = "AvgSell";
-            this.colAvgSell.Name = "colAvgSell";
-            this.colAvgSell.OptionsColumn.AllowEdit = false;
-            this.colAvgSell.OptionsColumn.AllowFocus = false;
-            this.colAvgSell.OptionsColumn.ReadOnly = true;
-            this.colAvgSell.Visible = true;
-            this.colAvgSell.VisibleIndex = 8;
-            this.colAvgSell.Width = 29;
-            // 
-            // colShopBalance
-            // 
-            this.colShopBalance.Caption = "Остатки магазина";
-            this.colShopBalance.DisplayFormat.FormatString = "N00";
-            this.colShopBalance.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
-            this.colShopBalance.FieldName = "ShopBalance";
-            this.colShopBalance.Name = "colShopBalance";
-            this.colShopBalance.OptionsColumn.AllowEdit = false;
-            this.colShopBalance.OptionsColumn.AllowFocus = false;
-            this.colShopBalance.OptionsColumn.ReadOnly = true;
-            this.colShopBalance.Visible = true;
-            this.colShopBalance.VisibleIndex = 7;
-            this.colShopBalance.Width = 29;
-            // 
-            // colStatus
-            // 
-            this.colStatus.Caption = "Статус";
-            this.colStatus.FieldName = "Status";
-            this.colStatus.MaxWidth = 100;
-            this.colStatus.MinWidth = 50;
-            this.colStatus.Name = "colStatus";
-            this.colStatus.OptionsColumn.AllowEdit = false;
-            this.colStatus.OptionsColumn.AllowFocus = false;
-            this.colStatus.OptionsColumn.ReadOnly = true;
-            this.colStatus.Visible = true;
-            this.colStatus.VisibleIndex = 2;
-            this.colStatus.Width = 50;
-            // 
-            // colFactQuantity
-            // 
-            this.colFactQuantity.Caption = "Фактический заказ";
-            this.colFactQuantity.FieldName = "FactQuantity";
-            this.colFactQuantity.MaxWidth = 100;
-            this.colFactQuantity.MinWidth = 50;
-            this.colFactQuantity.Name = "colFactQuantity";
-            this.colFactQuantity.OptionsColumn.AllowEdit = false;
-            this.colFactQuantity.OptionsColumn.AllowFocus = false;
-            this.colFactQuantity.OptionsColumn.ReadOnly = true;
-            this.colFactQuantity.Visible = true;
-            this.colFactQuantity.VisibleIndex = 1;
-            this.colFactQuantity.Width = 50;
-            // 
-            // grid
-            // 
-            this.grid.DataSource = this.goodsBalanceObjBindingSource;
-            this.grid.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.grid.Location = new System.Drawing.Point(0, 0);
-            this.grid.MainView = this.gridView;
-            this.grid.Name = "grid";
-            this.grid.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
-            this.repositoryItemSpinEdit1,
-            this.repositoryItemTextEdit1,
-            this.repositoryItemTimeEdit2});
-            this.grid.Size = new System.Drawing.Size(790, 431);
-            this.grid.TabIndex = 0;
-            this.grid.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
-            this.gridView});
-            // 
-            // repositoryItemTextEdit1
-            // 
-            this.repositoryItemTextEdit1.AutoHeight = false;
-            this.repositoryItemTextEdit1.Name = "repositoryItemTextEdit1";
-            // 
             // treeListColumn1
             // 
             this.treeListColumn1.Caption = "Заказы";
@@ -1132,7 +1476,7 @@
             toolTipTitleItem2.Text = "Создание нового заказа";
             toolTipItem2.LeftIndent = 6;
             toolTipItem2.Text = "Создание нового заказа автоматически закроет все предыдущие заказы и их нельзя бу" +
-                "дет редактировать";
+    "дет редактировать";
             superToolTip2.Items.Add(toolTipTitleItem2);
             superToolTip2.Items.Add(toolTipItem2);
             this.btNewOrder.SuperTip = superToolTip2;
@@ -1150,7 +1494,7 @@
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btCommit, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.barCheckNts, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.barCheck, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barCheckCold, true),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barCheckCold),
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.barButtonItem3, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btRefresh, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph)});
             this.xafBar3.TargetPageCategoryColor = System.Drawing.Color.Empty;
@@ -1174,7 +1518,6 @@
             // barCheckNts
             // 
             this.barCheckNts.Caption = "Склад НТС";
-            this.barCheckNts.Checked = true;
             this.barCheckNts.Glyph = global::ShopOrderCustom.Properties.Resources.package__3_;
             this.barCheckNts.GroupIndex = 1;
             this.barCheckNts.Id = 9;
@@ -1188,6 +1531,7 @@
             superToolTip4.Items.Add(toolTipTitleItem4);
             superToolTip4.Items.Add(toolTipItem4);
             this.barCheckNts.SuperTip = superToolTip4;
+            this.barCheckNts.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
             this.barCheckNts.CheckedChanged += new DevExpress.XtraBars.ItemClickEventHandler(this.BarCheckNtsCheckedChanged);
             // 
             // barCheck
@@ -1206,11 +1550,13 @@
             superToolTip5.Items.Add(toolTipTitleItem5);
             superToolTip5.Items.Add(toolTipItem5);
             this.barCheck.SuperTip = superToolTip5;
+            this.barCheck.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
             this.barCheck.CheckedChanged += new DevExpress.XtraBars.ItemClickEventHandler(this.BarCheckCheckedChanged);
             // 
             // barCheckCold
             // 
             this.barCheckCold.Caption = "Холодный склад";
+            this.barCheckCold.Checked = true;
             this.barCheckCold.Glyph = global::ShopOrderCustom.Properties.Resources.snow;
             this.barCheckCold.GroupIndex = 1;
             this.barCheckCold.Id = 19;
@@ -1307,13 +1653,15 @@
             this.Name = "PreOrderForm";
             this.Text = "Создание кроссдокингового заказов";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.CrossDocOrderFormClosed);
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTimeEdit1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemSpinEdit1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTimeEdit2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.grid)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.goodsBalanceObjBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemSpinEdit1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTimeEdit2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTimeEdit1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).EndInit();
             this.splitContainerControl1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.treeList)).EndInit();
@@ -1419,5 +1767,22 @@
         private DevExpress.XtraBars.BarCheckItem barCheckCold;
         private DevExpress.XtraGrid.Columns.GridColumn colStatus;
         private DevExpress.XtraGrid.Columns.GridColumn colFactQuantity;
+        private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn21;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn22;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn23;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn24;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn25;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn26;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn27;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn29;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn30;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn31;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn32;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn35;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn36;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn1;
+        private DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox repositoryItemImageComboBox1;
+        private System.Windows.Forms.ImageList ilState;
     }
 }

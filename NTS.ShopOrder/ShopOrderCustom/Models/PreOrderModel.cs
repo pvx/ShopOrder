@@ -39,7 +39,7 @@ namespace ShopOrderCustom.Models
         {
             get { return _serverDate; }
         }
-        private BindingList<PreGoodsBalanceObj> BalanceList { get;set; }
+        private BindingList<PreGoodsBalanceData> BalanceList { get; set; }
         public XtraForm View
         {
             get
@@ -87,7 +87,7 @@ namespace ShopOrderCustom.Models
         {
             ViewCode = ViewConst.CR_ORDER;
             this.unityContainer = unityContainer;
-            StoreHouseType = Storehouse.NTS;
+            StoreHouseType = Storehouse.Cold;
             _serverDate = DateTime.Parse(unityContainer.Resolve<IOrderUserInfo>().Property["SERVER_DATE"]);
             _shopId = Guid.Parse(unityContainer.Resolve<IOrderUserInfo>().Property["USER_SHOP"]);
         }
@@ -166,7 +166,7 @@ namespace ShopOrderCustom.Models
             try
             {
                 int cnt = 0;
-                foreach (PreGoodsBalanceObj goodsBalanceObj in BalanceList)
+                foreach (var goodsBalanceObj in BalanceList)
                 {
                     if (isReqAssort)
                     {
@@ -194,7 +194,7 @@ namespace ShopOrderCustom.Models
             }
         }
 
-        public BindingList<PreGoodsBalanceObj> GetOrderList()//Изменить хранимую процедуру?
+        public BindingList<PreGoodsBalanceData> GetOrderList()//Изменить хранимую процедуру?
         {
             if (_currentOrderHeader != null)
             {
@@ -202,18 +202,21 @@ namespace ShopOrderCustom.Models
                 try
                 {
                     using (var oc = unityContainer.Resolve<OrderDataContext>())
-                    {                  
-                        var balance = new BindingList<PreGoodsBalanceObj>();
+                    {
+                        var balance = new BindingList<PreGoodsBalanceData>();
 
                         _allowEdit = ((_currentOrderHeader.IdOrderState == 1) && (ServerDate.Date == _currentOrderHeader.CreateDate.Date));
                         balance.AllowEdit = _allowEdit;
 
                         var isBalance = unityContainer.Resolve<IOrderUserInfo>().Property.ContainsKey("SHOP_BALANCE") && !(double.Parse(unityContainer.Resolve<IOrderUserInfo>().Property["SHOP_BALANCE"]) == 0);
+                        
+                        var commitOrders = oc.DataBaseContext.sp_sel_PreOrderCommitGoodsByHeader(_currentOrderHeader.IdOrderHeader).ToList();
 
                         var orders = from vo in oc.DataBaseContext.sp_sel_PreOrderBalance(_currentOrderHeader.IdOrderHeader,
                                                                    Convert.ToInt32(StoreHouseType),
                                                                    _currentOrderHeader.IdOrderState)
-                            select new PreGoodsBalanceObj
+                            
+                            select new PreGoodsBalanceData
                             {
                                 Barcode = vo.Barcode,
                                 Code = vo.Code,
@@ -241,7 +244,9 @@ namespace ShopOrderCustom.Models
                                 OrderMode = PreGoodsBalanceObj.ConvertToMode(vo.AutoOrderModeId),
                                 IsLoaded = true,
                                 IsShopBalance = isBalance,
-                                LastOrderDate = vo.LastAutoOrderDate.GetValueOrDefault(DateTime.MinValue.Date)};
+                                LastOrderDate = vo.LastAutoOrderDate.GetValueOrDefault(DateTime.MinValue.Date),
+                                CommitList = GetCommitList(commitOrders, vo.id_PreOrder.GetValueOrDefault())
+                            };
 
                         foreach (var bl in orders)
                         {
@@ -261,6 +266,38 @@ namespace ShopOrderCustom.Models
             }
             return null;
         }
+
+        private BindingList<GoodsBalanceObj> GetCommitList(IEnumerable<sp_sel_PreOrderCommitGoodsByHeaderResult> commitOrders, Guid idPreOrder)
+        {
+            var list = commitOrders.Where(x => x.id_PreOrder == idPreOrder).ToList();
+            if ((list.Count > 0))
+            {
+                var ret = new BindingList<GoodsBalanceObj>() { AllowEdit = false, AllowNew = false, AllowRemove = false };
+                foreach (var i in list)
+                {
+                    var gb = new GoodsBalanceObj()
+                    {
+                        Barcode = i.Barcode,
+                        Code = i.Code,
+                        Date = i.Date,
+                        Group = i.GoodsGroup,
+                        Measure = i.Measure,
+                        Supplier = i.Supplier,
+                        SelfImport = i.SelfImport.GetValueOrDefault(false),
+                        Quantity = i.Ordered.GetValueOrDefault(0),
+                        Price = i.Price.GetValueOrDefault(0),
+                        QuantityInPack = i.QuantityInPack.GetValueOrDefault(0),
+                        Name = i.Name,
+                        MinOrder = i.MinOrder.GetValueOrDefault(0),
+
+                    };
+                    ret.Add(gb);
+                }
+                return ret;
+            }
+            return null;
+        }
+
 
         void bl_OnAutoOrdeer(object sender, EventChangePreReqQuantity e)//изменено
         {
@@ -332,7 +369,7 @@ namespace ShopOrderCustom.Models
             using (var oc = unityContainer.Resolve<OrderDataContext>())
             {
                 ISingleResult<sp_sel_CheckPreOrderSaveResult> res = oc.DataBaseContext.sp_sel_CheckPreOrderSave(CurrentOrderHeader.IdOrderHeader);
-                foreach (sp_sel_CheckPreOrderSaveResult spSelCheckPreOrderSaveResult in res)
+                foreach (var spSelCheckPreOrderSaveResult in res)
                 {
                     return spSelCheckPreOrderSaveResult.Column1 == 1;
                 }
@@ -345,7 +382,7 @@ namespace ShopOrderCustom.Models
             using (var oc = unityContainer.Resolve<OrderDataContext>())
             {
                 ISingleResult<sp_sel_CheckPreOrderSaveResult> res = oc.DataBaseContext.sp_sel_CheckPreOrderSave(idOrderHeader);
-                foreach (sp_sel_CheckPreOrderSaveResult spSelCheckPreOrderSaveResult in res)
+                foreach (var spSelCheckPreOrderSaveResult in res)
                 {
                     return spSelCheckPreOrderSaveResult.Column1 == 1;
                 }
