@@ -34,14 +34,18 @@
             DevExpress.XtraGrid.StyleFormatCondition styleFormatCondition1 = new DevExpress.XtraGrid.StyleFormatCondition();
             DevExpress.Utils.SuperToolTip superToolTip1 = new DevExpress.Utils.SuperToolTip();
             DevExpress.Utils.ToolTipTitleItem toolTipTitleItem1 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.ToolTipItem toolTipItem1 = new DevExpress.Utils.ToolTipItem();
             DevExpress.Utils.SuperToolTip superToolTip2 = new DevExpress.Utils.SuperToolTip();
             DevExpress.Utils.ToolTipTitleItem toolTipTitleItem2 = new DevExpress.Utils.ToolTipTitleItem();
             DevExpress.Utils.SuperToolTip superToolTip3 = new DevExpress.Utils.SuperToolTip();
             DevExpress.Utils.ToolTipTitleItem toolTipTitleItem3 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.ToolTipItem toolTipItem2 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.ToolTipItem toolTipItem1 = new DevExpress.Utils.ToolTipItem();
             DevExpress.Utils.SuperToolTip superToolTip4 = new DevExpress.Utils.SuperToolTip();
             DevExpress.Utils.ToolTipTitleItem toolTipTitleItem4 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.SuperToolTip superToolTip5 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem5 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem2 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip6 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem6 = new DevExpress.Utils.ToolTipTitleItem();
             DevExpress.Utils.ToolTipItem toolTipItem3 = new DevExpress.Utils.ToolTipItem();
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridColumn21 = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -453,7 +457,7 @@
             this.repositoryItemSpinEdit1,
             this.repositoryItemTimeEdit1,
             this.repositoryItemImageComboBox1});
-            this.grid.Size = new System.Drawing.Size(687, 388);
+            this.grid.Size = new System.Drawing.Size(687, 382);
             this.grid.TabIndex = 1;
             this.grid.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridViewPre,
@@ -1023,6 +1027,9 @@
             this.btOrders.GroupIndex = 1;
             this.btOrders.Id = 16;
             this.btOrders.Name = "btOrders";
+            toolTipTitleItem1.Text = "Заказы";
+            superToolTip1.Items.Add(toolTipTitleItem1);
+            this.btOrders.SuperTip = superToolTip1;
             this.btOrders.CheckedChanged += new DevExpress.XtraBars.ItemClickEventHandler(this.BtOrdersCheckedChanged);
             // 
             // btPreOrders
@@ -1032,6 +1039,9 @@
             this.btPreOrders.GroupIndex = 1;
             this.btPreOrders.Id = 17;
             this.btPreOrders.Name = "btPreOrders";
+            toolTipTitleItem2.Text = "Кроссдокинговые заказы";
+            superToolTip2.Items.Add(toolTipTitleItem2);
+            this.btPreOrders.SuperTip = superToolTip2;
             this.btPreOrders.CheckedChanged += new DevExpress.XtraBars.ItemClickEventHandler(this.BtPreOrdersCheckedChanged);
             // 
             // barButtonItem2
@@ -1040,12 +1050,12 @@
             this.barButtonItem2.Glyph = global::ShopOrderCustom.Properties.Resources.folder_yellow_open;
             this.barButtonItem2.Id = 5;
             this.barButtonItem2.Name = "barButtonItem2";
-            toolTipTitleItem1.Text = "Раскрыть все";
+            toolTipTitleItem3.Text = "Раскрыть все";
             toolTipItem1.LeftIndent = 6;
             toolTipItem1.Text = "Раскрывает все заказы магазинов";
-            superToolTip1.Items.Add(toolTipTitleItem1);
-            superToolTip1.Items.Add(toolTipItem1);
-            this.barButtonItem2.SuperTip = superToolTip1;
+            superToolTip3.Items.Add(toolTipTitleItem3);
+            superToolTip3.Items.Add(toolTipItem1);
+            this.barButtonItem2.SuperTip = superToolTip3;
             this.barButtonItem2.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.BarButtonItem2ItemClick);
             // 
             // btInfo
@@ -1055,12 +1065,12 @@
             this.btInfo.Glyph = global::ShopOrderCustom.Properties.Resources.info;
             this.btInfo.Id = 9;
             this.btInfo.Name = "btInfo";
-            toolTipTitleItem2.Appearance.Image = global::ShopOrderCustom.Properties.Resources.info;
-            toolTipTitleItem2.Appearance.Options.UseImage = true;
-            toolTipTitleItem2.Image = global::ShopOrderCustom.Properties.Resources.info;
-            toolTipTitleItem2.Text = "Информация о заказе";
-            superToolTip2.Items.Add(toolTipTitleItem2);
-            this.btInfo.SuperTip = superToolTip2;
+            toolTipTitleItem4.Appearance.Image = global::ShopOrderCustom.Properties.Resources.info;
+            toolTipTitleItem4.Appearance.Options.UseImage = true;
+            toolTipTitleItem4.Image = global::ShopOrderCustom.Properties.Resources.info;
+            toolTipTitleItem4.Text = "Информация о заказе";
+            superToolTip4.Items.Add(toolTipTitleItem4);
+            this.btInfo.SuperTip = superToolTip4;
             this.btInfo.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.BtInfoItemClick);
             // 
             // btCreateOrders
@@ -1069,12 +1079,12 @@
             this.btCreateOrders.Glyph = global::ShopOrderCustom.Properties.Resources.gearred;
             this.btCreateOrders.Id = 0;
             this.btCreateOrders.Name = "btCreateOrders";
-            toolTipTitleItem3.Text = "Формирование заказов";
+            toolTipTitleItem5.Text = "Формирование заказов";
             toolTipItem2.LeftIndent = 6;
             toolTipItem2.Text = "Формируются файлы заказов для выбранных заказов";
-            superToolTip3.Items.Add(toolTipTitleItem3);
-            superToolTip3.Items.Add(toolTipItem2);
-            this.btCreateOrders.SuperTip = superToolTip3;
+            superToolTip5.Items.Add(toolTipTitleItem5);
+            superToolTip5.Items.Add(toolTipItem2);
+            this.btCreateOrders.SuperTip = superToolTip5;
             this.btCreateOrders.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.BarButtonItem1ItemClick);
             // 
             // btChangeState
@@ -1083,16 +1093,16 @@
             this.btChangeState.Glyph = global::ShopOrderCustom.Properties.Resources.old_edit_undo;
             this.btChangeState.Id = 4;
             this.btChangeState.Name = "btChangeState";
-            toolTipTitleItem4.Appearance.Image = global::ShopOrderCustom.Properties.Resources.old_edit_undo;
-            toolTipTitleItem4.Appearance.Options.UseImage = true;
-            toolTipTitleItem4.Image = global::ShopOrderCustom.Properties.Resources.old_edit_undo;
-            toolTipTitleItem4.Text = "Отмена статуса \"Подтвержден\"";
+            toolTipTitleItem6.Appearance.Image = global::ShopOrderCustom.Properties.Resources.old_edit_undo;
+            toolTipTitleItem6.Appearance.Options.UseImage = true;
+            toolTipTitleItem6.Image = global::ShopOrderCustom.Properties.Resources.old_edit_undo;
+            toolTipTitleItem6.Text = "Отмена статуса \"Подтвержден\"";
             toolTipItem3.LeftIndent = 6;
             toolTipItem3.Text = "Если заказ находится в статусе \"Подтвержен\", его можно откатить до статуса \"Введё" +
     "н\" у отмеченных заказов";
-            superToolTip4.Items.Add(toolTipTitleItem4);
-            superToolTip4.Items.Add(toolTipItem3);
-            this.btChangeState.SuperTip = superToolTip4;
+            superToolTip6.Items.Add(toolTipTitleItem6);
+            superToolTip6.Items.Add(toolTipItem3);
+            this.btChangeState.SuperTip = superToolTip6;
             this.btChangeState.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.BarButtonLockClick);
             // 
             // btRefresh
@@ -1187,22 +1197,22 @@
             // 
             this.barDockControlBottom.CausesValidation = false;
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.barDockControlBottom.Location = new System.Drawing.Point(0, 435);
-            this.barDockControlBottom.Size = new System.Drawing.Size(952, 17);
+            this.barDockControlBottom.Location = new System.Drawing.Point(0, 429);
+            this.barDockControlBottom.Size = new System.Drawing.Size(952, 23);
             // 
             // barDockControlLeft
             // 
             this.barDockControlLeft.CausesValidation = false;
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
             this.barDockControlLeft.Location = new System.Drawing.Point(0, 47);
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 388);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 382);
             // 
             // barDockControlRight
             // 
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
             this.barDockControlRight.Location = new System.Drawing.Point(952, 47);
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 388);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 382);
             // 
             // barButtonItem3
             // 
@@ -1230,7 +1240,7 @@
             this.splitContainerControl1.Panel1.Text = "Panel1";
             this.splitContainerControl1.Panel2.Controls.Add(this.grid);
             this.splitContainerControl1.Panel2.Text = "Panel2";
-            this.splitContainerControl1.Size = new System.Drawing.Size(952, 388);
+            this.splitContainerControl1.Size = new System.Drawing.Size(952, 382);
             this.splitContainerControl1.SplitterPosition = 260;
             this.splitContainerControl1.TabIndex = 4;
             this.splitContainerControl1.Text = "splitContainerControl1";
@@ -1251,7 +1261,7 @@
             this.treeList.OptionsView.ShowCheckBoxes = true;
             this.treeList.OptionsView.ShowHorzLines = false;
             this.treeList.OptionsView.ShowVertLines = false;
-            this.treeList.Size = new System.Drawing.Size(260, 388);
+            this.treeList.Size = new System.Drawing.Size(260, 382);
             this.treeList.StateImageList = this.ilNode;
             this.treeList.TabIndex = 1;
             this.treeList.GetStateImage += new DevExpress.XtraTreeList.GetStateImageEventHandler(this.TreeListGetStateImage);

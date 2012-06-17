@@ -112,10 +112,10 @@ namespace ShopOrders
             mGoodsReturn.Visibility = GetPermission(Permission.CreateReturn);
             mGoodsReturnSt.Visibility = GetPermission(Permission.CreateReturnSt);
             mDistributionGoods.Visibility = GetPermission(Permission.DistributionGoods);
-            miPreOrder.Visibility = BarItemVisibility.Always;
+            miPreOrder.Visibility = GetPermission(Permission.CreatePreOrder);
         }
 
-        private void MainForm_Load(object sender, System.EventArgs e)
+        private void MainFormLoad(object sender, System.EventArgs e)
         {
             if (Model.Login())
             {
@@ -194,7 +194,7 @@ namespace ShopOrders
         {
             Model.ShowForm(typeof(OrderViewerModel));
         }
-
+        
         private void MViewActualAssortItemClick(object sender, ItemClickEventArgs e)
         {
             Model.ShowForm(typeof(ActualAssortViewerModel));

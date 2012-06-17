@@ -20,6 +20,7 @@ namespace Common.Enum
         ReportView = 512,
         CreateReturn = 1024,
         CreateReturnSt = 2048,
-        DistributionGoods = 4096
+        DistributionGoods = 4096,
+        CreatePreOrder = 8192
     }
 }

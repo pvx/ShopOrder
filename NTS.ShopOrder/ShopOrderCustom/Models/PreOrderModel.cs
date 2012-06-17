@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data.Linq;
 using System.Linq;
-using System.Text;
 using System.Windows.Forms;
 using Common;
 using Common.Enum;
@@ -85,7 +84,7 @@ namespace ShopOrderCustom.Models
         public PreOrderModel(IUnityContainer unityContainer)
             : base(unityContainer)
         {
-            ViewCode = ViewConst.CR_ORDER;
+            ViewCode = ViewConst.CR_PRE_ORDER;
             this.unityContainer = unityContainer;
             StoreHouseType = Storehouse.Cold;
             _serverDate = DateTime.Parse(unityContainer.Resolve<IOrderUserInfo>().Property["SERVER_DATE"]);
@@ -160,8 +159,7 @@ namespace ShopOrderCustom.Models
             }    
         }
 
-        public void CopyForOrder(bool isReqAssort)//изменено
-        {
+        public void CopyForOrder(bool isReqAssort){
             _autoFill = true;
             try
             {
@@ -194,7 +192,7 @@ namespace ShopOrderCustom.Models
             }
         }
 
-        public BindingList<PreGoodsBalanceData> GetOrderList()//Изменить хранимую процедуру?
+        public BindingList<PreGoodsBalanceData> GetOrderList()
         {
             if (_currentOrderHeader != null)
             {
@@ -332,20 +330,6 @@ namespace ShopOrderCustom.Models
             try
             {
                 gb.ChangePreReqQuantity -= BlChangeReqQuantity;
-                /*
-                if ((!_autoFill) && ((gb.Ordered + gb.Quantity) < gb.ReqQuantity))
-                {
-                    if(XtraMessageBox.Show("Остатки меньше чем заказываемое количество. Заказать?", "Внимание!",
-                                        MessageBoxButtons.YesNo) == DialogResult.Yes)
-                        SaveOrder(gb);
-                    else
-                        gb.ReqQuantity = 0;
-                }
-                else
-                {
-                    SaveOrder(gb);
-                }
-                */
                 SaveOrder(gb);
             }
             finally
