@@ -95,6 +95,13 @@ namespace ShopOrderCustom.Properties {
             }
         }
         
+        internal static System.Drawing.Bitmap delivery {
+            get {
+                object obj = ResourceManager.GetObject("delivery", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
         internal static System.Drawing.Bitmap DeSelectAll {
             get {
                 object obj = ResourceManager.GetObject("DeSelectAll", resourceCulture);

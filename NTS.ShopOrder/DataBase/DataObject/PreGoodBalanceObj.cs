@@ -196,7 +196,7 @@ namespace DataBase.DataObject
             set { _lastOrderDate = value; }
         }
 
-        private void CalcOrder(ref double reqQuantity)
+        /*private void CalcOrder(ref double reqQuantity)
         {
             if(reqQuantity != 0)
             {
@@ -254,6 +254,38 @@ namespace DataBase.DataObject
             }
 
             return result;
+        }*/
+
+        //Расчет заказа
+        private void CalcOrder(ref double reqQuantity)
+        {
+            if (reqQuantity != 0)
+            {
+                //Если мин. заказ равен нулю, то округления производятся по кол-ву в упаковке, 
+                //в противном случае по мин. заказу
+                reqQuantity = RoundReqQuantity(reqQuantity, _MinOrder == 0 ? QuantityInPack : _MinOrder);
+                //Проверка квоты на товар
+                if (IsQuoted && (reqQuantity > Quota))
+                    reqQuantity = Quota;
+                //Проверка наличия необходимого кол-ва товара
+                if (reqQuantity > _Quantity)
+                    reqQuantity = _Quantity;
+            }
+        }
+
+        //Округление заказа
+        private double RoundReqQuantity(double reqQuantity, double compareValue)
+        {
+            //Если заказ <= 40% сравниваемой величины,
+            //то округление заказа происходит в меньшуюю сторону,
+            //иначе в большую
+            double result = reqQuantity;
+            double mod = result % compareValue;
+            if (mod != 0)
+                result = mod <= compareValue * 0.4
+                             ? result - mod
+                             : result + _MinOrder - mod;
+            return result;
         }
 
         private void SetValue(ref double reqQuantity, double value)
@@ -265,7 +297,6 @@ namespace DataBase.DataObject
         void BeforeReqQuantityChange(ref double reqQuantity)
         {
             //Изменено
-
                 if ((!IsShopBalance) || (OrderMode == AutoOrderModeEnum.NothingMode))
                     CalcOrder(ref reqQuantity);
                 else

@@ -372,6 +372,8 @@
             this.gridColumn26.AppearanceCell.BackColor = System.Drawing.Color.PaleGoldenrod;
             this.gridColumn26.AppearanceCell.Options.UseBackColor = true;
             this.gridColumn26.Caption = "Фактический заказ";
+            this.gridColumn26.DisplayFormat.FormatString = "{0:0.00}";
+            this.gridColumn26.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.gridColumn26.FieldName = "Quantity";
             this.gridColumn26.MaxWidth = 100;
             this.gridColumn26.MinWidth = 50;
@@ -484,7 +486,7 @@
             this.repositoryItemTextEdit1,
             this.repositoryItemTimeEdit2,
             this.repositoryItemImageComboBox1});
-            this.grid.Size = new System.Drawing.Size(790, 431);
+            this.grid.Size = new System.Drawing.Size(790, 428);
             this.grid.TabIndex = 0;
             this.grid.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView,
@@ -550,6 +552,8 @@
             styleFormatCondition4});
             this.gridView.GridControl = this.grid;
             this.gridView.Name = "gridView";
+            this.gridView.OptionsDetail.AllowZoomDetail = false;
+            this.gridView.OptionsDetail.ShowDetailTabs = false;
             this.gridView.OptionsView.ShowAutoFilterRow = true;
             this.gridView.OptionsView.ShowFooter = true;
             this.gridView.SortInfo.AddRange(new DevExpress.XtraGrid.Columns.GridColumnSortInfo[] {
@@ -888,7 +892,9 @@
             // colFactQuantity
             // 
             this.colFactQuantity.Caption = "Фактический заказ";
-            this.colFactQuantity.FieldName = "FactQuantity";
+            this.colFactQuantity.DisplayFormat.FormatString = "{0:0.00}";
+            this.colFactQuantity.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.colFactQuantity.FieldName = "FactOrder";
             this.colFactQuantity.MaxWidth = 100;
             this.colFactQuantity.MinWidth = 50;
             this.colFactQuantity.Name = "colFactQuantity";
@@ -1077,7 +1083,7 @@
             this.barDockControlLeft.CausesValidation = false;
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
             this.barDockControlLeft.Location = new System.Drawing.Point(0, 47);
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 431);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 428);
             // 
             // barButtonItem1
             // 
@@ -1113,7 +1119,7 @@
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
             this.barDockControlRight.Location = new System.Drawing.Point(1020, 47);
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 431);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 428);
             // 
             // mainMenuItem3
             // 
@@ -1259,8 +1265,8 @@
             // 
             this.barDockControlBottom.CausesValidation = false;
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.barDockControlBottom.Location = new System.Drawing.Point(0, 478);
-            this.barDockControlBottom.Size = new System.Drawing.Size(1020, 23);
+            this.barDockControlBottom.Location = new System.Drawing.Point(0, 475);
+            this.barDockControlBottom.Size = new System.Drawing.Size(1020, 26);
             // 
             // barDockControlTop
             // 
@@ -1426,7 +1432,7 @@
             this.splitContainerControl1.Panel1.Text = "Panel1";
             this.splitContainerControl1.Panel2.Controls.Add(this.grid);
             this.splitContainerControl1.Panel2.Text = "Panel2";
-            this.splitContainerControl1.Size = new System.Drawing.Size(1020, 431);
+            this.splitContainerControl1.Size = new System.Drawing.Size(1020, 428);
             this.splitContainerControl1.SplitterPosition = 225;
             this.splitContainerControl1.TabIndex = 4;
             this.splitContainerControl1.Text = "splitContainerControl1";
@@ -1442,7 +1448,7 @@
             this.treeList.OptionsSelection.UseIndicatorForSelection = true;
             this.treeList.OptionsView.ShowHorzLines = false;
             this.treeList.OptionsView.ShowVertLines = false;
-            this.treeList.Size = new System.Drawing.Size(225, 431);
+            this.treeList.Size = new System.Drawing.Size(225, 428);
             this.treeList.TabIndex = 0;
             this.treeList.AfterFocusNode += new DevExpress.XtraTreeList.NodeEventHandler(this.TreeListAfterFocusNode);
             this.treeList.CustomDrawNodeCell += new DevExpress.XtraTreeList.CustomDrawNodeCellEventHandler(this.TreeListCustomDrawNodeCell);
@@ -1476,7 +1482,7 @@
             toolTipTitleItem2.Text = "Создание нового заказа";
             toolTipItem2.LeftIndent = 6;
             toolTipItem2.Text = "Создание нового заказа автоматически закроет все предыдущие заказы и их нельзя бу" +
-    "дет редактировать";
+                "дет редактировать";
             superToolTip2.Items.Add(toolTipTitleItem2);
             superToolTip2.Items.Add(toolTipItem2);
             this.btNewOrder.SuperTip = superToolTip2;

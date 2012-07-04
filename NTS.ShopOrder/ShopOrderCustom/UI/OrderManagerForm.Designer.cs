@@ -339,6 +339,8 @@
             this.gridColumn26.AppearanceCell.BackColor = System.Drawing.Color.PaleGoldenrod;
             this.gridColumn26.AppearanceCell.Options.UseBackColor = true;
             this.gridColumn26.Caption = "Фактический заказ";
+            this.gridColumn26.DisplayFormat.FormatString = "{0:0.00}";
+            this.gridColumn26.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.gridColumn26.FieldName = "Quantity";
             this.gridColumn26.MaxWidth = 100;
             this.gridColumn26.MinWidth = 50;
@@ -667,6 +669,8 @@
             this.gridColumn19.AppearanceCell.BackColor = System.Drawing.Color.PaleGoldenrod;
             this.gridColumn19.AppearanceCell.Options.UseBackColor = true;
             this.gridColumn19.Caption = "Фактический заказ";
+            this.gridColumn19.DisplayFormat.FormatString = "{0:0.00}";
+            this.gridColumn19.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.gridColumn19.FieldName = "FactOrder";
             this.gridColumn19.Name = "gridColumn19";
             this.gridColumn19.OptionsColumn.AllowEdit = false;
@@ -1035,7 +1039,7 @@
             // btPreOrders
             // 
             this.btPreOrders.Caption = "Кроссдокинговые заказы";
-            this.btPreOrders.Glyph = global::ShopOrderCustom.Properties.Resources.view_refresh;
+            this.btPreOrders.Glyph = ((System.Drawing.Image)(resources.GetObject("btPreOrders.Glyph")));
             this.btPreOrders.GroupIndex = 1;
             this.btPreOrders.Id = 17;
             this.btPreOrders.Name = "btPreOrders";
@@ -1099,7 +1103,7 @@
             toolTipTitleItem6.Text = "Отмена статуса \"Подтвержден\"";
             toolTipItem3.LeftIndent = 6;
             toolTipItem3.Text = "Если заказ находится в статусе \"Подтвержен\", его можно откатить до статуса \"Введё" +
-    "н\" у отмеченных заказов";
+                "н\" у отмеченных заказов";
             superToolTip6.Items.Add(toolTipTitleItem6);
             superToolTip6.Items.Add(toolTipItem3);
             this.btChangeState.SuperTip = superToolTip6;

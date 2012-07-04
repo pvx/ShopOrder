@@ -21,7 +21,7 @@ namespace ShopOrderCustom
             get { return GetRowState(); }
         }
 
-        private int GetRowState()
+        /*private int GetRowState()
         {
             if (_commitList == null)
                 return 2;
@@ -41,6 +41,22 @@ namespace ShopOrderCustom
                 return 0;
 
             return 2;
+        }*/
+
+        //Изменения
+        private int GetRowState()
+        {
+            if (_commitList == null)
+                return -1;
+            if (_commitList.Count > 1)
+                return 1;
+
+            if ((_commitList.Count == 1) && (Code == _commitList[0].Code))
+            {
+                return 0;
+            }
+
+            return 1;
         }
 
         private double GetFactOrder()
