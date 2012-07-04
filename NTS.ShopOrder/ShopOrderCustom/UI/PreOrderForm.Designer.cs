@@ -99,7 +99,6 @@
             this.colQuota = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colIsQuoted = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colSelfImport = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colStatus = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colFactQuantity = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemImageComboBox1 = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
@@ -520,7 +519,6 @@
             this.colQuota,
             this.colIsQuoted,
             this.colSelfImport,
-            this.colStatus,
             this.colFactQuantity,
             this.gridColumn1});
             styleFormatCondition1.Appearance.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
@@ -584,8 +582,7 @@
             this.repositoryItemSpinEdit1.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.repositoryItemSpinEdit1.HideSelection = false;
             this.repositoryItemSpinEdit1.IsFloatValue = false;
-            this.repositoryItemSpinEdit1.Mask.EditMask = "\\d+";
-            this.repositoryItemSpinEdit1.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.RegEx;
+            this.repositoryItemSpinEdit1.Mask.EditMask = "n";
             this.repositoryItemSpinEdit1.MaxValue = new decimal(new int[] {
             1000000,
             0,
@@ -611,7 +608,7 @@
             this.colGroup.OptionsColumn.AllowFocus = false;
             this.colGroup.OptionsColumn.ReadOnly = true;
             this.colGroup.Visible = true;
-            this.colGroup.VisibleIndex = 10;
+            this.colGroup.VisibleIndex = 9;
             this.colGroup.Width = 48;
             // 
             // colName
@@ -624,7 +621,7 @@
             this.colName.OptionsColumn.ReadOnly = true;
             this.colName.SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Count;
             this.colName.Visible = true;
-            this.colName.VisibleIndex = 9;
+            this.colName.VisibleIndex = 8;
             this.colName.Width = 46;
             // 
             // colPrice
@@ -636,7 +633,7 @@
             this.colPrice.OptionsColumn.AllowFocus = false;
             this.colPrice.OptionsColumn.ReadOnly = true;
             this.colPrice.Visible = true;
-            this.colPrice.VisibleIndex = 11;
+            this.colPrice.VisibleIndex = 10;
             this.colPrice.Width = 22;
             // 
             // colQuantityInPack
@@ -675,7 +672,7 @@
             this.colMeasure.OptionsColumn.AllowFocus = false;
             this.colMeasure.OptionsColumn.ReadOnly = true;
             this.colMeasure.Visible = true;
-            this.colMeasure.VisibleIndex = 12;
+            this.colMeasure.VisibleIndex = 11;
             this.colMeasure.Width = 22;
             // 
             // colQuantity
@@ -702,7 +699,7 @@
             this.colSupplier.OptionsColumn.AllowFocus = false;
             this.colSupplier.OptionsColumn.ReadOnly = true;
             this.colSupplier.Visible = true;
-            this.colSupplier.VisibleIndex = 13;
+            this.colSupplier.VisibleIndex = 12;
             this.colSupplier.Width = 22;
             // 
             // colCode
@@ -725,7 +722,7 @@
             this.colDate.OptionsColumn.AllowFocus = false;
             this.colDate.OptionsColumn.ReadOnly = true;
             this.colDate.Visible = true;
-            this.colDate.VisibleIndex = 14;
+            this.colDate.VisibleIndex = 13;
             this.colDate.Width = 22;
             // 
             // repositoryItemTimeEdit2
@@ -744,7 +741,7 @@
             this.colBarcode.OptionsColumn.AllowFocus = false;
             this.colBarcode.OptionsColumn.ReadOnly = true;
             this.colBarcode.Visible = true;
-            this.colBarcode.VisibleIndex = 15;
+            this.colBarcode.VisibleIndex = 14;
             this.colBarcode.Width = 78;
             // 
             // colReserved
@@ -778,7 +775,7 @@
             this.colMinOrder.OptionsColumn.AllowFocus = false;
             this.colMinOrder.OptionsColumn.ReadOnly = true;
             this.colMinOrder.Visible = true;
-            this.colMinOrder.VisibleIndex = 6;
+            this.colMinOrder.VisibleIndex = 5;
             this.colMinOrder.Width = 52;
             // 
             // colRreqAssort
@@ -792,7 +789,7 @@
             this.colRreqAssort.OptionsColumn.AllowFocus = false;
             this.colRreqAssort.OptionsColumn.ReadOnly = true;
             this.colRreqAssort.Visible = true;
-            this.colRreqAssort.VisibleIndex = 16;
+            this.colRreqAssort.VisibleIndex = 15;
             this.colRreqAssort.Width = 20;
             // 
             // colForOrder
@@ -808,7 +805,7 @@
             this.colForOrder.OptionsColumn.AllowFocus = false;
             this.colForOrder.OptionsColumn.ReadOnly = true;
             this.colForOrder.Visible = true;
-            this.colForOrder.VisibleIndex = 5;
+            this.colForOrder.VisibleIndex = 4;
             this.colForOrder.Width = 52;
             // 
             // colAvgSell
@@ -822,7 +819,7 @@
             this.colAvgSell.OptionsColumn.AllowFocus = false;
             this.colAvgSell.OptionsColumn.ReadOnly = true;
             this.colAvgSell.Visible = true;
-            this.colAvgSell.VisibleIndex = 8;
+            this.colAvgSell.VisibleIndex = 7;
             this.colAvgSell.Width = 28;
             // 
             // colShopBalance
@@ -836,7 +833,7 @@
             this.colShopBalance.OptionsColumn.AllowFocus = false;
             this.colShopBalance.OptionsColumn.ReadOnly = true;
             this.colShopBalance.Visible = true;
-            this.colShopBalance.VisibleIndex = 7;
+            this.colShopBalance.VisibleIndex = 6;
             this.colShopBalance.Width = 28;
             // 
             // colQuota
@@ -848,7 +845,7 @@
             this.colQuota.OptionsColumn.AllowFocus = false;
             this.colQuota.OptionsColumn.ReadOnly = true;
             this.colQuota.Visible = true;
-            this.colQuota.VisibleIndex = 17;
+            this.colQuota.VisibleIndex = 16;
             this.colQuota.Width = 36;
             // 
             // colIsQuoted
@@ -860,7 +857,7 @@
             this.colIsQuoted.OptionsColumn.AllowFocus = false;
             this.colIsQuoted.OptionsColumn.ReadOnly = true;
             this.colIsQuoted.Visible = true;
-            this.colIsQuoted.VisibleIndex = 18;
+            this.colIsQuoted.VisibleIndex = 17;
             this.colIsQuoted.Width = 20;
             // 
             // colSelfImport
@@ -872,22 +869,8 @@
             this.colSelfImport.OptionsColumn.AllowFocus = false;
             this.colSelfImport.OptionsColumn.ReadOnly = true;
             this.colSelfImport.Visible = true;
-            this.colSelfImport.VisibleIndex = 19;
+            this.colSelfImport.VisibleIndex = 18;
             this.colSelfImport.Width = 45;
-            // 
-            // colStatus
-            // 
-            this.colStatus.Caption = "Статус";
-            this.colStatus.FieldName = "Status";
-            this.colStatus.MaxWidth = 100;
-            this.colStatus.MinWidth = 50;
-            this.colStatus.Name = "colStatus";
-            this.colStatus.OptionsColumn.AllowEdit = false;
-            this.colStatus.OptionsColumn.AllowFocus = false;
-            this.colStatus.OptionsColumn.ReadOnly = true;
-            this.colStatus.Visible = true;
-            this.colStatus.VisibleIndex = 4;
-            this.colStatus.Width = 52;
             // 
             // colFactQuantity
             // 
@@ -1771,7 +1754,6 @@
         private DevExpress.ExpressApp.Win.Templates.Controls.XafBarManager BarManager;
         private System.Windows.Forms.BindingSource vGoodsBalanceOrderBindingSource;
         private DevExpress.XtraBars.BarCheckItem barCheckCold;
-        private DevExpress.XtraGrid.Columns.GridColumn colStatus;
         private DevExpress.XtraGrid.Columns.GridColumn colFactQuantity;
         private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn21;

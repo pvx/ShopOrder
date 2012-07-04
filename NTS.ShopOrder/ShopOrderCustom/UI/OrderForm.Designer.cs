@@ -366,8 +366,7 @@
             this.repositoryItemSpinEdit1.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.repositoryItemSpinEdit1.HideSelection = false;
             this.repositoryItemSpinEdit1.IsFloatValue = false;
-            this.repositoryItemSpinEdit1.Mask.EditMask = "\\d+";
-            this.repositoryItemSpinEdit1.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.RegEx;
+            this.repositoryItemSpinEdit1.Mask.EditMask = "n";
             this.repositoryItemSpinEdit1.MaxValue = new decimal(new int[] {
             1000000,
             0,

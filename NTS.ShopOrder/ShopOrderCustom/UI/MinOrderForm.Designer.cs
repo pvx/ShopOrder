@@ -54,12 +54,13 @@
             this.xafBar3 = new DevExpress.ExpressApp.Win.Templates.Controls.XafBar();
             this.cbCategory = new DevExpress.XtraBars.BarEditItem();
             this.cbRepCategory = new DevExpress.XtraEditors.Repository.RepositoryItemComboBox();
+            this.btRefresh = new DevExpress.XtraBars.BarButtonItem();
             this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
             this.btClear = new DevExpress.XtraBars.BarButtonItem();
-            this.btRefresh = new DevExpress.XtraBars.BarButtonItem();
+            this.repositoryItemTextEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grid)).BeginInit();
@@ -67,6 +68,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemSpinEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.BarManager)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cbRepCategory)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit1)).BeginInit();
             this.SuspendLayout();
             // 
             // panelControl1
@@ -85,7 +87,8 @@
             this.grid.MainView = this.gridView;
             this.grid.Name = "grid";
             this.grid.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
-            this.repositoryItemSpinEdit1});
+            this.repositoryItemSpinEdit1,
+            this.repositoryItemTextEdit1});
             this.grid.Size = new System.Drawing.Size(765, 397);
             this.grid.TabIndex = 1;
             this.grid.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
@@ -240,6 +243,7 @@
             this.colMinOrder.AppearanceCell.BackColor = System.Drawing.Color.CornflowerBlue;
             this.colMinOrder.AppearanceCell.Options.UseBackColor = true;
             this.colMinOrder.Caption = "Минимальный заказ";
+            this.colMinOrder.ColumnEdit = this.repositoryItemTextEdit1;
             this.colMinOrder.FieldName = "MinOrder";
             this.colMinOrder.MaxWidth = 100;
             this.colMinOrder.Name = "colMinOrder";
@@ -326,6 +330,14 @@
             this.cbRepCategory.Name = "cbRepCategory";
             this.cbRepCategory.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
             // 
+            // btRefresh
+            // 
+            this.btRefresh.Caption = "Обновить";
+            this.btRefresh.Glyph = global::ShopOrderCustom.Properties.Resources.reload_all_tabs;
+            this.btRefresh.Id = 13;
+            this.btRefresh.Name = "btRefresh";
+            this.btRefresh.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.BtRefreshItemClick);
+            // 
             // barDockControlTop
             // 
             this.barDockControlTop.CausesValidation = false;
@@ -371,13 +383,12 @@
             superToolTip1.Items.Add(toolTipItem1);
             this.btClear.SuperTip = superToolTip1;
             // 
-            // btRefresh
+            // repositoryItemTextEdit1
             // 
-            this.btRefresh.Caption = "Обновить";
-            this.btRefresh.Glyph = global::ShopOrderCustom.Properties.Resources.reload_all_tabs;
-            this.btRefresh.Id = 13;
-            this.btRefresh.Name = "btRefresh";
-            this.btRefresh.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.BtRefreshItemClick);
+            this.repositoryItemTextEdit1.AutoHeight = false;
+            this.repositoryItemTextEdit1.Mask.EditMask = "n";
+            this.repositoryItemTextEdit1.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
+            this.repositoryItemTextEdit1.Name = "repositoryItemTextEdit1";
             // 
             // MinOrderForm
             // 
@@ -400,6 +411,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemSpinEdit1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.BarManager)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cbRepCategory)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -433,5 +445,6 @@
         private DevExpress.XtraBars.BarDockControl barDockControlLeft;
         private DevExpress.XtraBars.BarDockControl barDockControlRight;
         private DevExpress.XtraBars.BarButtonItem btRefresh;
+        private DevExpress.XtraEditors.Repository.RepositoryItemTextEdit repositoryItemTextEdit1;
     }
 }
